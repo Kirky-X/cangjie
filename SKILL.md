@@ -1,7 +1,7 @@
 ---
 name: content-summarizer
 description: Use when summarizing text, audio, video, transcripts, or papers into structured notes, reports, meeting minutes, media recaps, analysis outputs, or generating product documentation (PRD, TRD, BP, architecture, competitive analysis, literature review)
-version: 4.0.0
+version: 0.1.0
 source: local-skill
 triggers:
   - 总结
@@ -64,6 +64,31 @@ requires:
 ## Workflow
 
 每步遵循 `输入 → 处理 → 输出` 契约。前一步输出作为下一步输入。任一步失败必须显式处理，禁止静默跳过。
+
+```mermaid
+flowchart TD
+    S1["Step 1 · 输入模态识别<br/>输入: 用户材料（文件路径/文本/URL）<br/>输出: 模态标签 (text/audio/video/mixed/paper)"]
+    S2["Step 2 · 输出目标识别<br/>输入: 用户原话 + Step 1 模态<br/>输出: 目标 ID (learning/recap/...)"]
+    S3{"Step 3 · 用户指定检查<br/>user_specified?"}
+    S4["Step 4 · 自动模板匹配<br/>输入: 模态 + 目标 + 原话<br/>输出: 模板 ID"]
+    S5["Step 5 · 输出密度确定<br/>输出: brief/standard-detailed/deep-dive"]
+    S6["🔴 Step 6 · CHECKPOINT 生成前确认<br/>向用户说明 3 件事 → 等待确认"]
+    S7["Step 7 · 生成最终输出<br/>按 required_sections 填充 + 强制写 .md 文件"]
+
+    S1 --> S2
+    S2 --> S3
+    S3 -- "true → 用户指定优先" --> S6
+    S3 -- "false" --> S4
+    S4 --> S5
+    S5 --> S6
+    S6 -- "用户确认" --> S7
+    S6 -- "用户修改 → 回退重跑" --> S1
+
+    S1 -.- F1["失败: 扩展名未识别 → 询问用户，禁止猜测"]
+    S2 -.- F2["失败: 多目标命中 → 列候选询问用户"]
+    S4 -.- F4["失败: 无匹配 → goals.default_family 回落"]
+    S7 -.- F7["失败: 章节不足 → 标注'材料未提供'，禁止硬凑"]
+```
 
 ### Step 1 · 输入模态识别
 - 输入：用户材料（文件路径 / 文本 / URL）
@@ -128,6 +153,46 @@ requires:
 3. 内容信号词与材料形态
 4. fallback 模板
 
+```mermaid
+flowchart TD
+    Start["用户输入"] --> A{"用户显式指定模板?"}
+    A -- "是" --> U["使用用户指定模板"]
+    A -- "否" --> B{"目标意图识别"}
+    B -- "学习/复习/课程" --> L["learning/*"]
+    B -- "总结整本非虚构书籍" --> L1["learning/nonfiction-book-summary"]
+    B -- "总结整本小说/叙事" --> L2["learning/fiction-book-summary"]
+    B -- "回顾播客/节目/直播" --> M["media/*"]
+    B -- "记录讨论/决策/待办" --> MT["meeting/*"]
+    B -- "项目汇报/状态/风险" --> BZ["business/*"]
+    B -- "跨材料归纳/决策支持" --> AN["analysis/*"]
+    B -- "论文阅读" --> P["analysis/paper-* (子类型细分)"]
+    B -- "PRD/TRD/BP/架构" --> PD["product/*"]
+    B -- "市场调研/竞品分析" --> PD
+    B -- "发布计划/测试报告" --> PD
+    B -- "数据看板/用户手册" --> PD
+    B -- "正式归档会议纪要" --> PDMM["product/meeting-minutes-detailed"]
+    B -- "建立评判框架文献综述" --> PDLR["product/literature-review"]
+    B -- "无匹配" --> F["goals.default_family 回落"]
+```
+
+### 论文子类型细分
+
+```mermaid
+flowchart LR
+    P["论文输入"] --> P1{"论文类型?"}
+    P1 -- "定理/证明/收敛性/上下界" --> PT["analysis/theoretical-paper-summary"]
+    P1 -- "数据集/实验指标/ablation" --> PE["analysis/experimental-paper-summary"]
+    P1 -- "系统架构/吞吐/延迟/部署" --> PS["analysis/systems-paper-summary"]
+    P1 -- "taxonomy/文献脉络/研究空白" --> PV["analysis/survey-paper-summary"]
+    P1 -- "看不出明确子类型" --> PG["analysis/paper-summary"]
+```
+
+### 书籍场景细分
+
+- 论点、框架、模型、案例、方法论为主 -> `learning/nonfiction-book-summary`
+- 人物、情节、叙事结构、主题、象征为主 -> `learning/fiction-book-summary`
+- 用户只说"总结这本书"但未说明类型时，先根据内容信号判断；仍不明确时默认 `learning/nonfiction-book-summary`
+
 一条判断规则：
 
 - 学会或复习某个主题 -> `learning/*`
@@ -145,20 +210,6 @@ requires:
 - 写数据看板、用户手册、运营手册 -> `product/*`（运营层）
 - 需要正式归档的详细会议纪要（含 ACTION 编号、Parking Lot）-> `product/meeting-minutes-detailed`
 - 需要建立评判框架的文献综述（含 PRISMA、场景化推荐）-> `product/literature-review`
-
-论文子类型继续细分：
-
-- 定理、证明、收敛性、上下界 -> `analysis/theoretical-paper-summary`
-- 数据集、实验指标、ablation、benchmark -> `analysis/experimental-paper-summary`
-- 系统架构、吞吐、延迟、部署、扩展性 -> `analysis/systems-paper-summary`
-- taxonomy、文献脉络、研究空白、综述 -> `analysis/survey-paper-summary`
-- 看不出明确子类型 -> `analysis/paper-summary`
-
-书籍场景继续细分：
-
-- 论点、框架、模型、案例、方法论为主 -> `learning/nonfiction-book-summary`
-- 人物、情节、叙事结构、主题、象征为主 -> `learning/fiction-book-summary`
-- 用户只说“总结这本书”但未说明类型时，先根据内容信号判断；仍不明确时默认 `learning/nonfiction-book-summary`
 
 ## Template Families
 
