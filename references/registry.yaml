@@ -1,0 +1,728 @@
+version: "2.0"
+selection_policy:
+  precedence:
+    - user_override
+    - explicit_goal
+    - modality_and_signals
+    - fallback
+  rule: "User-selected template always wins. Auto-selection is advisory."
+
+families:
+  - id: learning
+    file: families/learning.yaml
+    default_template: learning/course-notes
+    goals:
+      - learning
+      - review
+      - knowledge_capture
+  - id: media
+    file: families/media.yaml
+    default_template: media/podcast-summary
+    goals:
+      - recap
+      - audience_summary
+      - content_reuse
+  - id: meeting
+    file: families/meeting.yaml
+    default_template: meeting/decision-minutes
+    goals:
+      - discussion_record
+      - decision_tracking
+      - interview_capture
+  - id: business
+    file: families/business.yaml
+    default_template: business/project-status-report
+    goals:
+      - status_reporting
+      - executive_update
+      - action_tracking
+  - id: analysis
+    file: families/analysis.yaml
+    default_template: analysis/research-brief
+    goals:
+      - synthesis
+      - decision_support
+      - research_summary
+  - id: product
+    file: families/product.yaml
+    default_template: product/prd
+    goals:
+      - product_documentation
+      - strategic_planning
+      - technical_design
+      - delivery_planning
+      - operations_setup
+
+templates:
+  - id: learning/course-notes
+    family: learning
+    label: 课程学习笔记
+    best_for:
+      - 视频课程
+      - 培训录音
+      - 系统化学习材料
+    input_modalities: [text, audio, video]
+    detection_signals:
+      - 课程
+      - 学习
+      - 教学
+      - lesson
+      - syllabus
+    anti_signals:
+      - 决策
+      - 待办
+      - 汇报
+    required_sections:
+      - metadata
+      - overview
+      - module_breakdown
+      - key_takeaways
+      - review_questions
+    optional_sections:
+      - terminology
+      - action_practice
+      - visual_notes
+  - id: learning/nonfiction-book-summary
+    family: learning
+    label: 非虚构书籍总结
+    best_for: [商业书, 科普书, 历史书, 心理学书, 方法论书]
+    input_modalities: [text, mixed]
+    detection_signals:
+      [书, 书籍, 全书, 章节, chapter, 作者, 非虚构, 方法论, 商业书, 科普]
+    anti_signals: [小说, 虚构, 故事人物, 剧情]
+    required_sections:
+      [
+        metadata,
+        reading_status,
+        book_overview,
+        core_arguments,
+        chapter_summaries,
+        argument_flow,
+        practical_takeaways,
+      ]
+    optional_sections:
+      [
+        concepts_and_models,
+        evidence_and_cases,
+        chapter_role_map,
+        limitations_and_questions,
+        notable_quotes,
+        review_questions,
+      ]
+  - id: learning/fiction-book-summary
+    family: learning
+    label: 叙事类书籍总结
+    best_for: [小说, 文学作品, 叙事类传记, 剧情性作品]
+    input_modalities: [text, mixed]
+    detection_signals:
+      [小说, 书, 书籍, 全书, 章节, chapter, 人物, 情节, 叙事, 主题]
+    anti_signals: [实验结果, 方法论框架, 商业模型, 研究问题]
+    required_sections:
+      [
+        metadata,
+        reading_status,
+        book_overview,
+        chapter_summaries,
+        character_map,
+        plot_progression,
+        themes_and_motifs,
+      ]
+    optional_sections:
+      [
+        chapter_role_map,
+        narrative_structure,
+        symbols_and_imagery,
+        notable_quotes,
+        reading_impressions,
+      ]
+  - id: learning/lecture-summary
+    family: learning
+    label: 讲座摘要
+    best_for: [主题演讲, 公开课, keynote]
+    input_modalities: [text, audio, video]
+    detection_signals: [演讲, 讲座, keynote, talk]
+    anti_signals: [步骤演示, 多人决策]
+    required_sections:
+      [metadata, overview, theme_flow, key_takeaways, notable_quotes]
+    optional_sections: [speaker_profile, action_practice, references]
+  - id: learning/tutorial-playbook
+    family: learning
+    label: 教程操作手册
+    best_for: [实操教程, 产品教学, coding demo]
+    input_modalities: [text, audio, video]
+    detection_signals: [教程, 演示, step, demo, 操作流程]
+    anti_signals: [周报, 争议点]
+    required_sections:
+      [metadata, objective, prerequisites, step_by_step, pitfalls, next_actions]
+    optional_sections: [visual_notes, commands, resources]
+  - id: learning/concept-explainer
+    family: learning
+    label: 概念讲解卡
+    best_for: [概念性内容, 原理讲解, 术语解释]
+    input_modalities: [text, audio, video]
+    detection_signals: [概念, 原理, 是什么, why, how it works]
+    anti_signals: [项目进展, 会议决议]
+    required_sections:
+      [
+        metadata,
+        concept_summary,
+        core_mechanism,
+        examples,
+        common_misunderstandings,
+      ]
+    optional_sections: [comparison, references, practice_prompts]
+  - id: media/podcast-summary
+    family: media
+    label: 播客总结
+    best_for: [播客, 音频访谈, 对谈节目]
+    input_modalities: [audio, video, text]
+    detection_signals: [播客, podcast, 对谈, 访谈节目]
+    anti_signals: [待办, 截止时间]
+    required_sections:
+      [metadata, overview, speaker_map, topic_flow, key_points, highlights]
+    optional_sections: [timeline, audience_takeaways, notable_quotes]
+  - id: media/video-program-summary
+    family: media
+    label: 视频节目总结
+    best_for: [访谈视频, 节目回顾, 录播内容]
+    input_modalities: [video, audio, text]
+    detection_signals: [视频, 节目, 采访, recap]
+    anti_signals: [周报, action owner]
+    required_sections:
+      [metadata, overview, segment_breakdown, key_points, highlights]
+    optional_sections: [visual_notes, timeline, notable_quotes]
+  - id: media/livestream-recap
+    family: media
+    label: 直播回顾
+    best_for: [直播, webinar, AMA, 发布会直播]
+    input_modalities: [video, audio, text]
+    detection_signals: [直播, live, AMA, webinar]
+    anti_signals: [正式决策记录]
+    required_sections:
+      [
+        metadata,
+        overview,
+        agenda_flow,
+        audience_questions,
+        major_updates,
+        followups,
+      ]
+    optional_sections: [timeline, highlights, references]
+  - id: media/content-highlights
+    family: media
+    label: 内容亮点提炼
+    best_for: [短视频拆条, 宣发提炼, 精彩片段]
+    input_modalities: [audio, video, text]
+    detection_signals: [亮点, 金句, clips, highlights]
+    anti_signals: [完整纪要, 系统学习]
+    required_sections:
+      [metadata, summary_hook, highlight_clips, quotable_lines, reuse_angles]
+    optional_sections: [timeline, audience_takeaways]
+  - id: meeting/decision-minutes
+    family: meeting
+    label: 决策纪要
+    best_for: [项目例会, 评审会, 管理会议]
+    input_modalities: [text, audio, video]
+    detection_signals: [决定, 决策, owner, 截止时间, action item]
+    anti_signals: [教程, 周报]
+    required_sections:
+      [
+        meeting_info,
+        objective,
+        discussion_summary,
+        decisions,
+        action_items,
+        risks,
+      ]
+    optional_sections: [controversies, speaker_notes, timeline]
+  - id: meeting/discussion-minutes
+    family: meeting
+    label: 讨论纪要
+    best_for: [头脑风暴, 同步会, 非正式讨论]
+    input_modalities: [text, audio, video]
+    detection_signals: [讨论, brainstorming, sync, 对齐]
+    anti_signals: [项目周报]
+    required_sections:
+      [
+        meeting_info,
+        objective,
+        discussion_summary,
+        key_observations,
+        open_questions,
+        next_steps,
+      ]
+    optional_sections: [speaker_notes, timeline, references]
+  - id: meeting/interview-record
+    family: meeting
+    label: 访谈记录
+    best_for: [用户访谈, 候选人访谈, 专家访谈]
+    input_modalities: [text, audio, video]
+    detection_signals: [访谈, interview, 提问, 回答]
+    anti_signals: [正式项目汇报]
+    required_sections:
+      [
+        meeting_info,
+        participant_profile,
+        interview_topics,
+        answers_and_insights,
+        key_quotes,
+        followups,
+      ]
+    optional_sections: [decision_implications, timeline]
+  - id: meeting/one-on-one-note
+    family: meeting
+    label: 1对1记录
+    best_for: [经理1:1, 导师交流, 反馈会]
+    input_modalities: [text, audio]
+    detection_signals: [1:1, one-on-one, 反馈, 成长]
+    anti_signals: [群体决策]
+    required_sections:
+      [
+        meeting_info,
+        current_state,
+        wins,
+        blockers,
+        support_needed,
+        agreed_actions,
+      ]
+    optional_sections: [development_topics, mood_signals]
+  - id: meeting/workshop-summary
+    family: meeting
+    label: 工作坊总结
+    best_for: [训练营, 设计工作坊, 共创会]
+    input_modalities: [text, audio, video]
+    detection_signals: [工作坊, workshop, breakout, 共创]
+    anti_signals: [高层汇报]
+    required_sections:
+      [meeting_info, objectives, activity_flow, outputs, decisions, next_steps]
+    optional_sections: [participant_feedback, visual_notes]
+  - id: business/project-status-report
+    family: business
+    label: 项目进展报告
+    best_for: [项目周报, 进展同步, 交付状态]
+    input_modalities: [text, audio, video]
+    detection_signals: [项目, 进展, status, milestone]
+    anti_signals: [播客, 学习笔记]
+    required_sections:
+      [report_info, executive_summary, progress, metrics, risks, next_actions]
+    optional_sections: [dependencies, asks, timeline]
+  - id: business/weekly-monthly-report
+    family: business
+    label: 周报月报
+    best_for: [个人周报, 团队月报, 部门例行汇报]
+    input_modalities: [text, audio, video]
+    detection_signals: [周报, 月报, 本周, 本月]
+    anti_signals: [访谈提纲]
+    required_sections:
+      [
+        report_info,
+        summary,
+        completed_work,
+        in_progress,
+        blockers,
+        next_period_plan,
+      ]
+    optional_sections: [metrics, asks, reflections]
+  - id: business/executive-brief
+    family: business
+    label: 高层简报
+    best_for: [管理层汇报, 高层概览, board update]
+    input_modalities: [text, audio, video]
+    detection_signals: [高层, 汇报, brief, board, exec]
+    anti_signals: [逐句纪要]
+    required_sections:
+      [
+        report_info,
+        executive_summary,
+        strategic_updates,
+        decisions_needed,
+        major_risks,
+      ]
+    optional_sections: [metrics, asks, appendix]
+  - id: business/risk-issue-report
+    family: business
+    label: 风险问题报告
+    best_for: [风险盘点, 问题跟踪, 异常复盘]
+    input_modalities: [text, audio, video]
+    detection_signals: [风险, issue, blocker, incident, 问题]
+    anti_signals: [教程]
+    required_sections:
+      [report_info, issue_summary, impact, root_causes, mitigation, owners]
+    optional_sections: [timeline, dependencies, escalation]
+  - id: business/action-tracker
+    family: business
+    label: 行动追踪清单
+    best_for: [待办归档, owner 跟踪, follow-up 管理]
+    input_modalities: [text, audio, video]
+    detection_signals: [待办, action items, owner, follow up]
+    anti_signals: [纯知识学习]
+    required_sections:
+      [
+        report_info,
+        priorities,
+        action_items,
+        deadlines,
+        dependencies,
+        status_notes,
+      ]
+    optional_sections: [risks, review_cadence]
+  - id: analysis/research-brief
+    family: analysis
+    label: 研究简报
+    best_for: [研究材料总结, 行业扫描, desk research]
+    input_modalities: [text, audio, video]
+    detection_signals: [研究, 调研, scan, landscape]
+    anti_signals: [逐项待办]
+    required_sections:
+      [
+        brief_info,
+        objective,
+        main_findings,
+        evidence,
+        implications,
+        open_questions,
+      ]
+    optional_sections: [sources, comparisons, recommendations]
+  - id: analysis/paper-summary
+    family: analysis
+    label: 论文总结
+    best_for: [学术论文, preprint, arxiv paper, conference paper, journal paper]
+    input_modalities: [text, pdf, audio, video]
+    detection_signals: [论文, paper, arxiv, 摘要, 方法, 实验, 公式, 局限性]
+    anti_signals: [项目周报, 会议待办]
+    required_sections:
+      [
+        brief_info,
+        research_topic,
+        research_question,
+        methodology,
+        core_results,
+        formulas_or_models,
+        limitations,
+      ]
+    optional_sections:
+      [
+        paper_type,
+        experiments,
+        contributions,
+        assumptions,
+        comparisons,
+        future_work,
+        sources,
+      ]
+  - id: analysis/theoretical-paper-summary
+    family: analysis
+    label: 理论论文总结
+    best_for: [理论论文, 数学推导论文, 证明型论文]
+    input_modalities: [text, pdf]
+    detection_signals:
+      [theorem, proof, lemma, proposition, 收敛, 上界, 下界, 理论分析]
+    anti_signals: [用户访谈, 项目周报]
+    required_sections:
+      [
+        brief_info,
+        paper_type,
+        research_topic,
+        research_question,
+        methodology,
+        formulas_or_models,
+        theoretical_claims,
+        limitations,
+      ]
+    optional_sections:
+      [assumptions, contributions, comparisons, future_work, sources]
+  - id: analysis/experimental-paper-summary
+    family: analysis
+    label: 实验论文总结
+    best_for: [实验论文, benchmark paper, empirical study]
+    input_modalities: [text, pdf]
+    detection_signals:
+      [experiment, dataset, benchmark, ablation, 指标, 数据集, 消融]
+    anti_signals: [用户访谈, 项目周报]
+    required_sections:
+      [
+        brief_info,
+        paper_type,
+        research_topic,
+        research_question,
+        methodology,
+        experiments,
+        core_results,
+        limitations,
+      ]
+    optional_sections:
+      [formulas_or_models, contributions, comparisons, future_work, sources]
+  - id: analysis/systems-paper-summary
+    family: analysis
+    label: 系统论文总结
+    best_for: [系统论文, 架构论文, engineering paper]
+    input_modalities: [text, pdf]
+    detection_signals:
+      [
+        system,
+        architecture,
+        throughput,
+        latency,
+        deployment,
+        scalability,
+        架构,
+        系统设计,
+      ]
+    anti_signals: [用户访谈, 项目周报]
+    required_sections:
+      [
+        brief_info,
+        paper_type,
+        research_topic,
+        problem_setting,
+        methodology,
+        system_design,
+        evaluation_setup,
+        core_results,
+        limitations,
+      ]
+    optional_sections:
+      [formulas_or_models, tradeoffs, comparisons, future_work, sources]
+  - id: analysis/survey-paper-summary
+    family: analysis
+    label: 综述论文总结
+    best_for: [survey paper, review paper, literature review]
+    input_modalities: [text, pdf]
+    detection_signals:
+      [survey, review, taxonomy, literature, 综述, 调研综述, 分类法]
+    anti_signals: [用户访谈, 项目周报]
+    required_sections:
+      [
+        brief_info,
+        paper_type,
+        research_topic,
+        taxonomy_or_framework,
+        recurring_themes,
+        comparisons,
+        gaps,
+        future_work,
+      ]
+    optional_sections: [sources, methodology, limitations]
+  - id: analysis/decision-memo
+    family: analysis
+    label: 决策备忘录
+    best_for: [方案选择, 跨材料决策支持, 投前判断]
+    input_modalities: [text, audio, video]
+    detection_signals: [决策, memo, options, recommend, 建议采用]
+    anti_signals: [单一课程总结]
+    required_sections:
+      [
+        brief_info,
+        decision_question,
+        options,
+        tradeoffs,
+        recommendation,
+        next_steps,
+      ]
+    optional_sections: [evidence, risks, dissenting_views]
+  - id: analysis/theme-synthesis
+    family: analysis
+    label: 主题归纳
+    best_for: [多份材料共性提炼, 主题分析, pattern finding]
+    input_modalities: [text, audio, video]
+    detection_signals: [归纳, synthesis, patterns, themes]
+    anti_signals: [单次会议]
+    required_sections:
+      [
+        brief_info,
+        synthesis_scope,
+        recurring_themes,
+        supporting_examples,
+        tensions,
+        implications,
+      ]
+    optional_sections: [recommendations, sources]
+  - id: analysis/competitive-scan
+    family: analysis
+    label: 竞品扫描
+    best_for: [竞品分析, 同类对比, 市场观察]
+    input_modalities: [text, audio, video]
+    detection_signals: [竞品, competitor, benchmark, 对比]
+    anti_signals: [个人学习笔记]
+    required_sections:
+      [brief_info, scope, comparison_axes, key_players, gaps, opportunities]
+    optional_sections: [evidence, risks, recommendations]
+  # product 族模板引用 templates/ 下的完整 Markdown 骨架，不在此重复定义 required_sections
+  - id: product/business-plan
+    family: product
+    label: 商业计划书（BP）
+    best_for: [融资路演, 投资人沟通, 商业计划撰写]
+    input_modalities: [text, mixed]
+    detection_signals: [商业计划书, BP, 融资, 路演, 投资人]
+    anti_signals: [会议纪要, 论文总结]
+    template_file: "templates/【模板】商业计划书.md"
+  - id: product/business-model
+    family: product
+    label: 商业模式文档
+    best_for: [商业模式设计, 价值主张梳理, 盈利路径设计]
+    input_modalities: [text, mixed]
+    detection_signals: [商业模式, 商业模式画布, 盈利模式, 价值主张]
+    anti_signals: [会议纪要, 论文总结]
+    template_file: "templates/【模板】商业模式文档.md"
+  - id: product/brd
+    family: product
+    label: 商业需求文档（BRD）
+    best_for: [商业需求定义, 战略层文档, 项目立项]
+    input_modalities: [text, mixed]
+    detection_signals: [商业需求, BRD, 立项, 战略需求]
+    anti_signals: [技术设计, 测试报告]
+    template_file: "templates/产品/战略层/【模板】商业需求文档.md"
+  - id: product/market-research
+    family: product
+    label: 市场调研报告
+    best_for: [市场调研, 行业分析, 市场机会评估]
+    input_modalities: [text, mixed]
+    detection_signals: [市场调研, 行业分析, 市场机会]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/战略层/【模板】市场调研报告.md"
+  - id: product/mrd
+    family: product
+    label: 市场需求文档（MRD）
+    best_for: [市场需求定义, 产品规划, 市场驱动的需求]
+    input_modalities: [text, mixed]
+    detection_signals: [市场需求, MRD, 市场驱动需求]
+    anti_signals: [技术设计, 测试报告]
+    template_file: "templates/产品/战略层/【模板】市场需求文档.md"
+  - id: product/competitive-analysis
+    family: product
+    label: 竞品分析报告
+    best_for: [竞品分析, 竞争格局, 差异化策略]
+    input_modalities: [text, mixed]
+    detection_signals: [竞品分析, 竞品对比, 竞争格局, 差异化]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/战略层/【模板】竞品分析报告.md"
+  - id: product/project-charter
+    family: product
+    label: 项目任务书
+    best_for: [项目启动, 任务书, 项目目标定义]
+    input_modalities: [text, mixed]
+    detection_signals: [项目任务书, 项目启动, 任务书]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/战略层/【模板】项目任务书.md"
+  - id: product/prd
+    family: product
+    label: 产品需求文档（PRD）
+    best_for: [产品需求定义, 功能设计, 研发交付依据]
+    input_modalities: [text, mixed]
+    detection_signals: [产品需求文档, PRD, 功能需求, 需求评审]
+    anti_signals: [会议纪要, 论文总结]
+    template_file: "templates/产品/产品层/【模板】产品需求文档.md"
+  - id: product/frd
+    family: product
+    label: 功能需求文档（FRD）
+    best_for: [功能需求细化, 单功能详述, 研发实现依据]
+    input_modalities: [text, mixed]
+    detection_signals: [功能需求文档, FRD, 功能细化]
+    anti_signals: [产品需求文档, 商业计划]
+    template_file: "templates/产品/产品层/【模板】功能需求文档.md"
+  - id: product/uiux-spec
+    family: product
+    label: 产品配色与UIUX规范文档
+    best_for: [UIUX规范, 配色体系, 设计系统]
+    input_modalities: [text, mixed]
+    detection_signals: [UIUX, 配色, 设计规范, 设计系统]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/产品层/【模板】产品配色与UIUX规范文档.md"
+  - id: product/trd
+    family: product
+    label: 技术需求文档（TRD）
+    best_for: [技术方案设计, 架构选型, 技术需求定义]
+    input_modalities: [text, mixed]
+    detection_signals: [技术需求, TRD, 技术方案, 架构选型]
+    anti_signals: [产品需求文档, 商业计划]
+    template_file: "templates/产品/技术层/【模板】技术需求文档(TRD).md"
+  - id: product/architecture
+    family: product
+    label: 架构设计文档
+    best_for: [系统架构设计, 模块划分, 技术架构]
+    input_modalities: [text, mixed]
+    detection_signals: [架构设计, 系统架构, 模块设计]
+    anti_signals: [产品需求文档, 商业计划]
+    template_file: "templates/产品/技术层/【模板】架构设计文档.md"
+  - id: product/db-design
+    family: product
+    label: 数据库设计文档
+    best_for: [数据库设计, 表结构, 数据模型]
+    input_modalities: [text, mixed]
+    detection_signals: [数据库设计, 表结构, 数据模型, ER图]
+    anti_signals: [产品需求文档, 商业计划]
+    template_file: "templates/产品/技术层/【模板】数据库设计文档规范.md"
+  - id: product/algorithm-doc
+    family: product
+    label: 核心算法文档
+    best_for: [算法设计, 核心算法说明, 算法实现文档]
+    input_modalities: [text, mixed]
+    detection_signals: [核心算法, 算法文档, 算法设计]
+    anti_signals: [产品需求文档, 商业计划]
+    template_file: "templates/产品/技术层/【模板】核心算法文档.md"
+  - id: product/release-plan
+    family: product
+    label: 发布计划文档
+    best_for: [发布计划, 上线计划, 交付排期]
+    input_modalities: [text, mixed]
+    detection_signals: [发布计划, 上线计划, 交付排期]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/交付层/【模板】发布计划文档.md"
+  - id: product/test-report
+    family: product
+    label: 测试报告
+    best_for: [测试报告, 质量报告, 测试总结]
+    input_modalities: [text, mixed]
+    detection_signals: [测试报告, 质量报告, 测试总结]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/交付层/【模板】测试报告.md"
+  - id: product/canary-plan
+    family: product
+    label: 灰度方案
+    best_for: [灰度发布, 灰度策略, 分批上线]
+    input_modalities: [text, mixed]
+    detection_signals: [灰度, 灰度方案, 灰度发布, 分批上线]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/交付层/【模板】灰度方案.md"
+  - id: product/dashboard
+    family: product
+    label: 数据看板
+    best_for: [数据看板, 指标体系, 数据可视化]
+    input_modalities: [text, mixed]
+    detection_signals: [数据看板, 指标体系, 数据可视化]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/运营层/【模板】数据看板.md"
+  - id: product/user-manual
+    family: product
+    label: 用户手册
+    best_for: [用户手册, 使用说明, 用户指导]
+    input_modalities: [text, mixed]
+    detection_signals: [用户手册, 使用说明, 用户指导]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/运营层/【模板】用户手册.md"
+  - id: product/ops-manual
+    family: product
+    label: 运营手册
+    best_for: [运营手册, 运营流程, 运营规范]
+    input_modalities: [text, mixed]
+    detection_signals: [运营手册, 运营流程, 运营规范]
+    anti_signals: [产品需求文档, 技术设计]
+    template_file: "templates/产品/运营层/【模板】运营手册.md"
+  - id: product/meeting-minutes-detailed
+    family: product
+    label: 详细会议纪要
+    best_for: [正式会议纪要, 含行动项跟踪, 跨会议引用]
+    input_modalities: [text, audio, video]
+    detection_signals: [详细会议纪要, 正式纪要, 行动项跟踪, ACTION编号]
+    anti_signals: [快速讨论纪要, 头脑风暴]
+    template_file: "templates/【模板】会议纪要.md"
+    note: "比 meeting/decision-minutes 更详细，含 ACTION/RISK 编号体系、Parking Lot、下次会议计划、FAR 原则。需要正式归档时优先使用。"
+  - id: product/literature-review
+    family: product
+    label: 论文研究报告（综述）
+    best_for: [文献综述, 系统综述, 研究进展报告, 多论文综合]
+    input_modalities: [text, pdf, mixed]
+    detection_signals: [论文研究报告, 文献综述, 系统综述, 研究进展, PRISMA]
+    anti_signals: [单篇论文总结]
+    template_file: "templates/【模板】论文研究报告.md"
+    note: "比 analysis/survey-paper-summary 更详细，含 PRISMA 流程、五维评判框架、场景化推荐。面向需要建立评判框架并推荐最优路径的综述报告。"

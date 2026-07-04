@@ -1,0 +1,187 @@
+family:
+  id: analysis
+  label: 研究分析类
+  purpose: "面向跨材料归纳、研究输出、论文阅读和决策支持，强调证据、方法、模式、权衡和建议。"
+
+section_library:
+  brief_info: "标题、范围、作者、时间、材料来源"
+  objective: "研究或分析目标"
+  paper_type: "论文类型判断，例如理论、实验、系统、综述"
+  research_topic: "论文研究主题、所属方向、关注的问题域"
+  research_question: "论文试图回答的核心研究问题"
+  problem_setting: "论文面对的任务设定、应用场景、约束条件"
+  methodology: "方法设计、模型框架、算法流程、证明思路"
+  system_design: "系统架构、模块设计、关键工程机制"
+  evaluation_setup: "评测环境、负载、实验配置、基线设置"
+  core_results: "主要成果、结论、性能提升、理论结果"
+  formulas_or_models: "关键公式、模型结构、损失函数、记号说明"
+  experiments: "实验设置、数据集、指标、消融、对比"
+  contributions: "作者声称的主要贡献"
+  assumptions: "前提假设、适用范围、边界条件"
+  limitations: "论文明确或隐含的缺陷、限制、威胁"
+  future_work: "作者提出或可推导的后续研究方向"
+  theoretical_claims: "关键定理、命题、证明结论与成立条件"
+  main_findings: "最重要的发现"
+  evidence: "支撑结论的材料、例子、数据"
+  implications: "这些发现意味着什么"
+  open_questions: "仍需验证的问题"
+  sources: "材料来源清单"
+  comparisons: "对比维度和差异"
+  taxonomy_or_framework: "综述中的分类框架、坐标系或观察框架"
+  recommendations: "建议动作"
+  decision_question: "要解决的决策问题"
+  options: "可选方案"
+  tradeoffs: "利弊和代价"
+  recommendation: "推荐结论"
+  next_steps: "后续推进"
+  risks: "推荐方案的风险"
+  dissenting_views: "反对意见或保留意见"
+  synthesis_scope: "归纳范围"
+  recurring_themes: "反复出现的主题"
+  supporting_examples: "支持主题的具体例子"
+  tensions: "矛盾点、分裂点、冲突信号"
+  scope: "扫描边界"
+  comparison_axes: "竞品比较维度"
+  key_players: "关键参与者或竞品"
+  gaps: "明显空白"
+  opportunities: "可抓住的机会"
+
+templates:
+  - id: analysis/research-brief
+    description: "适合行业研究、材料整理、desk research 输出。"
+    required_sections:
+      - brief_info
+      - objective
+      - main_findings
+      - evidence
+      - implications
+      - open_questions
+    optional_sections:
+      - sources
+      - comparisons
+      - recommendations
+  - id: analysis/paper-summary
+    description: "适合总结学术论文，重点提炼研究问题、方法、公式、实验和局限。"
+    required_sections:
+      - brief_info
+      - paper_type
+      - research_topic
+      - research_question
+      - methodology
+      - core_results
+      - formulas_or_models
+      - limitations
+    optional_sections:
+      - experiments
+      - contributions
+      - assumptions
+      - comparisons
+      - future_work
+      - sources
+    notes:
+      - "作为通用论文模板使用；如果能识别到更明确的论文类型，优先切到下面四个子模板。"
+  - id: analysis/theoretical-paper-summary
+    description: "适合理论型论文，重点看定理、证明、假设和公式。"
+    required_sections:
+      - brief_info
+      - paper_type
+      - research_topic
+      - research_question
+      - methodology
+      - formulas_or_models
+      - theoretical_claims
+      - limitations
+    optional_sections:
+      - assumptions
+      - contributions
+      - comparisons
+      - future_work
+      - sources
+  - id: analysis/experimental-paper-summary
+    description: "适合实验型论文，重点看实验设计、数据集、指标和结果。"
+    required_sections:
+      - brief_info
+      - paper_type
+      - research_topic
+      - research_question
+      - methodology
+      - experiments
+      - core_results
+      - limitations
+    optional_sections:
+      - formulas_or_models
+      - contributions
+      - comparisons
+      - future_work
+      - sources
+  - id: analysis/systems-paper-summary
+    description: "适合系统型论文，重点看系统设计、评测方式、吞吐延迟和工程权衡。"
+    required_sections:
+      - brief_info
+      - paper_type
+      - research_topic
+      - problem_setting
+      - methodology
+      - system_design
+      - evaluation_setup
+      - core_results
+      - limitations
+    optional_sections:
+      - formulas_or_models
+      - tradeoffs
+      - comparisons
+      - future_work
+      - sources
+  - id: analysis/survey-paper-summary
+    description: "适合综述型论文，重点看分类框架、共性主题、研究空白和未来方向。"
+    required_sections:
+      - brief_info
+      - paper_type
+      - research_topic
+      - taxonomy_or_framework
+      - recurring_themes
+      - comparisons
+      - gaps
+      - future_work
+    optional_sections:
+      - methodology
+      - limitations
+      - sources
+  - id: analysis/decision-memo
+    description: "适合为一个选择题提供判断依据和建议。"
+    required_sections:
+      - brief_info
+      - decision_question
+      - options
+      - tradeoffs
+      - recommendation
+      - next_steps
+    optional_sections:
+      - evidence
+      - risks
+      - dissenting_views
+  - id: analysis/theme-synthesis
+    description: "适合从多份材料中提炼重复模式和共性主题。"
+    required_sections:
+      - brief_info
+      - synthesis_scope
+      - recurring_themes
+      - supporting_examples
+      - tensions
+      - implications
+    optional_sections:
+      - recommendations
+      - sources
+  - id: analysis/competitive-scan
+    description: "适合竞品分析、同类比较、市场扫描。"
+    required_sections:
+      - brief_info
+      - scope
+      - comparison_axes
+      - key_players
+      - gaps
+      - opportunities
+    optional_sections:
+      - evidence
+      - risks
+      - recommendations

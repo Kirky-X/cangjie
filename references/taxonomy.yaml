@@ -1,0 +1,187 @@
+modalities:
+  - id: text
+    includes: [plain_text, markdown, notes, transcript]
+  - id: audio
+    includes: [podcast, recording, meeting_audio, lecture_audio]
+  - id: video
+    includes: [course_video, interview_video, livestream, demo_video]
+  - id: mixed
+    includes: [multiple_files, transcript_plus_notes, audio_plus_docs]
+
+goals:
+  - id: learning
+    description: "以学会、复习、掌握知识为目标"
+    default_family: learning
+  - id: recap
+    description: "以回顾内容、传播要点、复用观点为目标"
+    default_family: media
+  - id: discussion_record
+    description: "以记录讨论、追踪结论和后续动作为目标"
+    default_family: meeting
+  - id: status_reporting
+    description: "以汇报进展、风险、资源需求为目标"
+    default_family: business
+  - id: synthesis
+    description: "以跨材料归纳、支持判断、提炼主题为目标"
+    default_family: analysis
+  - id: paper_review
+    description: "以理解论文主题、方法、公式、实验和局限为目标"
+    default_family: analysis
+  - id: product_documentation
+    description: "以撰写产品规划、需求、技术设计、交付或运营文档为目标"
+    default_family: product
+  - id: strategic_planning
+    description: "以商业计划、市场调研、竞品分析、项目立项为目标"
+    default_family: product
+  - id: technical_design
+    description: "以技术方案、架构设计、数据库设计、算法文档为目标"
+    default_family: product
+  - id: delivery_planning
+    description: "以发布计划、测试报告、灰度方案为目标"
+    default_family: product
+  - id: operations_setup
+    description: "以数据看板、用户手册、运营手册为目标"
+    default_family: product
+
+selection_hints:
+  learning:
+    positive_signals:
+      [学习, 课程, 教学, 讲解, 复习, 知识点, 书, 书籍, 章节, 全书]
+    common_outputs:
+      [学习笔记, 讲座摘要, 操作手册, 概念解释, 非虚构书籍总结, 叙事类书籍总结]
+  media:
+    positive_signals: [播客, 节目, 直播, 采访视频, recap, highlights]
+    common_outputs: [播客总结, 视频节目回顾, 直播回顾, 亮点提炼]
+  meeting:
+    positive_signals: [会议, 纪要, 决策, 待办, owner, 争议点, follow-up]
+    common_outputs: [决策纪要, 讨论纪要, 访谈记录, 1对1记录]
+  business:
+    positive_signals: [周报, 月报, 项目进展, 汇报, 风险, blocker, metric]
+    common_outputs: [项目进展报告, 周报月报, 高层简报, 风险问题报告]
+  analysis:
+    positive_signals:
+      [
+        调研,
+        归纳,
+        分析,
+        memo,
+        options,
+        patterns,
+        themes,
+        论文,
+        paper,
+        arxiv,
+        公式,
+        实验,
+      ]
+    common_outputs:
+      [
+        研究简报,
+        论文总结,
+        理论论文总结,
+        实验论文总结,
+        系统论文总结,
+        综述论文总结,
+        决策备忘录,
+        主题归纳,
+        竞品扫描,
+      ]
+  product:
+    positive_signals:
+      [
+        商业计划书,
+        BP,
+        商业模式,
+        商业需求,
+        BRD,
+        市场需求,
+        MRD,
+        产品需求文档,
+        PRD,
+        功能需求,
+        FRD,
+        技术需求,
+        TRD,
+        架构设计,
+        数据库设计,
+        核心算法,
+        发布计划,
+        测试报告,
+        灰度方案,
+        数据看板,
+        用户手册,
+        运营手册,
+        UIUX,
+        竞品分析报告,
+        项目任务书,
+        市场调研,
+      ]
+    common_outputs:
+      [
+        商业计划书,
+        商业模式文档,
+        商业需求文档,
+        市场调研报告,
+        市场需求文档,
+        竞品分析报告,
+        项目任务书,
+        产品需求文档,
+        功能需求文档,
+        UIUX规范文档,
+        技术需求文档,
+        架构设计文档,
+        数据库设计文档,
+        核心算法文档,
+        发布计划文档,
+        测试报告,
+        灰度方案,
+        数据看板,
+        用户手册,
+        运营手册,
+        详细会议纪要,
+        论文研究报告,
+      ]
+
+fallback_order:
+  ambiguous_learning_or_media:
+    - learning/course-notes
+    - media/podcast-summary
+  book_type_routing:
+    nonfiction_signals:
+      [非虚构, 商业书, 科普, 历史书, 心理学, 方法论, 框架, 模型, 论点]
+    fiction_signals:
+      [小说, 文学, 虚构, 人物, 主角, 剧情, 结局, 叙事, 象征, 母题]
+    fallback: learning/nonfiction-book-summary
+  ambiguous_meeting_or_business:
+    - meeting/discussion-minutes
+    - business/project-status-report
+  ambiguous_business_or_analysis:
+    - analysis/research-brief
+    - business/executive-brief
+  paper_type_routing:
+    theory_signals: [theorem, proof, lemma, proposition, 收敛, bound, 理论分析]
+    experimental_signals: [dataset, benchmark, ablation, 指标, 实验设置, SOTA]
+    systems_signals:
+      [throughput, latency, deployment, scaling, architecture, 系统设计]
+    survey_signals: [survey, review, taxonomy, literature, 综述]
+    fallback: analysis/paper-summary
+  product_layer_routing:
+    strategy_signals: [商业需求, BRD, 市场调研, 市场需求, MRD, 竞品分析, 项目任务书]
+    product_signals: [产品需求, PRD, 功能需求, FRD, UIUX, 配色]
+    tech_signals: [技术需求, TRD, 架构设计, 数据库设计, 核心算法]
+    delivery_signals: [发布计划, 测试报告, 灰度方案]
+    ops_signals: [数据看板, 用户手册, 运营手册]
+    fallback: product/prd
+  ambiguous_product_or_analysis:
+    competitive_analysis:
+      product_signals: [竞品分析报告, 差异化策略, 护城河, 竞争格局]
+      analysis_signals: [竞品扫描, 同类对比, 市场观察]
+      fallback: analysis/competitive-scan
+    literature_review:
+      product_signals: [论文研究报告, 文献综述, PRISMA, 系统综述, 研究进展]
+      analysis_signals: [综述论文总结, taxonomy, 文献梳理]
+      fallback: analysis/survey-paper-summary
+  ambiguous_product_or_meeting:
+    detailed_minutes_signals: [详细会议纪要, ACTION编号, Parking Lot, 跨会议引用]
+    standard_minutes_signals: [会议纪要, 决策, 待办]
+    fallback: meeting/decision-minutes

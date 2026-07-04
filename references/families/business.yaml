@@ -1,0 +1,101 @@
+family:
+  id: business
+  label: 业务汇报类
+  purpose: "面向状态汇报、项目管理、管理层沟通和问题跟踪，强调结论、进展、指标、风险和资源动作。"
+
+section_library:
+  report_info: "报告标题、周期、作者、对象、来源"
+  executive_summary: "管理者先看的摘要"
+  summary: "常规摘要"
+  progress: "本阶段已完成的关键进展"
+  metrics: "关键指标和趋势"
+  risks: "风险、阻塞、潜在影响"
+  next_actions: "下一步动作"
+  dependencies: "依赖事项、协作方、外部条件"
+  asks: "需要支持或决策的事项"
+  timeline: "关键时间线"
+  completed_work: "已完成工作"
+  in_progress: "进行中工作"
+  blockers: "阻碍项"
+  next_period_plan: "下个周期计划"
+  reflections: "经验总结"
+  strategic_updates: "与战略目标相关的更新"
+  decisions_needed: "需要上级或相关方决定的事项"
+  major_risks: "高优先级风险"
+  appendix: "补充说明"
+  issue_summary: "问题概述"
+  impact: "影响范围和严重程度"
+  root_causes: "原因分析"
+  mitigation: "缓解措施"
+  owners: "责任人"
+  escalation: "升级路径"
+  priorities: "优先级排序"
+  action_items: "行动列表"
+  deadlines: "截至时间"
+  status_notes: "状态备注"
+  review_cadence: "复盘或追踪节奏"
+
+templates:
+  - id: business/project-status-report
+    description: "默认项目进展模板，适合交付型和执行型项目。"
+    required_sections:
+      - report_info
+      - executive_summary
+      - progress
+      - metrics
+      - risks
+      - next_actions
+    optional_sections:
+      - dependencies
+      - asks
+      - timeline
+  - id: business/weekly-monthly-report
+    description: "适合个人周报、团队周报、部门月报。"
+    required_sections:
+      - report_info
+      - summary
+      - completed_work
+      - in_progress
+      - blockers
+      - next_period_plan
+    optional_sections:
+      - metrics
+      - asks
+      - reflections
+  - id: business/executive-brief
+    description: "适合提供给管理层的短摘要和关键决策项。"
+    required_sections:
+      - report_info
+      - executive_summary
+      - strategic_updates
+      - decisions_needed
+      - major_risks
+    optional_sections:
+      - metrics
+      - asks
+      - appendix
+  - id: business/risk-issue-report
+    description: "适合风险盘点、异常事件、问题管理。"
+    required_sections:
+      - report_info
+      - issue_summary
+      - impact
+      - root_causes
+      - mitigation
+      - owners
+    optional_sections:
+      - timeline
+      - dependencies
+      - escalation
+  - id: business/action-tracker
+    description: "适合将会后事项或多来源任务整理成追踪清单。"
+    required_sections:
+      - report_info
+      - priorities
+      - action_items
+      - deadlines
+      - dependencies
+      - status_notes
+    optional_sections:
+      - risks
+      - review_cadence

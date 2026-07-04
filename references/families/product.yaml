@@ -1,0 +1,170 @@
+family:
+  id: product
+  label: 产品文档类
+  purpose: "面向产品规划、需求定义、技术设计、交付发布和运营落地的完整文档体系。模板源自实战产品文档库，含详细章节骨架、表格和图示。"
+
+section_library:
+  doc_meta: "文档状态、保密级别、版本、日期、撰写人、评审人、阅读对象"
+  doc导读: "文档目的与适用范围、相关文档、变更记录"
+  executive_summary: "执行摘要，决策者先看"
+  background: "项目背景、市场机会、数据支撑、战略对齐"
+  objectives: "项目目标，区分商业/用户/效率目标，含衡量指标"
+  pain_points: "核心痛点分析，用用户原话描述"
+  market_analysis: "市场规模、趋势、TAM/SAM/SOM"
+  product_definition: "产品定位、目标用户、产品形态、边界范围"
+  user_persona: "用户画像，具象化用户"
+  user_journey: "用户旅程地图"
+  feature_list: "功能清单，含优先级（MoSCoW）、负责人、依赖项"
+  product_architecture: "产品架构图"
+  functional_detail: "功能详述：业务流程、页面流转、输入输出、业务规则、状态机、异常处理、时序图、验收标准"
+  non_functional: "非功能需求：性能、安全、可用性、兼容性"
+  data_tracking: "数据埋点方案"
+  release_plan: "发布计划、里程碑、灰度策略、回滚方案"
+  risk_register: "风险登记册、外部依赖"
+  business_model: "商业模式画布、收入模型、单位经济模型"
+  competitive_analysis: "竞争格局、竞品对比、护城河"
+  financial_forecast: "财务预测、融资需求、资金用途"
+  team: "核心管理团队、顾问团队"
+  swot: "SWOT 战略分析"
+  literature_method: "研究方法论声明、PRISMA 流程"
+  literature_evolution: "研究演进脉络、三阶段时间线"
+  literature_comparison: "方案多维度对比分析、评判框架"
+  literature_recommendation: "最优方案评判与推荐、场景化推荐"
+  literature_gaps: "当前研究瓶颈与突破方向"
+  references_section: "参考文献、附录、术语表"
+
+templates:
+  - id: product/business-plan
+    label: 商业计划书（BP）
+    template_file: "templates/【模板】商业计划书.md"
+    best_for: [融资路演, 投资人沟通, 商业计划撰写]
+    detection_signals: [商业计划书, BP, 融资, 路演, 投资人]
+    anti_signals: [会议纪要, 论文总结]
+  - id: product/business-model
+    label: 商业模式文档
+    template_file: "templates/【模板】商业模式文档.md"
+    best_for: [商业模式设计, 价值主张梳理, 盈利路径设计]
+    detection_signals: [商业模式, 商业模式画布, 盈利模式, 价值主张]
+    anti_signals: [会议纪要, 论文总结]
+  - id: product/brd
+    label: 商业需求文档（BRD）
+    template_file: "templates/产品/战略层/【模板】商业需求文档.md"
+    best_for: [商业需求定义, 战略层文档, 项目立项]
+    detection_signals: [商业需求, BRD, 立项, 战略需求]
+    anti_signals: [技术设计, 测试报告]
+  - id: product/market-research
+    label: 市场调研报告
+    template_file: "templates/产品/战略层/【模板】市场调研报告.md"
+    best_for: [市场调研, 行业分析, 市场机会评估]
+    detection_signals: [市场调研, 行业分析, 市场机会]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/mrd
+    label: 市场需求文档（MRD）
+    template_file: "templates/产品/战略层/【模板】市场需求文档.md"
+    best_for: [市场需求定义, 产品规划, 市场驱动的需求]
+    detection_signals: [市场需求, MRD, 市场驱动需求]
+    anti_signals: [技术设计, 测试报告]
+  - id: product/competitive-analysis
+    label: 竞品分析报告
+    template_file: "templates/产品/战略层/【模板】竞品分析报告.md"
+    best_for: [竞品分析, 竞争格局, 差异化策略]
+    detection_signals: [竞品分析, 竞品对比, 竞争格局, 差异化]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/project-charter
+    label: 项目任务书
+    template_file: "templates/产品/战略层/【模板】项目任务书.md"
+    best_for: [项目启动, 任务书, 项目目标定义]
+    detection_signals: [项目任务书, 项目启动, 任务书]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/prd
+    label: 产品需求文档（PRD）
+    template_file: "templates/产品/产品层/【模板】产品需求文档.md"
+    best_for: [产品需求定义, 功能设计, 研发交付依据]
+    detection_signals: [产品需求文档, PRD, 功能需求, 需求评审]
+    anti_signals: [会议纪要, 论文总结]
+  - id: product/frd
+    label: 功能需求文档（FRD）
+    template_file: "templates/产品/产品层/【模板】功能需求文档.md"
+    best_for: [功能需求细化, 单功能详述, 研发实现依据]
+    detection_signals: [功能需求文档, FRD, 功能细化]
+    anti_signals: [产品需求文档, 商业计划]
+  - id: product/uiux-spec
+    label: 产品配色与UIUX规范文档
+    template_file: "templates/产品/产品层/【模板】产品配色与UIUX规范文档.md"
+    best_for: [UIUX规范, 配色体系, 设计系统]
+    detection_signals: [UIUX, 配色, 设计规范, 设计系统]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/trd
+    label: 技术需求文档（TRD）
+    template_file: "templates/产品/技术层/【模板】技术需求文档(TRD).md"
+    best_for: [技术方案设计, 架构选型, 技术需求定义]
+    detection_signals: [技术需求, TRD, 技术方案, 架构选型]
+    anti_signals: [产品需求文档, 商业计划]
+  - id: product/architecture
+    label: 架构设计文档
+    template_file: "templates/产品/技术层/【模板】架构设计文档.md"
+    best_for: [系统架构设计, 模块划分, 技术架构]
+    detection_signals: [架构设计, 系统架构, 模块设计]
+    anti_signals: [产品需求文档, 商业计划]
+  - id: product/db-design
+    label: 数据库设计文档
+    template_file: "templates/产品/技术层/【模板】数据库设计文档规范.md"
+    best_for: [数据库设计, 表结构, 数据模型]
+    detection_signals: [数据库设计, 表结构, 数据模型, ER图]
+    anti_signals: [产品需求文档, 商业计划]
+  - id: product/algorithm-doc
+    label: 核心算法文档
+    template_file: "templates/产品/技术层/【模板】核心算法文档.md"
+    best_for: [算法设计, 核心算法说明, 算法实现文档]
+    detection_signals: [核心算法, 算法文档, 算法设计]
+    anti_signals: [产品需求文档, 商业计划]
+  - id: product/release-plan
+    label: 发布计划文档
+    template_file: "templates/产品/交付层/【模板】发布计划文档.md"
+    best_for: [发布计划, 上线计划, 交付排期]
+    detection_signals: [发布计划, 上线计划, 交付排期]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/test-report
+    label: 测试报告
+    template_file: "templates/产品/交付层/【模板】测试报告.md"
+    best_for: [测试报告, 质量报告, 测试总结]
+    detection_signals: [测试报告, 质量报告, 测试总结]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/canary-plan
+    label: 灰度方案
+    template_file: "templates/产品/交付层/【模板】灰度方案.md"
+    best_for: [灰度发布, 灰度策略, 分批上线]
+    detection_signals: [灰度, 灰度方案, 灰度发布, 分批上线]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/dashboard
+    label: 数据看板
+    template_file: "templates/产品/运营层/【模板】数据看板.md"
+    best_for: [数据看板, 指标体系, 数据可视化]
+    detection_signals: [数据看板, 指标体系, 数据可视化]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/user-manual
+    label: 用户手册
+    template_file: "templates/产品/运营层/【模板】用户手册.md"
+    best_for: [用户手册, 使用说明, 用户指导]
+    detection_signals: [用户手册, 使用说明, 用户指导]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/ops-manual
+    label: 运营手册
+    template_file: "templates/产品/运营层/【模板】运营手册.md"
+    best_for: [运营手册, 运营流程, 运营规范]
+    detection_signals: [运营手册, 运营流程, 运营规范]
+    anti_signals: [产品需求文档, 技术设计]
+  - id: product/meeting-minutes-detailed
+    label: 详细会议纪要
+    template_file: "templates/【模板】会议纪要.md"
+    best_for: [正式会议纪要, 含行动项跟踪, 跨会议引用]
+    detection_signals: [详细会议纪要, 正式纪要, 行动项跟踪, ACTION编号]
+    anti_signals: [快速讨论纪要, 头脑风暴]
+    note: "比 meeting/decision-minutes 更详细，含 ACTION/RISK 编号体系、Parking Lot、下次会议计划、FAR 原则。需要正式归档时优先使用。"
+  - id: product/literature-review
+    label: 论文研究报告（综述）
+    template_file: "templates/【模板】论文研究报告.md"
+    best_for: [文献综述, 系统综述, 研究进展报告, 多论文综合]
+    detection_signals: [论文研究报告, 文献综述, 系统综述, 研究进展, PRISMA]
+    anti_signals: [单篇论文总结]
+    note: "比 analysis/survey-paper-summary 更详细，含 PRISMA 流程、五维评判框架、场景化推荐。面向需要建立评判框架并推荐最优路径的综述报告。"
