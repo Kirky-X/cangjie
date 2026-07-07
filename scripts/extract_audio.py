@@ -4,16 +4,19 @@
 使用 ffmpeg 从视频文件中提取音频轨道
 
 用法:
-    python3 extract_audio.py <video_path> [audio_output_path]
+    python3 extract_audio.py <video_path> [audio_output_path] [--keep-audio]
 
 参数:
     video_path: 视频文件路径 (支持 mp4, mkv, avi, mov, webm 等格式)
     audio_output_path: 输出音频路径 (可选, 默认为 video_path 同目录下的 .wav 文件)
+
+选项:
+    --keep-audio: 保留提取的 .wav 文件 (默认删除以避免磁盘堆积, 1h 音频 ≈ 150MB)
 """
 
+import argparse
 import subprocess
 import sys
-import os
 from pathlib import Path
 
 
@@ -73,16 +76,32 @@ def extract_audio(video_path: str, audio_output: str = None) -> str:
 
 
 def main():
-    if len(sys.argv) < 2:
-        print(__doc__)
-        sys.exit(1)
-
-    video_path = sys.argv[1]
-    audio_output = sys.argv[2] if len(sys.argv) > 2 else None
+    parser = argparse.ArgumentParser(
+        description="从视频提取 16kHz 单声道 wav (ffmpeg)",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="默认在退出前清理生成的 .wav 以避免磁盘堆积；如需保留请加 --keep-audio。",
+    )
+    parser.add_argument("video_path", help="视频文件路径")
+    parser.add_argument(
+        "audio_output",
+        nargs="?",
+        default=None,
+        help="输出音频路径（可选，默认为视频同目录下的 .wav）",
+    )
+    parser.add_argument(
+        "--keep-audio",
+        action="store_true",
+        help="保留提取的 .wav 文件（默认在退出前删除以节省磁盘）",
+    )
+    args = parser.parse_args()
 
     try:
-        output = extract_audio(video_path, audio_output)
-        print(output)
+        output = extract_audio(args.video_path, args.audio_output)
+        if args.keep_audio:
+            print(output)
+        else:
+            print(f"{output} (已清理临时 wav；如需保留请加 --keep-audio)")
+            Path(output).unlink(missing_ok=True)
     except Exception as e:
         print(f"错误: {e}")
         sys.exit(1)

@@ -1,0 +1,12 @@
+# cangjie · ML 依赖锁文件（ASR 转录）
+# 安装：pip install -r requirements.txt
+# GPU 用户：torch 选对应 CUDA 版本（见 https://pytorch.org/get-started/locally/）
+# device 自适应：无 GPU 时 faster-whisper 自动 fallback 到 cpu + int8（见 transcribe_diarize_fw.py）
+
+torch>=2.0.0
+faster-whisper>=1.0.0
+librosa>=0.10.0
+numpy>=1.24.0
+
+# qwen-asr（SenseVoice/Paraformer）：按官方仓库说明安装，PyPI 可用性未确认
+# 详见 SKILL.md frontmatter requires.pip

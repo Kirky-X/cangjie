@@ -1,4 +1,4 @@
-# References Template System
+# 参考资料模板体系
 
 本目录定义内容总结 skill 的模板体系。目标不是存放大量孤立 Markdown，而是提供一套可自动选择、可人工覆盖、可持续扩展的结构化模板库。
 
@@ -21,18 +21,10 @@ references/
     template-authoring.md
     output-skeletons.md
     api-docs.md
-  templates/                # 完整 Markdown 文档模板（product 族引用）
-    【模板】商业计划书.md
-    【模板】商业模式文档.md
-    【模板】会议纪要.md
-    【模板】论文研究报告.md
-    产品/
-      战略层/               # BRD/MRD/竞品分析/项目任务书/市场调研
-      产品层/               # PRD/FRD/UIUX规范
-      技术层/               # TRD/架构/数据库/算法
-      交付层/               # 发布计划/测试报告/灰度方案
-      运营层/               # 数据看板/用户手册/运营手册
+  templates-index.md        # 模板索引（指向 ../templates/）
 ```
+
+> 完整 Markdown 文档模板已迁移至 `../templates/`（产品层/战略层/交付层/运营层/技术层/通用），索引见 [templates-index.md](templates-index.md)。
 
 ## 设计原则
 

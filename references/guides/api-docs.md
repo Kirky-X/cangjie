@@ -1,4 +1,4 @@
-# API Docs via chub
+# API 文档查询（chub）
 
 当需要调用第三方库、SDK 或 API 时（例如 ASR 转录服务、ffmpeg 集成、云存储 SDK），优先用 `chub` CLI 拉取最新文档，而不是依赖训练记忆。这能避免 API 形状过期导致的代码错误。
 

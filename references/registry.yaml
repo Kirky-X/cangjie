@@ -547,7 +547,7 @@ templates:
     required_sections:
       [brief_info, scope, comparison_axes, key_players, gaps, opportunities]
     optional_sections: [evidence, risks, recommendations]
-  # product 族模板引用 templates/ 下的完整 Markdown 骨架，不在此重复定义 required_sections
+  # product 族模板引用 ../templates/ 下的完整 Markdown 骨架，不在此重复定义 required_sections
   - id: product/business-plan
     family: product
     label: 商业计划书（BP）
@@ -555,7 +555,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [商业计划书, BP, 融资, 路演, 投资人]
     anti_signals: [会议纪要, 论文总结]
-    template_file: "templates/【模板】商业计划书.md"
+    template_file: "../templates/【模板】商业计划书.md"
   - id: product/business-model
     family: product
     label: 商业模式文档
@@ -563,7 +563,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [商业模式, 商业模式画布, 盈利模式, 价值主张]
     anti_signals: [会议纪要, 论文总结]
-    template_file: "templates/【模板】商业模式文档.md"
+    template_file: "../templates/【模板】商业模式文档.md"
   - id: product/brd
     family: product
     label: 商业需求文档（BRD）
@@ -571,7 +571,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [商业需求, BRD, 立项, 战略需求]
     anti_signals: [技术设计, 测试报告]
-    template_file: "templates/产品/战略层/【模板】商业需求文档.md"
+    template_file: "../templates/产品/战略层/【模板】商业需求文档.md"
   - id: product/market-research
     family: product
     label: 市场调研报告
@@ -579,7 +579,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [市场调研, 行业分析, 市场机会]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/战略层/【模板】市场调研报告.md"
+    template_file: "../templates/产品/战略层/【模板】市场调研报告.md"
   - id: product/mrd
     family: product
     label: 市场需求文档（MRD）
@@ -587,7 +587,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [市场需求, MRD, 市场驱动需求]
     anti_signals: [技术设计, 测试报告]
-    template_file: "templates/产品/战略层/【模板】市场需求文档.md"
+    template_file: "../templates/产品/战略层/【模板】市场需求文档.md"
   - id: product/competitive-analysis
     family: product
     label: 竞品分析报告
@@ -595,7 +595,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [竞品分析, 竞品对比, 竞争格局, 差异化]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/战略层/【模板】竞品分析报告.md"
+    template_file: "../templates/产品/战略层/【模板】竞品分析报告.md"
   - id: product/project-charter
     family: product
     label: 项目任务书
@@ -603,7 +603,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [项目任务书, 项目启动, 任务书]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/战略层/【模板】项目任务书.md"
+    template_file: "../templates/产品/战略层/【模板】项目任务书.md"
   - id: product/prd
     family: product
     label: 产品需求文档（PRD）
@@ -611,7 +611,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [产品需求文档, PRD, 功能需求, 需求评审]
     anti_signals: [会议纪要, 论文总结]
-    template_file: "templates/产品/产品层/【模板】产品需求文档.md"
+    template_file: "../templates/产品/产品层/【模板】产品需求文档.md"
   - id: product/frd
     family: product
     label: 功能需求文档（FRD）
@@ -619,7 +619,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [功能需求文档, FRD, 功能细化]
     anti_signals: [产品需求文档, 商业计划]
-    template_file: "templates/产品/产品层/【模板】功能需求文档.md"
+    template_file: "../templates/产品/产品层/【模板】功能需求文档.md"
   - id: product/uiux-spec
     family: product
     label: 产品配色与UIUX规范文档
@@ -627,7 +627,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [UIUX, 配色, 设计规范, 设计系统]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/产品层/【模板】产品配色与UIUX规范文档.md"
+    template_file: "../templates/产品/产品层/【模板】产品配色与UIUX规范文档.md"
   - id: product/trd
     family: product
     label: 技术需求文档（TRD）
@@ -635,7 +635,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [技术需求, TRD, 技术方案, 架构选型]
     anti_signals: [产品需求文档, 商业计划]
-    template_file: "templates/产品/技术层/【模板】技术需求文档(TRD).md"
+    template_file: "../templates/产品/技术层/【模板】技术需求文档(TRD).md"
   - id: product/architecture
     family: product
     label: 架构设计文档
@@ -643,7 +643,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [架构设计, 系统架构, 模块设计]
     anti_signals: [产品需求文档, 商业计划]
-    template_file: "templates/产品/技术层/【模板】架构设计文档.md"
+    template_file: "../templates/产品/技术层/【模板】架构设计文档.md"
   - id: product/db-design
     family: product
     label: 数据库设计文档
@@ -651,7 +651,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [数据库设计, 表结构, 数据模型, ER图]
     anti_signals: [产品需求文档, 商业计划]
-    template_file: "templates/产品/技术层/【模板】数据库设计文档规范.md"
+    template_file: "../templates/产品/技术层/【模板】数据库设计文档规范.md"
   - id: product/algorithm-doc
     family: product
     label: 核心算法文档
@@ -659,7 +659,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [核心算法, 算法文档, 算法设计]
     anti_signals: [产品需求文档, 商业计划]
-    template_file: "templates/产品/技术层/【模板】核心算法文档.md"
+    template_file: "../templates/产品/技术层/【模板】核心算法文档.md"
   - id: product/release-plan
     family: product
     label: 发布计划文档
@@ -667,7 +667,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [发布计划, 上线计划, 交付排期]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/交付层/【模板】发布计划文档.md"
+    template_file: "../templates/产品/交付层/【模板】发布计划文档.md"
   - id: product/test-report
     family: product
     label: 测试报告
@@ -675,7 +675,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [测试报告, 质量报告, 测试总结]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/交付层/【模板】测试报告.md"
+    template_file: "../templates/产品/交付层/【模板】测试报告.md"
   - id: product/canary-plan
     family: product
     label: 灰度方案
@@ -683,7 +683,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [灰度, 灰度方案, 灰度发布, 分批上线]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/交付层/【模板】灰度方案.md"
+    template_file: "../templates/产品/交付层/【模板】灰度方案.md"
   - id: product/dashboard
     family: product
     label: 数据看板
@@ -691,7 +691,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [数据看板, 指标体系, 数据可视化]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/运营层/【模板】数据看板.md"
+    template_file: "../templates/产品/运营层/【模板】数据看板.md"
   - id: product/user-manual
     family: product
     label: 用户手册
@@ -699,7 +699,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [用户手册, 使用说明, 用户指导]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/运营层/【模板】用户手册.md"
+    template_file: "../templates/产品/运营层/【模板】用户手册.md"
   - id: product/ops-manual
     family: product
     label: 运营手册
@@ -707,7 +707,7 @@ templates:
     input_modalities: [text, mixed]
     detection_signals: [运营手册, 运营流程, 运营规范]
     anti_signals: [产品需求文档, 技术设计]
-    template_file: "templates/产品/运营层/【模板】运营手册.md"
+    template_file: "../templates/产品/运营层/【模板】运营手册.md"
   - id: product/meeting-minutes-detailed
     family: product
     label: 详细会议纪要
@@ -715,7 +715,7 @@ templates:
     input_modalities: [text, audio, video]
     detection_signals: [详细会议纪要, 正式纪要, 行动项跟踪, ACTION编号]
     anti_signals: [快速讨论纪要, 头脑风暴]
-    template_file: "templates/【模板】会议纪要.md"
+    template_file: "../templates/【模板】会议纪要.md"
     note: "比 meeting/decision-minutes 更详细，含 ACTION/RISK 编号体系、Parking Lot、下次会议计划、FAR 原则。需要正式归档时优先使用。"
   - id: product/literature-review
     family: product
@@ -724,5 +724,5 @@ templates:
     input_modalities: [text, pdf, mixed]
     detection_signals: [论文研究报告, 文献综述, 系统综述, 研究进展, PRISMA]
     anti_signals: [单篇论文总结]
-    template_file: "templates/【模板】论文研究报告.md"
+    template_file: "../templates/【模板】论文研究报告.md"
     note: "比 analysis/survey-paper-summary 更详细，含 PRISMA 流程、五维评判框架、场景化推荐。面向需要建立评判框架并推荐最优路径的综述报告。"
