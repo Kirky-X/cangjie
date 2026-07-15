@@ -7,20 +7,27 @@
 ```text
 references/
   README.md
-  registry.yaml
-  taxonomy.yaml
-  families/
+  registry.yaml             # 模板注册表（所有模板 ID + required_sections + detection_signals）
+  taxonomy.yaml             # 模板分类法（goals + signal_words + default_family）
+  families/                 # 6 大模板族定义（每族默认模板 + 子模板清单 + selection_rules）
     learning.yaml
     media.yaml
     meeting.yaml
     business.yaml
     analysis.yaml
     product.yaml
-  guides/
-    template-selection.md
-    template-authoring.md
-    output-skeletons.md
-    api-docs.md
+  guides/                   # 模板选择 / 编写 / 输出骨架指南
+    template-selection.md   # 模板选择决策树
+    template-authoring.md   # 模板编写规范
+    output-skeletons.md     # 输出骨架索引（按族拆分）
+    skeletons-learning.md   # Learning 族骨架
+    skeletons-media.md      # Media 族骨架
+    skeletons-meeting.md    # Meeting 族骨架
+    skeletons-business.md   # Business 族骨架
+    skeletons-analysis.md   # Analysis 族骨架
+    detail-policy.md        # 输出密度策略
+    examples.md             # 完整示例集
+    api-docs.md             # chub 工具使用与 API 文档拉取
   templates-index.md        # 模板索引（指向 ../templates/）
 ```
 

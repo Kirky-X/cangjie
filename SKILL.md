@@ -1,7 +1,7 @@
 ---
 name: cangjie
 description: "内容总结技能，将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档。触发：总结/会议纪要/学习笔记/播客总结/论文总结/PRD/BP/TRD/竞品分析/文献综述"
-version: 0.1.0
+version: 0.1.2
 source: local-skill
 triggers:
   - 总结

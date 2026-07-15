@@ -83,7 +83,7 @@
 - 市场调研、行业分析：`product/market-research`
 - 市场需求、产品规划：`product/mrd`
 - 竞品分析、竞争格局、差异化：`product/competitive-analysis`
-- 项目启动、任务书：`product/project-charter`
+- 项目启动、任务书：`product/charter`
 - 产品需求、功能设计：`product/prd`
 - 功能需求细化：`product/frd`
 - UIUX 规范、配色体系：`product/uiux-spec`
@@ -95,8 +95,8 @@
 - 测试报告、质量报告：`product/test-report`
 - 灰度发布、分批上线：`product/canary-plan`
 - 数据看板、指标体系：`product/dashboard`
-- 用户手册、使用说明：`product/user-manual`
-- 运营手册、运营流程：`product/ops-manual`
+- 用户手册、使用说明：`product/user-guide`
+- 运营手册、运营流程：`product/operation-guide`
 - 不确定子层时：`product/prd`
 
 ### 竞品分析 vs 竞品扫描

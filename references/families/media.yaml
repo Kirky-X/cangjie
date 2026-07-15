@@ -1,77 +1,30 @@
-family:
-  id: media
-  label: 媒体内容类
-  purpose: "面向播客、节目、直播、录播和可传播内容，强调内容主线、亮点、可复用观点。"
+# Media 族 — 节目回顾、亮点传播
+# 覆盖：播客/访谈、视频节目、直播回顾、内容亮点提炼
+# 输出骨架：guides/skeletons-media.md
 
-section_library:
-  metadata: "标题、来源、时长、平台、发布日期、主持人与嘉宾"
-  overview: "2-4 句概括内容定位和主线"
-  speaker_map: "主持人、嘉宾、角色与关注点"
-  topic_flow: "按话题流转整理内容"
-  key_points: "各话题下的核心观点"
-  highlights: "最值得记住的内容亮点"
-  notable_quotes: "原话摘录、金句"
-  timeline: "关键时间点与对应内容"
-  audience_takeaways: "听众或观众最该带走的结论"
-  segment_breakdown: "视频节目或长内容分段"
-  visual_notes: "画面、图表、字幕、演示、PPT 要点"
-  agenda_flow: "直播或 webinar 的流程概览"
-  audience_questions: "观众提问与回答"
-  major_updates: "发布的关键更新"
-  followups: "直播结束后的后续动作或追踪点"
-  summary_hook: "一句话抓住内容亮点"
-  highlight_clips: "适合拆条传播的片段"
-  quotable_lines: "适合直接引用的句子"
-  reuse_angles: "适合复用成文章、短视频、社媒帖子的角度"
-  references: "外部链接或节目资源"
+family: media
+description: 节目回顾、亮点传播
+default_template: media/podcast-summary
+skeleton_file: guides/skeletons-media.md
 
 templates:
   - id: media/podcast-summary
-    description: "适合播客、音频访谈、双人或多人对谈节目。"
-    required_sections:
-      - metadata
-      - overview
-      - speaker_map
-      - topic_flow
-      - key_points
-      - highlights
-    optional_sections:
-      - timeline
-      - audience_takeaways
-      - notable_quotes
+    name: 播客/访谈摘要
   - id: media/video-program-summary
-    description: "适合访谈视频、节目回顾、公开视频总结。"
-    required_sections:
-      - metadata
-      - overview
-      - segment_breakdown
-      - key_points
-      - highlights
-    optional_sections:
-      - visual_notes
-      - timeline
-      - notable_quotes
+    name: 视频节目摘要
   - id: media/livestream-recap
-    description: "适合直播、AMA、webinar、发布会录播。"
-    required_sections:
-      - metadata
-      - overview
-      - agenda_flow
-      - audience_questions
-      - major_updates
-      - followups
-    optional_sections:
-      - timeline
-      - highlights
-      - references
+    name: 直播回顾
   - id: media/content-highlights
-    description: "适合从长内容里提炼可传播的精彩片段。"
-    required_sections:
-      - metadata
-      - summary_hook
-      - highlight_clips
-      - quotable_lines
-      - reuse_angles
-    optional_sections:
-      - timeline
-      - audience_takeaways
+    name: 内容亮点提炼
+
+selection_rules:
+  - condition: "播客/访谈音频"
+    template: media/podcast-summary
+  - condition: "视频节目"
+    template: media/video-program-summary
+  - condition: "直播回顾"
+    template: media/livestream-recap
+  - condition: "提炼精彩片段"
+    template: media/content-highlights
+  - condition: "不确定子类型"
+    template: media/podcast-summary

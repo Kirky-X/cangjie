@@ -150,11 +150,7 @@ cangjie/
 │   ├── taxonomy.yaml         # 模板分类法
 │   ├── families/*.yaml       # 6 大模板族定义
 │   ├── guides/               # 模板选择 / 编写 / 输出骨架指南
-│   ├── templates-index.md    # 模板索引（指向 ../templates/）
-│   ├── meeting-minutes.md    # 会议纪要参考
-│   ├── video-summary.md      # 视频总结参考
-│   ├── audio-summary.md      # 音频总结参考
-│   └── report-summary.md     # 报告总结参考
+│   └── templates-index.md    # 模板索引（指向 ../templates/）
 ├── templates/                # 全部文档模板（产品层 / 战略层 / 交付层 / 运营层 / 技术层 / 通用）
 └── scripts/                  # ASR / 提音频脚本
 ```

@@ -1,151 +1,40 @@
-family:
-  id: learning
-  label: 知识学习类
-  purpose: "面向课程、讲座、教程、书籍和概念内容，把材料整理成便于学习、复习和执行的输出。"
+# Learning 族 — 学习、复习、知识提炼
+# 覆盖：课程笔记、教程操作手册、书籍总结（非虚构/虚构）、讲座摘要、概念解释
+# 输出骨架：guides/skeletons-learning.md
 
-section_library:
-  metadata: "标题、来源、时长、讲者、日期、材料类型"
-  overview: "2-4 句概括主题、学习目标和主线"
-  objective: "本次学习或教程希望解决什么问题"
-  module_breakdown: "按章节或主题拆解内容，适合课程类"
-  theme_flow: "按讲述顺序总结观点演进，适合讲座类"
-  key_takeaways: "核心知识点、原则、规律"
-  terminology: "新概念、术语、定义"
-  review_questions: "帮助复习和自测的问题"
-  action_practice: "建议练习、应用动作、复盘动作"
-  visual_notes: "PPT、白板、代码演示、图表等画面要点"
-  prerequisites: "实操前置条件、环境、背景知识"
-  step_by_step: "按步骤说明如何完成操作"
-  pitfalls: "常见错误和注意事项"
-  next_actions: "学完后下一步应该做什么"
-  commands: "命令、代码片段、操作清单"
-  resources: "延伸资料、相关阅读"
-  concept_summary: "一句话说明概念是什么"
-  core_mechanism: "核心机制或因果链"
-  examples: "用实例说明概念"
-  common_misunderstandings: "容易误解的点"
-  comparison: "和相近概念或方案的区别"
-  references: "引用的外部资料"
-  practice_prompts: "继续思考或练习的提示"
-  speaker_profile: "讲者背景和视角"
-  notable_quotes: "原话摘录"
-  book_overview: "全书主旨、适读对象、核心问题和整体价值"
-  chapter_summaries: "逐章总结，按章节保留核心内容、关键论点或情节推进"
-  chapter_summary_files: "章节独立文件列表、命名规则和文件组织方式"
-  chapter_role_map: "各章在全书中的作用、承上启下关系和结构位置"
-  core_arguments: "全书最重要的论点、判断或命题"
-  concepts_and_models: "书中的关键概念、模型、框架、方法"
-  evidence_and_cases: "作者用于支撑论点的案例、数据、历史材料或论据"
-  argument_flow: "作者如何逐章推进论证，以及全书结构主线"
-  practical_takeaways: "对读者有执行价值的启发、方法或行动建议"
-  limitations_and_questions: "论证薄弱处、可疑点、未展开的问题"
-  reading_status: "输入是否覆盖全书、部分章节或节选"
-  plot_overview: "全书主要情节、故事背景和总体走向"
-  character_map: "主要人物、关系、动机和变化"
-  plot_progression: "关键事件、转折、冲突升级和收束方式"
-  themes_and_motifs: "主题、母题、反复出现的意象或思想"
-  narrative_structure: "叙事结构、时间安排、视角和节奏"
-  symbols_and_imagery: "重要象征、意象、隐喻和其作用"
-  reading_impressions: "整体阅读体验、审美效果或思想启发"
+family: learning
+description: 学会、复习、知识提炼
+default_template: learning/course-notes
+skeleton_file: guides/skeletons-learning.md
 
 templates:
   - id: learning/course-notes
-    description: "默认学习模板，适合系统性课程、培训材料、训练营录音。"
-    required_sections:
-      - metadata
-      - overview
-      - module_breakdown
-      - key_takeaways
-      - review_questions
-    optional_sections:
-      - terminology
-      - action_practice
-      - visual_notes
-      - resources
-    notes:
-      - "章节结构不明显时，可用主题分组替代 module_breakdown。"
-      - "如果是视频课程且画面很重要，优先补 visual_notes。"
-  - id: learning/lecture-summary
-    description: "适合单主讲人演讲、公开课、主题分享。"
-    required_sections:
-      - metadata
-      - overview
-      - theme_flow
-      - key_takeaways
-      - notable_quotes
-    optional_sections:
-      - speaker_profile
-      - action_practice
-      - references
+    name: 课程笔记
   - id: learning/tutorial-playbook
-    description: "适合有明确操作步骤的教程、产品教学、代码演示。"
-    required_sections:
-      - metadata
-      - objective
-      - prerequisites
-      - step_by_step
-      - pitfalls
-      - next_actions
-    optional_sections:
-      - visual_notes
-      - commands
-      - resources
-  - id: learning/concept-explainer
-    description: "适合解释单一概念、原理、框架。"
-    required_sections:
-      - metadata
-      - concept_summary
-      - core_mechanism
-      - examples
-      - common_misunderstandings
-    optional_sections:
-      - comparison
-      - references
-      - practice_prompts
+    name: 教程操作手册
   - id: learning/nonfiction-book-summary
-    description: "适合非虚构书籍，默认输出逐章总结和全书总结。"
-    required_sections:
-      - metadata
-      - reading_status
-      - book_overview
-      - core_arguments
-      - chapter_summaries
-      - argument_flow
-      - practical_takeaways
-    optional_sections:
-      - concepts_and_models
-      - evidence_and_cases
-      - chapter_role_map
-      - chapter_summary_files
-      - limitations_and_questions
-      - notable_quotes
-      - review_questions
-    notes:
-      - "默认输出逐章总结 + 全书总结，除非用户明确要求只看部分章节或只看总览。"
-      - "逐章总结默认输出为独立文件目录；全书文件不重复内嵌完整章节摘要。"
-      - "如果输入只是节选或部分章节，必须明确说明覆盖范围，不能伪装成全书总结。"
-      - "如果原书存在‘部分/篇/卷’等中层结构，优先保留‘全书 -> 部分 -> 章节’层级。"
-      - "长书不要求每章等长，核心论证章节应比铺垫章节更详细。"
+    name: 非虚构书籍总结
+    notes: 默认产出 1 份全书总览 + N 份章节独立文件
   - id: learning/fiction-book-summary
-    description: "适合小说、传记文学和其他叙事类书籍，默认输出逐章总结和全书总结。"
-    required_sections:
-      - metadata
-      - reading_status
-      - book_overview
-      - chapter_summaries
-      - character_map
-      - plot_progression
-      - themes_and_motifs
-    optional_sections:
-      - chapter_summary_files
-      - chapter_role_map
-      - narrative_structure
-      - symbols_and_imagery
-      - notable_quotes
-      - reading_impressions
-    notes:
-      - "默认输出逐章总结 + 全书总结，优先保留人物变化、情节推进和主题线。"
-      - "逐章总结默认输出为独立文件目录；全书文件不重复内嵌完整章节摘要。"
-      - "如果用户特别要求避免剧透，应把关键转折单独标记并控制披露深度。"
-      - "如果原书存在‘部分/篇/卷’等中层结构，优先保留‘全书 -> 部分 -> 章节’层级。"
-      - "长书不要求每章等长，关键转折章节和人物变化章节应更详细。"
+    name: 叙事/小说书籍总结
+    notes: 默认产出 1 份全书总览 + N 份章节独立文件
+  - id: learning/lecture-summary
+    name: 讲座摘要
+  - id: learning/concept-explainer
+    name: 概念解释
+
+selection_rules:
+  - condition: "重点是课程/讲座/训练营"
+    template: learning/course-notes
+  - condition: "重点是照着操作"
+    template: learning/tutorial-playbook
+  - condition: "重点是整本非虚构书"
+    template: learning/nonfiction-book-summary
+  - condition: "重点是小说/叙事作品"
+    template: learning/fiction-book-summary
+  - condition: "单次讲座/演讲"
+    template: learning/lecture-summary
+  - condition: "解释一个概念"
+    template: learning/concept-explainer
+  - condition: "不确定子类型"
+    template: learning/course-notes

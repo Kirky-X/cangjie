@@ -1,99 +1,36 @@
-family:
-  id: meeting
-  label: 会议与访谈类
-  purpose: "面向会议、讨论、访谈和共创活动，强调参与人、结论、待办、争议点和后续动作。"
+# Meeting 族 — 纪要、访谈、共创记录
+# 覆盖：决策纪要、讨论纪要、访谈记录、1:1 沟通、工作坊总结
+# 输出骨架：guides/skeletons-meeting.md
+# 注意：如需正式归档（含 ACTION 编号/Parking Lot/FAR 原则），使用 product/meeting-minutes-detailed
 
-section_library:
-  meeting_info: "主题、时间、地点、参与人、材料来源"
-  objective: "会议或访谈的目标"
-  discussion_summary: "对主要讨论内容做主题归纳"
-  decisions: "最终达成的决策"
-  action_items: "待办、负责人、截止时间、状态"
-  risks: "主要风险、阻塞、需要注意的点"
-  controversies: "存在分歧的问题、各方观点和结论"
-  speaker_notes: "按发言人整理的观点"
-  timeline: "按时间顺序梳理关键节点"
-  key_observations: "讨论中的重要发现"
-  open_questions: "仍未解决的问题"
-  next_steps: "会后下一步"
-  participant_profile: "访谈对象背景"
-  interview_topics: "访谈提纲或主题组"
-  answers_and_insights: "回答内容和洞察"
-  key_quotes: "关键原话"
-  followups: "后续跟进项"
-  decision_implications: "访谈结论对决策的影响"
-  current_state: "1:1 当前状态"
-  wins: "最近进展和亮点"
-  blockers: "阻碍、困惑、问题"
-  support_needed: "需要的支持"
-  agreed_actions: "双方达成的动作"
-  development_topics: "成长、反馈、发展议题"
-  mood_signals: "情绪或状态信号"
-  objectives: "工作坊目标"
-  activity_flow: "活动流程"
-  outputs: "产出物、结论、共创结果"
-  participant_feedback: "参与者反馈"
-  visual_notes: "白板、便签、画布、图示等视觉要点"
+family: meeting
+description: 讨论记录、责任追踪
+default_template: meeting/decision-minutes
+skeleton_file: guides/skeletons-meeting.md
 
 templates:
   - id: meeting/decision-minutes
-    description: "适合包含决策、责任人和截止时间的正式会议。"
-    required_sections:
-      - meeting_info
-      - objective
-      - discussion_summary
-      - decisions
-      - action_items
-      - risks
-    optional_sections:
-      - controversies
-      - speaker_notes
-      - timeline
+    name: 决策纪要
   - id: meeting/discussion-minutes
-    description: "适合探索性讨论、头脑风暴、同步会。"
-    required_sections:
-      - meeting_info
-      - objective
-      - discussion_summary
-      - key_observations
-      - open_questions
-      - next_steps
-    optional_sections:
-      - speaker_notes
-      - timeline
+    name: 讨论纪要
   - id: meeting/interview-record
-    description: "适合用户访谈、专家访谈、候选人访谈。"
-    required_sections:
-      - meeting_info
-      - participant_profile
-      - interview_topics
-      - answers_and_insights
-      - key_quotes
-      - followups
-    optional_sections:
-      - decision_implications
-      - timeline
+    name: 访谈记录
   - id: meeting/one-on-one-note
-    description: "适合经理 1:1、反馈沟通、辅导式对话。"
-    required_sections:
-      - meeting_info
-      - current_state
-      - wins
-      - blockers
-      - support_needed
-      - agreed_actions
-    optional_sections:
-      - development_topics
-      - mood_signals
+    name: 1:1 沟通记录
   - id: meeting/workshop-summary
-    description: "适合设计工作坊、训练营、共创活动。"
-    required_sections:
-      - meeting_info
-      - objectives
-      - activity_flow
-      - outputs
-      - decisions
-      - next_steps
-    optional_sections:
-      - participant_feedback
-      - visual_notes
+    name: 工作坊总结
+
+selection_rules:
+  - condition: "重点是讨论过程和决策"
+    template: meeting/decision-minutes
+  - condition: "重点是研究输入和问答"
+    template: meeting/interview-record
+  - condition: "重点是 1:1 沟通"
+    template: meeting/one-on-one-note
+  - condition: "重点是工作坊共创"
+    template: meeting/workshop-summary
+  - condition: "需要正式归档（含 ACTION 编号/Parking Lot）"
+    template: product/meeting-minutes-detailed
+    cross_family: true
+  - condition: "不确定子类型"
+    template: meeting/decision-minutes
