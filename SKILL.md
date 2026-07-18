@@ -137,7 +137,7 @@ GPU check: `python -c "import torch; print('CUDA:', torch.cuda.is_available())"`
 | `ffmpeg` not installed          | `apt install ffmpeg`                    | Ask user to extract audio with system tools and provide wav |
 | ASR timeout/OOM                 | Shorten segments and retry              | Switch between faster-whisper ↔ qwen-asr |
 | Diarization failure             | Degrade to single-speaker transcription + note "speakers not distinguished" | User manually labels then re-run |
-| `chub` unavailable              | Skip fetching, note "latest API unverified" | User manually查阅 and paste   |
+| `chub` unavailable              | Skip fetching, note "latest API unverified" | User manually checks and paste   |
 | Book excerpt but request says "full book summary" | Note "based on provided chapters" | Refuse to disguise as complete full book, request full input |
 | Conversation context but user doesn't want file output | Ask "skip file writing?" | Default still writes file, allow explicit opt-out |
 | Signal conflict with multi-family hits | List candidates ranked by quick-start priority | Ask user to confirm, do not guess |
