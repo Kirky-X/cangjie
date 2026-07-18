@@ -1,143 +1,143 @@
-# 变更日志（CHANGELOG）
+# Changelog (CHANGELOG)
 
-> **文档类型：** 版本变更日志
+> **Document Type:** Version Changelog
 >
-> **版本：** v1.0.0
+> **Version:** v1.0.0
 >
-> **日期：** YYYY-MM-DD
+> **Date:** YYYY-MM-DD
 >
-> **维护人：** [项目 Owner / Release Manager]
+> **Maintainer:** [Project Owner / Release Manager]
 >
-> **规范遵循：** [Keep a Changelog 1.1.0](https://keepachangelog.com/zh-CN/1.1.0/)
+> **Standards Followed:** [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/)
 >
-> **语义化版本：** [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/)
+> **Semantic Versioning:** [Semantic Versioning 2.0.0](https://semver.org/)
 
-本项目所有重要变更均会记录在本文件中。
+All important changes to this project will be recorded in this file.
 
-格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
+Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [Semantic Versioning](https://semver.org/).
 
-## 变更类型说明
+## Change Type Description
 
-| 类型         | 英文        | 说明                                                  |
-| :----------- | :---------- | :---------------------------------------------------- |
-| **新增**     | Added       | 新增的功能                                            |
-| **变更**     | Changed     | 对已有功能的变更                                       |
-| **弃用**     | Deprecated  | 即将移除的功能                                         |
-| **移除**     | Removed     | 本版本已移除的功能                                     |
-| **修复**     | Fixed       | Bug 修复                                              |
-| **安全**     | Security    | 安全相关修复（含漏洞、CVE）                           |
+| Type         | Description                                                  |
+| :----------- | :---------------------------------------------------- |
+| **Added**     | New features                                            |
+| **Changed**     | Changes to existing features                                       |
+| **Deprecated**  | Features that will be removed                                         |
+| **Removed**     | Features removed in this version                                     |
+| **Fixed**       | Bug fixes                                              |
+| **Security**    | Security-related fixes (including vulnerabilities, CVEs)                           |
 
-## 版本号规则（SemVer）
+## Version Number Rules (SemVer)
 
 ```
 MAJOR.MINOR.PATCH
 ```
 
-| 版本位    | 何时升                                                                | 示例                |
+| Version Segment    | When to Bump                                                                | Example                |
 | :-------- | :-------------------------------------------------------------------- | :------------------ |
-| `MAJOR`   | 不兼容的 API 变更                                                     | `1.0.0` → `2.0.0`   |
-| `MINOR`   | 向后兼容的功能新增                                                    | `1.0.0` → `1.1.0`   |
-| `PATCH`   | 向后兼容的 Bug 修复                                                   | `1.0.0` → `1.0.1`   |
+| `MAJOR`   | Incompatible API changes                                                     | `1.0.0` → `2.0.0`   |
+| `MINOR`   | Backward-compatible feature additions                                                    | `1.0.0` → `1.1.0`   |
+| `PATCH`   | Backward-compatible bug fixes                                                   | `1.0.0` → `1.0.1`   |
 
-预发布版本：`-alpha` / `-beta` / `-rc.N`，如 `1.0.0-beta.2`。
+Pre-release versions: `-alpha` / `-beta` / `-rc.N`, e.g., `1.0.0-beta.2`.
 
 ---
 
 ## [Unreleased]
 
-> 本版本尚未发布，记录自上次发布以来的所有变更。发布时将本节提升为正式版本号。
+> This version has not been released yet. Records all changes since the last release. Promote this section to a formal version number upon release.
 
-### 新增（Added）
+### Added
 
-- 新增 {特性描述}，详见 {PR/Issue 链接}
-- 新增 {配置项}，默认值 {value}
+- Added {Feature Description}, see {PR/Issue link}
+- Added {Configuration Item}, default value {value}
 
-### 变更（Changed）
+### Changed
 
-- 变更 {行为描述}：从 {旧} 改为 {新}，迁移说明见 {文档链接}
-- 性能优化：{指标} 提升 {X}%
+- Changed {Behavior Description}: from {old} to {new}, migration notes in {document link}
+- Performance optimization: {Metric} improved by {X}%
 
-### 弃用（Deprecated）
+### Deprecated
 
-- 弃用 {API/功能}，将在 {版本} 移除，替代方案：{说明}
+- Deprecated {API/Feature}, will be removed in {Version}, alternative: {description}
 
-### 移除（Removed）
+### Removed
 
-- 移除 {API/功能}（自 {版本} 起弃用）
+- Removed {API/Feature} (deprecated since {Version})
 
-### 修复（Fixed）
+### Fixed
 
-- 修复 {Bug 描述}，影响范围 {说明}， Fixes #{issue}
+- Fixed {Bug Description}, impact scope {description}, Fixes #{issue}
 
-### 安全（Security）
+### Security
 
-- 修复 {CVE 编号}：{漏洞描述}，CVSS {评分}，升级建议见 {公告链接}
+- Fixed {CVE Number}: {Vulnerability Description}, CVSS {Score}, upgrade notes in {announcement link}
 
 ---
 
 ## [1.0.0] - YYYY-MM-DD
 
-### 新增（Added）
+### Added
 
-- 首次正式发布
-- 核心功能：{特性 1}
-- 核心功能：{特性 2}
-- 核心功能：{特性 3}
-- 完整文档：README / CONTRIBUTING / FAQ
-- CI/CD 流水线（GitHub Actions）
-- 覆盖率门禁 ≥ 80%
+- First official release
+- Core features: {Feature 1}
+- Core features: {Feature 2}
+- Core features: {Feature 3}
+- Complete documentation: README / CONTRIBUTING / FAQ
+- CI/CD pipeline (GitHub Actions)
+- Coverage gate ≥ 80%
 
-### 变更（Changed）
+### Changed
 
-- N/A（首次发布）
+- N/A (First release)
 
-### 弃用（Deprecated）
+### Deprecated
 
-- N/A（首次发布）
+- N/A (First release)
 
-### 移除（Removed）
+### Removed
 
-- N/A（首次发布）
+- N/A (First release)
 
-### 修复（Fixed）
+### Fixed
 
-- N/A（首次发布）
+- N/A (First release)
 
-### 安全（Security）
+### Security
 
-- 启用依赖扫描（Dependabot / npm audit / cargo-audit）
-- 启用 CodeQL 静态分析
+- Enabled dependency scanning (Dependabot / npm audit / cargo-audit)
+- Enabled CodeQL static analysis
 
 ---
 
 ## [0.9.0] - YYYY-MM-DD
 
-### 新增（Added）
+### Added
 
-- Beta 版本发布
-- 核心 API 接口稳定
+- Beta version release
+- Core API interfaces stabilized
 
-### 变更（Changed）
+### Changed
 
-- {API 名} 签名调整：参数 {old} → {new}
+- {API Name} signature adjustment: parameter {old} → {new}
 
-### 修复（Fixed）
+### Fixed
 
-- 修复 {bug} 导致的 {现象}
+- Fixed {bug} causing {symptom}
 
 ---
 
 ## [0.5.0] - YYYY-MM-DD
 
-### 新增（Added）
+### Added
 
-- Alpha 版本，仅限内部测试
+- Alpha version, internal testing only
 
 ---
 
-## 版本链接
+## Version Links
 
-> 维护版本号到 git tag / GitHub Release 的链接。
+> Maintain links from version numbers to git tags / GitHub Releases.
 
 [Unreleased]: https://github.com/{org}/{repo}/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/{org}/{repo}/releases/tag/v1.0.0
@@ -146,15 +146,15 @@ MAJOR.MINOR.PATCH
 
 ---
 
-## 📌 CHANGELOG 撰写 Checklist
+## 📌 CHANGELOG Writing Checklist
 
-- [ ] 遵循 Keep a Changelog 1.1.0 格式（六大类：Added/Changed/Deprecated/Removed/Fixed/Security）
-- [ ] 遵循 Semantic Versioning 2.0.0 版本号规则
-- [ ] [Unreleased] 节在最前，发布时提升为正式版本号
-- [ ] 每个版本有明确的发布日期（YYYY-MM-DD）
-- [ ] 每条变更含 PR / Issue 链接（如适用）
-- [ ] Breaking Change 显式标注（如 `**BREAKING**:` 前缀）
-- [ ] 安全修复单独归类，标注 CVE 编号与 CVSS 评分
-- [ ] 版本链接区维护版本号 → git tag 的 compare 链接
-- [ ] 弃用项标注移除版本号与替代方案
-- [ ] 不记录无关紧要的内部重构 / 文案修改
+- [ ] Follows Keep a Changelog 1.1.0 format (six categories: Added/Changed/Deprecated/Removed/Fixed/Security)
+- [ ] Follows Semantic Versioning 2.0.0 version number rules
+- [ ] [Unreleased] section is first, promoted to formal version number upon release
+- [ ] Each version has a clear release date (YYYY-MM-DD)
+- [ ] Each change includes PR / Issue link (if applicable)
+- [ ] Breaking Changes explicitly annotated (e.g., `**BREAKING**:` prefix)
+- [ ] Security fixes categorized separately, annotated with CVE number and CVSS score
+- [ ] Version links section maintains version number → git tag compare links
+- [ ] Deprecated items annotated with removal version and alternative
+- [ ] Don't record trivial internal refactoring / copy changes
