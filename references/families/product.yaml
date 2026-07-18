@@ -1,172 +1,172 @@
-# Product 族 — 产品文档、商业计划、技术设计、交付运营
-# 覆盖：产品全生命周期（战略/产品/技术/交付/运营/退役）+ 通用文档 + 独立模板
-# 产物模板：../templates/产品/<层>/<模板>.md
-# 索引：templates-index.md
-# 注意：Product 族不使用 skeletons-*.md，直接使用 templates/ 下的完整产物模板
+# Product family — Product documentation, business plans, technical design, delivery & operations
+# Covers: Full product lifecycle (Strategy/Product/Technical/Delivery/Operations/Sunset) + General docs + Standalone templates
+# Templates: ../templates/Product/<layer>/<template>.md
+# Index: templates-index.md
+# Note: Product family does not use skeletons-*.md; it directly uses the complete artifact templates under templates/
 
 family: product
-description: 产品文档、商业计划、技术设计、交付运营
+description: Product documentation, business plans, technical design, delivery & operations
 default_template: product/prd
 templates_index: templates-index.md
 templates_dir: ../templates/
 
-# 按生命周期分层组织
+# Organized by lifecycle layers
 layers:
-  战略层:
-    description: "Why — 回答为什么要做"
+  Strategy:
+    description: "Why — answers why we're doing this"
     templates:
       - id: product/brd
-        name: 商业需求文档（BRD）
+        name: Business Requirements Document (BRD)
       - id: product/mrd
-        name: 市场需求文档（MRD）
+        name: Market Requirements Document (MRD)
       - id: product/market-research
-        name: 市场调研报告
+        name: Market Research Report
       - id: product/competitive-analysis
-        name: 竞品分析报告
+        name: Competitive Analysis Report
       - id: product/charter
-        name: 项目任务书（Charter）
+        name: Project Charter
 
-  产品层:
-    description: "What — 回答做什么"
+  Product:
+    description: "What — answers what we're building"
     templates:
       - id: product/prd
-        name: 产品需求文档（PRD）
+        name: Product Requirements Document (PRD)
       - id: product/frd
-        name: 功能需求文档（FRD）
+        name: Functional Requirements Document (FRD)
       - id: product/uiux-spec
-        name: 产品配色与 UIUX 规范
+        name: Product Color and UI/UX Specification
 
-  技术层:
-    description: "How — 回答怎么做"
+  Technical:
+    description: "How — answers how we'll build it"
     templates:
       - id: product/trd
-        name: 技术需求文档（TRD）
+        name: Technical Requirements Document (TRD)
       - id: product/architecture
-        name: 架构设计文档
+        name: Architecture Design Document
       - id: product/api-doc
-        name: API 文档
+        name: API Documentation
       - id: product/db-design
-        name: 数据库设计文档
+        name: Database Design Document
       - id: product/algorithm-doc
-        name: 核心算法文档
+        name: Core Algorithm Document
 
-  交付层:
-    description: "When — 回答何时上线"
+  Delivery:
+    description: "When — answers when we ship"
     templates:
       - id: product/release-plan
-        name: 发布计划文档
+        name: Release Plan Document
       - id: product/test-report
-        name: 测试报告
+        name: Test Report
       - id: product/canary-plan
-        name: 灰度方案
+        name: Canary Deployment Plan
 
-  运营层:
-    description: "Run — 回答如何运转"
+  Operations:
+    description: "Run — answers how we operate"
     templates:
       - id: product/operation-guide
-        name: 运营手册
+        name: Operations Guide
       - id: product/dashboard
-        name: 数据看板
+        name: Data Dashboard
       - id: product/user-guide
-        name: 用户手册
+        name: User Guide
       - id: product/weekly-monthly-report
-        name: 周报月报（产品族正式归档版）
-        notes: 与 business/weekly-monthly-report 区分——本模板为产品族归档版
+        name: Weekly/Monthly Report (Product Family Formal Archival Version)
+        notes: Distinct from business/weekly-monthly-report — this is the product family's archival version
 
-  退役层:
-    description: "End — 回答如何善终"
+  Sunset:
+    description: "End — answers how we wind down"
     templates:
       - id: product/retrospective
-        name: 复盘报告
+        name: Retrospective Report
       - id: product/knowledge-base
-        name: 知识沉淀
+        name: Knowledge Base
 
-  通用文档:
-    description: "跨生命周期通用工程文档"
-    location: ../templates/通用/
+  General:
+    description: "Cross-lifecycle general engineering documentation"
+    location: ../templates/General/
     templates:
       - id: product/readme
         name: README
-        template_path: ../templates/通用/【模板】README.md
+        template_path: ../templates/General/【模板】README.md
       - id: product/changelog
         name: CHANGELOG
-        template_path: ../templates/通用/【模板】CHANGELOG.md
+        template_path: ../templates/General/【模板】CHANGELOG.md
       - id: product/faq
         name: FAQ
-        template_path: ../templates/通用/【模板】FAQ.md
+        template_path: ../templates/General/【模板】FAQ.md
       - id: product/contributing
         name: CONTRIBUTING
-        template_path: ../templates/通用/【模板】CONTRIBUTING.md
+        template_path: ../templates/General/【模板】CONTRIBUTING.md
 
-  独立模板:
-    description: "非产品生命周期但归入 product 族"
+  Standalone:
+    description: "Not part of product lifecycle but belongs to the product family"
     templates:
       - id: product/business-plan
-        name: 商业计划书（BP）
+        name: Business Plan (BP)
         template_path: ../templates/【模板】商业计划书.md
       - id: product/business-model
-        name: 商业模式文档
+        name: Business Model Document
         template_path: ../templates/【模板】商业模式文档.md
       - id: product/meeting-minutes-detailed
-        name: 正式会议纪要
+        name: Formal Meeting Minutes
         template_path: ../templates/【模板】会议纪要.md
-        notes: 遵循 FAR 原则，与 meeting/decision-minutes 区分
+        notes: Follows the FAR principle; distinct from meeting/decision-minutes
       - id: product/literature-review
-        name: 文献综述报告
+        name: Literature Review Report
         template_path: ../templates/【模板】论文研究报告.md
 
 selection_rules:
-  - condition: "商业计划/融资路演"
+  - condition: "Business plan/fundraising roadshow"
     template: product/business-plan
-  - condition: "商业模式/价值主张"
+  - condition: "Business model/value proposition"
     template: product/business-model
-  - condition: "战略层 - 商业需求/立项"
+  - condition: "Strategy layer - business requirements/project initiation"
     template: product/brd
-  - condition: "战略层 - 市场需求"
+  - condition: "Strategy layer - market requirements"
     template: product/mrd
-  - condition: "战略层 - 市场调研"
+  - condition: "Strategy layer - market research"
     template: product/market-research
-  - condition: "战略层 - 竞品分析"
+  - condition: "Strategy layer - competitive analysis"
     template: product/competitive-analysis
-  - condition: "战略层 - 项目任务书"
+  - condition: "Strategy layer - project charter"
     template: product/charter
-  - condition: "产品层 - 产品需求"
+  - condition: "Product layer - product requirements"
     template: product/prd
-  - condition: "产品层 - 功能需求细化"
+  - condition: "Product layer - functional requirements refinement"
     template: product/frd
-  - condition: "产品层 - UIUX/配色"
+  - condition: "Product layer - UI/UX/color specification"
     template: product/uiux-spec
-  - condition: "技术层 - 技术方案"
+  - condition: "Technical layer - technical solution"
     template: product/trd
-  - condition: "技术层 - 系统架构"
+  - condition: "Technical layer - system architecture"
     template: product/architecture
-  - condition: "技术层 - API/接口"
+  - condition: "Technical layer - API/interface"
     template: product/api-doc
-  - condition: "技术层 - 数据库设计"
+  - condition: "Technical layer - database design"
     template: product/db-design
-  - condition: "技术层 - 核心算法"
+  - condition: "Technical layer - core algorithm"
     template: product/algorithm-doc
-  - condition: "交付层 - 发布计划"
+  - condition: "Delivery layer - release plan"
     template: product/release-plan
-  - condition: "交付层 - 测试报告"
+  - condition: "Delivery layer - test report"
     template: product/test-report
-  - condition: "交付层 - 灰度方案"
+  - condition: "Delivery layer - canary deployment plan"
     template: product/canary-plan
-  - condition: "运营层 - 运营手册"
+  - condition: "Operations layer - operations guide"
     template: product/operation-guide
-  - condition: "运营层 - 数据看板"
+  - condition: "Operations layer - data dashboard"
     template: product/dashboard
-  - condition: "运营层 - 用户手册"
+  - condition: "Operations layer - user guide"
     template: product/user-guide
-  - condition: "运营层 - 周报月报（正式归档版）"
+  - condition: "Operations layer - weekly/monthly report (formal archival version)"
     template: product/weekly-monthly-report
-  - condition: "退役层 - 复盘"
+  - condition: "Sunset layer - retrospective"
     template: product/retrospective
-  - condition: "退役层 - 知识沉淀"
+  - condition: "Sunset layer - knowledge base"
     template: product/knowledge-base
-  - condition: "正式归档纪要（含 ACTION 编号）"
+  - condition: "Formal archival minutes (with ACTION numbers)"
     template: product/meeting-minutes-detailed
-  - condition: "文献综述报告（含 PRISMA）"
+  - condition: "Literature review report (with PRISMA)"
     template: product/literature-review
-  - condition: "不确定子层"
+  - condition: "Uncertain sub-layer"
     template: product/prd

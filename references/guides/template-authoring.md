@@ -1,8 +1,8 @@
-# 模板编写指南
+# Template Authoring Guide
 
-新增或修改模板时，遵守以下约束。
+Follow these constraints when adding or modifying templates.
 
-## 必备字段
+## Required Fields
 
 - `id`
 - `family`
@@ -14,20 +14,20 @@
 - `required_sections`
 - `optional_sections`
 
-## 编写规则
+## Authoring Rules
 
-1. 先判断是否能复用现有模板，不要轻易新增。
-2. 新模板必须归属一个明确模板族。
-3. 重复章节优先放到 `section_library`，不要把同样说明复制到多个模板。
-4. `required_sections` 只放该模板必须出现的章节。
-5. `optional_sections` 放“看内容而定”的章节，不要为了完整而堆砌。
-6. `detection_signals` 写用户语言和内容信号，不要只写抽象标签。
-7. `anti_signals` 用来排除容易误判的相邻模板。
-8. 变更模板时，同步检查 `registry.yaml`、`taxonomy.yaml` 和 `SKILL.md`。
+1. First check whether an existing template can be reused; do not add new ones hastily.
+2. New templates must belong to a clearly defined template family.
+3. Repeated sections should be placed in `section_library` rather than duplicating the same descriptions across multiple templates.
+4. `required_sections` should only contain sections that must appear in that template.
+5. `optional_sections` should contain sections that are "content-dependent"; do not pad for completeness.
+6. `detection_signals` should use user language and content signals, not just abstract labels.
+7. `anti_signals` are used to exclude adjacent templates that could be easily misidentified.
+8. When modifying a template, also check `registry.yaml`, `taxonomy.yaml`, and `SKILL.md`.
 
-## 新增模板前自检
+## Pre-addition Self-check
 
-- 这个模板和现有模板的区别是否足够清晰
-- 是否有稳定的识别信号
-- 是否有明确的 fallback 或相邻替代模板
-- 是否真的需要新模板，而不是给旧模板加可选章节
+- Is the distinction between this template and existing templates sufficiently clear?
+- Are there stable identification signals?
+- Is there a clear fallback or adjacent alternative template?
+- Is a new template truly needed, rather than just adding optional sections to an existing one?

@@ -1,98 +1,98 @@
-# 示例集
+# Example Set
 
-> 从 SKILL.md 外移的完整示例集。每个示例含用户输入 + 推荐模板 + 细分规则。
+> Complete example set extracted from SKILL.md. Each example includes user input + recommended template + sub-type rules.
 
-## 课程视频
-
-```text
-总结这个 Python 入门课程视频，整理成学习笔记
-```
-
-推荐模板：`learning/course-notes`（偏实操可追加 `learning/tutorial-playbook`）
-
-## 非虚构书籍
+## Course Video
 
 ```text
-总结这本商业书，每章都要概括，并给我一份全书的核心论点总结
+Summarize this Python introductory course video and organize it into study notes
 ```
 
-推荐模板：`learning/nonfiction-book-summary`
+Recommended template: `learning/course-notes` (for more hands-on content, supplement with `learning/tutorial-playbook`)
 
-## 叙事类书籍
+## Non-Fiction Book
 
 ```text
-总结这本小说，要有逐章摘要、人物关系和全书主题
+Summarize this business book, with a chapter-by-chapter overview, and give me a full-book core argument summary
 ```
 
-推荐模板：`learning/fiction-book-summary`
+Recommended template: `learning/nonfiction-book-summary`
 
-## 项目例会
+## Narrative Book
 
 ```text
-根据这次项目例会录音生成纪要，要包含决策和待办
+Summarize this novel, with chapter-by-chapter summaries, character relationships, and the book's themes
 ```
 
-推荐模板：`meeting/decision-minutes`
+Recommended template: `learning/fiction-book-summary`
 
-## 播客访谈
+## Project Standup
 
 ```text
-总结这个关于 AI 趋势的播客访谈
+Generate minutes from this project standup recording, including decisions and action items
 ```
 
-推荐模板：`media/podcast-summary`
+Recommended template: `meeting/decision-minutes`
 
-## 多资料决策归纳
+## Podcast Interview
 
 ```text
-把这几份访谈和周报整理成一份决策备忘录
+Summarize this podcast interview about AI trends
 ```
 
-推荐模板：`analysis/decision-memo`
+Recommended template: `media/podcast-summary`
 
-## 论文阅读
+## Multi-Source Decision Synthesis
 
 ```text
-总结这篇论文，告诉我研究主题、主要成果、关键公式和局限性
+Organize these interviews and weekly reports into a decision memo
 ```
 
-推荐模板：`analysis/paper-summary`
+Recommended template: `analysis/decision-memo`
 
-细分规则：
-
-- 定理、证明、公式推导为主 → `analysis/theoretical-paper-summary`
-- 数据集、指标、实验对比为主 → `analysis/experimental-paper-summary`
-- 系统架构、吞吐延迟、工程权衡为主 → `analysis/systems-paper-summary`
-- 文献综述、taxonomy、研究脉络为主 → `analysis/survey-paper-summary`
-
-## 产品需求文档
+## Paper Reading
 
 ```text
-帮我写一份 PRD，要包含用户旅程、功能详述、验收标准和非功能需求
+Summarize this paper — tell me the research topic, main contributions, key formulas, and limitations
 ```
 
-推荐模板：`product/prd`
+Recommended template: `analysis/paper-summary`
 
-## 商业计划书
+Sub-type rules:
+
+- Primarily theorems, proofs, formula derivations → `analysis/theoretical-paper-summary`
+- Primarily datasets, metrics, experimental comparisons → `analysis/experimental-paper-summary`
+- Primarily system architecture, throughput/latency, engineering trade-offs → `analysis/systems-paper-summary`
+- Primarily literature review, taxonomy, research threads → `analysis/survey-paper-summary`
+
+## Product Requirements Document
 
 ```text
-我要融资，需要写一份商业计划书，包含市场规模、商业模式、财务预测
+Help me write a PRD that includes user journeys, detailed feature specs, acceptance criteria, and non-functional requirements
 ```
 
-推荐模板：`product/business-plan`
+Recommended template: `product/prd`
 
-## 技术方案设计
+## Business Plan
 
 ```text
-整理技术需求文档和架构设计，要含模块划分和数据库设计
+I'm raising funds and need to write a business plan that includes market size, business model, and financial projections
 ```
 
-推荐模板：`product/trd`（可追加 `product/architecture` 和 `product/db-design`）
+Recommended template: `product/business-plan`
 
-## 正式会议纪要
+## Technical Design
 
 ```text
-生成正式会议纪要，要带 ACTION 编号、风险登记和 Parking Lot
+Organize the technical requirements document and architecture design, including module breakdown and database design
 ```
 
-推荐模板：`product/meeting-minutes-detailed`
+Recommended template: `product/trd` (supplement with `product/architecture` and `product/db-design`)
+
+## Formal Meeting Minutes
+
+```text
+Generate formal meeting minutes with ACTION numbers, risk register, and Parking Lot
+```
+
+Recommended template: `product/meeting-minutes-detailed`

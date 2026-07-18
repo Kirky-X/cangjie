@@ -1,290 +1,290 @@
-# 输出骨架 — Learning 族
+# Output Skeletons — Learning Family
 
-> 完整索引见 [output-skeletons.md](output-skeletons.md)。
+> Full index at [output-skeletons.md](output-skeletons.md).
 
 ## Learning
 
 ### `learning/course-notes`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 基本信息
-- 来源：
-- 讲者：
-- 时长/范围：
-- 学习目标：
+## Basic Information
+- Source:
+- Instructor:
+- Duration/Scope:
+- Learning Objectives:
 
-## 内容概览
+## Content Overview
 
-## 模块拆解
-### 模块1
-- 主题
-- 核心概念
-- 关键解释或因果链
-- 例子/演示
-- 容易混淆的点
+## Module Breakdown
+### Module 1
+- Topic
+- Core concepts
+- Key explanations or causal chains
+- Examples/demonstrations
+- Common points of confusion
 
-## 关键知识点
-- 知识点 1：是什么
-- 为什么重要
-- 适用条件或边界
+## Key Knowledge Points
+- Knowledge point 1: What it is
+- Why it matters
+- Applicable conditions or boundaries
 
-## 复习问题
-1. 概念理解题
-2. 应用题
-3. 对比题
+## Review Questions
+1. Conceptual understanding question
+2. Application question
+3. Comparison question
 
-## 可执行练习
+## Actionable Exercises
 
-## 术语表
+## Glossary
 ```
 
 ### `learning/tutorial-playbook`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 目标
+## Objective
 
-## 前置条件
+## Prerequisites
 
-## 操作步骤
-1. 步骤一
-2. 步骤二
-3. 每一步补充：目的、操作、预期结果、注意事项
+## Steps
+1. Step 1
+2. Step 2
+3. Each step supplemented with: purpose, action, expected result, precautions
 
-## 常见坑
+## Common Pitfalls
 
-## 下一步
+## Next Steps
 
-## 参考命令/资源
+## Reference Commands/Resources
 ```
 
 ### `learning/nonfiction-book-summary`
 
 ```markdown
-# {书名} - 全书总结
+# {Book Title} - Full Summary
 
-## 基本信息
-- 作者：
-- 类型：
-- 覆盖范围：全书 / 部分章节 / 节选
-- 版本/来源：
+## Basic Information
+- Author:
+- Genre:
+- Coverage: Full book / Selected chapters / Excerpts
+- Edition/Source:
 
-## 输出文件
-- 全书文件：`{书名}-全书总结.md`
-- 章节目录：`章节总结/`
-- 章节文件命名：`NN_{章节名}-总结.md`
+## Output Files
+- Full-book file: `{BookTitle}-FullSummary.md`
+- Chapter directory: `ChapterSummaries/`
+- Chapter file naming: `NN_{ChapterName}-Summary.md`
 
-## 全书总览
-- 这本书要解决什么问题
-- 作者的核心结论
-- 适合谁读
-- 全书结构主线
+## Full Book Overview
+- What problem the book addresses
+- Author's core conclusions
+- Who should read this
+- Main structural thread of the book
 
-## 核心论点
-- 论点 1：主张
-- 证据或案例
-- 对读者意味着什么
+## Core Arguments
+- Argument 1: Claim
+- Evidence or case study
+- Implications for readers
 
-## 分部结构总览
-### 第一部分：{部分名}
-- 这一部分要回答什么问题
-- 它在全书论证中的作用
-- 与下一部分如何衔接
+## Part Structure Overview
+### Part 1: {Part Name}
+- What question this part answers
+- Its role in the book's overall argument
+- How it connects to the next part
 
-## 分部 / 章节导航
-- 第一部分：
-- 关键章节：
-- 章节摘要见：`章节总结/NN_{章节名}-总结.md`
+## Part / Chapter Navigation
+- Part 1:
+- Key chapters:
+- Chapter summaries at: `ChapterSummaries/NN_{ChapterName}-Summary.md`
 
-## 关键概念 / 模型
-- 概念/模型
-- 定义
-- 用途或边界
+## Key Concepts / Models
+- Concept/model
+- Definition
+- Use cases or boundaries
 
-## 全书结构与论证路径
-- 作者如何从前提推进到结论
-- 哪些章节承担转折或收束作用
+## Book Structure & Argumentative Path
+- How the author progresses from premises to conclusions
+- Which chapters serve as turning points or convergence
 
-## 可执行启发
-- 能直接应用的方法
-- 适用场景
-- 可能限制
+## Actionable Insights
+- Methods that can be directly applied
+- Applicable scenarios
+- Potential limitations
 
-## 局限与可疑点
+## Limitations & Questionable Points
 ```
 
-### `learning/nonfiction-book-summary` 章节文件
+### `learning/nonfiction-book-summary` Chapter File
 
 ```markdown
-# 第 N 章 {章节名}
+# Chapter N {Chapter Name}
 
-## 章节定位
-- 所属部分：/ 在全书中的作用：/ 与前后章节的关系：
+## Chapter Position
+- Part: / Role in book: / Relationship to adjacent chapters:
 
-## 核心问题
+## Core Question
 
-## 详细摘要
-- 关键论点 1 / 2
-- 案例 / 数据 / 论据
-- 作者如何推进论证
-- 本章对全书主线的贡献
+## Detailed Summary
+- Key argument 1 / 2
+- Case studies / Data / Evidence
+- How the author advances the argument
+- This chapter's contribution to the book's main thread
 
-## 关键概念 / 术语
+## Key Concepts / Terminology
 
-## 重要证据或案例
+## Important Evidence or Case Studies
 
-## 本章启发
+## Chapter Insights
 ```
 
 ### `learning/fiction-book-summary`
 
 ```markdown
-# {书名} - 全书总结
+# {Book Title} - Full Summary
 
-## 基本信息
-- 作者：
-- 类型：
-- 覆盖范围：全书 / 部分章节 / 节选
-- 版本/来源：
+## Basic Information
+- Author:
+- Genre:
+- Coverage: Full book / Selected chapters / Excerpts
+- Edition/Source:
 
-## 输出文件
-- 全书文件：`{书名}-全书总结.md`
-- 章节目录：`章节总结/`
-- 章节文件命名：`NN_{章节名}-总结.md`
+## Output Files
+- Full-book file: `{BookTitle}-FullSummary.md`
+- Chapter directory: `ChapterSummaries/`
+- Chapter file naming: `NN_{ChapterName}-Summary.md`
 
-## 全书总览
-- 故事背景
-- 主线冲突
-- 整体走向
-- 全书主题
+## Full Book Overview
+- Story setting
+- Central conflict
+- Overall trajectory
+- Book themes
 
-## 分部结构总览
-### 第一部分：{部分名}
-- 这一部分的情节任务
-- 主要人物状态
-- 与后续转折的关系
+## Part Structure Overview
+### Part 1: {Part Name}
+- Narrative task of this part
+- Main character states
+- Relationship to subsequent turns
 
-## 分部 / 章节导航
-- 第一部分：
-- 关键章节：
-- 章节摘要见：`章节总结/NN_{章节名}-总结.md`
+## Part / Chapter Navigation
+- Part 1:
+- Key chapters:
+- Chapter summaries at: `ChapterSummaries/NN_{ChapterName}-Summary.md`
 
-## 主要人物与关系
-- 人物
-- 动机/目标
-- 与其他人物的关系
-- 关键变化
+## Main Characters & Relationships
+- Character
+- Motivation/goals
+- Relationships with other characters
+- Key changes
 
-## 情节推进与转折
-- 铺垫
-- 冲突升级
-- 转折点
-- 收束或开放结局
+## Plot Progression & Turning Points
+- Setup
+- Conflict escalation
+- Turning points
+- Resolution or open ending
 
-## 主题与母题
-- 主题
-- 反复出现的意象或象征
-- 作者如何通过人物/情节表达主题
+## Themes & Motifs
+- Themes
+- Recurring imagery or symbolism
+- How the author expresses themes through characters/plot
 
-## 叙事结构与视角
-- 叙事顺序
-- 视角安排
-- 节奏特点
+## Narrative Structure & Perspective
+- Narrative sequence
+- Perspective arrangement
+- Pacing characteristics
 
-## 阅读启发 / 整体评价
+## Reading Insights / Overall Assessment
 ```
 
-### `learning/fiction-book-summary` 章节文件
+### `learning/fiction-book-summary` Chapter File
 
 ```markdown
-# 第 N 章 {章节名}
+# Chapter N {Chapter Name}
 
-## 章节定位
-- 所属部分：/ 情节功能：/ 与前后章节的关系：
+## Chapter Position
+- Part: / Narrative function: / Relationship to adjacent chapters:
 
-## 详细摘要
-- 主要事件
-- 人物变化
-- 冲突推进或缓解
-- 重要意象 / 伏笔
-- 对全书主题或结局的作用
+## Detailed Summary
+- Major events
+- Character changes
+- Conflict escalation or resolution
+- Important imagery / foreshadowing
+- Role in book themes or ending
 
-## 人物焦点
+## Character Focus
 
-## 主题 / 象征
+## Themes / Symbolism
 
-## 本章阅读要点
+## Key Reading Points for This Chapter
 ```
 
 ### `learning/lecture-summary`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 基本信息
-- 来源：
-- 讲者：
-- 日期：
-- 时长：
-- 主题：
+## Basic Information
+- Source:
+- Lecturer:
+- Date:
+- Duration:
+- Topic:
 
-## 内容概览
+## Content Overview
 
-## 主题流转
-### 主题1
-- 主题背景
-- 讲者主要观点
-- 支撑例子或数据
-- 与下一主题的衔接
+## Topic Flow
+### Topic 1
+- Topic background
+- Lecturer's key viewpoints
+- Supporting examples or data
+- Connection to next topic
 
-## 关键知识点
-- 知识点 1：是什么
-- 为什么重要
-- 适用边界
+## Key Knowledge Points
+- Knowledge point 1: What it is
+- Why it matters
+- Applicable boundaries
 
-## 金句
-> {引用}
+## Notable Quotes
+> {Quote}
 
-## 讲者背景
+## Lecturer Background
 
-## 可执行练习
+## Actionable Exercises
 
-## 参考资料
+## References
 ```
 
 ### `learning/concept-explainer`
 
 ```markdown
-# {概念名}
+# {Concept Name}
 
-## 基本信息
-- 来源：
-- 主题：
-- 适用领域：
+## Basic Information
+- Source:
+- Topic:
+- Applicable domains:
 
-## 概念概述
-- 一句话说明概念是什么
+## Concept Overview
+- One-sentence description of what the concept is
 
-## 核心机制
-- 因果链或工作原理
-- 关键步骤或要素
-- 适用条件
+## Core Mechanism
+- Causal chain or how it works
+- Key steps or elements
+- Applicable conditions
 
-## 示例
-- 例子 1：场景 + 概念如何应用
-- 例子 2：对比不同场景下的表现
+## Examples
+- Example 1: Scenario + how the concept applies
+- Example 2: Comparing behavior across different scenarios
 
-## 常见误解
-- 误解 1：错在哪
-- 误解 2：正确理解是什么
+## Common Misconceptions
+- Misconception 1: What's wrong
+- Misconception 2: What the correct understanding is
 
-## 对比
-- 与相近概念的区别
+## Comparison
+- Differences from similar concepts
 
-## 参考资料
+## References
 
-## 练习提示
+## Practice Prompts
 ```

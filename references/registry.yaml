@@ -1,32 +1,32 @@
-# Cangjie 模板注册表
-# 定义所有模板的元数据：family / required_sections / optional_sections / detection_signals / fallback
-# 用于 SKILL.md 工作流 Step 4（自动模板匹配）和 Step 6（生成前确认 required_sections）
-# 模板 ID 命名规则：<family>/<template-name>，跨族唯一
-# required_sections：生成时必须填充的章节；材料不足时标注"材料未提供/无法确认"，禁止硬凑
-# optional_sections：视材料丰富度选择性填充
-# detection_signals：自动匹配时的关键词信号；与 taxonomy.yaml 的 signal_words 协同
-# fallback：当本模板无法填充 required_sections 时的回落模板 ID
+# Cangjie Template Registry
+# Defines metadata for all templates: family / required_sections / optional_sections / detection_signals / fallback
+# Used by SKILL.md workflow Step 4 (auto template matching) and Step 6 (pre-generation confirmation of required_sections)
+# Template ID naming convention: <family>/<template-name>, globally unique across families
+# required_sections: sections that must be populated during generation; when materials are insufficient, mark as "Materials not provided/Unable to confirm"; do not fabricate
+# optional_sections: selectively populated based on material richness
+# detection_signals: keyword signals for auto-matching; works in conjunction with taxonomy.yaml signal_words
+# fallback: fallback template ID when this template's required_sections cannot be filled
 
 version: 1
 
 templates:
 
   # ============================================================
-  # Learning 族（默认回落：learning/course-notes）
+  # Learning family (default fallback: learning/course-notes)
   # ============================================================
 
   learning/course-notes:
     family: learning
-    name: 课程笔记
+    name: Course Notes
     required_sections:
-      - 基本信息
-      - 内容概览
-      - 模块拆解
-      - 关键知识点
-      - 复习问题
+      - Basic Information
+      - Content Overview
+      - Module Breakdown
+      - Key Knowledge Points
+      - Review Questions
     optional_sections:
-      - 可执行练习
-      - 术语表
+      - Hands-on Exercises
+      - Glossary
     detection_signals:
       - 课程
       - 讲座
@@ -37,15 +37,15 @@ templates:
 
   learning/tutorial-playbook:
     family: learning
-    name: 教程操作手册
+    name: Tutorial Playbook
     required_sections:
-      - 目标
-      - 前置条件
-      - 操作步骤
-      - 常见坑
-      - 下一步
+      - Objective
+      - Prerequisites
+      - Steps
+      - Common Pitfalls
+      - Next Steps
     optional_sections:
-      - 参考命令/资源
+      - Reference Commands/Resources
     detection_signals:
       - 教程
       - 操作步骤
@@ -56,18 +56,18 @@ templates:
 
   learning/nonfiction-book-summary:
     family: learning
-    name: 非虚构书籍总结
+    name: Non-Fiction Book Summary
     required_sections:
-      - 基本信息
-      - 输出文件
-      - 全书总览
-      - 核心论点
-      - 分部结构总览
-      - 分部/章节导航
-      - 关键概念/模型
-      - 全书结构与论证路径
-      - 可执行启发
-      - 局限与可疑点
+      - Basic Information
+      - Output Files
+      - Book Overview
+      - Core Arguments
+      - Section Structure Overview
+      - Section/Chapter Navigation
+      - Key Concepts/Models
+      - Book Structure and Argumentation Path
+      - Actionable Insights
+      - Limitations and Questionable Points
     optional_sections: []
     detection_signals:
       - 商业书
@@ -79,22 +79,22 @@ templates:
       - 全书总结
       - 逐章
     fallback: learning/course-notes
-    notes: 章节文件额外使用 learning/nonfiction-book-summary#chapter 骨架
+    notes: Chapter files additionally use the learning/nonfiction-book-summary#chapter skeleton
 
   learning/fiction-book-summary:
     family: learning
-    name: 叙事/小说书籍总结
+    name: Narrative/Fiction Book Summary
     required_sections:
-      - 基本信息
-      - 输出文件
-      - 全书总览
-      - 分部结构总览
-      - 分部/章节导航
-      - 主要人物与关系
-      - 情节推进与转折
-      - 主题与母题
-      - 叙事结构与视角
-      - 阅读启发/整体评价
+      - Basic Information
+      - Output Files
+      - Book Overview
+      - Section Structure Overview
+      - Section/Chapter Navigation
+      - Main Characters and Relationships
+      - Plot Progression and Turning Points
+      - Themes and Motifs
+      - Narrative Structure and Perspective
+      - Reading Insights/Overall Assessment
     optional_sections: []
     detection_signals:
       - 小说
@@ -104,21 +104,21 @@ templates:
       - 人物
       - 情节
     fallback: learning/course-notes
-    notes: 章节文件额外使用 learning/fiction-book-summary#chapter 骨架
+    notes: Chapter files additionally use the learning/fiction-book-summary#chapter skeleton
 
   learning/lecture-summary:
     family: learning
-    name: 讲座摘要
+    name: Lecture Summary
     required_sections:
-      - 基本信息
-      - 内容概览
-      - 主题流转
-      - 关键知识点
-      - 金句
-      - 讲者背景
+      - Basic Information
+      - Content Overview
+      - Topic Flow
+      - Key Knowledge Points
+      - Notable Quotes
+      - Speaker Background
     optional_sections:
-      - 可执行练习
-      - 参考资料
+      - Hands-on Exercises
+      - References
     detection_signals:
       - 讲座
       - 演讲
@@ -128,17 +128,17 @@ templates:
 
   learning/concept-explainer:
     family: learning
-    name: 概念解释
+    name: Concept Explainer
     required_sections:
-      - 基本信息
-      - 概念概述
-      - 核心机制
-      - 示例
-      - 常见误解
-      - 对比
+      - Basic Information
+      - Concept Overview
+      - Core Mechanism
+      - Examples
+      - Common Misconceptions
+      - Comparisons
     optional_sections:
-      - 参考资料
-      - 练习提示
+      - References
+      - Practice Prompts
     detection_signals:
       - 概念
       - 是什么
@@ -147,20 +147,20 @@ templates:
     fallback: learning/course-notes
 
   # ============================================================
-  # Media 族（默认回落：media/podcast-summary）
+  # Media family (default fallback: media/podcast-summary)
   # ============================================================
 
   media/podcast-summary:
     family: media
-    name: 播客/访谈摘要
+    name: Podcast/Interview Summary
     required_sections:
-      - 基本信息
-      - 内容概览
-      - 发言人地图
-      - 话题流转
-      - 亮点
-      - 金句
-      - 听众可带走的结论
+      - Basic Information
+      - Content Overview
+      - Speaker Map
+      - Topic Flow
+      - Highlights
+      - Notable Quotes
+      - Key Takeaways for Listeners
     optional_sections: []
     detection_signals:
       - 播客
@@ -171,17 +171,17 @@ templates:
 
   media/video-program-summary:
     family: media
-    name: 视频节目摘要
+    name: Video Program Summary
     required_sections:
-      - 基本信息
-      - 内容概览
-      - 节目分段
-      - 核心观点
-      - 亮点
-      - 时间线
-      - 金句
+      - Basic Information
+      - Content Overview
+      - Program Segments
+      - Core Viewpoints
+      - Highlights
+      - Timeline
+      - Notable Quotes
     optional_sections:
-      - 画面要点
+      - Visual Key Points
     detection_signals:
       - 视频
       - 节目
@@ -191,18 +191,18 @@ templates:
 
   media/livestream-recap:
     family: media
-    name: 直播回顾
+    name: Livestream Recap
     required_sections:
-      - 基本信息
-      - 内容概览
-      - 流程概览
-      - 观众提问
-      - 关键更新
-      - 后续动作
-      - 时间线
+      - Basic Information
+      - Content Overview
+      - Session Flow Overview
+      - Audience Questions
+      - Key Updates
+      - Follow-up Actions
+      - Timeline
     optional_sections:
-      - 亮点
-      - 参考资料
+      - Highlights
+      - References
     detection_signals:
       - 直播
       - livestream
@@ -211,15 +211,15 @@ templates:
 
   media/content-highlights:
     family: media
-    name: 内容亮点提炼
+    name: Content Highlights Extraction
     required_sections:
-      - 基本信息
-      - 一句话亮点
-      - 精彩片段
-      - 可引用句子
-      - 复用角度
-      - 时间线
-      - 听众可带走的结论
+      - Basic Information
+      - One-line Highlights
+      - Highlight Clips
+      - Quotable Sentences
+      - Repurposing Angles
+      - Timeline
+      - Key Takeaways for Listeners
     optional_sections: []
     detection_signals:
       - 亮点
@@ -229,19 +229,19 @@ templates:
     fallback: media/podcast-summary
 
   # ============================================================
-  # Meeting 族（默认回落：meeting/decision-minutes）
+  # Meeting family (default fallback: meeting/decision-minutes)
   # ============================================================
 
   meeting/decision-minutes:
     family: meeting
-    name: 决策纪要
+    name: Decision Minutes
     required_sections:
-      - 会议信息
-      - 讨论摘要
-      - 决策
-      - 待办事项
-      - 风险与争议
-      - 未解决问题
+      - Meeting Info
+      - Discussion Summary
+      - Decisions
+      - Action Items
+      - Risks and Disputes
+      - Open Issues
     optional_sections: []
     detection_signals:
       - 决策
@@ -253,17 +253,17 @@ templates:
 
   meeting/discussion-minutes:
     family: meeting
-    name: 讨论纪要
+    name: Discussion Minutes
     required_sections:
-      - 会议信息
-      - 目标
-      - 讨论摘要
-      - 关键观察
-      - 未解决问题
-      - 后续步骤
+      - Meeting Info
+      - Objective
+      - Discussion Summary
+      - Key Observations
+      - Open Issues
+      - Next Steps
     optional_sections:
-      - 发言人观点
-      - 时间线
+      - Speaker Perspectives
+      - Timeline
     detection_signals:
       - 讨论
       - 共创
@@ -272,17 +272,17 @@ templates:
 
   meeting/interview-record:
     family: meeting
-    name: 访谈记录
+    name: Interview Record
     required_sections:
-      - 会议信息
-      - 受访人背景
-      - 访谈主题
-      - 回答与洞察
-      - 关键原话
-      - 后续跟进
+      - Meeting Info
+      - Interviewee Background
+      - Interview Topics
+      - Responses and Insights
+      - Key Quotes
+      - Follow-up Actions
     optional_sections:
-      - 决策影响
-      - 时间线
+      - Decision Impact
+      - Timeline
     detection_signals:
       - 访谈
       - 采访
@@ -291,17 +291,17 @@ templates:
 
   meeting/one-on-one-note:
     family: meeting
-    name: 1:1 沟通记录
+    name: 1:1 Communication Notes
     required_sections:
-      - 会议信息
-      - 当前状态
-      - 最近进展
-      - 阻碍
-      - 需要的支持
-      - 达成的动作
+      - Meeting Info
+      - Current Status
+      - Recent Progress
+      - Blockers
+      - Support Needed
+      - Agreed Actions
     optional_sections:
-      - 发展议题
-      - 情绪信号
+      - Development Topics
+      - Emotional Signals
     detection_signals:
       - 1:1
       - 1on1
@@ -311,17 +311,17 @@ templates:
 
   meeting/workshop-summary:
     family: meeting
-    name: 工作坊总结
+    name: Workshop Summary
     required_sections:
-      - 会议信息
-      - 目标
-      - 活动流程
-      - 产出物
-      - 决策
-      - 后续步骤
+      - Meeting Info
+      - Objective
+      - Activity Flow
+      - Deliverables
+      - Decisions
+      - Next Steps
     optional_sections:
-      - 参与者反馈
-      - 视觉要点
+      - Participant Feedback
+      - Visual Key Points
     detection_signals:
       - 工作坊
       - 共创
@@ -329,21 +329,21 @@ templates:
     fallback: meeting/decision-minutes
 
   # ============================================================
-  # Business 族（默认回落：business/project-status-report）
+  # Business family (default fallback: business/project-status-report)
   # ============================================================
 
   business/project-status-report:
     family: business
-    name: 项目状态报告
+    name: Project Status Report
     required_sections:
-      - 报告信息
-      - 执行摘要
-      - 关键进展
-      - 指标
-      - 风险与阻塞
-      - 下一步动作
+      - Report Info
+      - Executive Summary
+      - Key Progress
+      - Metrics
+      - Risks and Blockers
+      - Next Actions
     optional_sections:
-      - 需要支持
+      - Support Needed
     detection_signals:
       - 项目
       - 进展
@@ -353,18 +353,18 @@ templates:
 
   business/weekly-monthly-report:
     family: business
-    name: 周报/月报
+    name: Weekly/Monthly Report
     required_sections:
-      - 报告信息
-      - 摘要
-      - 已完成工作
-      - 进行中工作
-      - 阻碍项
-      - 下个周期计划
+      - Report Info
+      - Summary
+      - Completed Work
+      - In-Progress Work
+      - Blockers
+      - Next Period Plan
     optional_sections:
-      - 指标
-      - 需要支持
-      - 经验总结
+      - Metrics
+      - Support Needed
+      - Lessons Learned
     detection_signals:
       - 周报
       - 月报
@@ -374,17 +374,17 @@ templates:
 
   business/executive-brief:
     family: business
-    name: 高管简报
+    name: Executive Brief
     required_sections:
-      - 报告信息
-      - 执行摘要
-      - 战略更新
-      - 待决策事项
-      - 主要风险
+      - Report Info
+      - Executive Summary
+      - Strategic Updates
+      - Decisions Needed
+      - Key Risks
     optional_sections:
-      - 指标
-      - 需要支持
-      - 附录
+      - Metrics
+      - Support Needed
+      - Appendix
     detection_signals:
       - 高管
       - 简报
@@ -394,18 +394,18 @@ templates:
 
   business/risk-issue-report:
     family: business
-    name: 风险/问题报告
+    name: Risk/Issue Report
     required_sections:
-      - 报告信息
-      - 问题概述
-      - 影响范围
-      - 原因分析
-      - 缓解措施
-      - 责任人
+      - Report Info
+      - Issue Overview
+      - Impact Scope
+      - Root Cause Analysis
+      - Mitigation Measures
+      - Owner
     optional_sections:
-      - 时间线
-      - 依赖事项
-      - 升级路径
+      - Timeline
+      - Dependencies
+      - Escalation Path
     detection_signals:
       - 风险
       - 问题
@@ -415,17 +415,17 @@ templates:
 
   business/action-tracker:
     family: business
-    name: 行动跟踪表
+    name: Action Tracker
     required_sections:
-      - 报告信息
-      - 优先级
-      - 行动列表
-      - 截止时间
-      - 依赖事项
+      - Report Info
+      - Priority
+      - Action List
+      - Deadline
+      - Dependencies
     optional_sections:
-      - 状态备注
-      - 风险
-      - 复盘节奏
+      - Status Notes
+      - Risks
+      - Review Cadence
     detection_signals:
       - 行动项
       - 跟踪
@@ -434,19 +434,19 @@ templates:
     fallback: business/project-status-report
 
   # ============================================================
-  # Analysis 族（默认回落：analysis/research-brief）
+  # Analysis family (default fallback: analysis/research-brief)
   # ============================================================
 
   analysis/research-brief:
     family: analysis
-    name: 研究简报
+    name: Research Brief
     required_sections:
-      - 范围与目标
-      - 主要发现
-      - 支撑证据
-      - 启示
-      - 未解决问题
-      - 建议动作
+      - Scope and Objectives
+      - Key Findings
+      - Supporting Evidence
+      - Implications
+      - Open Questions
+      - Recommended Actions
     optional_sections: []
     detection_signals:
       - 研究
@@ -457,36 +457,36 @@ templates:
 
   analysis/paper-summary:
     family: analysis
-    name: 论文总结（通用）
+    name: Paper Summary (General)
     required_sections:
-      - 基本信息
-      - 研究主题
-      - 核心研究问题
-      - 方法概述
-      - 主要成果
-      - 关键公式或模型
-      - 实验与证据
-      - 局限性
-      - 后续方向
+      - Basic Information
+      - Research Topic
+      - Core Research Questions
+      - Method Overview
+      - Main Results
+      - Key Formulas or Models
+      - Experiments and Evidence
+      - Limitations
+      - Future Directions
     optional_sections: []
     detection_signals:
       - 论文
       - paper
     fallback: analysis/research-brief
-    notes: 当识别出论文子类型时，优先使用对应的子类型模板
+    notes: When a paper subtype is identified, prefer the corresponding subtype template
 
   analysis/theoretical-paper-summary:
     family: analysis
-    name: 理论论文总结
+    name: Theoretical Paper Summary
     required_sections:
-      - 基本信息
-      - 研究主题与问题
-      - 方法与证明思路
-      - 关键公式
-      - 核心定理/命题
-      - 成立条件与假设
-      - 局限性
-      - 可进一步追问的问题
+      - Basic Information
+      - Research Topic and Questions
+      - Methods and Proof Approach
+      - Key Formulas
+      - Core Theorems/Propositions
+      - Conditions and Assumptions
+      - Limitations
+      - Questions for Further Exploration
     optional_sections: []
     detection_signals:
       - 定理
@@ -498,16 +498,16 @@ templates:
 
   analysis/experimental-paper-summary:
     family: analysis
-    name: 实验论文总结
+    name: Experimental Paper Summary
     required_sections:
-      - 基本信息
-      - 研究主题与问题
-      - 方法
-      - 实验设置
-      - 主要结果
-      - 消融/对比
-      - 局限性
-      - 可以复现时需要注意的条件
+      - Basic Information
+      - Research Topic and Questions
+      - Method
+      - Experimental Setup
+      - Main Results
+      - Ablation/Comparison
+      - Limitations
+      - Reproduction Considerations
     optional_sections: []
     detection_signals:
       - 数据集
@@ -519,16 +519,16 @@ templates:
 
   analysis/systems-paper-summary:
     family: analysis
-    name: 系统论文总结
+    name: Systems Paper Summary
     required_sections:
-      - 基本信息
-      - 问题设定
-      - 系统设计
-      - 核心机制
-      - 评测配置
-      - 性能结果
-      - 工程权衡
-      - 局限性
+      - Basic Information
+      - Problem Statement
+      - System Design
+      - Core Mechanisms
+      - Evaluation Configuration
+      - Performance Results
+      - Engineering Trade-offs
+      - Limitations
     optional_sections: []
     detection_signals:
       - 系统架构
@@ -540,15 +540,15 @@ templates:
 
   analysis/survey-paper-summary:
     family: analysis
-    name: 综述论文总结
+    name: Survey Paper Summary
     required_sections:
-      - 基本信息
-      - 研究范围
-      - 分类框架/Taxonomy
-      - 主要研究脉络
-      - 关键对比
-      - 研究空白
-      - 未来方向
+      - Basic Information
+      - Research Scope
+      - Classification Framework/Taxonomy
+      - Main Research Threads
+      - Key Comparisons
+      - Research Gaps
+      - Future Directions
     optional_sections: []
     detection_signals:
       - 综述
@@ -559,18 +559,18 @@ templates:
 
   analysis/decision-memo:
     family: analysis
-    name: 决策备忘录
+    name: Decision Memo
     required_sections:
-      - 基本信息
-      - 决策问题
-      - 可选方案
-      - 权衡
-      - 推荐结论
-      - 后续推进
+      - Basic Information
+      - Decision Question
+      - Alternatives
+      - Trade-offs
+      - Recommended Conclusion
+      - Next Steps
     optional_sections:
-      - 证据
-      - 风险
-      - 反对意见
+      - Evidence
+      - Risks
+      - Dissenting Views
     detection_signals:
       - 决策
       - 备忘录
@@ -580,16 +580,16 @@ templates:
 
   analysis/theme-synthesis:
     family: analysis
-    name: 主题综合
+    name: Theme Synthesis
     required_sections:
-      - 基本信息
-      - 归纳范围
-      - 反复出现的主题
-      - 支持例子
-      - 矛盾点
-      - 启示
-      - 建议动作
-      - 来源
+      - Basic Information
+      - Synthesis Scope
+      - Recurring Themes
+      - Supporting Examples
+      - Contradictions
+      - Implications
+      - Recommended Actions
+      - Sources
     optional_sections: []
     detection_signals:
       - 综合
@@ -600,40 +600,40 @@ templates:
 
   analysis/competitive-scan:
     family: analysis
-    name: 竞品扫描（轻量级）
+    name: Competitive Scan (Lightweight)
     required_sections:
-      - 基本信息
-      - 扫描边界
-      - 比较维度
-      - 关键参与者
-      - 空白
-      - 机会
-      - 证据
-      - 风险
-      - 建议动作
+      - Basic Information
+      - Scan Boundaries
+      - Comparison Dimensions
+      - Key Players
+      - Gaps
+      - Opportunities
+      - Evidence
+      - Risks
+      - Recommended Actions
     optional_sections: []
     detection_signals:
       - 竞品扫描
       - 同类对比
       - 轻量级
     fallback: analysis/research-brief
-    notes: 面向产品决策的完整竞品分析请使用 product/competitive-analysis
+    notes: For product-decision-oriented full competitive analysis, use product/competitive-analysis
 
   # ============================================================
-  # Product 族（默认回落：product/prd）
-  # 产物模板路径：../templates/产品/<层>/<模板>.md
-  # 索引：templates-index.md
+  # Product family (default fallback: product/prd)
+  # Template paths: ../templates/Product/<layer>/<template>.md
+  # Index: templates-index.md
   # ============================================================
 
   product/brd:
     family: product
-    name: 商业需求文档（BRD）
+    name: Business Requirements Document (BRD)
     required_sections:
-      - 商业目标
-      - 投入产出
-      - 成功指标
-      - 风险与约束
-      - 干系人
+      - Business Objectives
+      - ROI
+      - Success Metrics
+      - Risks and Constraints
+      - Stakeholders
     optional_sections: []
     detection_signals:
       - BRD
@@ -641,17 +641,17 @@ templates:
       - 立项
       - 预算
     fallback: product/prd
-    template_path: ../templates/产品/战略层/【模板】商业需求文档.md
+    template_path: ../templates/Product/Strategy/【模板】商业需求文档.md
 
   product/mrd:
     family: product
-    name: 市场需求文档（MRD）
+    name: Market Requirements Document (MRD)
     required_sections:
-      - 目标市场
-      - 用户画像
-      - 竞品分析
-      - 用户痛点
-      - 需求优先级
+      - Target Market
+      - User Personas
+      - Competitive Analysis
+      - User Pain Points
+      - Requirement Priorities
     optional_sections: []
     detection_signals:
       - MRD
@@ -661,50 +661,50 @@ templates:
       - SAM
       - SOM
     fallback: product/prd
-    template_path: ../templates/产品/战略层/【模板】市场需求文档.md
+    template_path: ../templates/Product/Strategy/【模板】市场需求文档.md
 
   product/market-research:
     family: product
-    name: 市场调研报告
+    name: Market Research Report
     required_sections:
-      - 调研背景
-      - 调研方法
-      - 主要发现
-      - 结论与建议
+      - Research Background
+      - Research Methodology
+      - Key Findings
+      - Conclusions and Recommendations
     optional_sections: []
     detection_signals:
       - 市场调研
       - 行业分析
       - 调研报告
     fallback: product/prd
-    template_path: ../templates/产品/战略层/【模板】市场调研报告.md
+    template_path: ../templates/Product/Strategy/【模板】市场调研报告.md
 
   product/competitive-analysis:
     family: product
-    name: 竞品分析报告
+    name: Competitive Analysis Report
     required_sections:
-      - 竞品矩阵
-      - 差异化机会
-      - 护城河分析
-      - 应战策略
+      - Competitive Matrix
+      - Differentiation Opportunities
+      - Moat Analysis
+      - Response Strategy
     optional_sections: []
     detection_signals:
       - 竞品分析
       - 竞争格局
       - 差异化
     fallback: product/prd
-    template_path: ../templates/产品/战略层/【模板】竞品分析报告.md
+    template_path: ../templates/Product/Strategy/【模板】竞品分析报告.md
 
   product/charter:
     family: product
-    name: 项目任务书（Charter）
+    name: Project Charter
     required_sections:
-      - 项目背景
-      - 项目目标
-      - 范围边界
-      - 里程碑
-      - 核心团队
-      - 资源预算
+      - Project Background
+      - Project Objectives
+      - Scope Boundaries
+      - Milestones
+      - Core Team
+      - Resource Budget
     optional_sections: []
     detection_signals:
       - Charter
@@ -712,103 +712,103 @@ templates:
       - 立项
       - 准生证
     fallback: product/prd
-    template_path: ../templates/产品/战略层/【模板】项目任务书.md
+    template_path: ../templates/Product/Strategy/【模板】项目任务书.md
 
   product/prd:
     family: product
-    name: 产品需求文档（PRD）
+    name: Product Requirements Document (PRD)
     required_sections:
-      - 产品概述
-      - 用户旅程
-      - 功能详述
-      - 验收标准
-      - 非功能需求
+      - Product Overview
+      - User Journey
+      - Feature Details
+      - Acceptance Criteria
+      - Non-Functional Requirements
     optional_sections:
-      - 埋点
-      - 依赖
+      - Event Tracking
+      - Dependencies
     detection_signals:
       - PRD
       - 产品需求
     fallback: product/prd
-    template_path: ../templates/产品/产品层/【模板】产品需求文档.md
+    template_path: ../templates/Product/Product/【模板】产品需求文档.md
 
   product/frd:
     family: product
-    name: 功能需求文档（FRD）
+    name: Functional Requirements Document (FRD)
     required_sections:
-      - 系统逻辑
-      - 状态转换
-      - 数据流
+      - System Logic
+      - State Transitions
+      - Data Flow
     optional_sections: []
     detection_signals:
       - FRD
       - 功能需求
       - 系统视角
     fallback: product/prd
-    template_path: ../templates/产品/产品层/【模板】功能需求文档.md
+    template_path: ../templates/Product/Product/【模板】功能需求文档.md
 
   product/uiux-spec:
     family: product
-    name: 产品配色与 UIUX 规范
+    name: Product Color and UI/UX Specification
     required_sections:
-      - 色彩规范
-      - 字体规范
-      - 间距规范
-      - 组件库
+      - Color Specification
+      - Typography Specification
+      - Spacing Specification
+      - Component Library
     optional_sections:
-      - 交互原型
-      - 文案规范
+      - Interaction Prototype
+      - Copywriting Guidelines
     detection_signals:
       - UIUX
       - 配色
       - 规范
     fallback: product/prd
-    template_path: ../templates/产品/产品层/【模板】产品配色与UIUX规范文档.md
+    template_path: ../templates/Product/Product/【模板】产品配色与UIUX规范文档.md
 
   product/trd:
     family: product
-    name: 技术需求文档（TRD）
+    name: Technical Requirements Document (TRD)
     required_sections:
-      - 技术架构
-      - 数据模型
-      - 接口定义
-      - 非功能设计
-      - 技术选型
-      - 风险评估
+      - Technical Architecture
+      - Data Model
+      - Interface Definitions
+      - Non-Functional Design
+      - Technology Selection
+      - Risk Assessment
     optional_sections: []
     detection_signals:
       - TRD
       - 技术需求
       - 技术方案
     fallback: product/prd
-    template_path: ../templates/产品/技术层/【模板】技术需求文档(TRD).md
+    template_path: ../templates/Product/Technical/【模板】技术需求文档(TRD).md
 
   product/architecture:
     family: product
-    name: 架构设计文档
+    name: Architecture Design Document
     required_sections:
-      - 业务架构
-      - 应用架构
-      - 数据架构
-      - 技术架构
+      - Business Architecture
+      - Application Architecture
+      - Data Architecture
+      - Technical Architecture
     optional_sections: []
     detection_signals:
       - 架构设计
       - 系统设计
       - Architecture
     fallback: product/prd
-    template_path: ../templates/产品/技术层/【模板】架构设计文档.md
+    template_path: ../templates/Product/Technical/【模板】架构设计文档.md
 
   product/api-doc:
     family: product
-    name: API 文档
+    name: API Documentation
     required_sections:
-      - 端点列表
-      - 请求响应 schema
-      - 认证授权
-      - 错误码
-      - 版本管理
-      - 限流
+      - Endpoint List
+      - Request/Response Schema
+      - Authentication and Authorization
+      - Error Codes
+      - Version Management
+      - Rate Limiting
     optional_sections: []
     detection_signals:
       - API文档
@@ -816,138 +816,138 @@ templates:
       - OpenAPI
       - Swagger
     fallback: product/prd
-    template_path: ../templates/产品/技术层/【模板】API文档.md
+    template_path: ../templates/Product/Technical/【模板】API文档.md
 
   product/db-design:
     family: product
-    name: 数据库设计文档
+    name: Database Design Document
     required_sections:
-      - 表结构
-      - 索引设计
-      - 分库分表策略
-      - 数据归档方案
+      - Table Structure
+      - Index Design
+      - Sharding Strategy
+      - Data Archival Plan
     optional_sections: []
     detection_signals:
       - 数据库设计
       - 表结构
       - ER图
     fallback: product/prd
-    template_path: ../templates/产品/技术层/【模板】数据库设计文档规范.md
+    template_path: ../templates/Product/Technical/【模板】数据库设计文档规范.md
 
   product/algorithm-doc:
     family: product
-    name: 核心算法文档
+    name: Core Algorithm Document
     required_sections:
-      - 算法概述
-      - 输入输出
-      - 算法流程
-      - 复杂度分析
-      - 边界条件
+      - Algorithm Overview
+      - Input/Output
+      - Algorithm Flow
+      - Complexity Analysis
+      - Edge Cases
     optional_sections: []
     detection_signals:
       - 算法
       - 核心算法
     fallback: product/prd
-    template_path: ../templates/产品/技术层/【模板】核心算法文档.md
+    template_path: ../templates/Product/Technical/【模板】核心算法文档.md
 
   product/release-plan:
     family: product
-    name: 发布计划文档
+    name: Release Plan Document
     required_sections:
-      - 版本规划
-      - 环境计划
-      - 回滚方案
-      - 监控告警
+      - Version Planning
+      - Environment Plan
+      - Rollback Plan
+      - Monitoring and Alerting
     optional_sections: []
     detection_signals:
       - 发布计划
       - 上线排期
       - release
     fallback: product/prd
-    template_path: ../templates/产品/交付层/【模板】发布计划文档.md
+    template_path: ../templates/Product/Delivery/【模板】发布计划文档.md
 
   product/test-report:
     family: product
-    name: 测试报告
+    name: Test Report
     required_sections:
-      - 测试范围
-      - 测试策略
-      - 覆盖率
-      - Bug统计
-      - 遗留风险
-      - 发布建议
+      - Test Scope
+      - Test Strategy
+      - Coverage
+      - Bug Statistics
+      - Remaining Risks
+      - Release Recommendations
     optional_sections: []
     detection_signals:
       - 测试报告
       - 质量报告
     fallback: product/prd
-    template_path: ../templates/产品/交付层/【模板】测试报告.md
+    template_path: ../templates/Product/Delivery/【模板】测试报告.md
 
   product/canary-plan:
     family: product
-    name: 灰度方案
+    name: Canary Deployment Plan
     required_sections:
-      - 灰度比例与时间节奏
-      - 观察指标
-      - 回滚阈值
-      - 应急预案
+      - Canary Ratio and Timing
+      - Observation Metrics
+      - Rollback Threshold
+      - Emergency Plan
     optional_sections: []
     detection_signals:
       - 灰度
       - canary
       - 分批上线
     fallback: product/prd
-    template_path: ../templates/产品/交付层/【模板】灰度方案.md
+    template_path: ../templates/Product/Delivery/【模板】灰度方案.md
 
   product/operation-guide:
     family: product
-    name: 运营手册
+    name: Operations Guide
     required_sections:
-      - 功能说明
-      - 常见问题
-      - 数据解读
-      - 活动配置
+      - Feature Description
+      - Common Issues
+      - Data Interpretation
+      - Activity Configuration
     optional_sections: []
     detection_signals:
       - 运营手册
       - SOP
       - 运营流程
     fallback: product/prd
-    template_path: ../templates/产品/运营层/【模板】运营手册.md
+    template_path: ../templates/Product/Operations/【模板】运营手册.md
 
   product/dashboard:
     family: product
-    name: 数据看板
+    name: Data Dashboard
     required_sections:
-      - 埋点规范
-      - 数据看板
-      - 数据口径
+      - Event Tracking Specification
+      - Data Dashboard
+      - Data Definitions
     optional_sections: []
     detection_signals:
       - 数据看板
       - 埋点
       - 指标体系
     fallback: product/prd
-    template_path: ../templates/产品/运营层/【模板】数据看板.md
+    template_path: ../templates/Product/Operations/【模板】数据看板.md
 
   product/user-guide:
     family: product
-    name: 用户手册
+    name: User Guide
     required_sections:
-      - 帮助内容
-      - 新功能引导
+      - Help Content
+      - New Feature Guidance
     optional_sections:
-      - 视频教程
+      - Video Tutorials
     detection_signals:
       - 用户手册
       - 使用说明
       - help center
     fallback: product/prd
-    template_path: ../templates/产品/运营层/【模板】用户手册.md
+    template_path: ../templates/Product/Operations/【模板】用户手册.md
 
   product/weekly-monthly-report:
     family: product
-    name: 周报月报（产品族）
+    name: Weekly/Monthly Report (Product Family)
     required_sections:
       - report_info
       - summary
@@ -963,56 +963,56 @@ templates:
       - 周报
       - 月报
     fallback: product/prd
-    template_path: ../templates/产品/运营层/【模板】周报月报.md
-    notes: 与 business/weekly-monthly-report 区分——本模板为产品族正式归档版，章节字段对齐 registry
+    template_path: ../templates/Product/Operations/【模板】周报月报.md
+    notes: Distinct from business/weekly-monthly-report — this is the product family's formal archival version with registry-aligned section fields
 
   product/retrospective:
     family: product
-    name: 复盘报告
+    name: Retrospective Report
     required_sections:
-      - 目标回顾
-      - 结果评估
-      - 原因分析
-      - 规律沉淀
-      - 改进动作
-      - 资产归档
+      - Objective Review
+      - Result Assessment
+      - Root Cause Analysis
+      - Lessons Codified
+      - Improvement Actions
+      - Asset Archival
     optional_sections: []
     detection_signals:
       - 复盘
       - post-mortem
       - retrospective
     fallback: product/prd
-    template_path: ../templates/产品/退役层/【模板】复盘报告.md
+    template_path: ../templates/Product/Sunset/【模板】复盘报告.md
 
   product/knowledge-base:
     family: product
-    name: 知识沉淀
+    name: Knowledge Base
     required_sections:
-      - 核心经验
-      - 踩坑记录
-      - 最佳实践
-      - SOP提炼
-      - 反模式
-      - 知识资产清单
+      - Core Experience
+      - Pitfall Records
+      - Best Practices
+      - SOP Extraction
+      - Anti-Patterns
+      - Knowledge Asset Inventory
     optional_sections: []
     detection_signals:
       - 知识沉淀
       - knowledge base
       - 经验沉淀
     fallback: product/prd
-    template_path: ../templates/产品/退役层/【模板】知识沉淀.md
+    template_path: ../templates/Product/Sunset/【模板】知识沉淀.md
 
   product/business-plan:
     family: product
-    name: 商业计划书（BP）
+    name: Business Plan (BP)
     required_sections:
-      - 项目概述
-      - 市场机会
-      - 产品方案
-      - 商业模式
-      - 团队
-      - 财务预测
-      - 融资计划
+      - Project Overview
+      - Market Opportunity
+      - Product Plan
+      - Business Model
+      - Team
+      - Financial Projections
+      - Funding Plan
     optional_sections: []
     detection_signals:
       - BP
@@ -1024,16 +1024,16 @@ templates:
 
   product/business-model:
     family: product
-    name: 商业模式文档
+    name: Business Model Document
     required_sections:
-      - 价值主张
-      - 客户细分
-      - 渠道
-      - 收入来源
-      - 成本结构
-      - 关键资源
-      - 关键活动
-      - 合作伙伴
+      - Value Proposition
+      - Customer Segments
+      - Channels
+      - Revenue Streams
+      - Cost Structure
+      - Key Resources
+      - Key Activities
+      - Partners
     optional_sections: []
     detection_signals:
       - 商业模式
@@ -1044,14 +1044,14 @@ templates:
 
   product/meeting-minutes-detailed:
     family: product
-    name: 正式会议纪要
+    name: Formal Meeting Minutes
     required_sections:
-      - 会议信息
-      - 议题
-      - 讨论
-      - 决策（含 ACTION 编号）
-      - 待办事项
-      - 风险（含 RISK 编号）
+      - Meeting Info
+      - Agenda
+      - Discussion
+      - Decisions (with ACTION numbers)
+      - Action Items
+      - Risks (with RISK numbers)
       - Parking Lot
     optional_sections: []
     detection_signals:
@@ -1060,19 +1060,19 @@ templates:
       - FAR原则
     fallback: product/prd
     template_path: ../templates/【模板】会议纪要.md
-    notes: 遵循 FAR 原则（Focus/Action/Result），与 meeting/decision-minutes 区分——本模板为正式归档版
+    notes: Follows the FAR principle (Focus/Action/Result); distinct from meeting/decision-minutes — this is the formal archival version
 
   product/literature-review:
     family: product
-    name: 文献综述报告
+    name: Literature Review Report
     required_sections:
-      - 综述背景
-      - 检索策略（PRISMA）
-      - 评判框架
-      - 主题归纳
-      - 场景化推荐
-      - 研究空白
-      - 参考文献
+      - Review Background
+      - Search Strategy (PRISMA)
+      - Evaluation Framework
+      - Theme Synthesis
+      - Scenario-Based Recommendations
+      - Research Gaps
+      - References
     optional_sections: []
     detection_signals:
       - 文献综述
