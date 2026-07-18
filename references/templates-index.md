@@ -1,48 +1,48 @@
-# 模板索引
+# Template Index
 
-完整文档模板已从 `references/templates/` 迁移至 `../templates/`。本文件提供按生命周期分层的索引，便于按需定位。
+Complete document templates have been migrated from `references/templates/` to `../templates/`. This file provides a lifecycle-layered index for easy lookup.
 
-> 模板为完整 Markdown 产物骨架，单文件较长（300-1400 行），故不放在 `references/` 下。模板选择逻辑见 [guides/template-selection.md](guides/template-selection.md)，注册信息见 [registry.yaml](registry.yaml)。
+> Templates are complete Markdown artifact skeletons, each file is lengthy (300-1400 lines), so they are not placed under `references/`. For template selection logic, see [guides/template-selection.md](guides/template-selection.md); for registration info, see [registry.yaml](registry.yaml).
 
-## 产品全生命周期模板地图
+## Product Full Lifecycle Template Map
 
 ```mermaid
 flowchart TD
-    subgraph 战略层["战略层（Why）"]
-        A1[BRD 商业需求文档]
-        A2[MRD 市场需求文档]
-        A3[Charter 项目任务书]
-        A4[市场调研报告]
-        A5[竞品分析报告]
+    subgraph Strategy["Strategy Layer (Why)"]
+        A1[BRD - Business Requirements Document]
+        A2[MRD - Market Requirements Document]
+        A3[Charter - Project Charter]
+        A4[Market Research Report]
+        A5[Competitive Analysis Report]
     end
-    subgraph 产品层["产品层（What）"]
-        B1[PRD 产品需求文档]
-        B2[FRD 功能需求文档]
-        B3[UIUX 配色规范]
+    subgraph Product["Product Layer (What)"]
+        B1[PRD - Product Requirements Document]
+        B2[FRD - Functional Requirements Document]
+        B3[UIUX Color Specification]
     end
-    subgraph 技术层["技术层（How）"]
-        C1[TRD 技术需求文档]
-        C2[架构设计文档]
-        C3[API 文档]
-        C4[数据库设计文档]
-        C5[核心算法文档]
+    subgraph Tech["Technology Layer (How)"]
+        C1[TRD - Technical Requirements Document]
+        C2[Architecture Design Document]
+        C3[API Documentation]
+        C4[Database Design Document]
+        C5[Core Algorithm Document]
     end
-    subgraph 交付层["交付层（When）"]
-        D1[发布计划文档]
-        D2[测试报告]
-        D3[灰度方案]
+    subgraph Delivery["Delivery Layer (When)"]
+        D1[Release Plan Document]
+        D2[Test Report]
+        D3[Canary Deployment Plan]
     end
-    subgraph 运营层["运营层（Run）"]
-        E1[运营手册]
-        E2[数据看板]
-        E3[用户手册]
-        E4[周报月报]
+    subgraph Ops["Operations Layer (Run)"]
+        E1[Operations Manual]
+        E2[Data Dashboard]
+        E3[User Manual]
+        E4[Weekly/Monthly Reports]
     end
-    subgraph 退役层["退役层（End）"]
-        F1[复盘报告]
-        F2[知识沉淀]
+    subgraph Retire["Retirement Layer (End)"]
+        F1[Retrospective Report]
+        F2[Knowledge Base]
     end
-    subgraph 通用["通用文档"]
+    subgraph General["General Documents"]
         G1[README]
         G2[CHANGELOG]
         G3[FAQ]
@@ -53,76 +53,76 @@ flowchart TD
     E2 --> F1 --> F2
 ```
 
-## 战略层
+## Strategy Layer
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/brd` | 商业需求文档（BRD） | [../templates/产品/战略层/【模板】商业需求文档.md](../templates/产品/战略层/【模板】商业需求文档.md) |
-| `product/mrd` | 市场需求文档（MRD） | [../templates/产品/战略层/【模板】市场需求文档.md](../templates/产品/战略层/【模板】市场需求文档.md) |
-| `product/market-research` | 市场调研报告 | [../templates/产品/战略层/【模板】市场调研报告.md](../templates/产品/战略层/【模板】市场调研报告.md) |
-| `product/competitive-analysis` | 竞品分析报告 | [../templates/产品/战略层/【模板】竞品分析报告.md](../templates/产品/战略层/【模板】竞品分析报告.md) |
-| `product/charter` | 项目任务书（Charter） | [../templates/产品/战略层/【模板】项目任务书.md](../templates/产品/战略层/【模板】项目任务书.md) |
+| `product/brd` | Business Requirements Document (BRD) | [../templates/Product/Strategy/[Template] Business Requirements Document.md](../templates/产品/战略层/【模板】商业需求文档.md) |
+| `product/mrd` | Market Requirements Document (MRD) | [../templates/Product/Strategy/[Template] Market Requirements Document.md](../templates/产品/战略层/【模板】市场需求文档.md) |
+| `product/market-research` | Market Research Report | [../templates/Product/Strategy/[Template] Market Research Report.md](../templates/产品/战略层/【模板】市场调研报告.md) |
+| `product/competitive-analysis` | Competitive Analysis Report | [../templates/Product/Strategy/[Template] Competitive Analysis Report.md](../templates/产品/战略层/【模板】竞品分析报告.md) |
+| `product/charter` | Project Charter | [../templates/Product/Strategy/[Template] Project Charter.md](../templates/产品/战略层/【模板】项目任务书.md) |
 
-## 产品层
+## Product Layer
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/prd` | 产品需求文档（PRD） | [../templates/产品/产品层/【模板】产品需求文档.md](../templates/产品/产品层/【模板】产品需求文档.md) |
-| `product/frd` | 功能需求文档（FRD） | [../templates/产品/产品层/【模板】功能需求文档.md](../templates/产品/产品层/【模板】功能需求文档.md) |
-| `product/uiux-spec` | 产品配色与 UIUX 规范 | [../templates/产品/产品层/【模板】产品配色与UIUX规范文档.md](../templates/产品/产品层/【模板】产品配色与UIUX规范文档.md) |
+| `product/prd` | Product Requirements Document (PRD) | [../templates/Product/Product/[Template] Product Requirements Document.md](../templates/产品/产品层/【模板】产品需求文档.md) |
+| `product/frd` | Functional Requirements Document (FRD) | [../templates/Product/Product/[Template] Functional Requirements Document.md](../templates/产品/产品层/【模板】功能需求文档.md) |
+| `product/uiux-spec` | Product Color & UIUX Specification | [../templates/Product/Product/[Template] Product Color & UIUX Specification.md](../templates/产品/产品层/【模板】产品配色与UIUX规范文档.md) |
 
-## 技术层
+## Technology Layer
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/trd` | 技术需求文档（TRD） | [../templates/产品/技术层/【模板】技术需求文档(TRD).md](../templates/产品/技术层/【模板】技术需求文档(TRD).md) |
-| `product/architecture` | 架构设计文档 | [../templates/产品/技术层/【模板】架构设计文档.md](../templates/产品/技术层/【模板】架构设计文档.md) |
-| `product/api-doc` | API 文档 | [../templates/产品/技术层/【模板】API文档.md](../templates/产品/技术层/【模板】API文档.md) |
-| `product/db-design` | 数据库设计文档 | [../templates/产品/技术层/【模板】数据库设计文档规范.md](../templates/产品/技术层/【模板】数据库设计文档规范.md) |
-| `product/algorithm-doc` | 核心算法文档 | [../templates/产品/技术层/【模板】核心算法文档.md](../templates/产品/技术层/【模板】核心算法文档.md) |
+| `product/trd` | Technical Requirements Document (TRD) | [../templates/Product/Tech/[Template] Technical Requirements Document (TRD).md](../templates/产品/技术层/【模板】技术需求文档(TRD).md) |
+| `product/architecture` | Architecture Design Document | [../templates/Product/Tech/[Template] Architecture Design Document.md](../templates/产品/技术层/【模板】架构设计文档.md) |
+| `product/api-doc` | API Documentation | [../templates/Product/Tech/[Template] API Documentation.md](../templates/产品/技术层/【模板】API文档.md) |
+| `product/db-design` | Database Design Document | [../templates/Product/Tech/[Template] Database Design Document Specification.md](../templates/产品/技术层/【模板】数据库设计文档规范.md) |
+| `product/algorithm-doc` | Core Algorithm Document | [../templates/Product/Tech/[Template] Core Algorithm Document.md](../templates/产品/技术层/【模板】核心算法文档.md) |
 
-## 交付层
+## Delivery Layer
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/release-plan` | 发布计划文档 | [../templates/产品/交付层/【模板】发布计划文档.md](../templates/产品/交付层/【模板】发布计划文档.md) |
-| `product/test-report` | 测试报告 | [../templates/产品/交付层/【模板】测试报告.md](../templates/产品/交付层/【模板】测试报告.md) |
-| `product/canary-plan` | 灰度方案 | [../templates/产品/交付层/【模板】灰度方案.md](../templates/产品/交付层/【模板】灰度方案.md) |
+| `product/release-plan` | Release Plan Document | [../templates/Product/Delivery/[Template] Release Plan Document.md](../templates/产品/交付层/【模板】发布计划文档.md) |
+| `product/test-report` | Test Report | [../templates/Product/Delivery/[Template] Test Report.md](../templates/产品/交付层/【模板】测试报告.md) |
+| `product/canary-plan` | Canary Deployment Plan | [../templates/Product/Delivery/[Template] Canary Deployment Plan.md](../templates/产品/交付层/【模板】灰度方案.md) |
 
-## 运营层
+## Operations Layer
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/operation-guide` | 运营手册 | [../templates/产品/运营层/【模板】运营手册.md](../templates/产品/运营层/【模板】运营手册.md) |
-| `product/dashboard` | 数据看板 | [../templates/产品/运营层/【模板】数据看板.md](../templates/产品/运营层/【模板】数据看板.md) |
-| `product/user-guide` | 用户手册 | [../templates/产品/运营层/【模板】用户手册.md](../templates/产品/运营层/【模板】用户手册.md) |
-| `product/weekly-monthly-report` | 周报月报 | [../templates/产品/运营层/【模板】周报月报.md](../templates/产品/运营层/【模板】周报月报.md) |
+| `product/operation-guide` | Operations Manual | [../templates/Product/Ops/[Template] Operations Manual.md](../templates/产品/运营层/【模板】运营手册.md) |
+| `product/dashboard` | Data Dashboard | [../templates/Product/Ops/[Template] Data Dashboard.md](../templates/产品/运营层/【模板】数据看板.md) |
+| `product/user-guide` | User Manual | [../templates/Product/Ops/[Template] User Manual.md](../templates/产品/运营层/【模板】用户手册.md) |
+| `product/weekly-monthly-report` | Weekly/Monthly Reports | [../templates/Product/Ops/[Template] Weekly Monthly Reports.md](../templates/产品/运营层/【模板】周报月报.md) |
 
-## 退役层
+## Retirement Layer
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/retrospective` | 复盘报告 | [../templates/产品/退役层/【模板】复盘报告.md](../templates/产品/退役层/【模板】复盘报告.md) |
-| `product/knowledge-base` | 知识沉淀 | [../templates/产品/退役层/【模板】知识沉淀.md](../templates/产品/退役层/【模板】知识沉淀.md) |
+| `product/retrospective` | Retrospective Report | [../templates/Product/Retire/[Template] Retrospective Report.md](../templates/产品/退役层/【模板】复盘报告.md) |
+| `product/knowledge-base` | Knowledge Base | [../templates/Product/Retire/[Template] Knowledge Base.md](../templates/产品/退役层/【模板】知识沉淀.md) |
 
-## 通用文档
+## General Documents
 
-| 文档 | 路径 |
+| Document | Path |
 | --- | --- |
-| README | [../templates/通用/【模板】README.md](../templates/通用/【模板】README.md) |
-| CHANGELOG | [../templates/通用/【模板】CHANGELOG.md](../templates/通用/【模板】CHANGELOG.md) |
-| FAQ | [../templates/通用/【模板】FAQ.md](../templates/通用/【模板】FAQ.md) |
-| CONTRIBUTING | [../templates/通用/【模板】CONTRIBUTING.md](../templates/通用/【模板】CONTRIBUTING.md) |
+| README | [../templates/General/[Template] README.md](../templates/通用/【模板】README.md) |
+| CHANGELOG | [../templates/General/[Template] CHANGELOG.md](../templates/通用/【模板】CHANGELOG.md) |
+| FAQ | [../templates/General/[Template] FAQ.md](../templates/通用/【模板】FAQ.md) |
+| CONTRIBUTING | [../templates/General/[Template] CONTRIBUTING.md](../templates/通用/【模板】CONTRIBUTING.md) |
 
-## 独立模板（非产品生命周期）
+## Standalone Templates (Outside Product Lifecycle)
 
-| 模板 ID | 文档 | 路径 |
+| Template ID | Document | Path |
 | --- | --- | --- |
-| `product/business-plan` | 商业计划书（BP） | [../templates/【模板】商业计划书.md](../templates/【模板】商业计划书.md) |
-| `product/business-model` | 商业模式文档 | [../templates/【模板】商业模式文档.md](../templates/【模板】商业模式文档.md) |
-| `product/meeting-minutes-detailed` | 正式会议纪要 | [../templates/【模板】会议纪要.md](../templates/【模板】会议纪要.md) |
-| `product/literature-review` | 论文研究报告 | [../templates/【模板】论文研究报告.md](../templates/【模板】论文研究报告.md) |
+| `product/business-plan` | Business Plan (BP) | [../templates/[Template] Business Plan.md](../templates/【模板】商业计划书.md) |
+| `product/business-model` | Business Model Document | [../templates/[Template] Business Model Document.md](../templates/【模板】商业模式文档.md) |
+| `product/meeting-minutes-detailed` | Formal Meeting Minutes | [../templates/[Template] Meeting Minutes.md](../templates/【模板】会议纪要.md) |
+| `product/literature-review` | Literature Review Report | [../templates/[Template] Literature Review Report.md](../templates/【模板】论文研究报告.md) |
 
-## 产品文档体系总览
+## Product Documentation System Overview
 
-完整的分层说明、裁剪指南、文档间追溯关系见 [../templates/产品/README.md](../templates/产品/README.md)。
+For complete layered descriptions, trimming guidelines, and inter-document traceability, see [../templates/Product/README.md](../templates/产品/README.md).

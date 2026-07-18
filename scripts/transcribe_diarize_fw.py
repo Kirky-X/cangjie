@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-使用 faster-whisper 进行转录，并基于音频能量和说话人变化检测进行简单的说话人分离
+Transcription using faster-whisper with simple speaker diarization based on audio energy and speaker change detection
 """
 
 import os
@@ -17,7 +17,7 @@ import librosa
 
 
 def format_timestamp(seconds: float) -> str:
-    """格式化时间戳为 HH:MM:SS"""
+    """Format timestamp as HH:MM:SS"""
     td = timedelta(seconds=seconds)
     return str(td).split(".")[0]
 
@@ -26,15 +26,15 @@ def detect_speaker_changes(
     audio_path: str, segment_duration: float = 0.5, threshold: float = 0.3
 ):
     """
-    基于音频能量变化检测潜在的说话人切换点
-    返回说话人变化的时间点列表
+    Detect potential speaker change points based on audio energy variation
+    Returns list of time points where speaker changes occur
     """
     audio, sr = librosa.load(audio_path, sr=16000)
 
-    # 计算短时能量（向量化：einsum 在单次 C 内核 pass 内对每帧求平方和）
-    # 原逐窗口 Python 循环开销随帧数线性增长（默认 1h 音频 ≈ 7200 帧加速约 3.8x，
-    # 更小 hop 时差距更大）。语义保持等价：对实数信号 |x|^2 == x^2，
-    # 整帧部分 reshape 为视图零拷贝，尾部不足一帧单独求和，结果与原循环（含尾部短帧）一致。
+    # Compute short-time energy (vectorized: einsum sums squares per frame in a single C kernel pass)
+    # Original per-window Python loop cost grew linearly with frame count (default 1h audio approx 7200 frames, ~3.8x speedup,
+    # larger gap with smaller hops). Semantic equivalence preserved: for real signals |x|^2 == x^2,
+    # full frames reshaped to view zero-copy, tail shorter than one frame summed separately, results match original loop.
     hop_length = int(sr * segment_duration)
     total = len(audio)
     n_full = total // hop_length
@@ -49,12 +49,12 @@ def detect_speaker_changes(
         energy = np.append(energy, tail) if n_full > 0 else np.array([tail])
     energy = energy.astype(audio.dtype, copy=False)
 
-    # 计算能量变化率
+    # Compute energy change rate
     if len(energy) > 1:
         energy_change = np.abs(np.diff(energy))
         energy_change = energy_change / (np.max(energy_change) + 1e-10)
 
-        # 检测显著变化点
+        # Detect significant change points
         change_points = []
         for i, change in enumerate(energy_change):
             if change > threshold:
@@ -69,29 +69,29 @@ def transcribe_with_diarization(
     audio_path: str, output_path: str, num_speakers: int = 3
 ):
     """
-    使用 faster-whisper 进行转录并尝试说话人分离
+    Transcribe using faster-whisper with speaker diarization attempt
     """
-    print(f"加载 faster-whisper 模型...")
-    # device 自适应：无 GPU 时 fallback 到 cpu（避免 RuntimeError），compute_type 相应调整
+    print(f"Loading faster-whisper model...")
+    # Device auto-adapt: falls back to cpu without GPU (avoids RuntimeError), compute_type adjusted accordingly
     import torch
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     compute_type = "float16" if device == "cuda" else "int8"
-    print(f"使用 device={device}, compute_type={compute_type}")
+    print(f"Using device={device}, compute_type={compute_type}")
     model = WhisperModel("large-v3", device=device, compute_type=compute_type)
 
-    print(f"转录 {audio_path}...")
+    print(f"Transcribing {audio_path}...")
     segments, info = model.transcribe(
         audio_path, language="zh", word_timestamps=True, vad_filter=True
     )
 
-    print(f"检测语言: {info.language} (概率: {info.language_probability:.2f})")
+    print(f"Detected language: {info.language} (probability: {info.language_probability:.2f})")
 
-    # 检测潜在说话人变化点
-    print(f"分析音频能量变化...")
+    # Detect potential speaker change points
+    print(f"Analyzing audio energy changes...")
     change_points = detect_speaker_changes(audio_path)
 
-    # 基于时间和能量变化分配说话人
+    # Assign speakers based on time and energy changes
     current_speaker = 1
     last_change_time = 0
     speaker_segments = []
@@ -101,7 +101,7 @@ def transcribe_with_diarization(
         end = segment.end
         text = segment.text.strip()
 
-        # 检查是否有能量变化点在此段落开始前
+        # Check for energy change points before this segment starts
         for cp in change_points:
             if cp > last_change_time and cp < start:
                 current_speaker = (current_speaker % num_speakers) + 1
@@ -110,19 +110,19 @@ def transcribe_with_diarization(
 
         speaker_segments.append(
             {
-                "speaker": f"发言人{current_speaker}",
+                "speaker": f"Speaker{current_speaker}",
                 "start": start,
                 "end": end,
                 "text": text,
             }
         )
 
-    # 保存结果
-    print(f"保存结果到 {output_path}...")
+    # Save results
+    print(f"Saving results to {output_path}...")
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write(f"音频文件: {audio_path}\n")
-        f.write(f"语言: {info.language}\n")
-        f.write(f"总时长: {format_timestamp(info.duration)}\n")
+        f.write(f"Audio file: {audio_path}\n")
+        f.write(f"Language: {info.language}\n")
+        f.write(f"Total duration: {format_timestamp(info.duration)}\n")
         f.write("=" * 50 + "\n\n")
 
         for seg in speaker_segments:
@@ -131,12 +131,12 @@ def transcribe_with_diarization(
             )
             f.write(f"{seg['text']}\n\n")
 
-    # 保存 JSON 格式
+    # Save JSON format
     json_path = output_path.replace(".txt", ".json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(speaker_segments, f, ensure_ascii=False, indent=2)
 
-    print(f"转录完成！共 {len(speaker_segments)} 个段落")
+    print(f"Transcription complete! {len(speaker_segments)} segments total")
     return speaker_segments
 
 

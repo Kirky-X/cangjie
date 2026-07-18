@@ -1,48 +1,48 @@
-# 输出密度策略
+# Output Density Policy
 
-> 输出密度控制策略与压缩边界。从 SKILL.md 外移，生成最终输出时按此控制信息密度。
+> Output density control strategy and compression boundaries. Extracted from SKILL.md to control information density when generating final output.
 
-## 三档密度
+## Three Density Levels
 
-默认采用 `standard-detailed`，除非用户明确要求更短：
+Default is `standard-detailed` unless the user explicitly requests a shorter version:
 
-- `brief`：只保留结论、少量关键点、最小必要待办。仅在用户明确要求快读版时使用
-- `standard-detailed`：默认模式。覆盖全部必需章节，为每个章节保留足够事实和证据
-- `deep-dive`：当用户明确要求"详细拆解/完整笔记/尽量全面/保留公式与实验细节"时使用，增加章节内层次和证据密度
+- `brief`: Keep only conclusions, a few key points, and minimal necessary action items. Use only when the user explicitly requests a quick-read version.
+- `standard-detailed`: Default mode. Covers all required sections with sufficient facts and evidence for each.
+- `deep-dive`: Use when the user explicitly requests "detailed breakdown / complete notes / as comprehensive as possible / preserve formulas and experiment details." Increases in-section depth and evidence density.
 
-## 各类信息默认保留策略
+## Default Retention Strategy by Content Type
 
-- **学习类**：保留知识点之间的因果关系、例子、术语定义、练习建议，而不只是主题列表
-- **书籍类**：默认做层级总结，至少同时覆盖"逐章总结"和"全书总结"；全书总结不能只是章节摘要拼接，必须额外提炼全书主线和结构关系
-- **书籍类**：章节摘要默认写成独立文件；全书文件只负责全书级提炼、结构关系、关键论点与综合判断
-- **媒体类**：保留话题如何展开、嘉宾分歧、亮点论点、关键引用，而不只是"讨论了什么"
-- **会议类**：保留谁提出了什么、如何收敛到决策、未解决问题、责任人与截止时间
-- **业务类**：保留进展背后的影响、风险成因、指标变化、下一步动作的优先级
-- **论文类**：保留研究问题、方法细节、公式/模型、实验设置、结果证据、局限性，不要只写摘要改写
+- **Learning**: Preserve causal relationships between concepts, examples, terminology definitions, and practice suggestions — not just topic lists.
+- **Books**: Default to hierarchical summaries covering both "chapter summaries" and "whole-book summary"; the whole-book summary must not merely concatenate chapter digests but must additionally distill the overarching thesis and structural relationships.
+- **Books**: Chapter digests default to individual files; the whole-book file is responsible only for book-level distillation, structural relationships, key arguments, and synthesizing judgments.
+- **Media**: Preserve how topics develop, guest disagreements, highlight arguments, and key quotes — not just "what was discussed."
+- **Meetings**: Preserve who proposed what, how decisions were reached, unresolved issues, responsible persons, and deadlines.
+- **Business**: Preserve the impact behind progress, root causes of risks, metric changes, and priority of next steps.
+- **Papers**: Preserve research questions, method details, formulas/models, experiment setup, results evidence, and limitations — do not just rewrite the abstract.
 
-## 压缩边界
+## Compression Boundaries
 
-执行时可以压缩什么、不能压缩什么：
+What can and cannot be compressed during execution:
 
-- 可以压缩重复表达，不能压缩不同观点、不同实验结果、不同决策项
-- 可以省略装饰性语句，不能省略结论成立所依赖的关键证据
-- 可以不展开所有细枝末节，不能把"方法、证据、结果、限制"四者压成一句空泛总评
+- Can compress repetitive expressions; cannot compress different viewpoints, different experimental results, or different decision items.
+- Can omit decorative statements; cannot omit key evidence that conclusions depend on.
+- Can skip minor details; cannot compress "methods, evidence, results, limitations" into a single vague generalization.
 
-## 书籍层级压缩策略
+## Book Hierarchical Compression Strategy
 
-书籍总结默认遵守以下层级压缩规则：
+Book summaries follow these hierarchical compression rules by default:
 
-- 输出形态默认是：
-  - `书名-全书总结.md`：全书级提炼，不内嵌完整逐章摘要
-  - `章节总结/NN_章节名-总结.md`：每章独立文件
-- 如果用户没有特别要求，不要把"章节摘要全文"重复写进全书文件；全书文件中最多保留章节导航、分部概览或关键章节索引
-- 先判断结构层级：`全书 -> 部分/篇章 -> 章节 -> 小节`。如果原书存在"第一部分/第二部分/篇章/卷"等中层结构，摘要中优先保留这一层，不要直接把所有章节打平成一个长列表
-- 先写"全书级提炼"，再写"分部/章节级摘要"。禁止把逐章摘要当作全书总结的替代品
-- 章节很多时，不要求每章等长。核心章节、转折章节、方法章节应比铺垫章节更详细；附录、致谢、推荐语等非核心内容降级为"略写"或从正文摘要中排除，但要说明处理方式
-- 当章节数 `> 12` 时，默认启用 `hierarchical-compression`：
-  - 每个部分先给 `2-4` 条部分摘要
-  - 每章独立文件给 `4-8` 条高信息量 bullet
-  - 全书级章节保持独立，不可被压缩掉
-- 当章节数 `> 20` 且用户未要求超详细时，逐章摘要优先保留：本章核心问题、关键论点/事件、与全书主线的关系。不要在每章都平均展开全部字段
-- 如果输入是长书但只提供节选，必须把输出改成"基于已提供章节的层级总结"，不能伪装成完整全书阅读结果
-- 对非虚构长书，优先突出：章节在论证链中的功能；对叙事类长书，优先突出：章节在情节推进和人物变化中的功能
+- Default output format is:
+  - `BookTitle-whole-book-summary.md`: Book-level distillation, does not embed complete chapter digests
+  - `Chapter-Summaries/NN_ChapterName-Summary.md`: One independent file per chapter
+- Unless the user explicitly requests otherwise, do not duplicate "full chapter digest text" into the whole-book file; the whole-book file may contain at most chapter navigation, section overviews, or key chapter index.
+- First determine the structural hierarchy: `Whole Book -> Parts/Volumes -> Chapters -> Sections`. If the original book has "Part 1/Part 2/Volumes" mid-level structures, the summary should preserve this layer and not flatten all chapters into a single long list.
+- Write "whole-book distillation" first, then "part/chapter-level summaries." Do not substitute chapter digests for the whole-book summary.
+- When chapters are numerous, do not require equal length for each. Core chapters, pivotal chapters, and methodology chapters should be more detailed than setup chapters; appendices, acknowledgments, recommendations, and other non-core content should be downgraded to "brief treatment" or excluded from the main summary, but the handling approach must be noted.
+- When the chapter count is `> 12`, enable `hierarchical-compression` by default:
+  - Each part gets 2-4 bullet point summaries first
+  - Each chapter file gets 4-8 high-information-density bullets
+  - Whole-book-level chapters remain independent and must not be compressed away
+- When the chapter count is `> 20` and the user has not requested ultra-detail, chapter digests should prioritize: core question of the chapter, key arguments/events, and relationship to the whole-book thesis. Do not equally expand all fields in every chapter.
+- If the input is a long book but only excerpts are provided, the output must be changed to "hierarchical summary based on provided chapters" and must not masquerade as a complete reading.
+- For nonfiction long books, prioritize: the chapter's function in the argument chain; for narrative long books, prioritize: the chapter's function in plot progression and character development.

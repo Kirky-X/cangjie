@@ -1,289 +1,289 @@
-# 输出骨架 — Analysis 族
+# Output Skeletons — Analysis Family
 
-> 完整索引见 [output-skeletons.md](output-skeletons.md)。
+> Full index at [output-skeletons.md](output-skeletons.md).
 
 ## Analysis
 
 ### `analysis/research-brief`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 范围与目标
+## Scope & Objectives
 
-## 主要发现
-- 发现
-- 证据
-- 代表性例子
-- 对业务/研究意味着什么
+## Key Findings
+- Finding
+- Evidence
+- Representative example
+- Implications for business/research
 
-## 支撑证据
+## Supporting Evidence
 
-## 启示
+## Implications
 
-## 未解决问题
+## Open Questions
 
-## 建议动作
+## Recommended Actions
 ```
 
 ### `analysis/paper-summary`
 
 ```markdown
-# {论文标题}
+# {Paper Title}
 
-## 基本信息
-- 作者：
-- 发表来源：
-- 论文类型：
-- 研究领域：
+## Basic Information
+- Authors:
+- Publication venue:
+- Paper type:
+- Research domain:
 
-## 研究主题
+## Research Topic
 
-## 核心研究问题
+## Core Research Question
 
-## 方法概述
-- 整体思路
-- 关键模块/步骤
-- 与已有方法的主要区别
+## Method Overview
+- Overall approach
+- Key modules/steps
+- Major differences from existing methods
 
-## 主要成果
-- 论文声称的贡献
-- 最重要结果
-- 结果成立依赖的证据
+## Key Contributions
+- Claimed contributions
+- Most important results
+- Evidence supporting results
 
-## 关键公式或模型
-- 公式/模型是什么
-- 每个关键符号代表什么
-- 它解决了什么问题
+## Key Formulas or Models
+- What the formula/model is
+- What each key symbol represents
+- What problem it solves
 
-## 实验与证据
-- 数据集/任务
-- 指标
-- baseline 或对比对象
-- 主要结果
-- 消融或额外验证
+## Experiments & Evidence
+- Datasets/tasks
+- Metrics
+- Baselines or comparison targets
+- Main results
+- Ablation or additional validation
 
-## 局限性
+## Limitations
 
-## 后续方向
+## Future Directions
 ```
 
 ### `analysis/theoretical-paper-summary`
 
 ```markdown
-# {论文标题}
+# {Paper Title}
 
-## 基本信息
+## Basic Information
 
-## 研究主题与问题
+## Research Topic & Question
 
-## 方法与证明思路
-- 理论框架
-- 证明主线
-- 关键中间结论
+## Method & Proof Approach
+- Theoretical framework
+- Main proof thread
+- Key intermediate results
 
-## 关键公式
-- 公式
-- 条件/记号说明
-- 直觉解释
+## Key Formulas
+- Formula
+- Conditions/notation explanation
+- Intuitive interpretation
 
-## 核心定理/命题
-- 定理内容
-- 成立条件
-- 意义
+## Core Theorems/Propositions
+- Theorem statement
+- Conditions for validity
+- Significance
 
-## 成立条件与假设
+## Validity Conditions & Assumptions
 
-## 局限性
+## Limitations
 
-## 可进一步追问的问题
+## Questions for Further Exploration
 ```
 
 ### `analysis/experimental-paper-summary`
 
 ```markdown
-# {论文标题}
+# {Paper Title}
 
-## 基本信息
+## Basic Information
 
-## 研究主题与问题
+## Research Topic & Question
 
-## 方法
+## Method
 
-## 实验设置
-- 数据集：
-- 指标：
-- baseline：
-- 训练/评测协议：
+## Experimental Setup
+- Datasets:
+- Metrics:
+- Baselines:
+- Training/evaluation protocol:
 
-## 主要结果
+## Main Results
 
-## 消融/对比
-- 哪些变量被改动
-- 对结果的影响
-- 作者据此得出的解释
+## Ablation/Comparison
+- What variables were changed
+- Impact on results
+- Author's interpretation
 
-## 局限性
+## Limitations
 
-## 可以复现时需要注意的条件
+## Conditions to Note for Reproduction
 ```
 
 ### `analysis/systems-paper-summary`
 
 ```markdown
-# {论文标题}
+# {Paper Title}
 
-## 基本信息
+## Basic Information
 
-## 问题设定
+## Problem Setting
 
-## 系统设计
+## System Design
 
-## 核心机制
+## Core Mechanism
 
-## 评测配置
+## Evaluation Configuration
 
-## 性能结果
+## Performance Results
 
-## 工程权衡
+## Engineering Trade-offs
 
-## 局限性
+## Limitations
 ```
 
 ### `analysis/survey-paper-summary`
 
 ```markdown
-# {论文标题}
+# {Paper Title}
 
-## 基本信息
+## Basic Information
 
-## 研究范围
+## Research Scope
 
-## 分类框架 / Taxonomy
+## Classification Framework / Taxonomy
 
-## 主要研究脉络
+## Major Research Threads
 
-## 关键对比
+## Key Comparisons
 
-## 研究空白
+## Research Gaps
 
-## 未来方向
+## Future Directions
 ```
 
 ### `analysis/decision-memo`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 基本信息
-- 范围：
-- 作者：
-- 时间：
-- 材料来源：
+## Basic Information
+- Scope:
+- Author:
+- Date:
+- Source materials:
 
-## 决策问题
-- 要解决的问题
-- 决策边界
+## Decision Question
+- Problem to solve
+- Decision boundary
 
-## 可选方案
-### 方案1
-- 概述
-- 关键假设
+## Options
+### Option 1
+- Overview
+- Key assumptions
 
-### 方案2
+### Option 2
 
-## 权衡
-- 方案 1：优点 / 缺点 / 代价
-- 方案 2
+## Trade-offs
+- Option 1: Pros / Cons / Costs
+- Option 2
 
-## 推荐结论
-- 推荐方案
-- 理由
+## Recommended Conclusion
+- Recommended option
+- Rationale
 
-## 后续推进
-- 步骤 1：负责人 / 截止时间
-- 步骤 2
+## Follow-up Actions
+- Step 1: Owner / Deadline
+- Step 2
 
-## 证据
+## Evidence
 
-## 风险
+## Risks
 
-## 反对意见
+## Dissenting Opinions
 ```
 
 ### `analysis/theme-synthesis`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 基本信息
-- 范围：
-- 作者：
-- 时间：
-- 材料来源：
+## Basic Information
+- Scope:
+- Author:
+- Date:
+- Source materials:
 
-## 归纳范围
-- 涉及材料
-- 时间跨度
-- 主题边界
+## Synthesis Scope
+- Materials covered
+- Time span
+- Topic boundaries
 
-## 反复出现的主题
-### 主题1
-- 主题描述
-- 出现频次
+## Recurring Themes
+### Theme 1
+- Theme description
+- Frequency of appearance
 
-## 支持例子
-- 主题1：材料 A / 材料 B 的具体例子
-- 主题2
+## Supporting Examples
+- Theme 1: Specific examples from Material A / Material B
+- Theme 2
 
-## 矛盾点
-- 矛盾 1：不同材料的冲突信号
-- 矛盾 2
+## Contradictions
+- Contradiction 1: Conflicting signals from different materials
+- Contradiction 2
 
-## 启示
-- 这些主题意味着什么
-- 对业务/研究的暗示
+## Implications
+- What these themes mean
+- Implications for business/research
 
-## 建议动作
+## Recommended Actions
 
-## 来源
+## Sources
 ```
 
 ### `analysis/competitive-scan`
 
 ```markdown
-# {标题}
+# {Title}
 
-## 基本信息
-- 范围：
-- 作者：
-- 时间：
-- 材料来源：
+## Basic Information
+- Scope:
+- Author:
+- Date:
+- Source materials:
 
-## 扫描边界
-- 涉及市场/领域
-- 时间范围
-- 排除项
+## Scan Boundaries
+- Markets/domains covered
+- Time range
+- Exclusions
 
-## 比较维度
-- 维度 1
-- 维度 2
+## Comparison Dimensions
+- Dimension 1
+- Dimension 2
 
-## 关键参与者
-| 竞品 | 定位 | 优势 | 劣势 |
+## Key Players
+| Competitor | Positioning | Strengths | Weaknesses |
 | ---- | ---- | ---- | ---- |
 
-## 空白
-- 空白 1：未被满足的需求
-- 空白 2
+## Gaps
+- Gap 1: Unmet needs
+- Gap 2
 
-## 机会
-- 机会 1
-- 机会 2
+## Opportunities
+- Opportunity 1
+- Opportunity 2
 
-## 证据
+## Evidence
 
-## 风险
+## Risks
 
-## 建议动作
+## Recommended Actions
 ```

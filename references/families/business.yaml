@@ -1,34 +1,34 @@
-# Business 族 — 汇报、风险、行动跟踪
-# 覆盖：项目状态、周报月报、高管简报、风险/问题报告、行动跟踪
-# 输出骨架：guides/skeletons-business.md
+# Business Family -- Reporting, risks, action tracking
+# Covers: project status, weekly/monthly reports, executive briefs, risk/issue reports, action tracking
+# Output skeleton: guides/skeletons-business.md
 
 family: business
-description: 阶段汇报、进展跟踪
+description: Status reporting, progress tracking
 default_template: business/project-status-report
 skeleton_file: guides/skeletons-business.md
 
 templates:
   - id: business/project-status-report
-    name: 项目状态报告
+    name: Project Status Report
   - id: business/weekly-monthly-report
-    name: 周报/月报
+    name: Weekly/Monthly Report
   - id: business/executive-brief
-    name: 高管简报
+    name: Executive Brief
   - id: business/risk-issue-report
-    name: 风险/问题报告
+    name: Risk/Issue Report
   - id: business/action-tracker
-    name: 行动跟踪表
+    name: Action Tracker
 
 selection_rules:
-  - condition: "重点是阶段进展和指标"
+  - condition: "Focus is milestone progress and metrics"
     template: business/project-status-report
-  - condition: "重点是周/月定期同步"
+  - condition: "Focus is weekly/monthly regular sync"
     template: business/weekly-monthly-report
-  - condition: "重点是向上汇报"
+  - condition: "Focus is upward reporting"
     template: business/executive-brief
-  - condition: "重点是事故/问题"
+  - condition: "Focus is incident/issues"
     template: business/risk-issue-report
-  - condition: "重点是行动跟踪"
+  - condition: "Focus is action tracking"
     template: business/action-tracker
-  - condition: "不确定子类型"
+  - condition: "Uncertain sub-type"
     template: business/project-status-report

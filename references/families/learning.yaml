@@ -1,40 +1,40 @@
-# Learning 族 — 学习、复习、知识提炼
-# 覆盖：课程笔记、教程操作手册、书籍总结（非虚构/虚构）、讲座摘要、概念解释
-# 输出骨架：guides/skeletons-learning.md
+# Learning Family -- Learning, review, knowledge distillation
+# Covers: course notes, tutorial playbook, book summaries (nonfiction/fiction), lecture summaries, concept explainers
+# Output skeleton: guides/skeletons-learning.md
 
 family: learning
-description: 学会、复习、知识提炼
+description: Learn, review, knowledge distillation
 default_template: learning/course-notes
 skeleton_file: guides/skeletons-learning.md
 
 templates:
   - id: learning/course-notes
-    name: 课程笔记
+    name: Course Notes
   - id: learning/tutorial-playbook
-    name: 教程操作手册
+    name: Tutorial Playbook
   - id: learning/nonfiction-book-summary
-    name: 非虚构书籍总结
-    notes: 默认产出 1 份全书总览 + N 份章节独立文件
+    name: Nonfiction Book Summary
+    notes: Default output is 1 full book overview + N chapter files
   - id: learning/fiction-book-summary
-    name: 叙事/小说书籍总结
-    notes: 默认产出 1 份全书总览 + N 份章节独立文件
+    name: Narrative/Fiction Book Summary
+    notes: Default output is 1 full book overview + N chapter files
   - id: learning/lecture-summary
-    name: 讲座摘要
+    name: Lecture Summary
   - id: learning/concept-explainer
-    name: 概念解释
+    name: Concept Explainer
 
 selection_rules:
-  - condition: "重点是课程/讲座/训练营"
+  - condition: "Focus is courses/lectures/bootcamps"
     template: learning/course-notes
-  - condition: "重点是照着操作"
+  - condition: "Focus is hands-on steps"
     template: learning/tutorial-playbook
-  - condition: "重点是整本非虚构书"
+  - condition: "Focus is a full nonfiction book"
     template: learning/nonfiction-book-summary
-  - condition: "重点是小说/叙事作品"
+  - condition: "Focus is a novel/narrative work"
     template: learning/fiction-book-summary
-  - condition: "单次讲座/演讲"
+  - condition: "Single lecture/talk"
     template: learning/lecture-summary
-  - condition: "解释一个概念"
+  - condition: "Explain a concept"
     template: learning/concept-explainer
-  - condition: "不确定子类型"
+  - condition: "Uncertain sub-type"
     template: learning/course-notes

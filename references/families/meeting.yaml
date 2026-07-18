@@ -1,36 +1,36 @@
-# Meeting 族 — 纪要、访谈、共创记录
-# 覆盖：决策纪要、讨论纪要、访谈记录、1:1 沟通、工作坊总结
-# 输出骨架：guides/skeletons-meeting.md
-# 注意：如需正式归档（含 ACTION 编号/Parking Lot/FAR 原则），使用 product/meeting-minutes-detailed
+# Meeting Family -- Minutes, interviews, co-creation records
+# Covers: decision minutes, discussion minutes, interview records, 1:1 communication, workshop summaries
+# Output skeleton: guides/skeletons-meeting.md
+# Note: For formal archiving (with ACTION numbers/Parking Lot/FAR principle), use product/meeting-minutes-detailed
 
 family: meeting
-description: 讨论记录、责任追踪
+description: Discussion records, responsibility tracking
 default_template: meeting/decision-minutes
 skeleton_file: guides/skeletons-meeting.md
 
 templates:
   - id: meeting/decision-minutes
-    name: 决策纪要
+    name: Decision Minutes
   - id: meeting/discussion-minutes
-    name: 讨论纪要
+    name: Discussion Minutes
   - id: meeting/interview-record
-    name: 访谈记录
+    name: Interview Record
   - id: meeting/one-on-one-note
-    name: 1:1 沟通记录
+    name: 1:1 Communication Record
   - id: meeting/workshop-summary
-    name: 工作坊总结
+    name: Workshop Summary
 
 selection_rules:
-  - condition: "重点是讨论过程和决策"
+  - condition: "Focus is discussion process and decisions"
     template: meeting/decision-minutes
-  - condition: "重点是研究输入和问答"
+  - condition: "Focus is research input and Q&A"
     template: meeting/interview-record
-  - condition: "重点是 1:1 沟通"
+  - condition: "Focus is 1:1 communication"
     template: meeting/one-on-one-note
-  - condition: "重点是工作坊共创"
+  - condition: "Focus is workshop co-creation"
     template: meeting/workshop-summary
-  - condition: "需要正式归档（含 ACTION 编号/Parking Lot）"
+  - condition: "Needs formal archiving (with ACTION numbers/Parking Lot)"
     template: product/meeting-minutes-detailed
     cross_family: true
-  - condition: "不确定子类型"
+  - condition: "Uncertain sub-type"
     template: meeting/decision-minutes

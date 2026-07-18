@@ -1,163 +1,163 @@
-# Cangjie 模板分类法
-# 定义输出目标（goals）分类，用于 SKILL.md 工作流 Step 2（目标识别）
-# 匹配规则：扫描用户输入与材料，命中 signal_words 即归入对应 goal；
-# 多 goal 命中时按 SKILL.md「常见故障-信号冲突」处理（列候选询问用户）
-# 无明确命中时，根据上下文回落到最贴近的 goal.default_family
+# Cangjie Template Taxonomy
+# Defines output goal classifications, used in SKILL.md workflow Step 2 (goal identification)
+# Matching rules: scan user input and materials; if signal_words are hit, assign to the corresponding goal;
+# When multiple goals are hit, follow SKILL.md "Common Faults - Signal Conflicts" handling (list candidates and ask user)
+# When no clear match, fall back to the closest goal.default_family based on context
 
 version: 1
 
 goals:
 
   learning:
-    description: 学会、复习、知识提炼
+    description: Learn, review, knowledge distillation
     signal_words:
-      - 学习
-      - 复习
-      - 笔记
-      - 课程
-      - 讲座
-      - 教程
-      - 训练营
-      - 教学视频
-      - 书
-      - 书籍
-      - 阅读
-      - 读后感
-      - 概念
-      - 理解
-      - 学会
-      - 知识点
-      - 操作步骤
+      - learning
+      - review
+      - notes
+      - course
+      - lecture
+      - tutorial
+      - bootcamp
+      - teaching video
+      - book
+      - books
+      - reading
+      - reading reflection
+      - concept
+      - understanding
+      - learned
+      - knowledge point
+      - steps
       - playbook
     default_family: learning
     selection_hints:
-      - "目标是学会和复习 → learning/*"
-      - "重点是课程/讲座/训练营 → learning/course-notes"
-      - "重点是照着操作 → learning/tutorial-playbook"
-      - "重点是整本非虚构书 → learning/nonfiction-book-summary"
-      - "重点是小说/叙事作品 → learning/fiction-book-summary"
-      - "单次讲座/演讲 → learning/lecture-summary"
-      - "解释一个概念 → learning/concept-explainer"
+      - "Goal is learning and review -> learning/*"
+      - "Focus is courses/lectures/bootcamps -> learning/course-notes"
+      - "Focus is hands-on steps -> learning/tutorial-playbook"
+      - "Focus is a full nonfiction book -> learning/nonfiction-book-summary"
+      - "Focus is a novel/narrative work -> learning/fiction-book-summary"
+      - "Single lecture/talk -> learning/lecture-summary"
+      - "Explain a concept -> learning/concept-explainer"
 
   recap:
-    description: 节目回顾、亮点传播
+    description: Show recap, highlight distribution
     signal_words:
-      - 回顾
-      - 节目
-      - 播客
-      - 视频
-      - 访谈节目
-      - 亮点
-      - 剪辑
-      - 直播
-      - 内容消费
-      - 节目单
-      - 嘉宾
-      - 主持人
+      - recap
+      - show
+      - podcast
+      - video
+      - interview show
+      - highlights
+      - clip
+      - livestream
+      - content consumption
+      - playlist
+      - guest
+      - host
     default_family: media
     selection_hints:
-      - "目标是回顾内容和传播亮点 → media/*"
-      - "播客/访谈音频 → media/podcast-summary"
-      - "视频节目 → media/video-program-summary"
-      - "直播回顾 → media/livestream-recap"
-      - "提炼精彩片段 → media/content-highlights"
+      - "Goal is content recap and highlight distribution -> media/*"
+      - "Podcast/interview audio -> media/podcast-summary"
+      - "Video show -> media/video-program-summary"
+      - "Livestream recap -> media/livestream-recap"
+      - "Distill highlights -> media/content-highlights"
 
   discussion_record:
-    description: 讨论记录、责任追踪
+    description: Discussion record, responsibility tracking
     signal_words:
-      - 会议
-      - 讨论
-      - 纪要
-      - 访谈记录
+      - meeting
+      - discussion
+      - minutes
+      - interview record
       - 1:1
       - 1on1
-      - 一对一
-      - 工作坊
-      - 共创
-      - 决策
-      - 待办
+      - one-on-one
+      - workshop
+      - co-creation
+      - decision
+      - action item
       - ACTION
-      - 责任人
+      - owner
     default_family: meeting
     selection_hints:
-      - "重点是讨论过程和决策 → meeting/decision-minutes"
-      - "重点是研究输入和问答 → meeting/interview-record"
-      - "重点是 1:1 沟通 → meeting/one-on-one-note"
-      - "重点是工作坊共创 → meeting/workshop-summary"
-      - "需要正式归档（含 ACTION 编号/Parking Lot） → product/meeting-minutes-detailed"
+      - "Focus is discussion process and decisions -> meeting/decision-minutes"
+      - "Focus is research input and Q&A -> meeting/interview-record"
+      - "Focus is 1:1 communication -> meeting/one-on-one-note"
+      - "Focus is workshop co-creation -> meeting/workshop-summary"
+      - "Needs formal archiving (with ACTION numbers/Parking Lot) -> product/meeting-minutes-detailed"
 
   status_reporting:
-    description: 阶段汇报、进展跟踪
+    description: Status reporting, progress tracking
     signal_words:
-      - 周报
-      - 月报
-      - 季报
-      - 汇报
-      - 进展
-      - 状态
-      - 报告
-      - 风险
-      - 阻塞
-      - 行动项
-      - 优先级
-      - 高管简报
+      - weekly report
+      - monthly report
+      - quarterly report
+      - report
+      - progress
+      - status
+      - report
+      - risk
+      - blocker
+      - action item
+      - priority
+      - executive briefing
     default_family: business
     selection_hints:
-      - "重点是阶段进展和指标 → business/project-status-report"
-      - "重点是周/月定期同步 → business/weekly-monthly-report"
-      - "重点是向上汇报 → business/executive-brief"
-      - "重点是事故/问题 → business/risk-issue-report"
-      - "重点是行动跟踪 → business/action-tracker"
+      - "Focus is milestone progress and metrics -> business/project-status-report"
+      - "Focus is weekly/monthly regular sync -> business/weekly-monthly-report"
+      - "Focus is upward reporting -> business/executive-brief"
+      - "Focus is incident/issues -> business/risk-issue-report"
+      - "Focus is action tracking -> business/action-tracker"
 
   synthesis:
-    description: 多源归纳、决策支持
+    description: Multi-source synthesis, decision support
     signal_words:
-      - 综合
-      - 归纳
-      - 主题综合
-      - 竞品扫描
-      - 材料综合
-      - 多份材料
-      - 决策支持
-      - 决策备忘录
-      - 研究
-      - 简报
+      - synthesis
+      - distill
+      - theme synthesis
+      - competitor scan
+      - material synthesis
+      - multiple materials
+      - decision support
+      - decision memo
+      - research
+      - briefing
     default_family: analysis
     selection_hints:
-      - "重点是共性主题 → analysis/theme-synthesis"
-      - "重点是做选择 → analysis/decision-memo"
-      - "重点是行业和事实扫描 → analysis/research-brief"
-      - "轻量级同类对比 → analysis/competitive-scan"
-      - "面向产品决策的竞品分析 → product/competitive-analysis"
+      - "Focus is common themes -> analysis/theme-synthesis"
+      - "Focus is making a choice -> analysis/decision-memo"
+      - "Focus is industry and fact scan -> analysis/research-brief"
+      - "Lightweight peer comparison -> analysis/competitive-scan"
+      - "Product-decision-oriented competitive analysis -> product/competitive-analysis"
 
   paper_review:
-    description: 论文阅读、研究归纳
+    description: Paper reading, research distillation
     signal_words:
-      - 论文
       - paper
-      - 研究主题
-      - 公式
-      - 实验
-      - 理论
-      - 证明
-      - 系统
-      - 综述
-      - 文献
-      - 数据集
-      - 指标
+      - paper
+      - research topic
+      - formula
+      - experiment
+      - theory
+      - proof
+      - system
+      - survey
+      - literature
+      - dataset
+      - metric
       - baseline
-      - 消融
+      - ablation
     default_family: analysis
     selection_hints:
-      - "目标是读懂单篇论文 → analysis/paper-summary"
-      - "定理/证明/公式推导 → analysis/theoretical-paper-summary"
-      - "数据集/指标/实验对比 → analysis/experimental-paper-summary"
-      - "系统架构/吞吐延迟 → analysis/systems-paper-summary"
-      - "文献综述/taxonomy → analysis/survey-paper-summary"
-      - "建立评判框架的文献综述报告 → product/literature-review"
+      - "Goal is reading a single paper -> analysis/paper-summary"
+      - "Theorem/proof/formula derivation -> analysis/theoretical-paper-summary"
+      - "Dataset/metric/experiment comparison -> analysis/experimental-paper-summary"
+      - "System architecture/throughput latency -> analysis/systems-paper-summary"
+      - "Literature survey/taxonomy -> analysis/survey-paper-summary"
+      - "Literature review building an evaluation framework -> product/literature-review"
 
   product_documentation:
-    description: 产品文档、商业计划、技术设计
+    description: Product documentation, business plan, technical design
     signal_words:
       - PRD
       - BP
@@ -165,44 +165,44 @@ goals:
       - BRD
       - MRD
       - Charter
-      - 项目任务书
-      - 商业计划
-      - 商业模式
-      - 产品需求
-      - 功能需求
-      - 技术需求
-      - 架构设计
-      - API文档
-      - 数据库设计
-      - 算法
-      - 市场调研
-      - 市场需求
-      - 竞品分析
-      - 文献综述
-      - 发布计划
-      - 测试报告
-      - 灰度方案
-      - 运营手册
-      - 数据看板
-      - 用户手册
-      - 周报月报
-      - 复盘
-      - 知识沉淀
+      - project charter
+      - business plan
+      - business model
+      - product requirements
+      - functional requirements
+      - technical requirements
+      - architecture design
+      - API documentation
+      - database design
+      - algorithm
+      - market research
+      - market requirements
+      - competitive analysis
+      - literature review
+      - release plan
+      - test report
+      - canary plan
+      - operations manual
+      - data dashboard
+      - user manual
+      - weekly monthly report
+      - retrospective
+      - knowledge base
       - README
       - CHANGELOG
       - FAQ
       - CONTRIBUTING
       - UIUX
-      - 配色规范
+      - color specification
     default_family: product
     selection_hints:
-      - "商业计划/融资路演 → product/business-plan"
-      - "商业模式/价值主张 → product/business-model"
-      - "战略层（Why）→ product/brd, product/mrd, product/charter, product/market-research, product/competitive-analysis"
-      - "产品层（What）→ product/prd, product/frd, product/uiux-spec"
-      - "技术层（How）→ product/trd, product/architecture, product/api-doc, product/db-design, product/algorithm-doc"
-      - "交付层（When）→ product/release-plan, product/test-report, product/canary-plan"
-      - "运营层（Run）→ product/operation-guide, product/dashboard, product/user-guide, product/weekly-monthly-report"
-      - "退役层（End）→ product/retrospective, product/knowledge-base"
-      - "通用文档 → README / CHANGELOG / FAQ / CONTRIBUTING"
-      - "不确定子层 → product/prd"
+      - "Business plan/fundraising pitch -> product/business-plan"
+      - "Business model/value proposition -> product/business-model"
+      - "Strategy layer (Why) -> product/brd, product/mrd, product/charter, product/market-research, product/competitive-analysis"
+      - "Product layer (What) -> product/prd, product/frd, product/uiux-spec"
+      - "Technical layer (How) -> product/trd, product/architecture, product/api-doc, product/db-design, product/algorithm-doc"
+      - "Delivery layer (When) -> product/release-plan, product/test-report, product/canary-plan"
+      - "Operations layer (Run) -> product/operation-guide, product/dashboard, product/user-guide, product/weekly-monthly-report"
+      - "Retirement layer (End) -> product/retrospective, product/knowledge-base"
+      - "General documentation -> README / CHANGELOG / FAQ / CONTRIBUTING"
+      - "Uncertain sub-layer -> product/prd"

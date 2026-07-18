@@ -1,65 +1,65 @@
-# 参考资料模板体系
+# Reference Template System
 
-本目录定义内容总结 skill 的模板体系。目标不是存放大量孤立 Markdown，而是提供一套可自动选择、可人工覆盖、可持续扩展的结构化模板库。
+This directory defines the template system for the content summarization skill. The goal is not to store a large collection of isolated Markdown files, but to provide a structured template library that supports automatic selection, manual overrides, and continuous extensibility.
 
-## 目录说明
+## Directory Overview
 
 ```text
 references/
   README.md
-  registry.yaml             # 模板注册表（所有模板 ID + required_sections + detection_signals）
-  taxonomy.yaml             # 模板分类法（goals + signal_words + default_family）
-  families/                 # 6 大模板族定义（每族默认模板 + 子模板清单 + selection_rules）
+  registry.yaml             # Template registry (all template IDs + required_sections + detection_signals)
+  taxonomy.yaml             # Template taxonomy (goals + signal_words + default_family)
+  families/                 # 6 major template family definitions (default template per family + sub-template list + selection_rules)
     learning.yaml
     media.yaml
     meeting.yaml
     business.yaml
     analysis.yaml
     product.yaml
-  guides/                   # 模板选择 / 编写 / 输出骨架指南
-    template-selection.md   # 模板选择决策树
-    template-authoring.md   # 模板编写规范
-    output-skeletons.md     # 输出骨架索引（按族拆分）
-    skeletons-learning.md   # Learning 族骨架
-    skeletons-media.md      # Media 族骨架
-    skeletons-meeting.md    # Meeting 族骨架
-    skeletons-business.md   # Business 族骨架
-    skeletons-analysis.md   # Analysis 族骨架
-    detail-policy.md        # 输出密度策略
-    examples.md             # 完整示例集
-    api-docs.md             # chub 工具使用与 API 文档拉取
-  templates-index.md        # 模板索引（指向 ../templates/）
+  guides/                   # Template selection / authoring / output skeleton guides
+    template-selection.md   # Template selection decision tree
+    template-authoring.md   # Template authoring guidelines
+    output-skeletons.md     # Output skeleton index (split by family)
+    skeletons-learning.md   # Learning family skeletons
+    skeletons-media.md      # Media family skeletons
+    skeletons-meeting.md    # Meeting family skeletons
+    skeletons-business.md   # Business family skeletons
+    skeletons-analysis.md   # Analysis family skeletons
+    detail-policy.md        # Output density policy
+    examples.md             # Complete example set
+    api-docs.md             # chub tool usage and API documentation retrieval
+  templates-index.md        # Template index (points to ../templates/)
 ```
 
-> 完整 Markdown 文档模板已迁移至 `../templates/`（产品层/战略层/交付层/运营层/技术层/通用），索引见 [templates-index.md](templates-index.md)。
+> Complete Markdown document templates have been migrated to `../templates/` (product layer / strategy layer / delivery layer / operations layer / technology layer / general). See [templates-index.md](templates-index.md) for the index.
 
-## 设计原则
+## Design Principles
 
-1. 用户指定优先于自动选择。
-2. 模板按“输出目标”分组，而不是按输入媒介硬切。
-3. 重复章节在模板族内合并，通过 `required_sections` 和 `optional_sections` 声明裁剪。
-4. 一个模板定义既要能给 agent 用，也要能给人读懂。
+1. User specification takes priority over automatic selection.
+2. Templates are grouped by "output goal," not by input medium.
+3. Repeated sections within a template family are consolidated via `required_sections` and `optional_sections` declarations.
+4. A template definition must be usable by both agents and humans.
 
-## 模板族概览
+## Template Family Overview
 
-| 模板族     | 覆盖内容                                 | 默认 fallback                    |
+| Template Family | Covered Content | Default Fallback |
 | ---------- | ---------------------------------------- | -------------------------------- |
-| `learning` | 课程、讲座、书籍学习、教程整理           | `learning/course-notes`          |
-| `media`    | 播客、节目、直播、公开视频回顾           | `media/podcast-summary`          |
-| `meeting`  | 会议、讨论、访谈、1:1、工作坊            | `meeting/discussion-minutes`     |
-| `business` | 周报、月报、项目状态、管理汇报           | `business/project-status-report` |
-| `analysis` | 研究型归纳、论文阅读、主题综合、决策支持 | `analysis/research-brief`        |
-| `product`  | 产品文档、商业计划、技术设计、交付运营   | `product/prd`                    |
+| `learning` | Courses, lectures, book study, tutorial compilation | `learning/course-notes` |
+| `media` | Podcasts, shows, livestreams, public video reviews | `media/podcast-summary` |
+| `meeting` | Meetings, discussions, interviews, 1:1s, workshops | `meeting/discussion-minutes` |
+| `business` | Weekly reports, monthly reports, project status, management briefings | `business/project-status-report` |
+| `analysis` | Research synthesis, paper reading, theme synthesis, decision support | `analysis/research-brief` |
+| `product` | Product documentation, business plans, technical design, delivery operations | `product/prd` |
 
-## 当前模板原则
+## Current Template Principles
 
-- 不做旧模板名称兼容。
-- 对外只使用新的模板族和模板 ID。
-- 后续新增模板时，继续按“输出目标”命名，不回退到旧的输入媒介命名。
+- No backward compatibility with old template names.
+- Only the new template families and template IDs are used externally.
+- When adding new templates, continue naming by "output goal" and do not revert to the old input-medium naming convention.
 
-## 论文模板分型
+## Paper Template Types
 
-论文相关模板现在分为 5 个：
+Paper-related templates are now divided into 5 types:
 
 - `analysis/paper-summary`
 - `analysis/theoretical-paper-summary`
@@ -67,13 +67,13 @@ references/
 - `analysis/systems-paper-summary`
 - `analysis/survey-paper-summary`
 
-自动选择时，若能从内容中识别论文类型，应优先落到具体子模板；识别不明确时回落到 `analysis/paper-summary`。
+When auto-selecting, if the paper type can be identified from the content, the specific sub-template should be used. If identification is ambiguous, fall back to `analysis/paper-summary`.
 
-## 书籍模板分型
+## Book Template Types
 
-书籍相关模板现在分为 2 个：
+Book-related templates are now divided into 2 types:
 
 - `learning/nonfiction-book-summary`
 - `learning/fiction-book-summary`
 
-自动选择时，应先判断书籍是非虚构还是叙事类作品。两者默认都输出“逐章总结 + 全书总结”；如果输入只覆盖部分章节或节选，必须显式标注覆盖范围。
+When auto-selecting, first determine whether the book is nonfiction or a narrative work. Both default to outputting "chapter summaries + whole-book summary"; if the input only covers selected chapters or excerpts, the coverage scope must be explicitly noted.

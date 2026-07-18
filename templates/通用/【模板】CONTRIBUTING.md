@@ -1,170 +1,170 @@
-# 贡献指南（CONTRIBUTING）
+# Contributing Guide (CONTRIBUTING)
 
-> **文档类型：** 贡献指南
+> **Document Type:** Contributing Guide
 >
-> **版本：** v1.0.0
+> **Version:** v1.0.0
 >
-> **日期：** YYYY-MM-DD
+> **Date:** YYYY-MM-DD
 >
-> **维护人：** [项目 Owner / Maintainer 团队]
+> **Maintainer:** [Project Owner / Maintainer Team]
 >
-> **适用仓库：** {org}/{repo}
+> **Applicable Repository:** {org}/{repo}
 >
-> **关联文档：** [README.md](./README.md) / [CHANGELOG.md](./CHANGELOG.md) / [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+> **Related Documents:** [README.md](./README.md) / [CHANGELOG.md](./CHANGELOG.md) / [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
 
-欢迎贡献！本文档说明如何向 {项目名} 贡献代码、文档与问题反馈。参与即视为同意遵守 [行为准则](./CODE_OF_CONDUCT.md)。
+Welcome! This document explains how to contribute code, documentation, and feedback to {Project Name}. Participation implies agreement to follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-## 目录
+## Table of Contents
 
-- [行为准则](#行为准则)
-- [如何贡献](#如何贡献)
-- [开发环境搭建](#开发环境搭建)
-- [代码规范](#代码规范)
-- [提交规范](#提交规范)
-- [Pull Request 流程](#pull-request-流程)
-- [测试要求](#测试要求)
-- [文档贡献](#文档贡献)
-- [Issue 规范](#issue-规范)
-- [评审标准](#评审标准)
-- [致谢](#致谢)
+- [Code of Conduct](#code-of-conduct)
+- [How to Contribute](#how-to-contribute)
+- [Development Environment Setup](#development-environment-setup)
+- [Code Standards](#code-standards)
+- [Commit Standards](#commit-standards)
+- [Pull Request Process](#pull-request-process)
+- [Testing Requirements](#testing-requirements)
+- [Documentation Contributions](#documentation-contributions)
+- [Issue Standards](#issue-standards)
+- [Review Criteria](#review-criteria)
+- [Acknowledgments](#acknowledgments)
 
 ---
 
-## 行为准则
+## Code of Conduct
 
-本项目遵循 [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) 行为准则。
+This project follows the [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) code of conduct.
 
-- **对事不对人**：批评代码，不批评人
-- **开放包容**：欢迎不同背景、不同水平的贡献者
-- **数据驱动**：用数据与事实说话，避免主观臆断
-- **尊重时间**：Maintainer 是志愿者，请耐心等待 Review
+- **Focus on issues, not people**: Critique code, not individuals
+- **Open and inclusive**: Welcome contributors of all backgrounds and skill levels
+- **Data-driven**: Use data and facts, avoid subjective assumptions
+- **Respect time**: Maintainers are volunteers; please be patient with reviews
 
-如遇不当行为，请邮件联系 {conduct-email}。
+For inappropriate behavior, contact {conduct-email}.
 
 ---
 
-## 如何贡献
+## How to Contribute
 
-### 贡献方式
+### Contribution Types
 
-| 类型         | 说明                                    | 入口                          |
+| Type | Description | Entry Point |
 | :----------- | :-------------------------------------- | :---------------------------- |
-| **Bug 修复** | 修复已有问题                            | [提交 Issue](../../issues)    |
-| **新功能**   | 提议并实现新特性                        | 先提 Issue 讨论               |
-| **文档改进** | 修正错别字、补充说明、翻译              | 直接提 PR                     |
-| **性能优化** | 提升性能、降低资源占用                  | 附基准测试数据                |
-| **测试补充** | 提升测试覆盖率                          | 直接提 PR                     |
-| **问题反馈** | 报告 Bug 或建议改进                     | [提交 Issue](../../issues)    |
+| **Bug Fix** | Fix existing issues | [Submit Issue](../../issues) |
+| **New Feature** | Propose and implement new functionality | Discuss via Issue first |
+| **Documentation** | Fix typos, add explanations, translate | Submit PR directly |
+| **Performance** | Improve performance, reduce resource usage | Include benchmark data |
+| **Test Coverage** | Improve test coverage | Submit PR directly |
+| **Bug Report** | Report bugs or suggest improvements | [Submit Issue](../../issues) |
 
-### 贡献流程总览
+### Contribution Flow Overview
 
 ```mermaid
 flowchart LR
-    A[1. 提 Issue 讨论] --> B[2. Fork 仓库]
-    B --> C[3. 创建分支]
-    C --> D[4. 编码 + 测试]
-    D --> E[5. 提交 PR]
+    A[1. Submit Issue for Discussion] --> B[2. Fork Repository]
+    B --> C[3. Create Branch]
+    C --> D[4. Code + Test]
+    D --> E[5. Submit PR]
     E --> F[6. Review]
-    F -->|通过| G[7. 合并]
-    F -->|修改| D
+    F -->|Pass| G[7. Merge]
+    F -->|Changes| D
     style G fill:#c8e6c9
 ```
 
-### 首次贡献者
+### First-Time Contributors
 
-- 标签 [`good first issue`](../../issues?q=label%3A%22good+first+issue%22) 适合新手入门
-- 标签 [`help wanted`](../../issues?q=label%3A%22help+wanted%22) 欢迎社区协助
-- 不确定如何下手？在 Issue 下留言或参与 [Discussions](../../discussions)
+- Label [`good first issue`](../../issues?q=label%3A%22good+first+issue%22) is great for beginners
+- Label [`help wanted`](../../issues?q=label%3A%22help+wanted%22) welcomes community help
+- Not sure where to start? Comment on an Issue or join [Discussions](../../discussions)
 
 ---
 
-## 开发环境搭建
+## Development Environment Setup
 
-### 前置依赖
+### Prerequisites
 
-| 依赖          | 最低版本 | 说明                         |
+| Dependency | Minimum Version | Description |
 | :------------ | :------- | :--------------------------- |
-| {Node.js}     | 18+      | 运行环境                     |
-| {git}         | 2.30+    | 版本控制                     |
-| {其他}        | {版本}   | {说明}                       |
+| {Node.js} | 18+ | Runtime environment |
+| {git} | 2.30+ | Version control |
+| {Other} | {Version} | {Description} |
 
-### 步骤
+### Steps
 
 ```bash
-# 1. Fork 仓库（GitHub 页面操作）
+# 1. Fork repository (GitHub page operation)
 
-# 2. Clone 你 Fork 的仓库
+# 2. Clone your fork
 git clone https://github.com/{your-username}/{repo}.git
 cd {repo}
 
-# 3. 添加上游仓库
+# 3. Add upstream repository
 git remote add upstream https://github.com/{org}/{repo}.git
 
-# 4. 安装依赖
+# 4. Install dependencies
 {install-command}
 
-# 5. 启动开发环境
+# 5. Start development environment
 {dev-command}
 
-# 6. 运行测试（确保环境正常）
+# 6. Run tests (ensure environment works)
 {test-command}
 ```
 
-### IDE 推荐配置
+### Recommended IDE Configuration
 
-- **VS Code**：安装推荐扩展（`.vscode/extensions.json`）
-- **JetBrains**：导入 `.editorconfig` 与代码风格配置
-- **统一格式化**：使用 `.editorconfig` + 项目自带 formatter
+- **VS Code**: Install recommended extensions (`.vscode/extensions.json`)
+- **JetBrains**: Import `.editorconfig` and code style configuration
+- **Unified Formatting**: Use `.editorconfig` + project-built-in formatter
 
 ---
 
-## 代码规范
+## Code Standards
 
-### 通用原则
+### General Principles
 
-- **可读性优先**：代码是写给人看的，机器只是顺便能跑
-- **单一职责**：一个函数 / 类只做一件事
-- **显式优于隐式**：不要用魔法值、不要藏副作用
-- **简洁但不简陋**：能 5 行解决不要写 50 行，但也不要为了行数牺牲清晰度
+- **Readability first**: Code is written for humans; machines just happen to run it
+- **Single responsibility**: One function/class does one thing
+- **Explicit over implicit**: No magic values, no hidden side effects
+- **Concise but not crude**: If 5 lines work, don't write 50; but don't sacrifice clarity for line count
 
-### 命名规范
+### Naming Conventions
 
-| 类型         | 规范                | 示例                          |
+| Type | Convention | Example |
 | :----------- | :------------------ | :---------------------------- |
-| 变量 / 函数  | `snake_case` / `camelCase`（按语言惯例） | `user_id` / `userId` |
-| 常量         | `UPPER_SNAKE_CASE`  | `MAX_RETRY_COUNT`             |
-| 类 / 类型    | `PascalCase`        | `UserService`                 |
-| 文件名       | 按语言惯例          | `user_service.py` / `UserService.ts` |
-| 私有成员     | 前缀 `_` 或语言惯例 | `_internal_cache`             |
+| Variables/Functions | `snake_case` / `camelCase` (per language convention) | `user_id` / `userId` |
+| Constants | `UPPER_SNAKE_CASE` | `MAX_RETRY_COUNT` |
+| Classes/Types | `PascalCase` | `UserService` |
+| Filenames | Per language convention | `user_service.py` / `UserService.ts` |
+| Private Members | Prefix `_` or per language convention | `_internal_cache` |
 
-### 语言专属规范
+### Language-Specific Standards
 
-| 语言     | Linter                | Formatter           | 规范文档                                   |
+| Language | Linter | Formatter | Standards Doc |
 | :------- | :-------------------- | :------------------ | :----------------------------------------- |
-| Rust     | `cargo clippy`        | `cargo fmt`         | [Rust API Guidelines]                      |
-| Python   | `ruff`                | `black`             | [PEP 8] / [PEP 257]                        |
-| Node/TS  | `eslint`              | `prettier`          | [Google TS Style Guide]                    |
-| Java     | `checkstyle`          | `google-java-format`| [Google Java Style]                        |
-| Go       | `golangci-lint`       | `gofmt` / `goimports`| [Effective Go]                             |
+| Rust | `cargo clippy` | `cargo fmt` | [Rust API Guidelines] |
+| Python | `ruff` | `black` | [PEP 8] / [PEP 257] |
+| Node/TS | `eslint` | `prettier` | [Google TS Style Guide] |
+| Java | `checkstyle` | `google-java-format` | [Google Java Style] |
+| Go | `golangci-lint` | `gofmt` / `goimports` | [Effective Go] |
 
-### 错误处理
+### Error Handling
 
-- **失败必须显性化**：错误必须抛出或返回，严禁吞掉
-- **错误信息可操作**：包含上下文、原因、建议下一步
-- **区分错误类型**：业务错误 / 系统错误 / 外部依赖错误
-- **日志分级**：ERROR / WARN / INFO / DEBUG，生产环境默认 INFO
+- **Failures must be explicit**: Errors must be thrown or returned; never swallowed
+- **Error messages actionable**: Include context, cause, suggested next step
+- **Distinguish error types**: Business error / System error / External dependency error
+- **Log levels**: ERROR / WARN / INFO / DEBUG; production defaults to INFO
 
 ```python
-# ✅ 好
+# ✅ Good
 def get_user(user_id: str) -> User:
     if not user_id:
-        raise ValueError("user_id 不能为空")
+        raise ValueError("user_id cannot be empty")
     user = db.find(user_id)
     if user is None:
-        raise UserNotFoundError(f"用户 {user_id} 不存在")
+        raise UserNotFoundError(f"User {user_id} not found")
     return user
 
-# ❌ 坏（吞错误）
+# ❌ Bad (swallowing errors)
 def get_user(user_id):
     try:
         return db.find(user_id)
@@ -172,20 +172,20 @@ def get_user(user_id):
         return None
 ```
 
-### 注释规范
+### Comment Standards
 
-- **Why > What**：解释为什么这么写，而不是写了什么
-- **不写废话注释**：`# 设置 i 为 0` `i = 0`
-- **公共 API 必须有文档注释**：含参数、返回值、异常、示例
-- **TODO 必须带 Issue 编号**：`# TODO(#123): 优化查询性能`
+- **Why > What**: Explain why, not what
+- **No useless comments**: `# Set i to 0` `i = 0`
+- **Public APIs must have doc comments**: Including parameters, return values, exceptions, examples
+- **TODOs must reference Issue numbers**: `# TODO(#123): Optimize query performance`
 
 ---
 
-## 提交规范
+## Commit Standards
 
-### Commit Message 格式
+### Commit Message Format
 
-遵循 [Conventional Commits 1.0.0](https://www.conventionalcommits.org/zh-hans/v1.0.0/)：
+Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/):
 
 ```
 <type>(<scope>): <subject>
@@ -195,189 +195,189 @@ def get_user(user_id):
 <footer>
 ```
 
-### Type 列表
+### Type List
 
-| Type        | 说明                                                  |
+| Type | Description |
 | :---------- | :---------------------------------------------------- |
-| `feat`      | 新功能                                                |
-| `fix`       | Bug 修复                                              |
-| `docs`      | 文档变更                                              |
-| `style`     | 代码格式（不影响功能）                                |
-| `refactor`  | 重构（既不是新增功能，也不是修复 Bug）                |
-| `perf`      | 性能优化                                              |
-| `test`      | 测试相关                                              |
-| `build`     | 构建系统 / 外部依赖变更                               |
-| `ci`        | CI 配置变更                                           |
-| `chore`     | 杂项（不修改 src 也不修改 test）                      |
-| `revert`    | 回滚之前的 commit                                     |
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation changes |
+| `style` | Code formatting (no functionality change) |
+| `refactor` | Refactoring (neither new feature nor bug fix) |
+| `perf` | Performance optimization |
+| `test` | Testing related |
+| `build` | Build system / external dependency changes |
+| `ci` | CI configuration changes |
+| `chore` | Miscellaneous (no src or test changes) |
+| `revert` | Revert previous commit |
 
-### 示例
+### Examples
 
 ```
-feat(user): 支持手机号登录
+feat(user): Support phone number login
 
-新增手机号 + 验证码登录方式，与现有邮箱登录并存。
-验证码 5 分钟有效，单手机号每日限 5 次。
+Added phone + verification code login method, coexisting with existing email login.
+Verification code valid for 5 minutes, max 5 times per phone per day.
 
 Closes #123
 ```
 
 ```
-fix(auth): 修复 Token 过期后未自动刷新的问题
+fix(auth): Fix auto-refresh issue after token expiration
 
-根因：refresh_token 检查时机在请求拦截器之外，
-导致并发请求时多次刷新。改为单例锁 + 串行刷新。
+Root cause: refresh_token check timing was outside the request interceptor,
+causing multiple refreshes during concurrent requests. Changed to singleton lock + serial refresh.
 
 Fixes #456
 ```
 
-### 规则
+### Rules
 
-- **subject**：祈使句，首字母小写，不超过 50 字符，结尾不加句号
-- **body**：解释 What + Why，每行 ≤ 72 字符
-- **footer**：关联 Issue（`Closes #123` / `Fixes #456` / `Refs #789`）
-- **BREAKING CHANGE**：在 footer 标注 `BREAKING CHANGE: <说明>`
-- 一个 commit 只做一件事，混合变更必须拆分
+- **subject**: Imperative mood, lowercase first letter, max 50 characters, no period at end
+- **body**: Explain What + Why, each line ≤ 72 characters
+- **footer**: Link Issues (`Closes #123` / `Fixes #456` / `Refs #789`)
+- **BREAKING CHANGE**: Annotate in footer as `BREAKING CHANGE: <description>`
+- One commit does one thing; mixed changes must be split
 
 ---
 
-## Pull Request 流程
+## Pull Request Process
 
-### 1. 创建分支
+### 1. Create Branch
 
 ```bash
-# 从 main 拉最新代码
+# Pull latest from main
 git checkout main
 git pull upstream main
 
-# 创建特性分支（命名规范见下表）
+# Create feature branch (naming convention below)
 git checkout -b feat/user-login
 ```
 
-**分支命名规范：**
+**Branch Naming Convention:**
 
-| 类型     | 前缀       | 示例                        |
+| Type | Prefix | Example |
 | :------- | :--------- | :-------------------------- |
-| 新功能   | `feat/`    | `feat/user-login`           |
-| Bug 修复 | `fix/`     | `fix/token-refresh`         |
-| 文档     | `docs/`    | `docs/api-reference`        |
-| 重构     | `refactor/`| `refactor/auth-module`      |
-| 性能     | `perf/`    | `perf/query-cache`          |
-| 测试     | `test/`    | `test/user-service`         |
+| New Feature | `feat/` | `feat/user-login` |
+| Bug Fix | `fix/` | `fix/token-refresh` |
+| Documentation | `docs/` | `docs/api-reference` |
+| Refactoring | `refactor/` | `refactor/auth-module` |
+| Performance | `perf/` | `perf/query-cache` |
+| Testing | `test/` | `test/user-service` |
 
-### 2. 编码与提交
+### 2. Code & Commit
 
 ```bash
-# 提交（遵循 §提交规范）
+# Commit (follow §Commit Standards)
 git add .
-git commit -m "feat(user): 支持手机号登录"
+git commit -m "feat(user): Support phone number login"
 ```
 
-### 3. 推送与创建 PR
+### 3. Push & Create PR
 
 ```bash
-# 推送到你的 Fork
+# Push to your Fork
 git push origin feat/user-login
 
-# 在 GitHub 页面创建 PR，目标分支 main
+# Create PR on GitHub page, target branch: main
 ```
 
-### 4. PR 标题与描述
+### 4. PR Title & Description
 
-**PR 标题**：与首个 commit message 一致
+**PR Title**: Match the first commit message
 
-**PR 描述模板：**
+**PR Description Template:**
 
 ```markdown
-## 变更说明
+## Changes
 
-<!-- 一段话说明本 PR 做了什么、为什么 -->
+<!-- One paragraph describing what this PR does and why -->
 
-## 变更类型
+## Change Type
 
-- [ ] 新功能（feat）
-- [ ] Bug 修复（fix）
-- [ ] 文档（docs）
-- [ ] 重构（refactor）
-- [ ] 性能（perf）
-- [ ] 其他：
+- [ ] New feature (feat)
+- [ ] Bug fix (fix)
+- [ ] Documentation (docs)
+- [ ] Refactoring (refactor)
+- [ ] Performance (perf)
+- [ ] Other:
 
-## 关联 Issue
+## Related Issues
 
 Closes #123
 
-## 测试
+## Testing
 
-- [ ] 已添加单元测试
-- [ ] 已添加集成测试（如适用）
-- [ ] 手动验证通过（附截图 / 日志）
+- [ ] Unit tests added
+- [ ] Integration tests added (if applicable)
+- [ ] Manual verification passed (with screenshot / log)
 
 ## Checklist
 
-- [ ] 代码遵循项目规范
-- [ ] 自审查过代码
-- [ ] 注释了难以理解的部分
-- [ ] 文档已更新（如适用）
-- [ ] 无硬编码密钥 / Token
-- [ ] 向后兼容（或已标注 BREAKING CHANGE）
+- [ ] Code follows project standards
+- [ ] Self-reviewed code
+- [ ] Commented hard-to-understand parts
+- [ ] Documentation updated (if applicable)
+- [ ] No hardcoded secrets / tokens
+- [ ] Backward compatible (or BREAKING CHANGE annotated)
 ```
 
 ### 5. Review
 
-- **Reviewer 要求**：≥ 1 名 Maintainer 批准
-- **CI 必过**：lint / test / build 全绿
-- **响应时效**：Contributor 收到 Review 意见后 7 天内响应，否则可能被关闭
-- **修改后**：force push 到同一分支，不要新开 PR
+- **Reviewer requirement**: ≥ 1 Maintainer approval
+- **CI must pass**: lint / test / build all green
+- **Response time**: Contributor responds to review within 7 days, otherwise may be closed
+- **After changes**: Force push to the same branch, don't open a new PR
 
-### 6. 合并
+### 6. Merge
 
-- **Squash Merge**（默认）：多个 commit 合并为一个
-- **Merge Commit**：保留完整历史（仅大型特性分支）
-- **Rebase**：线性历史（Maintainer 决定）
+- **Squash Merge** (default): Multiple commits merged into one
+- **Merge Commit**: Preserve full history (large feature branches only)
+- **Rebase**: Linear history (Maintainer's decision)
 
-合并后删除源分支。
+Delete source branch after merge.
 
 ---
 
-## 测试要求
+## Testing Requirements
 
-### 覆盖率门禁
+### Coverage Gates
 
-| 模块类型     | 行覆盖率    | 分支覆盖率  |
+| Module Type | Line Coverage | Branch Coverage |
 | :----------- | :---------- | :---------- |
-| 核心业务逻辑 | ≥ 85%       | ≥ 75%       |
-| 工具类       | ≥ 70%       | ≥ 60%       |
-| 整体项目     | ≥ 80%       | ≥ 70%       |
+| Core business logic | ≥ 85% | ≥ 75% |
+| Utilities | ≥ 70% | ≥ 60% |
+| Overall project | ≥ 80% | ≥ 70% |
 
-### 测试类型
+### Test Types
 
-| 类型         | 说明                            | 工具                          |
+| Type | Description | Tools |
 | :----------- | :------------------------------ | :---------------------------- |
-| **单元测试** | 单个函数 / 类的逻辑             | {pytest / vitest / cargo test}|
-| **集成测试** | 多模块协作                      | {testcontainers / supertest}  |
-| **契约测试** | API 与文档一致                  | {Pact / Dredd}                |
-| **E2E 测试** | 端到端用户流程                  | {Playwright / Cypress}        |
-| **性能测试** | QPS / 延迟 / 内存               | {k6 / wrk / criterion}        |
+| **Unit Test** | Single function/class logic | {pytest / vitest / cargo test} |
+| **Integration Test** | Multi-module collaboration | {testcontainers / supertest} |
+| **Contract Test** | API matches documentation | {Pact / Dredd} |
+| **E2E Test** | End-to-end user flow | {Playwright / Cypress} |
+| **Performance Test** | QPS / latency / memory | {k6 / wrk / criterion} |
 
-### 测试规范
+### Testing Standards
 
-- **Arrange-Act-Assert**：测试三段式，结构清晰
-- **一个测试只验证一个行为**：避免断言爆炸
-- **测试名表达意图**：`test_手机号为空时抛出 ValueError`
-- **不依赖执行顺序**：每个测试独立可运行
-- **Mock 外部依赖**：DB / 网络 / 文件系统
-- **不测试框架本身**：不要测 `assertEqual(1, 1)`
+- **Arrange-Act-Assert**: Three-part test structure, clear organization
+- **One test verifies one behavior**: Avoid assertion explosion
+- **Test names express intent**: `test_phone_number_empty_throws_ValueError`
+- **No execution order dependency**: Each test independently runnable
+- **Mock external dependencies**: DB / network / file system
+- **Don't test the framework itself**: Don't test `assertEqual(1, 1)`
 
 ```python
-# ✅ 好
-def test_手机号为空时抛出错误():
+# ✅ Good
+def test_phone_number_empty_throws_error():
     # Arrange
     service = UserService()
     # Act + Assert
-    with pytest.raises(ValueError, match="手机号不能为空"):
+    with pytest.raises(ValueError, match="phone number cannot be empty"):
         service.send_code("")
 
-# ❌ 坏
+# ❌ Bad
 def test_send_code():
     service = UserService()
     try:
@@ -388,127 +388,127 @@ def test_send_code():
 
 ---
 
-## 文档贡献
+## Documentation Contributions
 
-### 哪些文档欢迎贡献
+### Welcome Documentation Contributions
 
-- 修正错别字、语法错误：直接提 PR
-- 补充示例、FAQ：直接提 PR
-- 翻译文档：先提 Issue 讨论语言策略
-- 新增文档章节：先提 Issue 讨论大纲
+- Fix typos, grammar errors: Submit PR directly
+- Add examples, FAQ: Submit PR directly
+- Translate documentation: Discuss language strategy via Issue first
+- New documentation sections: Discuss outline via Issue first
 
-### 文档规范
+### Documentation Standards
 
-- **Markdown**：遵循 [GitHub Flavored Markdown](https://github.github.com/gfm/)
-- **中英文混排**：中英文之间加空格（如 `使用 Node.js 18+`）
-- **代码块**：标注语言（```bash / ```python / ```typescript）
-- **链接**：使用相对路径（同仓库）/ 绝对路径（外站）
-- **图片**：放在 `docs/images/`，命名 `kebab-case.png`
+- **Markdown**: Follow [GitHub Flavored Markdown](https://github.github.com/gfm/)
+- **Chinese-English mixed**: Add space between Chinese and English (e.g., `使用 Node.js 18+`)
+- **Code blocks**: Annotate language (```bash / ```python / ```typescript)
+- **Links**: Use relative paths (same repo) / absolute paths (external sites)
+- **Images**: Place in `docs/images/`, name in `kebab-case.png`
 
 ---
 
-## Issue 规范
+## Issue Standards
 
-### Bug 报告模板
+### Bug Report Template
 
 ```markdown
-**环境**
-- OS: [e.g. Ubuntu 22.04]
-- {项目} 版本: [e.g. v1.2.3]
-- {语言} 版本: [e.g. Node.js 18.17.0]
+**Environment**
+- OS: [e.g., Ubuntu 22.04]
+- {Project} version: [e.g., v1.2.3]
+- {Language} version: [e.g., Node.js 18.17.0]
 
-**复现步骤**
+**Reproduction Steps**
 1. ...
 2. ...
 3. ...
 
-**预期行为**
+**Expected Behavior**
 ...
 
-**实际行为**
+**Actual Behavior**
 ...
 
-**错误日志**
+**Error Log**
 ```
-<完整堆栈，敏感信息脱敏>
-```
-
-**附加信息**
-<截图 / 配置 / 其他>
+<full stack trace, sensitive info masked>
 ```
 
-### 功能请求模板
+**Additional Info**
+<screenshot / configuration / other>
+```
+
+### Feature Request Template
 
 ```markdown
-**问题**
-<当前遇到了什么问题>
+**Problem**
+<What problem are you encountering>
 
-**期望方案**
-<希望新增什么功能>
+**Desired Solution**
+<What feature would you like added>
 
-**替代方案**
-<是否考虑过其他方案>
+**Alternatives Considered**
+<Have you considered other approaches>
 
-**附加信息**
-<截图 / 参考 / 其他>
+**Additional Info**
+<screenshot / reference / other>
 ```
 
-### Issue 处理时效
+### Issue Response Timeline
 
-| 类型         | 首次响应      | 关闭时效      |
+| Type | First Response | Resolution Timeline |
 | :----------- | :------------ | :------------ |
-| Bug 报告     | ≤ 3 天        | 视复杂度      |
-| 功能请求     | ≤ 7 天        | 讨论后决定    |
-| 安全漏洞     | ≤ 24 小时     | 修复后        |
+| Bug Report | ≤ 3 days | Depends on complexity |
+| Feature Request | ≤ 7 days | After discussion |
+| Security Vulnerability | ≤ 24 hours | After fix |
 
 ---
 
-## 评审标准
+## Review Criteria
 
-### PR 通过条件
+### PR Acceptance Conditions
 
-- [ ] CI 全绿（lint / test / build / coverage）
-- [ ] ≥ 1 名 Maintainer 批准
-- [ ] 公共 API 变更有文档更新
-- [ ] BREAKING CHANGE 有迁移指南
-- [ ] 无硬编码密钥 / Token
-- [ ] 测试覆盖率不下降
-- [ ] 提交规范符合 Conventional Commits
+- [ ] CI all green (lint / test / build / coverage)
+- [ ] ≥ 1 Maintainer approval
+- [ ] Public API changes have documentation updates
+- [ ] BREAKING CHANGE has migration guide
+- [ ] No hardcoded secrets / tokens
+- [ ] Test coverage doesn't decrease
+- [ ] Commit message follows Conventional Commits
 
-### Review 重点
+### Review Focus Areas
 
-| 维度         | 关注点                                            |
+| Dimension | Focus Points |
 | :----------- | :------------------------------------------------ |
-| **正确性**   | 逻辑是否正确？边界 case 是否处理？                |
-| **可读性**   | 命名是否清晰？结构是否合理？                       |
-| **健壮性**   | 错误处理是否完整？异常路径是否覆盖？               |
-| **性能**     | 是否引入性能瓶颈？大数据量下表现？                |
-| **安全**     | 是否有注入 / XSS / 越权风险？                      |
-| **测试**     | 测试是否有效？是否覆盖关键路径？                  |
-| **文档**     | 公共 API 是否有文档？变更是否记录？                |
+| **Correctness** | Logic correct? Edge cases handled? |
+| **Readability** | Clear naming? Reasonable structure? |
+| **Robustness** | Error handling complete? Exception paths covered? |
+| **Performance** | Performance bottlenecks introduced? Behavior under large data? |
+| **Security** | Injection / XSS / authorization risks? |
+| **Testing** | Tests effective? Key paths covered? |
+| **Documentation** | Public APIs documented? Changes recorded? |
 
 ---
 
-## 致谢
+## Acknowledgments
 
-感谢所有贡献者！每一位都让项目变得更好。
+Thanks to all contributors! Every one of you makes the project better.
 
 [![Contributors](https://img.shields.io/github/contributors/{org}/{repo}?style=flat-square)](https://github.com/{org}/{repo}/graphs/contributors)
 
-贡献者名单见 [CONTRIBUTORS.md](./CONTRIBUTORS.md)。
+See [CONTRIBUTORS.md](./CONTRIBUTORS.md) for the contributor list.
 
 ---
 
-## 📌 CONTRIBUTING 撰写 Checklist
+## 📌 CONTRIBUTING Writing Checklist
 
-- [ ] 行为准则明确
-- [ ] 贡献方式与流程图清晰
-- [ ] 开发环境搭建步骤完整
-- [ ] 代码规范（通用 + 语言专属）
-- [ ] 提交规范（Conventional Commits）
-- [ ] PR 流程（分支命名 / 描述模板 / Review 要求）
-- [ ] 测试要求（覆盖率门禁 + 类型 + 规范）
-- [ ] 文档贡献规范
-- [ ] Issue 模板（Bug / 功能请求）
-- [ ] 评审标准（通过条件 + Review 重点）
-- [ ] 致谢与贡献者链接
+- [ ] Code of conduct clear
+- [ ] Contribution types and flow diagram clear
+- [ ] Development environment setup steps complete
+- [ ] Code standards (general + language-specific)
+- [ ] Commit standards (Conventional Commits)
+- [ ] PR process (branch naming / description template / review requirements)
+- [ ] Testing requirements (coverage gates + types + standards)
+- [ ] Documentation contribution standards
+- [ ] Issue templates (Bug / Feature request)
+- [ ] Review criteria (acceptance conditions + review focus)
+- [ ] Acknowledgments and contributor links

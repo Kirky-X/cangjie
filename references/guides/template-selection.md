@@ -1,127 +1,127 @@
-# 模板选择指南
+# Template Selection Guide
 
-## 决策顺序
+## Decision Sequence
 
-1. 用户是否明确指定模板或章节
-2. 用户到底要“学会什么”还是“汇报什么”
-3. 输入内容是单次材料还是多份材料综合
-4. 是否存在决策、待办、指标、权衡等强信号
-5. 不确定时回落到对应模板族的默认模板
+1. Has the user explicitly specified a template or sections?
+2. Is the user trying to "learn something" or "report something"?
+3. Is the input a single material or a synthesis of multiple materials?
+4. Are there strong signals such as decisions, action items, metrics, or trade-offs?
+5. When uncertain, fall back to the default template of the corresponding family.
 
-## 一句话判断法
+## Quick One-Liner Rules
 
-- 如果目标是“学会”和“复习”，选 `learning/*`
-- 如果目标是“回顾内容”和“传播亮点”，选 `media/*`
-- 如果目标是“记录讨论”和“追踪责任”，选 `meeting/*`
-- 如果目标是“向上汇报”或“跟踪进展”，选 `business/*`
-- 如果目标是“归纳多源信息并支持判断”，选 `analysis/*`
-- 如果目标是“读懂一篇论文”，优先选 `analysis/paper-summary`
-- 如果目标是“总结一本书”，优先在 `learning/nonfiction-book-summary` 和 `learning/fiction-book-summary` 之间分流
-- 如果目标是“写产品文档”或“做商业计划”，选 `product/*`
-- 如果目标是“写技术方案”或“设计架构”，选 `product/trd` 或 `product/architecture`
-- 如果目标是“正式归档的详细会议纪要”（含 ACTION 编号、Parking Lot），选 `product/meeting-minutes-detailed`
-- 如果目标是“建立评判框架的文献综述”（含 PRISMA、场景化推荐），选 `product/literature-review`
+- If the goal is "learning" and "review," choose `learning/*`
+- If the goal is "content review" and "highlight dissemination," choose `media/*`
+- If the goal is "record discussion" and "track accountability," choose `meeting/*`
+- If the goal is "report upward" or "track progress," choose `business/*`
+- If the goal is "synthesize multi-source information to support judgment," choose `analysis/*`
+- If the goal is "understand a paper," prefer `analysis/paper-summary`
+- If the goal is "summarize a book," first choose between `learning/nonfiction-book-summary` and `learning/fiction-book-summary`
+- If the goal is "write product documentation" or "create a business plan," choose `product/*`
+- If the goal is "write a technical proposal" or "design architecture," choose `product/trd` or `product/architecture`
+- If the goal is "formally archived detailed meeting minutes" (with ACTION numbers, Parking Lot), choose `product/meeting-minutes-detailed`
+- If the goal is "literature review for building an evaluative framework" (with PRISMA, scenario-based recommendations), choose `product/literature-review`
 
-## 常见歧义
+## Common Ambiguities
 
-### 课程视频 vs 产品演示
+### Course Video vs Product Demo
 
-- 想让读者掌握知识：`learning/course-notes`
-- 想让读者照着操作：`learning/tutorial-playbook`
-- 想回顾节目内容而非教学：`media/video-program-summary`
+- Want readers to master knowledge: `learning/course-notes`
+- Want readers to follow along operationally: `learning/tutorial-playbook`
+- Want to review show content rather than teach: `media/video-program-summary`
 
-### 课程笔记 vs 书籍总结
+### Course Notes vs Book Summary
 
-- 重点是课程、训练营、讲授内容：`learning/course-notes`
-- 重点是整本非虚构书的结构、论点、逐章内容：`learning/nonfiction-book-summary`
-- 重点是整本小说或叙事作品的人物、情节、主题：`learning/fiction-book-summary`
+- Focus is on courses, bootcamps, instructional content: `learning/course-notes`
+- Focus is on an entire nonfiction book's structure, arguments, chapter-by-chapter content: `learning/nonfiction-book-summary`
+- Focus is on an entire novel or narrative work's characters, plot, themes: `learning/fiction-book-summary`
 
-### 播客访谈 vs 访谈记录
+### Podcast Interview vs Interview Record
 
-- 面向内容消费和观点提炼：`media/podcast-summary`
-- 面向研究输入和问答整理：`meeting/interview-record`
+- For content consumption and viewpoint extraction: `media/podcast-summary`
+- For research input and Q&A organization: `meeting/interview-record`
 
-### 会议纪要 vs 项目汇报
+### Meeting Minutes vs Project Report
 
-- 重点是讨论过程、决策、待办：`meeting/decision-minutes`
-- 重点是阶段进展、指标、风险：`business/project-status-report`
+- Focus is on discussion process, decisions, action items: `meeting/decision-minutes`
+- Focus is on phase progress, metrics, risks: `business/project-status-report`
 
-### 综合材料总结
+### Multi-Material Summary
 
-- 重点是共性主题：`analysis/theme-synthesis`
-- 重点是做选择：`analysis/decision-memo`
-- 重点是行业和事实扫描：`analysis/research-brief`
+- Focus is on common themes: `analysis/theme-synthesis`
+- Focus is on making a choice: `analysis/decision-memo`
+- Focus is on industry and factual scanning: `analysis/research-brief`
 
-### 论文阅读
+### Paper Reading
 
-- 想知道研究主题、方法、公式、实验和缺陷：`analysis/paper-summary`
-- 如果论文只是多份证据材料中的一个组成部分，再考虑切到 `analysis/research-brief` 或 `analysis/theme-synthesis`
+- Want to know research topic, methods, formulas, experiments, and limitations: `analysis/paper-summary`
+- If the paper is just one component among multiple evidence materials, consider switching to `analysis/research-brief` or `analysis/theme-synthesis`
 
-### 书籍总结
+### Book Summary
 
-- 非虚构、方法论、商业、心理、历史、科普类书籍：`learning/nonfiction-book-summary`
-- 小说、文学、叙事类作品：`learning/fiction-book-summary`
-- 默认输出应包含“逐章总结 + 全书总结”，除非用户明确要求只要其中一层
-- 默认输出形态是“全书文件 + 章节独立文件目录”，除非用户明确要求单文件合并
-- 如果输入只覆盖部分章节或节选，必须在摘要开头说明覆盖范围
-- 如果原书有“部分/篇/卷”结构，摘要默认保留这一层，不直接打平成章节长列表
-- 章节很多时，不要求每章平均篇幅；优先让关键章节更详细，附录性章节更简洁
+- Nonfiction, methodology, business, psychology, history, popular science: `learning/nonfiction-book-summary`
+- Novels, literature, narrative works: `learning/fiction-book-summary`
+- Default output includes "chapter summaries + whole-book summary" unless the user explicitly requests only one level
+- Default output format is "whole-book file + chapter directory" unless the user explicitly requests a single merged file
+- If the input only covers selected chapters or excerpts, the coverage scope must be noted at the beginning
+- If the original book has "parts/volumes" structures, the summary preserves this layer by default and does not flatten into a long chapter list
+- When chapters are numerous, do not require equal length for each; prioritize making key chapters more detailed and supplementary chapters more concise
 
-### 论文子类型判断
+### Paper Sub-Type Selection
 
-- 如果核心是定理、证明、收敛性、上下界：`analysis/theoretical-paper-summary`
-- 如果核心是数据集、实验指标、benchmark、ablation：`analysis/experimental-paper-summary`
-- 如果核心是系统架构、吞吐、延迟、扩展性、部署：`analysis/systems-paper-summary`
-- 如果核心是分类框架、文献梳理、研究脉络、空白点：`analysis/survey-paper-summary`
-- 如果看不出明确子类型：`analysis/paper-summary`
+- Core is theorems, proofs, convergence, bounds: `analysis/theoretical-paper-summary`
+- Core is datasets, experimental metrics, benchmarks, ablation: `analysis/experimental-paper-summary`
+- Core is system architecture, throughput, latency, scalability, deployment: `analysis/systems-paper-summary`
+- Core is classification frameworks, literature review, research threads, gaps: `analysis/survey-paper-summary`
+- If no clear sub-type is identifiable: `analysis/paper-summary`
 
-### 产品文档子层选择
+### Product Documentation Sub-Layer Selection
 
-- 商业计划书、融资路演：`product/business-plan`
-- 商业模式、价值主张、盈利路径：`product/business-model`
-- 商业需求、项目立项、战略层：`product/brd`
-- 市场调研、行业分析：`product/market-research`
-- 市场需求、产品规划：`product/mrd`
-- 竞品分析、竞争格局、差异化：`product/competitive-analysis`
-- 项目启动、任务书：`product/charter`
-- 产品需求、功能设计：`product/prd`
-- 功能需求细化：`product/frd`
-- UIUX 规范、配色体系：`product/uiux-spec`
-- 技术方案、架构选型：`product/trd`
-- 系统架构、模块设计：`product/architecture`
-- 数据库设计、表结构：`product/db-design`
-- 核心算法说明：`product/algorithm-doc`
-- 发布计划、上线排期：`product/release-plan`
-- 测试报告、质量报告：`product/test-report`
-- 灰度发布、分批上线：`product/canary-plan`
-- 数据看板、指标体系：`product/dashboard`
-- 用户手册、使用说明：`product/user-guide`
-- 运营手册、运营流程：`product/operation-guide`
-- 不确定子层时：`product/prd`
+- Business plan, fundraising pitch: `product/business-plan`
+- Business model, value proposition, monetization path: `product/business-model`
+- Business requirements, project initiation, strategy layer: `product/brd`
+- Market research, industry analysis: `product/market-research`
+- Market requirements, product planning: `product/mrd`
+- Competitive analysis, competitive landscape, differentiation: `product/competitive-analysis`
+- Project kickoff, charter: `product/charter`
+- Product requirements, feature design: `product/prd`
+- Functional requirements detail: `product/frd`
+- UIUX specification, color system: `product/uiux-spec`
+- Technical proposal, architecture selection: `product/trd`
+- System architecture, module design: `product/architecture`
+- Database design, table structure: `product/db-design`
+- Core algorithm documentation: `product/algorithm-doc`
+- Release plan, go-live schedule: `product/release-plan`
+- Test report, quality report: `product/test-report`
+- Canary release, phased rollout: `product/canary-plan`
+- Data dashboard, metrics system: `product/dashboard`
+- User manual, usage guide: `product/user-guide`
+- Operations manual, operations process: `product/operation-guide`
+- When uncertain about sub-layer: `product/prd`
 
-### 竞品分析 vs 竞品扫描
+### Competitive Analysis vs Competitive Scan
 
-- 面向产品决策、含差异化策略和护城河：`product/competitive-analysis`
-- 面向研究归纳、轻量级同类对比：`analysis/competitive-scan`
+- For product decisions, including differentiation strategy and moat: `product/competitive-analysis`
+- For research synthesis, lightweight peer comparison: `analysis/competitive-scan`
 
-### 详细会议纪要 vs 标准决策纪要
+### Detailed Meeting Minutes vs Standard Decision Minutes
 
-- 需要正式归档、含 ACTION/RISK 编号、Parking Lot、FAR 原则：`product/meeting-minutes-detailed`
-- 快速记录决策和待办：`meeting/decision-minutes`
+- Requires formal archiving, with ACTION/RISK numbers, Parking Lot, FAR principles: `product/meeting-minutes-detailed`
+- Quick recording of decisions and action items: `meeting/decision-minutes`
 
-### 文献综述报告 vs 综述论文总结
+### Literature Review Report vs Survey Paper Summary
 
-- 需要建立评判框架、含 PRISMA 流程、场景化推荐：`product/literature-review`
-- 总结单篇综述论文的分类框架：`analysis/survey-paper-summary`
+- Requires building an evaluative framework, with PRISMA process, scenario-based recommendations: `product/literature-review`
+- Summarizing the classification framework of a single survey paper: `analysis/survey-paper-summary`
 
-## 向用户确认时建议说明
+## When Confirming with the User
 
-最少说明三件事：
+At minimum, explain three things:
 
-1. 选中的模板 ID
-2. 核心章节
-3. 为什么它比相邻模板更合适
+1. The selected template ID
+2. Core sections
+3. Why it is more appropriate than adjacent templates
 
-示例：
+Example:
 
-> 我建议用 `meeting/decision-minutes`，因为你的内容里有明确决策、负责人和截止时间。核心章节会包括讨论摘要、决策、待办和风险。如果你更想看按发言人整理，我可以切到 `meeting/discussion-minutes`。
+> I recommend `meeting/decision-minutes` because your content has clear decisions, responsible persons, and deadlines. Core sections will include discussion summary, decisions, action items, and risks. If you'd prefer to see it organized by speaker, I can switch to `meeting/discussion-minutes`.
