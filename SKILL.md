@@ -1,7 +1,7 @@
 ---
 name: cangjie
 description: "内容转化与精炼技能，四种模式：(1) 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档；(2) 将文章/想法转化为文生视频分镜脚本；(3) 去除文本的 AI 写作痕迹；(4) 创建 Excalidraw 可视化图表。触发：总结/会议纪要/论文总结/PRD/BP/TRD/文献综述/视频脚本/分镜/去AI痕迹/画图/流程图/架构图/diagram/visualize"
-version: 0.3.0
+version: 0.3.1
 source: local-skill
 triggers:
   # 模式 1：内容总结
