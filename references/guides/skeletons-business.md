@@ -1,209 +1,210 @@
-# Output Skeletons — Business Family
+# 输出骨架 — Business 族
 
-> This file is split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
+> 本文件从 output-skeletons.md 拆分。完整索引见 [output-skeletons.md](output-skeletons.md)。
 
 ## Business
 
 ### `business/project-status-report`
 
 ```markdown
-# {Report Title}
+# {报告标题}
 
-## Report Information
+## 报告信息
 
-- Period:
-- Author:
-- Reporting to:
+- 周期：
+- 作者：
+- 汇报对象：
 
-## Executive Summary
+## 执行摘要
 
-- Current overall status
-- Most important progress
-- Biggest risk
-- Focus for the next week/phase
+- 当前总体状态
+- 最重要进展
+- 最大风险
+- 接下来一周/一阶段重点
 
-## Key Progress
+## 关键进展
 
-- Completed items
-- Impact or value
-- Deviations from original plan
+- 已完成事项
+- 影响或价值
+- 与原计划差异
 
-## Metrics
+## 指标
 
-- Metric values
-- Trend
-- Explanation of causes
+- 指标值
+- 变化趋势
+- 原因解释
 
-## Risks & Blockers
+## 风险与阻塞
 
-## Next Actions
+## 下一步动作
 
-## Support Needed
+## 需要支持
 ```
 
 ### `business/weekly-monthly-report`
 
 ```markdown
-# {Report Title}
+# {报告标题}
 
-## Report Information
+## 报告信息
 
-- Period:
-- Author:
-- Reporting to:
+- 周期：
+- 作者：
+- 汇报对象：
 
-## Summary
+## 摘要
 
-- Overall status this period
-- Most important progress
-- Biggest risk
+- 本周期总体状态
+- 最重要进展
+- 最大风险
 
-## Completed Work
+## 已完成工作
 
-- Item 1: Result + impact
-- Item 2
+- 事项 1：成果 + 影响
+- 事项 2
 
-## Work in Progress
+## 进行中工作
 
-- Item 1: Progress + estimated completion time
-- Item 2
+- 事项 1：进度 + 预计完成时间
+- 事项 2
 
-## Blockers
+## 阻碍项
 
-- Blocker 1: Cause + impact
-- Blocker 2
+- 阻碍 1：原因 + 影响
+- 阻碍 2
 
-## Next Period Plans
+## 下个周期计划
 
-- Plan 1
-- Plan 2
+- 计划 1
+- 计划 2
 
-## Metrics
+## 指标
 
-## Support Needed
+## 需要支持
 
-## Lessons Learned
+## 经验总结
 ```
 
 ### `business/executive-brief`
 
 ```markdown
-# {Report Title}
+# {报告标题}
 
-## Report Information
+## 报告信息
 
-- Period:
-- Author:
-- Reporting to:
+- 周期：
+- 作者：
+- 汇报对象：
 
-## Executive Summary
+## 执行摘要
 
-- One-sentence conclusion
-- Key changes
-- Recommended actions
+- 一句话结论
+- 关键变化
+- 建议动作
 
-## Strategic Updates
+## 战略更新
 
-- Update 1 related to strategic objectives
-- Impact
+- 与战略目标相关的更新 1
+- 影响
 
-## Pending Decisions
+## 待决策事项
 
-- Decision 1: Background + options + recommendation
-- Decision 2
+- 决策 1：背景 + 选项 + 建议
+- 决策 2
 
-## Major Risks
+## 主要风险
 
-- Risk 1: Impact + mitigation
-- Risk 2
+- 风险 1：影响 + 缓解
+- 风险 2
 
-## Metrics
+## 指标
 
-## Support Needed
+## 需要支持
 
-## Appendix
+## 附录
 ```
 
 ### `business/risk-issue-report`
 
 ```markdown
-# {Report Title}
+# {报告标题}
 
-## Report Information
+## 报告信息
 
-- Period:
-- Author:
-- Reporting to:
+- 周期：
+- 作者：
+- 汇报对象：
 
-## Issue Overview
+## 问题概述
 
-- Issue 1: Symptom + severity
-- Issue 2
+- 问题 1：现象 + 严重程度
+- 问题 2
 
-## Impact Scope
+## 影响范围
 
-- Affected business/projects
-- Severity
-- Duration
+- 受影响业务/项目
+- 严重程度
+- 持续时间
 
-## Root Cause Analysis
+## 原因分析
 
-- Direct cause
-- Root cause
+- 直接原因
+- 根本原因
 
-## Mitigation Measures
+## 缓解措施
 
-- Short-term measures
-- Long-term measures
+- 短期措施
+- 长期措施
 
-## Responsible Parties
+## 责任人
 
-| Issue | Owner | Deadline |
+| 问题 | 负责人 | 截止时间 |
 | ---- | ------ | -------- |
 
-## Timeline
+## 时间线
 
-## Dependencies
+## 依赖事项
 
-## Escalation Path
+## 升级路径
 ```
 
 ### `business/action-tracker`
 
 ```markdown
-# {Report Title}
+# {报告标题}
 
-## Report Information
+## 报告信息
 
-- Period:
-- Author:
-- Reporting to:
+- 周期：
+- 作者：
+- 汇报对象：
 
-## Priority
+## 优先级
 
-- P0 items
-- P1 items
+- P0 事项
+- P1 事项
 
-## Action List
+## 行动列表
 
-| Task | Owner | Priority | Status |
+| 任务 | 负责人 | 优先级 | 状态 |
 | ---- | ------ | ------ | ---- |
 
-## Deadlines
+## 截止时间
 
-- Key milestone dates
+- 关键截止节点
 
-## Dependencies
+## 依赖事项
 
-- Dependency 1: Collaborator / External condition
-- Dependency 2
+- 依赖 1：协作方 / 外部条件
+- 依赖 2
 
-## Status Notes
+## 状态备注
 
-- Status changes
-- Blockers
+- 状态变化
+- 阻塞点
 
-## Risks
+## 风险
 
-## Review Cadence
+## 复盘节奏
 ```
+

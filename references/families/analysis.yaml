@@ -1,52 +1,52 @@
-# Analysis family — Research synthesis, decision support, paper reading
-# Covers: Research briefs, paper summaries (with 5 subtypes), decision memos, theme synthesis, competitive scans
-# Output skeleton: guides/skeletons-analysis.md
+# Analysis 族 — 研究归纳、决策支持、论文阅读
+# 覆盖：研究简报、论文总结（含 5 个子类型）、决策备忘录、主题综合、竞品扫描
+# 输出骨架：guides/skeletons-analysis.md
 
 family: analysis
-description: Multi-source synthesis, decision support, paper reading
+description: 多源归纳、决策支持、论文阅读
 default_template: analysis/research-brief
 skeleton_file: guides/skeletons-analysis.md
 
 templates:
   - id: analysis/research-brief
-    name: Research Brief
+    name: 研究简报
   - id: analysis/paper-summary
-    name: Paper Summary (General)
-    notes: When a paper subtype is identified, prefer the corresponding subtype template
+    name: 论文总结（通用）
+    notes: 当识别出论文子类型时，优先使用对应子类型模板
   - id: analysis/theoretical-paper-summary
-    name: Theoretical Paper Summary
+    name: 理论论文总结
   - id: analysis/experimental-paper-summary
-    name: Experimental Paper Summary
+    name: 实验论文总结
   - id: analysis/systems-paper-summary
-    name: Systems Paper Summary
+    name: 系统论文总结
   - id: analysis/survey-paper-summary
-    name: Survey Paper Summary
+    name: 综述论文总结
   - id: analysis/decision-memo
-    name: Decision Memo
+    name: 决策备忘录
   - id: analysis/theme-synthesis
-    name: Theme Synthesis
+    name: 主题综合
   - id: analysis/competitive-scan
-    name: Competitive Scan (Lightweight)
-    notes: For product-decision-oriented full competitive analysis, use product/competitive-analysis
+    name: 竞品扫描（轻量级）
+    notes: 面向产品决策的完整竞品分析请使用 product/competitive-analysis
 
 selection_rules:
-  - condition: "Goal is understanding a single paper"
+  - condition: "目标是读懂单篇论文"
     template: analysis/paper-summary
-  - condition: "Theorems/proofs/formula derivations"
+  - condition: "定理/证明/公式推导"
     template: analysis/theoretical-paper-summary
-  - condition: "Datasets/metrics/experimental comparisons"
+  - condition: "数据集/指标/实验对比"
     template: analysis/experimental-paper-summary
-  - condition: "System architecture/throughput/latency"
+  - condition: "系统架构/吞吐延迟"
     template: analysis/systems-paper-summary
-  - condition: "Literature survey/taxonomy"
+  - condition: "文献综述/taxonomy"
     template: analysis/survey-paper-summary
-  - condition: "Focus is making a choice"
+  - condition: "重点是做选择"
     template: analysis/decision-memo
-  - condition: "Focus is common themes"
+  - condition: "重点是共性主题"
     template: analysis/theme-synthesis
-  - condition: "Lightweight peer comparison"
+  - condition: "轻量级同类对比"
     template: analysis/competitive-scan
-  - condition: "Focus is industry and fact scanning"
+  - condition: "重点是行业和事实扫描"
     template: analysis/research-brief
-  - condition: "Uncertain subtype"
+  - condition: "不确定子类型"
     template: analysis/research-brief

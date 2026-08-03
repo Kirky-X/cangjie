@@ -1,202 +1,203 @@
-# Output Skeletons — Meeting Family
+# 输出骨架 — Meeting 族
 
-> This file is split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
+> 本文件从 output-skeletons.md 拆分。完整索引见 [output-skeletons.md](output-skeletons.md)。
 
 ## Meeting
 
 ### `meeting/decision-minutes`
 
 ```markdown
-# {Meeting Topic}
+# {会议主题}
 
-## Meeting Information
+## 会议信息
 
-- Date:
-- Participants:
-- Objective:
+- 时间：
+- 参与人：
+- 目标：
 
-## Discussion Summary
+## 讨论摘要
 
-- Agenda item 1: Who raised it, core viewpoints, discussion direction
-- Agenda item 2: Points of disagreement, convergence method, current status
+- 议题 1：谁提出、核心观点、讨论走向
+- 议题 2：分歧点、收敛方式、当前状态
 
-## Decisions
+## 决策
 
-1. What was decided
-2. Why this decision was made
-3. Scope of impact or preconditions
+1. 决定了什么
+2. 为什么这样决定
+3. 影响范围或前提条件
 
-## Action Items
+## 待办事项
 
-| Task | Owner | Deadline | Status |
+| 任务 | 负责人 | 截止时间 | 状态 |
 | ---- | ------ | -------- | ---- |
 
-## Risks & Disputes
+## 风险与争议
 
-## Open Questions
+## 未解决问题
 ```
 
 ### `meeting/discussion-minutes`
 
 ```markdown
-# {Meeting Topic}
+# {会议主题}
 
-## Meeting Information
+## 会议信息
 
-- Date:
-- Location:
-- Participants:
-- Source materials:
+- 时间：
+- 地点：
+- 参与人：
+- 材料来源：
 
-## Objective
+## 目标
 
-## Discussion Summary
+## 讨论摘要
 
-- Agenda item 1: Who raised it, core viewpoints, discussion direction
-- Agenda item 2: Points of disagreement, convergence method, current status
+- 议题 1：谁提出、核心观点、讨论走向
+- 议题 2：分歧点、收敛方式、当前状态
 
-## Key Observations
+## 关键观察
 
-- Finding 1
-- Finding 2
+- 发现 1
+- 发现 2
 
-## Open Questions
+## 未解决问题
 
-- Question 1
-- Question 2
+- 问题 1
+- 问题 2
 
-## Next Steps
+## 后续步骤
 
-- Step 1: Owner / Deadline
-- Step 2
+- 步骤 1：负责人 / 截止时间
+- 步骤 2
 
-## Speaker Perspectives
+## 发言人观点
 
-## Timeline
+## 时间线
 ```
 
 ### `meeting/interview-record`
 
 ```markdown
-# {Interview Topic}
+# {访谈主题}
 
-## Meeting Information
+## 会议信息
 
-- Date:
-- Location:
-- Interviewer/Interviewee:
-- Source materials:
+- 时间：
+- 地点：
+- 访谈人/受访人：
+- 材料来源：
 
-## Interviewee Background
+## 受访人背景
 
-- Role/Position
-- Relevant experience
-- Perspective/stance
+- 角色/职位
+- 相关经历
+- 视角立场
 
-## Interview Topics
+## 访谈主题
 
-1. Topic 1
-2. Topic 2
+1. 主题1
+2. 主题2
 
-## Responses & Insights
+## 回答与洞察
 
-### Topic 1
+### 主题1
 
-- Question
-- Key response points
-- Insights
+- 问题
+- 回答要点
+- 洞察
 
-## Key Quotes
+## 关键原话
 
-> {Quote}
+> {引用}
 
-## Follow-up Actions
+## 后续跟进
 
-- Follow-up item 1: Owner / Deadline
-- Follow-up item 2
+- 跟进项 1：负责人 / 截止时间
+- 跟进项 2
 
-## Decision Impact
+## 决策影响
 
-## Timeline
+## 时间线
 ```
 
 ### `meeting/one-on-one-note`
 
 ```markdown
-# {1:1 Topic}
+# {1:1 主题}
 
-## Meeting Information
+## 会议信息
 
-- Date:
-- Manager/Member:
-- Cadence:
+- 时间：
+- 经理/成员：
+- 周期：
 
-## Current Status
+## 当前状态
 
-- Overall status
-- Current focus
+- 整体状态
+- 当前关注
 
-## Recent Progress
+## 最近进展
 
-- Progress item 1
-- Highlight 1
+- 进展 1
+- 亮点 1
 
-## Blockers
+## 阻碍
 
-- Blocker 1
-- Points of confusion
+- 阻碍 1
+- 困惑点
 
-## Support Needed
+## 需要的支持
 
-- Support item 1
-- Desired resolution
+- 支持 1
+- 期望解决方式
 
-## Agreed Actions
+## 达成的动作
 
-| Task | Owner | Deadline |
+| 任务 | 负责人 | 截止时间 |
 | ---- | ------ | -------- |
 
-## Development Topics
+## 发展议题
 
-## Emotional Signals
+## 情绪信号
 ```
 
 ### `meeting/workshop-summary`
 
 ```markdown
-# {Workshop Topic}
+# {工作坊主题}
 
-## Meeting Information
+## 会议信息
 
-- Date:
-- Location:
-- Facilitator/Participants:
-- Source materials:
+- 时间：
+- 地点：
+- 引导者/参与者：
+- 材料来源：
 
-## Objective
+## 目标
 
-## Activity Flow
+## 活动流程
 
-1. Segment 1: Purpose, process, output
-2. Segment 2
+1. 环节1：目的、过程、产出
+2. 环节2
 
-## Outputs
+## 产出物
 
-- Co-created results
-- Conclusions
-- Deliverables
+- 共创结果
+- 结论
+- 交付物
 
-## Decisions
+## 决策
 
-1. What was decided
-2. Scope of impact
+1. 决定了什么
+2. 影响范围
 
-## Next Steps
+## 后续步骤
 
-- Step 1: Owner / Deadline
-- Step 2
+- 步骤 1：负责人 / 截止时间
+- 步骤 2
 
-## Participant Feedback
+## 参与者反馈
 
-## Visual Key Points
+## 视觉要点
 ```
+

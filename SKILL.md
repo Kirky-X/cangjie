@@ -1,51 +1,52 @@
 ---
 name: cangjie
-description: "Content transformation & refinement skill with four modes: (1) summarize text/audio/video/transcripts/papers into structured notes or product documents; (2) generate AI video storyboards from articles/ideas; (3) humanize text to remove AI writing traces; (4) create Excalidraw diagrams that argue visually. Triggers: summarize/meeting minutes/paper summary/PRD/BP/TRD/literature review/video script/分镜/humanize/去AI痕迹/画图/流程图/架构图/diagram/visualize"
+description: "内容转化与精炼技能，四种模式：(1) 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档；(2) 将文章/想法转化为文生视频分镜脚本；(3) 去除文本的 AI 写作痕迹；(4) 创建 Excalidraw 可视化图表。触发：总结/会议纪要/论文总结/PRD/BP/TRD/文献综述/视频脚本/分镜/去AI痕迹/画图/流程图/架构图/diagram/visualize"
 version: 0.3.0
 source: local-skill
 triggers:
-  # Mode 1: summarization
-  - summarize
-  - content summary
-  - meeting minutes
-  - generate minutes
-  - report summary
-  - learning notes
-  - podcast summary
-  - video summary
-  - paper summary
-  - transcription
+  # 模式 1：内容总结
+  - 总结
+  - 内容总结
+  - 会议纪要
+  - 生成纪要
+  - 报告总结
+  - 学习笔记
+  - 播客总结
+  - 视频总结
+  - 论文总结
+  - 转录
+  - 转录稿
   - qwen-asr
   - faster-whisper
   - ffmpeg
   - PRD
-  - business plan
+  - 产品需求文档
+  - 商业计划书
   - BP
-  - technical requirements
+  - 技术需求文档
   - TRD
-  - architecture design
-  - competitive analysis report
-  - market research
-  - literature review
+  - 架构设计
+  - 竞品分析报告
+  - 市场调研
+  - 文献综述
   - chub
-  # Mode 2: video script generation
-  - video script
+  # 模式 2：视频脚本生成
   - 视频脚本
   - 分镜
   - 分镜头
   - 拍成短片
+  - video script
   - video prompt
   - text-to-video
   - AI视频生成
   - 文生视频
-  # Mode 3: humanization
-  - humanize
-  - 人性化
+  # 模式 3：去 AI 痕迹
   - 去AI痕迹
   - 去AI味
   - 去除AI写作痕迹
   - 去除AI味
-  # Mode 4: diagram
+  - humanize
+  # 模式 4：画图
   - 画图
   - 流程图
   - 架构图
@@ -60,54 +61,54 @@ requires:
   pip: [faster-whisper, qwen-asr, librosa, numpy, torch]
 ---
 
-# Content Transformation & Refinement Skill - Cangjie
+# 内容转化与精炼技能 · 仓颉 (Cangjie)
 
-Four content transformation modes, selected by user intent:
+四种内容转化模式，根据用户意图选择：
 
-| Mode | What it does | Trigger signals | Detail |
-| ---- | ------------ | --------------- | ------ |
-| **Mode 1: Summarization** (default) | Organizes text/audio/video/transcripts/papers into structured notes or product documents | summarize / meeting minutes / paper summary / PRD / BP / TRD | [modes/summarization.md](modes/summarization.md) |
-| **Mode 2: Video Script** | Transforms articles/ideas into shot-by-shot storyboards for text-to-video models | 视频脚本 / 分镜 / video prompt / text-to-video | [modes/video-script.md](modes/video-script.md) |
-| **Mode 3: Humanization** | Removes AI writing traces from text | humanize / 去AI痕迹 / 去AI味 | [modes/humanization.md](modes/humanization.md) |
-| **Mode 4: Diagram** | Creates `.excalidraw` JSON diagrams that argue visually | 画图 / 流程图 / 架构图 / diagram / visualize | [modes/diagram.md](modes/diagram.md) |
+| 模式 | 功能 | 触发信号 | 详情 |
+| ---- | ---- | -------- | ---- |
+| **模式 1：内容总结**（默认） | 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档 | 总结 / 会议纪要 / 论文总结 / PRD / BP / TRD | [modes/summarization.md](modes/summarization.md) |
+| **模式 2：视频脚本** | 将文章/想法转化为逐镜头分镜脚本，用于文生视频模型 | 视频脚本 / 分镜 / video prompt / text-to-video | [modes/video-script.md](modes/video-script.md) |
+| **模式 3：去 AI 痕迹** | 去除文本的 AI 写作痕迹 | 去AI痕迹 / 去AI味 / humanize | [modes/humanization.md](modes/humanization.md) |
+| **模式 4：画图** | 创建 `.excalidraw` JSON 可视化图表，用图形论证 | 画图 / 流程图 / 架构图 / diagram / visualize | [modes/diagram.md](modes/diagram.md) |
 
-**Mode routing**: scan the trigger signals above. Mode 1 is the default when the user wants to *organize/summarize* content into structured docs; Mode 2 when they want to *turn content into a video*; Mode 3 when they want to *refine/de-AI* existing text; Mode 4 when they want to *visualize concepts as a diagram*. When intent is ambiguous, list candidate modes and ask the user—do not guess.
+**模式路由**：扫描上方触发信号。当用户想要*整理/总结*内容为结构化文档时，走模式 1；想*把内容变成视频*时，走模式 2；想*润色/去 AI 味*已有文本时，走模式 3；想*将概念可视化为图表*时，走模式 4。意图不明确时，列出候选模式让用户选择——不要猜测。
 
-**After routing, load the corresponding mode file for full workflow details.**
+**路由完成后，加载对应模式文件获取完整工作流。**
 
-## Shared Resources
+## 共享资源
 
-| Resource | Path |
-| -------- | ---- |
-| Template registry | `references/registry.yaml` |
-| Template taxonomy | `references/taxonomy.yaml` |
-| Template families | `references/families/*.yaml` |
-| Template selection guide | `references/guides/template-selection.md` |
-| Output skeletons | `references/guides/output-skeletons.md` |
-| Detail policy | `references/guides/detail-policy.md` |
-| Examples | `references/guides/examples.md` |
-| Video prompt guidelines | `references/guides/video-prompt-guidelines.md` |
-| Excalidraw color palette | `references/excalidraw/color-palette.md` |
-| Excalidraw element templates | `references/excalidraw/element-templates.md` |
-| Excalidraw JSON schema | `references/excalidraw/json-schema.md` |
+| 资源 | 路径 |
+| ---- | ---- |
+| 模板注册表 | `references/registry.yaml` |
+| 模板分类体系 | `references/taxonomy.yaml` |
+| 模板族定义 | `references/families/*.yaml` |
+| 模板选择指南 | `references/guides/template-selection.md` |
+| 输出骨架 | `references/guides/output-skeletons.md` |
+| 详略策略 | `references/guides/detail-policy.md` |
+| 示例集 | `references/guides/examples.md` |
+| 影视化提示词规范 | `references/guides/video-prompt-guidelines.md` |
+| Excalidraw 调色板 | `references/excalidraw/color-palette.md` |
+| Excalidraw 元素模板 | `references/excalidraw/element-templates.md` |
+| Excalidraw JSON 结构 | `references/excalidraw/json-schema.md` |
 
-## CLI Tools
+## CLI 工具
 
 ```bash
-# One-shot pipeline: video → extract audio → transcribe → output
+# 一键流水线：视频 → 提取音频 → 转录 → 输出
 python3 scripts/cangjie.py pipeline input.mp4 --engine faster-whisper
 
-# Individual steps
+# 单步执行
 python3 scripts/cangjie.py extract-audio input.mp4 --keep-audio
 python3 scripts/cangjie.py transcribe-diarize input.wav output.txt --num-speakers 3 --language zh
 python3 scripts/cangjie.py transcribe-qwen input.wav output.txt
 ```
 
-| Tool             | Install                                                               | Purpose                    |
-| ---------------- | --------------------------------------------------------------------- | -------------------------- |
-| `ffmpeg`         | `apt install ffmpeg`                                                  | Extract audio from video   |
-| `faster-whisper` | `pip install faster-whisper librosa torch`                            | ASR transcription          |
-| `qwen-asr`       | `pip install qwen-asr torch`                                          | ASR alternative            |
-| `chub`           | See [`references/guides/api-docs.md`](references/guides/api-docs.md)  | Fetch latest third-party API docs |
+| 工具 | 安装方式 | 用途 |
+| ---- | -------- | ---- |
+| `ffmpeg` | `apt install ffmpeg` | 从视频提取音频 |
+| `faster-whisper` | `pip install faster-whisper librosa torch` | ASR 语音转录 |
+| `qwen-asr` | `pip install qwen-asr torch` | ASR 替代方案 |
+| `chub` | 见 [`references/guides/api-docs.md`](references/guides/api-docs.md) | 获取最新第三方 API 文档 |
 
-GPU check: `python -c "import torch; print('CUDA:', torch.cuda.is_available())"`
+GPU 检查：`python -c "import torch; print('CUDA:', torch.cuda.is_available())"`

@@ -1,30 +1,30 @@
-# Media family — Program review, highlight distribution
-# Covers: Podcasts/interviews, video programs, livestream recaps, content highlights extraction
-# Output skeleton: guides/skeletons-media.md
+# Media 族 — 节目回顾、亮点传播
+# 覆盖：播客/访谈、视频节目、直播回顾、内容亮点提炼
+# 输出骨架：guides/skeletons-media.md
 
 family: media
-description: Program review, highlight distribution
+description: 节目回顾、亮点传播
 default_template: media/podcast-summary
 skeleton_file: guides/skeletons-media.md
 
 templates:
   - id: media/podcast-summary
-    name: Podcast/Interview Summary
+    name: 播客/访谈摘要
   - id: media/video-program-summary
-    name: Video Program Summary
+    name: 视频节目摘要
   - id: media/livestream-recap
-    name: Livestream Recap
+    name: 直播回顾
   - id: media/content-highlights
-    name: Content Highlights Extraction
+    name: 内容亮点提炼
 
 selection_rules:
-  - condition: "Podcast/interview audio"
+  - condition: "播客/访谈音频"
     template: media/podcast-summary
-  - condition: "Video program"
+  - condition: "视频节目"
     template: media/video-program-summary
-  - condition: "Livestream recap"
+  - condition: "直播回顾"
     template: media/livestream-recap
-  - condition: "Extracting highlight clips"
+  - condition: "提炼精彩片段"
     template: media/content-highlights
-  - condition: "Uncertain subtype"
+  - condition: "不确定子类型"
     template: media/podcast-summary

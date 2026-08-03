@@ -1,161 +1,162 @@
-# Output Skeletons — Media Family
+# 输出骨架 — Media 族
 
-> This file is split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
+> 本文件从 output-skeletons.md 拆分。完整索引见 [output-skeletons.md](output-skeletons.md)。
 
 ## Media
 
 ### `media/podcast-summary`
 
 ```markdown
-# {Title}
+# {标题}
 
-## Basic Information
+## 基本信息
 
-- Source:
-- Host/Guests:
-- Duration:
+- 来源：
+- 主持人/嘉宾：
+- 时长：
 
-## Content Overview
+## 内容概览
 
-## Speaker Map
+## 发言人地图
 
-- Role
-- Core stance
-- Key topics contributed
+- 角色
+- 核心立场
+- 主要贡献的话题
 
-## Topic Flow
+## 话题流转
 
-### Topic 1
+### 话题1
 
-- Topic background
-- Key viewpoints from guests/host
-- Supporting examples or data
-- Disagreements or rebuttals
-- Most important takeaways for listeners
+- 话题背景
+- 嘉宾/主持人的主要观点
+- 支撑例子或数据
+- 分歧或反驳
+- 对听众最重要的启示
 
-## Highlights
+## 亮点
 
-## Notable Quotes
+## 金句
 
-> {Quote}
+> {引用}
 
-## Key Takeaways for Audience
+## 听众可带走的结论
 ```
 
 ### `media/video-program-summary`
 
 ```markdown
-# {Title}
+# {标题}
 
-## Basic Information
+## 基本信息
 
-- Source:
-- Host/Guests:
-- Platform:
-- Publish date:
-- Duration:
+- 来源：
+- 主持人/嘉宾：
+- 平台：
+- 发布日期：
+- 时长：
 
-## Content Overview
+## 内容概览
 
-## Program Segments
+## 节目分段
 
-### Segment 1
+### 段落1
 
-- Topic
-- Key content
-- Guest perspectives
+- 主题
+- 关键内容
+- 嘉宾观点
 
-## Core Arguments
+## 核心观点
 
-- Argument 1
-- Supporting material
-- Implications for viewers
+- 观点 1
+- 支撑材料
+- 对观众意味着什么
 
-## Highlights
+## 亮点
 
-## Visual Key Points
+## 画面要点
 
-## Timeline
+## 时间线
 
-## Notable Quotes
+## 金句
 
-> {Quote}
+> {引用}
 ```
 
 ### `media/livestream-recap`
 
 ```markdown
-# {Title}
+# {标题}
 
-## Basic Information
+## 基本信息
 
-- Source:
-- Host/Presenter:
-- Platform:
-- Stream date:
-- Duration:
+- 来源：
+- 主播/主持：
+- 平台：
+- 直播日期：
+- 时长：
 
-## Content Overview
+## 内容概览
 
-## Flow Overview
+## 流程概览
 
-1. Segment 1
-2. Segment 2
-3. Each segment: purpose, key content, duration
+1. 环节1
+2. 环节2
+3. 每个环节：目的、关键内容、停留时长
 
-## Audience Questions
+## 观众提问
 
-- Question 1: Questioner / Question / Answer highlights
-- Question 2
+- 问题 1：提问人 / 问题 / 回答要点
+- 问题 2
 
-## Key Updates
+## 关键更新
 
-- Products/features/announcements released
-- Scope of impact
+- 发布的产品/功能/消息
+- 影响范围
 
-## Follow-up Actions
+## 后续动作
 
-- Items to follow up on
-- Owner/deadline
+- 待跟进事项
+- 负责人/时间
 
-## Timeline
+## 时间线
 
-## Highlights
+## 亮点
 
-## References
+## 参考资料
 ```
 
 ### `media/content-highlights`
 
 ```markdown
-# {Title}
+# {标题}
 
-## Basic Information
+## 基本信息
 
-- Source:
-- Original duration:
-- Platform:
-- Purpose of distillation:
+- 来源：
+- 原始时长：
+- 平台：
+- 提炼目的：
 
-## One-Line Highlights
+## 一句话亮点
 
-## Notable Segments
+## 精彩片段
 
-- Segment 1: Time range / Topic / Highlight
-- Segment 2
+- 片段 1：时间段 / 主题 / 亮点
+- 片段 2
 
-## Quotable Sentences
+## 可引用句子
 
-> {Quote 1}
+> {引用 1}
 
-> {Quote 2}
+> {引用 2}
 
-## Repurposing Angles
+## 复用角度
 
-- Angle 1: Suitable format (article / short video / social media post)
-- Angle 2
+- 角度 1：适合改成什么形式（文章/短视频/社媒帖子）
+- 角度 2
 
-## Timeline
+## 时间线
 
-## Key Takeaways for Audience
+## 听众可带走的结论
 ```
+
