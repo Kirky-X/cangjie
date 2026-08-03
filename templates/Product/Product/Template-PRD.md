@@ -1,179 +1,179 @@
-# [Product/System Name (English Name)] - Product Requirements Document (PRD)
+# [产品/系统名称（英文名）] - 产品需求文档（PRD）
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 驳回
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name/Role]
+> **撰写人：** [姓名/角色]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [角色列表]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose and Scope
+### 0.1 文档目的与适用范围
 
-[Describe the purpose of this document, applicable scenarios, and non-applicable scenarios]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Sections |
+| 文档类型 | 文件名 | 相关章节 |
 |---------|--------|---------|
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型] | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format:** Related documents use the `Filename Line Range` format (e.g., `Template-TRD.md 3-17`). Line numbers may change as documents are updated; please refer to actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Reviser | Changes | Reviewer |
+| 版本 | 日期 | 修订人 | 变更内容 | 审核人 |
 | :--- | :--- | :--- | :--- | :--- |
-| v0.1 | YYYY-MM-DD | Zhang San | Initial draft: completed background research and core flow definition | Li Si |
-| v0.2 | YYYY-MM-DD | Zhang San | Added exception flows and tracking plan | Li Si |
-| v0.3 | YYYY-MM-DD | Zhang San | Review approved, entered development phase | Wang Wu |
-| v0.4 | YYYY-MM-DD | Zhang San | Added sharing feature (requirement change #REQ-2024-008) | Wang Wu |
-| v0.5 | 2026-06-09 | Xie Dong | Converted gantt chart to table for Feishu compatibility | — |
+| v0.1 | YYYY-MM-DD | 张三 | 初稿：完成背景调研与核心流程定义 | 李四 |
+| v0.2 | YYYY-MM-DD | 张三 | 补充异常流程与埋点方案 | 李四 |
+| v0.3 | YYYY-MM-DD | 张三 | 评审通过，进入开发阶段 | 王五 |
+| v0.4 | YYYY-MM-DD | 张三 | 新增分享功能（需求变更 #REQ-2024-008） | 王五 |
+| v0.5 | 2026-06-09 | 谢董 | 修复gantt图为表格以兼容飞书渲染 | — |
 
 ---
 
-## 1. Document Overview
+## 1. 文档概述（Document Overview）
 
-### 1.1 Background
-> **Alibaba Practice:** Must answer "why we are doing this," including market opportunity, data support, and strategic alignment.
+### 1.1 项目背景（Background）
+> **阿里实践：** 必须回答"为什么做"，包含市场机会、数据支撑、战略对齐。
 
-**One-liner:** `[Describe in no more than 30 characters what problem this requirement solves]`
+**一句话描述：** `[用不超过30字描述这个需求解决什么问题]`
 
-**Detailed Background:**
-- **Market/Business Background:** `[Describe current business pain points or market opportunities]`
-- **Data Support:** `[Cite relevant data, such as conversion rate dropped by X%, Y user feedback submissions, etc.]`
-- **Strategic Alignment:** `[Align with OKR or annual strategy, e.g., "Support Q3 GMV growth target"]`
+**背景详情：**
+- **市场/业务背景：** `[描述当前业务痛点或市场机会]`
+- **数据支撑：** `[引用相关数据，如转化率下降X%、用户反馈量Y条等]`
+- **战略对齐：** `[对齐OKR或年度战略，如"支撑Q3 GMV增长目标"]`
 
-### 1.2 Objectives
-> **Tencent Practice:** Objectives must be measurable (SMART principle), distinguishing business goals from user experience goals.
+### 1.2 项目目标（Objectives）
+> **腾讯实践：** 目标必须可衡量（SMART原则），区分商业目标与用户体验目标。
 
-| Objective Type | Objective Description | Metric | Target Value | Priority |
+| 目标类型 | 目标描述 | 衡量指标 | 目标值 | 优先级 |
 |:---|:---|:---|:---:|:---:|
-| Business Goal | Increase paid conversion rate | Paid Conversion Rate | +15% | P0 |
-| User Goal | Lower operational barrier | Task Completion Duration | -30% | P0 |
-| Efficiency Goal | Reduce customer service volume | Related Ticket Volume | -20% | P1 |
+| 商业目标 | 提升付费转化率 | 付费转化率 | +15% | P0 |
+| 用户目标 | 降低操作门槛 | 任务完成时长 | -30% | P0 |
+| 效率目标 | 减少客服进线量 | 相关工单量 | -20% | P1 |
 
-## 2. Product Definition
+## 2. 产品定义（Product Definition）
 
-### 2.1 Product Summary
+### 2.1 产品概述（Product Summary）
 
 ```mermaid
 mindmap
-  root((Product Definition))
-    Product Positioning
-      Who and What Problem
-      Core Value Proposition
-    Target Users
-      Consumer Users
-      Enterprise Users
-      Platform Operations
-    Product Form
-      Mobile App
-      Web Platform
-      Mini Program
-      Backend System
-    Scope Boundaries
-      What's Included
-      What's Excluded
+  root((产品定义))
+    产品定位
+      为谁解决什么问题
+      核心价值主张
+    目标用户
+      C端用户
+      B端用户
+      平台运营
+    产品形态
+      移动端App
+      Web端
+      小程序
+      后台系统
+    边界范围
+      包含什么
+      不包含什么
 ```
 
-**Product Positioning:** `[One-liner: XX is a XX tool/platform for XX users, solving XX problem through XX method to achieve XX value]`
+**产品定位：** `[一句话定位：XX是面向XX用户的XX工具/平台，通过XX方式解决XX问题，实现XX价值]`
 
-**Scope of This Iteration:**
-- ✅ **In Scope:** `[List the feature modules that must be implemented this time]`
-- ❌ **Out of Scope:** `[Clearly excluded features to prevent scope creep]`
-- ⏳ **Future:** `[Planned but not implemented features]`
+**本次迭代范围：**
+- ✅ **包含（In Scope）：** `[列举本次必须实现的功能模块]`
+- ❌ **不包含（Out of Scope）：** `[明确排除的功能，防止范围蔓延]`
+- ⏳ **后续版本（Future）：** `[规划但不实现的特性]`
 
-### 2.2 User Personas
+### 2.2 用户画像（User Personas）
 
-> **Tencent Practice:** Must concretize users, avoid generic "user" references.
+> **腾讯实践：** 必须具象化用户，避免"用户"泛化。
 
-**Core User:**
-- **User Name:** `[e.g., New employee Xiao Ming]`
-- **Age/Occupation:** `[25/Internet Operations]`
-- **Core Need:** `[Quickly complete weekly reports, reduce repetitive work]`
-- **Pain Point Scenario:** `[Spends 2 hours every Friday organizing data, prone to errors and inconsistent formatting]`
-- **Technical Proficiency:** `[Medium, familiar with Office but not SQL]`
+**核心用户：**
+- **用户名称：** `[如：职场新人小明]`
+- **年龄/职业：** `[25岁/互联网运营]`
+- **核心诉求：** `[快速完成周报，减少重复劳动]`
+- **痛点场景：** `[每周五花2小时整理数据，容易出错且格式不统一]`
+- **技术熟练度：** `[中等，熟悉Office但不了解SQL]`
 
-### 2.3 User Journey Map
+### 2.3 用户旅程地图（User Journey Map）
 
 ```mermaid
 journey
-    title User's Emotional Journey While Completing Core Task
-    section Discovering Need
-      Recognizing the Problem: 3: User
-      Searching for Solutions: 4: User
-    section Encountering Product
-      Seeing the Entry Point: 5: User
-      Reading the Guide: 4: User
-    section Core Operation
-      Filling in Information: 3: User
-      System Processing: 5: User
-      Viewing Results: 5: User
-    section Follow-up Actions
-      Saving/Sharing: 4: User
-      Using Again: 5: User
+    title 用户完成核心任务的情感旅程
+    section 发现需求
+      意识到问题: 3: 用户
+      寻找解决方案: 4: 用户
+    section 接触产品
+      看到入口: 5: 用户
+      阅读引导: 4: 用户
+    section 核心操作
+      填写信息: 3: 用户
+      系统处理: 5: 用户
+      查看结果: 5: 用户
+    section 后续行动
+      保存/分享: 4: 用户
+      再次使用: 5: 用户
 ```
 
 ---
 
-## 3. Requirement Landscape
+## 3. 需求全景（Requirement Landscape）
 
-### 3.1 Feature List
-> **ByteDance Practice:** Use MoSCoW method to clarify priorities. R&D resources always prioritize Must-have items first.
+### 3.1 功能清单（Feature List）
+> **字节实践：** 使用MoSCoW法则明确优先级，研发资源永远优先投入Must-have。
 
-| Module | Feature | Description | Priority | Owner | Dependencies | Status |
+| 模块 | 功能点 | 功能描述 | 优先级 | 负责人 | 依赖项 | 状态 |
 |:---|:---|:---|:---:|:---:|:---|:---:|
-| User Module | Phone Number Login | Support phone number + verification code login | P0 | Backend A | SMS Provider | 🟡 |
-| User Module | WeChat Authorization Login | Support WeChat one-click authorization | P1 | Backend A | WeChat Open Platform | ⚪ |
-| Core Feature | Smart Recommendation | Personalized recommendation based on user behavior | P0 | Algorithm B | User Behavior Data | 🟡 |
-| Core Feature | Batch Export | Support Excel/PDF batch export | P1 | Frontend C | Export Service | ⚪ |
-| Value-added Feature | Data Dashboard | Visualized data display | P2 | Frontend C | Chart Component Library | ⚪ |
+| 用户模块 | 手机号登录 | 支持手机号+验证码登录 | P0 | 后端A | 短信服务商 | 🟡 |
+| 用户模块 | 微信授权登录 | 支持微信一键授权 | P1 | 后端A | 微信开放平台 | ⚪ |
+| 核心功能 | 智能推荐 | 基于用户行为的个性化推荐 | P0 | 算法B | 用户行为数据 | 🟡 |
+| 核心功能 | 批量导出 | 支持Excel/PDF批量导出 | P1 | 前端C | 导出服务 | ⚪ |
+| 增值功能 | 数据看板 | 可视化数据展示 | P2 | 前端C | 图表组件库 | ⚪ |
 
-**Priority Definitions:**
-- **P0 (Must-have):** Blocker — product cannot ship without it
-- **P1 (Should-have):** Important but non-blocking; can be deferred or phased
-- **P2 (Could-have):** Nice-to-have; implement when resources are available
-- **P3 (Won't-have):** Explicitly not doing this time; documented to prevent misunderstanding
+**优先级定义：**
+- **P0（Must-have）：** 不满足则产品无法发布，阻塞性需求
+- **P1（Should-have）：** 重要但非阻塞，可降级或分期实现
+- **P2（Could-have）：** 锦上添花，资源充裕时实现
+- **P3（Won't-have）：** 明确本次不做，记录防止误解
 
-### 3.2 Product Architecture
+### 3.2 产品架构图（Product Architecture）
 
 ```mermaid
 graph TB
-    subgraph User Touchpoints
-        A1[Mobile App]
-        A2[Web Platform]
-        A3[Admin Console]
+    subgraph 用户触点层
+        A1[移动端App]
+        A2[Web端]
+        A3[管理后台]
     end
 
-    subgraph Business Logic Layer
-        B1[User Center]
-        B2[Order Center]
-        B3[Recommendation Engine]
-        B4[Messaging Center]
+    subgraph 业务逻辑层
+        B1[用户中心]
+        B2[订单中心]
+        B3[推荐引擎]
+        B4[消息中心]
     end
 
-    subgraph Data Service Layer
-        C1[(User Data)]
-        C2[(Order Data)]
-        C3[(Behavior Logs)]
-        C4[Redis Cache]
+    subgraph 数据服务层
+        C1[(用户数据)]
+        C2[(订单数据)]
+        C3[(行为日志)]
+        C4[缓存Redis]
     end
 
-    subgraph Third-party Services
-        D1[Payment Gateway]
-        D2[SMS Provider]
-        D3[OSS Storage]
+    subgraph 第三方服务
+        D1[支付网关]
+        D2[短信服务商]
+        D3[OSS存储]
     end
 
     A1 --> B1
@@ -197,51 +197,51 @@ graph TB
 
 ---
 
-## 4. Functional Requirements
-> **Core Chapter:** This is the most important part of the PRD. It must be thorough enough that "developers can build without prototypes, and testers can write test cases without interaction designs."
+## 4. 功能详述（Functional Requirements）
+> **核心章节：** 这是PRD最重要的部分，必须做到"研发不看原型也能开发，测试不看交互也能写用例"。
 
 ---
 
-### 4.1 Feature Module One: [Module Name, e.g., "User Login Module"]
+### 4.1 功能模块一：[模块名称，如"用户登录模块"]
 
-#### 4.1.1 Feature Definition
+#### 4.1.1 功能定义（Feature Definition）
 
-| Attribute | Description |
+| 属性 | 说明 |
 |:---|:---|
-| **Feature Name** | `[Feature Name]` |
-| **Feature ID** | `[Unique identifier, e.g., FUNC-001]` |
-| **Parent Module** | `[Module Name]` |
-| **Priority** | `P0/P1/P2` |
-| **Requirement Source** | `[User Feedback / Data Insight / Business Side / Competitive Analysis]` |
-| **Related Requirements** | `[Related feature IDs]` |
+| **功能名称** | `[功能名称]` |
+| **功能ID** | `[唯一标识，如 FUNC-001]` |
+| **所属模块** | `[模块名称]` |
+| **优先级** | `P0/P1/P2` |
+| **需求来源** | `[用户反馈/数据洞察/业务方/竞品分析]` |
+| **关联需求** | `[关联的其他功能ID]` |
 
-**Feature Description:** `[Describe in 2-3 sentences what this feature does and what problem it solves]`
+**功能描述：** `[用2-3句话描述这个功能做什么，解决什么问题]`
 
-#### 4.1.2 Business Flow
+#### 4.1.2 业务流程图（Business Flow）
 
 ```mermaid
 flowchart TD
-    Start([Start]) --> A{Already Logged In?}
-    A -->|Yes| B[Enter Homepage]
-    A -->|No| C[Show Login Page]
-    C --> D{Choose Login Method}
-    D -->|Phone Number| E[Enter Phone Number]
-    D -->|Third-party| F[Invoke WeChat Authorization]
-    E --> G{Format Validation}
-    G -->|Failed| H[Show Phone Number Format Error]
+    Start([开始]) --> A{是否已登录?}
+    A -->|是| B[进入首页]
+    A -->|否| C[展示登录页]
+    C --> D{选择登录方式}
+    D -->|手机号| E[输入手机号]
+    D -->|第三方| F[唤起微信授权]
+    E --> G{格式校验}
+    G -->|不通过| H[提示手机号格式错误]
     H --> E
-    G -->|Passed| I[Send Verification Code]
-    I --> J[Enter Verification Code]
-    J --> K{Verification Code Check}
-    K -->|Error| L[Show Verification Code Error / Remaining Attempts N]
+    G -->|通过| I[发送验证码]
+    I --> J[输入验证码]
+    J --> K{验证码校验}
+    K -->|错误| L[提示验证码错误 / 剩余尝试次数N]
     L --> J
-    K -->|Correct| M[Login Successful]
-    F --> N{Authorization Result}
-    N -->|Rejected| O[Return to Login Page / Show Authorization Failed]
-    N -->|Approved| M
-    M --> P[Write Token / Update Login State]
+    K -->|正确| M[登录成功]
+    F --> N{授权结果}
+    N -->|拒绝| O[返回登录页 / 提示授权失败]
+    N -->|同意| M
+    M --> P[写入Token / 更新登录状态]
     P --> B
-    B --> End([End])
+    B --> End([结束])
 
     style Start fill:#e1f5fe
     style End fill:#e1f5fe
@@ -250,184 +250,184 @@ flowchart TD
     style L fill:#ffcdd2
 ```
 
-#### 4.1.3 Page Flow
+#### 4.1.3 页面流转图（Page Flow）
 
 ```mermaid
 flowchart LR
-    A[Login Page / /login] -->|Click Phone Login| B[Phone Input Page / /login/phone]
-    B -->|Click Get Code| C[Verification Code Page / /login/verify]
-    C -->|Code Correct| D[Homepage / /home]
-    A -->|Click WeChat Login| E[WeChat Authorization / External]
-    E -->|Auth Success| D
-    E -->|Auth Failed| A
-    D -->|Click Logout| A
+    A[登录页 / /login] -->|点击手机号登录| B[手机号输入页 / /login/phone]
+    B -->|点击获取验证码| C[验证码输入页 / /login/verify]
+    C -->|验证码正确| D[首页 / /home]
+    A -->|点击微信登录| E[微信授权页 / 外部]
+    E -->|授权成功| D
+    E -->|授权失败| A
+    D -->|点击退出| A
 
     style A fill:#fff3e0
     style D fill:#e8f5e9
 ```
 
-#### 4.1.4 Input & Output Definition
+#### 4.1.4 输入输出定义（Input & Output）
 
-> **Alibaba/ByteDance Practice:** Every feature must clearly define IO — this is the foundation for frontend-backend integration.
+> **阿里/字节实践：** 每个功能必须明确定义IO，这是前后端联调的基础。
 
-**API/Input:**
+**接口/交互输入：**
 
-| Input | Type | Required | Source | Validation Rule | Example Value |
+| 输入项 | 类型 | 必填 | 来源 | 校验规则 | 示例值 |
 |:---|:---:|:---:|:---|:---|:---|
-| phone | string | Yes | User Input | Mainland China phone regex: `^1[3-9]\d{9}$` | 13800138000 |
-| verifyCode | string | Yes | User Input | 4-6 digit numeric | 123456 |
-| source | string | No | System-carried | Enum: app/web/mp | app |
+| phone | string | 是 | 用户输入 | 大陆手机号正则：`^1[3-9]\d{9}$` | 13800138000 |
+| verifyCode | string | 是 | 用户输入 | 4-6位纯数字 | 123456 |
+| source | string | 否 | 系统携带 | 枚举：app/web/mp | app |
 
-**API/Output:**
+**接口/交互输出：**
 
-| Output | Type | Description | Example Value |
+| 输出项 | 类型 | 说明 | 示例值 |
 |:---|:---:|:---|:---|
-| accessToken | string | JWT access token, valid for 2 hours | eyJhbGciOiJIUzI1NiIs... |
-| refreshToken | string | Refresh token, valid for 7 days | eyJhbGciOiJIUzI1NiIs... |
-| userId | string | User unique identifier | U202405250001 |
-| expireAt | number | Token expiration timestamp (milliseconds) | 1716633600000 |
+| accessToken | string | JWT访问令牌，有效期2小时 | eyJhbGciOiJIUzI1NiIs... |
+| refreshToken | string | 刷新令牌，有效期7天 | eyJhbGciOiJIUzI1NiIs... |
+| userId | string | 用户唯一标识 | U202405250001 |
+| expireAt | number | Token过期时间戳（毫秒） | 1716633600000 |
 
-#### 4.1.5 Business Rules
+#### 4.1.5 业务规则（Business Rules）
 
-> **Rule Number Format:** `BR-[Module]-[Sequence]`
+> **规则编号格式：** `BR-[模块]-[序号]`
 
-| Rule ID | Rule Description | Trigger Condition | Action | Priority |
+| 规则ID | 规则描述 | 触发条件 | 执行动作 | 优先级 |
 |:---|:---|:---|:---|:---:|
-| BR-LOGIN-001 | Verification code send rate limit | Duplicate request within 60 seconds from same phone number | Reject request, return "Please try again in 60 seconds" | P0 |
-| BR-LOGIN-002 | Verification code error lockout | 5 consecutive incorrect attempts from same phone number | Lock for 2 hours, requires manual unlock or customer service contact | P0 |
-| BR-LOGIN-003 | Token refresh mechanism | accessToken expired and refreshToken valid | Auto-refresh accessToken, silent renewal | P0 |
-| BR-LOGIN-004 | Multi-device login restriction | Same account logs in on Device B while Device A is online | Device A receives offline notification, keep latest 3 devices | P1 |
+| BR-LOGIN-001 | 验证码发送频率限制 | 同一手机号60秒内重复请求 | 拒绝请求，返回"请60秒后重试" | P0 |
+| BR-LOGIN-002 | 验证码错误锁定 | 同一手机号连续错误5次 | 锁定2小时，需人工解锁或联系客服 | P0 |
+| BR-LOGIN-003 | Token刷新机制 | accessToken过期且refreshToken有效 | 自动刷新accessToken，静默续期 | P0 |
+| BR-LOGIN-004 | 多设备登录限制 | 同一账号在设备B登录时设备A在线 | 设备A收到下线通知，保留最近3个设备 | P1 |
 
-#### 4.1.6 State Machine
+#### 4.1.6 状态机（State Machine）
 
 ```mermaid
 stateDiagram-v2
-    [*] --> NotLoggedIn: Open App
-    NotLoggedIn --> LoggingIn: Initiate Login
-    LoggingIn --> LoggedIn: Verification Passed
-    LoggingIn --> LoginFailed: Verification Failed
-    LoginFailed --> LoggingIn: Retry
-    LoginFailed --> NotLoggedIn: Abandon Login
-    LoggedIn --> LoggedIn: Token Refresh
-    LoggedIn --> NotLoggedIn: Token Expired / Manual Logout / Forced Offline
-    NotLoggedIn --> [*]
+    [*] --> 未登录: 打开应用
+    未登录 --> 登录中: 发起登录
+    登录中 --> 已登录: 验证通过
+    登录中 --> 登录失败: 验证失败
+    登录失败 --> 登录中: 重试
+    登录失败 --> 未登录: 放弃登录
+    已登录 --> 已登录: Token刷新
+    已登录 --> 未登录: Token过期/主动退出/被踢下线
+    未登录 --> [*]
 ```
 
-#### 4.1.7 Exception Handling
+#### 4.1.7 异常处理（Exception Handling）
 
-> **Industry Rule:** Exception flows must be covered — cannot only write the Happy Path.
+> **大厂铁律：** 异常流程必须覆盖，不能只写Happy Path。
 
-| Exception Scenario | Exception Type | Frontend Behavior | Backend Handling | Compensation Mechanism |
+| 异常场景 | 异常类型 | 前端表现 | 后端处理 | 补偿机制 |
 |:---|:---|:---|:---|:---|
-| Network Interruption | Network Error | Show network error page with "Retry" button | Request timeout, log error | Auto-retry 3 times, then prompt user |
-| Verification Code Service Failure | Dependency Failure | Show "Service busy, please try again later" | Circuit breaker degradation, switch to backup channel | Trigger alert, auto-recover within 1 minute |
-| Phone Number Already Registered | Business Exception | Show "This phone number is already registered. Login directly?" | Return specific error code: PHONE_EXISTS | Provide one-click login redirect |
-| High-frequency Requests | Rate Limit Exception | Button disabled with countdown | Rate limit interception, return 429 | Frontend debounce + backend token bucket |
+| 网络中断 | 网络异常 | 展示网络错误页，提供"重试"按钮 | 请求超时，记录日志 | 自动重试3次，仍失败则提示用户 |
+| 验证码服务故障 | 依赖故障 | 提示"服务繁忙，请稍后再试" | 熔断降级，切换备用通道 | 触发告警，1分钟内自动恢复 |
+| 手机号已注册 | 业务异常 | 提示"该手机号已存在，是否直接登录？" | 返回特定错误码：PHONE_EXISTS | 提供一键跳转登录入口 |
+| 高频请求 | 限流异常 | 按钮置灰+倒计时 | 限流拦截，返回429 | 前端防抖+后端令牌桶 |
 
-#### 4.1.8 Sequence Diagram
+#### 4.1.8 时序图（Sequence Diagram）
 
 ```mermaid
 sequenceDiagram
-    actor U as User
-    participant C as Client
-    participant API as Gateway/API
-    participant S as Login Service
-    participant DB as User Database
-    participant Redis as Cache
-    participant SMS as SMS Service
+    actor U as 用户
+    participant C as 客户端
+    participant API as 网关/API
+    participant S as 登录服务
+    participant DB as 用户数据库
+    participant Redis as 缓存
+    participant SMS as 短信服务
 
-    U->>C: Enter phone number and verification code
+    U->>C: 输入手机号与验证码
     C->>API: POST /api/v1/login
-    API->>S: Forward request
+    API->>S: 转发请求
 
-    S->>Redis: Query verification code / KEY: verify:phone:138xxxx
-    Redis-->>S: Return verification code value
+    S->>Redis: 查询验证码 / KEY: verify:phone:138xxxx
+    Redis-->>S: 返回验证码值
 
-    alt Verification code correct
-        S->>DB: Query user info
-        DB-->>S: Return user record
+    alt 验证码正确
+        S->>DB: 查询用户信息
+        DB-->>S: 返回用户记录
 
-        alt User exists
-            S->>S: Generate Token pair
-            S->>Redis: Store login state / KEY: session:userId
-            S-->>API: Return login success with Token
-            API-->>C: 200 OK with user info
-            C-->>U: Navigate to homepage
-        else User does not exist
-            S->>DB: Create new user record
-            S->>S: Generate Token pair
-            S-->>API: Return registration and login success
-            API-->>C: 200 OK with new user info
-            C-->>U: Navigate to homepage with new user guide
+        alt 用户存在
+            S->>S: 生成Token对
+            S->>Redis: 存储登录态 / KEY: session:userId
+            S-->>API: 返回登录成功与Token
+            API-->>C: 200 OK与用户信息
+            C-->>U: 跳转首页
+        else 用户不存在
+            S->>DB: 创建新用户记录
+            S->>S: 生成Token对
+            S-->>API: 返回注册并登录成功
+            API-->>C: 200 OK与新用户信息
+            C-->>U: 跳转首页与新用户引导
         end
-    else Verification code incorrect or expired
-        S-->>API: Return error code: VERIFY_ERROR
+    else 验证码错误或过期
+        S-->>API: 返回错误码:VERIFY_ERROR
         API-->>C: 400 Bad Request
-        C-->>U: Show verification code error
+        C-->>U: 提示验证码错误
     end
 
-    opt Send verification code flow
-        U->>C: Click Get Verification Code
+    opt 发送验证码流程
+        U->>C: 点击获取验证码
         C->>API: POST /api/v1/sendVerifyCode
-        API->>S: Forward
-        S->>Redis: Check send rate limit
-        alt Rate compliant
-            S->>SMS: Call SMS API
-            SMS-->>S: Send success
-            S->>Redis: Store verification code / TTL: 300s
-            S-->>API: Return success
+        API->>S: 转发
+        S->>Redis: 检查发送频率
+        alt 频率合规
+            S->>SMS: 调用短信接口
+            SMS-->>S: 发送成功
+            S->>Redis: 存储验证码 / TTL: 300s
+            S-->>API: 返回成功
             API-->>C: 200 OK
-            C-->>U: Countdown 60 seconds
-        else Rate exceeded
-            S-->>API: Return error code: RATE_LIMIT
+            C-->>U: 倒计时60秒
+        else 频率超限
+            S-->>API: 返回错误码:RATE_LIMIT
             API-->>C: 429 Too Many Requests
-            C-->>U: Show "Please try again in 60 seconds"
+            C-->>U: 提示"请60秒后重试"
         end
     end
 ```
 
-#### 4.1.9 Acceptance Criteria
+#### 4.1.9 验收标准（Acceptance Criteria）
 
-> **Best Practice:** Acceptance criteria must be testable and verifiable, using the Given-When-Then format.
+> **最佳实践：** 验收标准必须可测试、可验证，采用Given-When-Then格式。
 
-| AC ID | Acceptance Criteria (Given-When-Then) | Verification Method | Pass Criteria |
+| 验收项ID | 验收标准（Given-When-Then） | 验收方式 | 通过标准 |
 |:---|:---|:---|:---:|
-| AC-001 | **Given** User is not logged in<br/>**When** Opens the app<br/>**Then** Login page is shown, phone input auto-focuses | Manual Testing | 100% pass |
-| AC-002 | **Given** User enters a valid phone number<br/>**When** Clicks Get Verification Code<br/>**Then** Button is disabled for 60 seconds, user receives 6-digit code | Manual + Automated | 100% pass |
-| AC-003 | **Given** User enters incorrect verification code 5 times consecutively<br/>**When** Submits the 5th attempt<br/>**Then** Shows account locked for 2 hours, security log recorded | Automated Testing | 100% pass |
-| AC-004 | **Given** User is logged in with a valid Token<br/>**When** Accesses an authenticated API<br/>**Then** Returns data normally, no re-login required | Automated Testing | 100% pass |
-| AC-005 | **Given** User's accessToken is expired but refreshToken is valid<br/>**When** Initiates a request<br/>**Then** Server silently refreshes Token, client is unaware | Automated Testing | 100% pass |
+| AC-001 | **Given** 用户未登录<br/>**When** 打开应用<br/>**Then** 展示登录页，手机号输入框自动聚焦 | 手工测试 | 100%通过 |
+| AC-002 | **Given** 用户输入正确手机号<br/>**When** 点击获取验证码<br/>**Then** 按钮置灰60秒，用户收到6位数字验证码 | 手工+自动化 | 100%通过 |
+| AC-003 | **Given** 用户连续5次输入错误验证码<br/>**When** 第5次提交<br/>**Then** 提示账号锁定2小时，记录安全日志 | 自动化测试 | 100%通过 |
+| AC-004 | **Given** 用户已登录且Token有效<br/>**When** 访问需要鉴权的接口<br/>**Then** 正常返回数据，无需重新登录 | 自动化测试 | 100%通过 |
+| AC-005 | **Given** 用户Token过期但refreshToken有效<br/>**When** 发起请求<br/>**Then** 服务端静默刷新Token，客户端无感知 | 自动化测试 | 100%通过 |
 
 ---
 
-### 4.2 Feature Module Two: [Module Name, e.g., "Order Payment Module"]
+### 4.2 功能模块二：[模块名称，如"订单支付模块"]
 
-#### 4.2.1 Feature Definition
+#### 4.2.1 功能定义
 
-#### 4.2.2 Business Flow
+#### 4.2.2 业务流程图
 
 ```mermaid
 flowchart TD
-    Start([Start]) --> A[Browse Products]
-    A --> B[Add to Cart]
-    B --> C[Confirm Order]
-    C --> D{Stock Check}
-    D -->|Insufficient Stock| E[Show Insufficient Stock / Recommend Similar Products]
+    Start([开始]) --> A[浏览商品]
+    A --> B[加入购物车]
+    B --> C[确认订单]
+    C --> D{库存检查}
+    D -->|库存不足| E[提示库存不足 / 推荐相似商品]
     E --> A
-    D -->|Sufficient Stock| F[Select Payment Method]
-    F --> G[Initiate Payment]
-    G --> H{Payment Result}
-    H -->|Success| I[Create Order / Deduct Stock]
-    H -->|Failed| J[Show Payment Failed / Hold Order for 15 Minutes]
-    H -->|Cancelled| K[Return to Order Page]
-    I --> L[Push Notification]
-    J --> M[Allow Re-payment]
+    D -->|库存充足| F[选择支付方式]
+    F --> G[发起支付]
+    G --> H{支付结果}
+    H -->|成功| I[创建订单 / 扣减库存]
+    H -->|失败| J[提示支付失败 / 保留订单15分钟]
+    H -->|取消| K[返回订单页]
+    I --> L[推送通知]
+    J --> M[允许重新支付]
     M --> G
-    K --> N[Order Held for 30 Minutes]
-    N --> O{Pay?}
-    O -->|Yes| G
-    O -->|No| P[Auto-cancel Order / Restore Stock]
-    L --> Q([End])
+    K --> N[订单保留30分钟]
+    N --> O{是否支付?}
+    O -->|是| G
+    O -->|否| P[自动取消订单 / 恢复库存]
+    L --> Q([结束])
     P --> Q
 
     style I fill:#c8e6c9
@@ -436,204 +436,204 @@ flowchart TD
     style J fill:#ffcdd2
 ```
 
-#### 4.2.3 Input & Output Definition
+#### 4.2.3 输入输出定义
 
-**Payment API Input:**
+**支付接口输入：**
 
-| Input | Type | Required | Validation Rule | Description |
+| 输入项 | 类型 | 必填 | 校验规则 | 说明 |
 |:---|:---:|:---:|:---|:---|
-| orderId | string | Yes | Format: ORD + YYYYMMDD + 6-digit serial | Order unique identifier |
-| payChannel | enum | Yes | Enum: WECHAT/ALIPAY/UNION | Payment channel |
-| amount | decimal | Yes | >0, precision to cent | Payment amount (CNY) |
-| currency | string | No | Default CNY | Currency |
+| orderId | string | 是 | 格式：ORD+年月日+6位流水 | 订单唯一标识 |
+| payChannel | enum | 是 | 枚举：WECHAT/ALIPAY/UNION | 支付渠道 |
+| amount | decimal | 是 | >0，精确到分 | 支付金额（元） |
+| currency | string | 否 | 默认CNY | 币种 |
 
-**Payment API Output:**
+**支付接口输出：**
 
-| Output | Type | Description |
+| 输出项 | 类型 | 说明 |
 |:---|:---:|:---|
-| payOrderId | string | Payment platform transaction number |
-| payUrl | string | Redirect to payment page URL (H5) |
-| prepayId | string | WeChat prepay ID (Mini Program/App) |
-| expireTime | number | Payment timeout timestamp |
+| payOrderId | string | 支付平台流水号 |
+| payUrl | string | 跳转支付页URL（H5） |
+| prepayId | string | 微信预支付ID（小程序/App） |
+| expireTime | number | 支付超时时间戳 |
 
-#### 4.2.4 State Machine
+#### 4.2.4 状态机
 
 ```mermaid
 stateDiagram-v2
-    [*] --> PendingPayment: Create Order
-    PendingPayment --> Paid: Payment Success Callback
-    PendingPayment --> Cancelled: Timeout No Payment / User Cancel
-    Paid --> PendingShipment: System Confirmation
-    PendingShipment --> Shipped: Warehouse Shipment
-    Shipped --> InTransit: Logistics Pickup
-    InTransit --> Delivered: User Signature
-    InTransit --> Exception: Logistics Exception
-    Exception --> InTransit: Exception Resolved
-    Delivered --> Completed: Confirm Receipt / 7-day Auto-confirm
-    Completed --> InAfterSales: Apply After-sales
-    InAfterSales --> Completed: After-sales Closed
-    InAfterSales --> Refunded: Refund Success
-    Refunded --> [*]
-    Cancelled --> [*]
+    [*] --> 待支付: 创建订单
+    待支付 --> 已支付: 支付成功回调
+    待支付 --> 已取消: 超时未支付/用户取消
+    已支付 --> 待发货: 系统确认
+    待发货 --> 已发货: 仓库发货
+    已发货 --> 运输中: 物流揽收
+    运输中 --> 已签收: 用户签收
+    运输中 --> 异常件: 物流异常
+    异常件 --> 运输中: 异常解除
+    已签收 --> 已完成: 确认收货/7天自动确认
+    已完成 --> 售后中: 申请售后
+    售后中 --> 已完成: 售后关闭
+    售后中 --> 已退款: 退款成功
+    已退款 --> [*]
+    已取消 --> [*]
 ```
 
-#### 4.2.5 Exception Handling
+#### 4.2.5 异常处理
 
-| Exception Scenario | Frontend Behavior | Backend Handling | Data Consistency Guarantee |
+| 异常场景 | 前端表现 | 后端处理 | 数据一致性保障 |
 |:---|:---|:---|:---|
-| Payment Callback Delay | Show "Payment Processing", polling query | Async message queue processing, max 5 retries | Idempotency check, prevent duplicate charges |
-| Duplicate Payment | Block second payment request | Refund via original channel, log exception transaction | Unique index + state machine validation |
-| Stock Oversell | Real-time validation at order placement | Optimistic lock / distributed lock deduction | Stock rollback mechanism |
+| 支付回调延迟 | 显示"支付处理中"，轮询查询 | 异步消息队列处理，最大重试5次 | 幂等性校验，防止重复扣款 |
+| 重复支付 | 拦截二次支付请求 | 退款原路返回，记录异常流水 | 唯一索引+状态机校验 |
+| 库存超卖 | 下单时实时校验 | 乐观锁/分布式锁扣减 | 库存回滚机制 |
 
 ---
 
-## 5. Non-Functional Requirements
+## 5. 非功能需求（Non-Functional Requirements）
 
-### 5.1 Performance
+### 5.1 性能需求（Performance）
 
-| Metric | Target | Test Scenario | Priority |
+| 指标 | 目标值 | 测试场景 | 优先级 |
 |:---|:---:|:---|:---:|
-| First Contentful Paint | ≤ 1.5s | 4G network, cold start | P0 |
-| API Response Time (P99) | ≤ 500ms | Normal peak concurrency | P0 |
-| Concurrent Users | ≥ 10,000 QPS | Major promotion scenario | P0 |
-| Database Query | ≤ 100ms | Single table with millions of records | P1 |
+| 页面首屏加载 | ≤ 1.5s | 4G网络，冷启动 | P0 |
+| 接口响应时间（P99） | ≤ 500ms | 日常并发峰值 | P0 |
+| 并发用户数 | ≥ 10,000 QPS | 大促场景 | P0 |
+| 数据库查询 | ≤ 100ms | 单表百万数据量 | P1 |
 
-### 5.2 Security
+### 5.2 安全需求（Security）
 
-| Requirement | Specifics | Implementation |
+| 需求项 | 具体要求 | 实现方式 |
 |:---|:---|:---|
-| Data Transmission Encryption | Full-site HTTPS, TLS 1.3 | Gateway-level unified configuration |
-| Sensitive Data Masking | Phone number, ID number display masking | Frontend display + backend response masking |
-| Replay Attack Prevention | Request timestamp + random number signature | Middleware validation |
-| SQL Injection Prevention | Zero SQL injection vulnerabilities | Parameterized queries + ORM |
-| XSS Prevention | Zero stored XSS vulnerabilities | Input filtering + output encoding + CSP policy |
+| 数据传输加密 | 全站HTTPS，TLS 1.3 | 网关层统一配置 |
+| 敏感数据脱敏 | 手机号、身份证号展示脱敏 | 前端展示层+后端返回脱敏 |
+| 防重放攻击 | 请求时间戳+随机数签名 | 中间件校验 |
+| SQL注入防护 | 零SQL注入漏洞 | 参数化查询+ORM |
+| XSS防护 | 零存储型XSS漏洞 | 输入过滤+输出编码+CSP策略 |
 
-### 5.3 Availability
+### 5.3 可用性需求（Availability）
 
-| Requirement | Target | Description |
+| 需求项 | 目标值 | 说明 |
 |:---|:---:|:---|
-| System Availability | 99.95% | Annual downtime < 4.38 hours |
-| Recovery Time Objective (RTO) | ≤ 30 minutes | Core path failure |
-| Recovery Point Objective (RPO) | ≤ 5 minutes | Data loss window |
-| Degradation Strategy | Core features available | Non-core features can be degraded/off |
+| 系统可用性 | 99.95% | 年度宕机时间 < 4.38小时 |
+| 故障恢复时间（RTO） | ≤ 30分钟 | 核心链路故障 |
+| 数据恢复点（RPO） | ≤ 5分钟 | 数据丢失窗口 |
+| 降级策略 | 核心功能可用 | 非核心功能可降级关闭 |
 
-### 5.4 Compatibility
+### 5.4 兼容性需求（Compatibility）
 
-| Platform | Supported Range | Priority |
+| 平台 | 支持范围 | 优先级 |
 |:---|:---|:---:|
 | iOS | iOS 14+ | P0 |
 | Android | Android 8.0+ | P0 |
 | Web | Chrome 90+, Safari 14+, Edge 90+ | P0 |
-| Mini Program | WeChat 8.0+, Alipay 10.2+ | P1 |
+| 小程序 | 微信8.0+, 支付宝10.2+ | P1 |
 
 ---
 
-## 6. Data Tracking
+## 6. 数据埋点方案（Data Tracking）
 
-> **ByteDance/Alibaba Practice:** Tracking is not optional — it is part of the feature. It must be clearly defined in the PRD, otherwise developers will not allocate tracking placeholders.
+> **字节/阿里实践：** 埋点不是可选项，是功能的一部分。必须在PRD中定义清楚，否则研发不会预留埋点位置。
 
-### 6.1 Tracking Overview
+### 6.1 埋点总览
 
 ```mermaid
 graph LR
-    A[Tracking System] --> B[Impression Tracking / View]
-    A --> C[Click Tracking / Click]
-    A --> D[Behavior Tracking / Action]
-    A --> E[Error Tracking / Error]
-    A --> F[Performance Tracking / Performance]
+    A[埋点体系] --> B[曝光埋点 / View]
+    A --> C[点击埋点 / Click]
+    A --> D[行为埋点 / Action]
+    A --> E[错误埋点 / Error]
+    A --> F[性能埋点 / Performance]
 ```
 
-### 6.2 Tracking List
+### 6.2 埋点清单
 
-| Tracking ID | Tracking Name | Trigger Event | Event Type | Key Attributes | Purpose |
+| 埋点ID | 埋点名称 | 触发时机 | 事件类型 | 关键属性 | 用途 |
 |:---|:---|:---|:---:|:---|:---|
-| TRACK-001 | Login Page Impression | Enter login page | Impression | page_source, entry_time | Funnel analysis entry traffic |
-| TRACK-002 | Get Code Click | Click "Get Verification Code" button | Click | phone, result, error_code | Analyze conversion funnel |
-| TRACK-003 | Login Success | Login verification passed | Behavior | login_type, duration, is_new | Calculate login success rate |
-| TRACK-004 | Login Failure | Login verification failed | Behavior | login_type, fail_reason, fail_step | Identify churn causes |
-| TRACK-005 | Payment Initiated | Click confirm payment | Click | order_id, amount, pay_channel | Payment conversion analysis |
-| TRACK-006 | Payment Success | Receive payment success callback | Behavior | order_id, pay_time, pay_channel | GMV attribution |
-| TRACK-007 | Payment Failed | Payment failed or cancelled | Behavior | order_id, fail_reason, fail_step | Optimize payment experience |
+| TRACK-001 | 登录页曝光 | 进入登录页 | 曝光 | page_source, entry_time | 漏斗分析入口流量 |
+| TRACK-002 | 获取验证码点击 | 点击"获取验证码"按钮 | 点击 | phone, result, error_code | 分析转化漏斗 |
+| TRACK-003 | 登录成功 | 登录验证通过 | 行为 | login_type, duration, is_new | 计算登录成功率 |
+| TRACK-004 | 登录失败 | 登录验证未通过 | 行为 | login_type, fail_reason, fail_step | 定位流失原因 |
+| TRACK-005 | 支付发起 | 点击确认支付 | 点击 | order_id, amount, pay_channel | 支付转化分析 |
+| TRACK-006 | 支付成功 | 收到支付成功回调 | 行为 | order_id, pay_time, pay_channel | GMV归因 |
+| TRACK-007 | 支付失败 | 支付失败或取消 | 行为 | order_id, fail_reason, fail_step | 优化支付体验 |
 
-### 6.3 Tracking Attribute Schema
+### 6.3 埋点属性规范
 
 ```mermaid
 erDiagram
     TRACK_EVENT {
-        string event_id PK "Tracking unique identifier"
-        string event_name "Event name"
-        string event_type "Event type"
-        timestamp trigger_time "Trigger time"
-        string user_id FK "User ID"
-        string device_id "Device ID"
-        string session_id "Session ID"
-        string app_version "App version"
-        string os_version "OS version"
-        string network_type "Network type"
-        json properties "Extended attributes JSON"
+        string event_id PK "埋点唯一标识"
+        string event_name "事件名称"
+        string event_type "事件类型"
+        timestamp trigger_time "触发时间"
+        string user_id FK "用户ID"
+        string device_id "设备ID"
+        string session_id "会话ID"
+        string app_version "App版本"
+        string os_version "系统版本"
+        string network_type "网络类型"
+        json properties "扩展属性JSON"
     }
 ```
 
 ---
 
-## 7. Release Plan
+## 7. 发布计划（Release Plan）
 
-### 7.1 Milestones
+### 7.1 里程碑（Milestones）
 
-> **Note:** Gantt charts are not compatible with Feishu; converted to table format.
+> **说明**：甘特图为飞书不兼容类型，改为表格描述。
 
-| Phase | Task | Start Date | Duration | Status |
+| 阶段 | 任务 | 开始日期 | 工期 | 状态 |
 |:---|:---|:---|:---:|:---:|
-| Requirements Phase | PRD writing and review | YYYY-MM-DD | 5d | ✅ done |
-| Requirements Phase | Requirements review meeting | After PRD complete | 2d | ✅ done |
-| Design Phase | Interaction design | After review complete | 5d | 🔵 active |
-| Design Phase | Visual design | After interaction design complete | 5d | ⚪ |
-| Development Phase | Backend API development | After visual design complete | 7d | ⚪ |
-| Development Phase | Frontend page development | After visual design complete | 8d | ⚪ |
-| Development Phase | Integration testing | After backend development complete | 3d | ⚪ |
-| Testing Phase | Functional testing | After integration testing complete | 5d | ⚪ |
-| Testing Phase | Regression testing | After functional testing complete | 2d | ⚪ |
-| Release Phase | Canary release (5%) | After regression testing complete | 2d | ⚪ |
-| Release Phase | Full release | After canary release complete | 1d | ⚪ |
+| 需求阶段 | PRD撰写与评审 | YYYY-MM-DD | 5d | ✅ done |
+| 需求阶段 | 需求评审会 | PRD完成后 | 2d | ✅ done |
+| 设计阶段 | 交互设计 | 评审完成后 | 5d | 🔵 active |
+| 设计阶段 | 视觉设计 | 交互设计完成后 | 5d | ⚪ |
+| 开发阶段 | 后端接口开发 | 视觉设计完成后 | 7d | ⚪ |
+| 开发阶段 | 前端页面开发 | 视觉设计完成后 | 8d | ⚪ |
+| 开发阶段 | 联调测试 | 后端开发完成后 | 3d | ⚪ |
+| 测试阶段 | 功能测试 | 联调测试完成后 | 5d | ⚪ |
+| 测试阶段 | 回归测试 | 功能测试完成后 | 2d | ⚪ |
+| 发布阶段 | 灰度发布(5%) | 回归测试完成后 | 2d | ⚪ |
+| 发布阶段 | 全量发布 | 灰度发布完成后 | 1d | ⚪ |
 
-### 7.2 Canary Release Strategy
+### 7.2 灰度策略（Canary Release）
 
-| Phase | Release Time | User Scope | Observation Metrics | Rollback Criteria |
+| 阶段 | 发布时间 | 用户范围 | 观察指标 | 回滚条件 |
 |:---|:---:|:---|:---|:---|
-| Internal Test | D-Day | Internal employees + core seed users (100 people) | Crash rate << 0.1%, core flow pass rate 100% | Blocking Bug |
-| Canary 1 | D+2 | 5% random users | Error rate << 0.5%, performance metrics met | Error rate > 1% or surge in complaints |
-| Canary 2 | D+5 | 30% random users | Conversion rate fluctuation << ±5%, retention stable | Core metric drop > 10% |
-| Full Release | D+7 | 100% users | Monitoring dashboard normal | None |
+| 内测 | D-Day | 内部员工+核心种子用户（100人） | 崩溃率<<0.1%，核心流程通过率100% | 阻塞性Bug |
+| 灰度1 | D+2 | 5%随机用户 | 错误率<<0.5%，性能指标达标 | 错误率>1%或客诉激增 |
+| 灰度2 | D+5 | 30%随机用户 | 转化率波动<<±5%，留存稳定 | 核心指标下跌>10% |
+| 全量 | D+7 | 100%用户 | 监控大盘正常 | 无 |
 
-### 7.3 Rollback Plan
+### 7.3 回滚方案（Rollback Plan）
 
-| Trigger Condition | Rollback Action | Owner | Estimated Duration | Impact Scope |
+| 触发条件 | 回滚动作 | 负责人 | 预计耗时 | 影响范围 |
 |:---|:---|:---|:---:|:---|
-| Core path failure | Switch traffic to previous version | SRE | 5 minutes | All users |
-| Data anomaly | Pause writes, switch to read-only mode | DBA | 10 minutes | New data writes |
-| Critical security vulnerability | Emergency shutdown and fix | Security Team | 30 minutes | All features |
+| 核心链路故障 | 切流量至上一版本 | SRE | 5分钟 | 全量用户 |
+| 数据异常 | 暂停写入，切换只读模式 | DBA | 10分钟 | 新数据写入 |
+| 严重安全漏洞 | 紧急停服修复 | 安全团队 | 30分钟 | 全量功能 |
 
 ---
 
-## 8. Risks & Dependencies
+## 8. 风险与依赖（Risks & Dependencies）
 
-### 8.1 Risk Register
+### 8.1 风险登记册（Risk Register）
 
-| Risk ID | Risk Description | Likelihood | Impact | Risk Level | Mitigation Strategy | Owner |
+| 风险ID | 风险描述 | 可能性 | 影响度 | 风险等级 | 应对策略 | 责任人 |
 |:---|:---|:---:|:---:|:---:|:---|:---:|
-| R-001 | Third-party login API changes | Medium | High | 🔴 High | Early documentation review, 2-day buffer | Backend A |
-| R-002 | Payment channel fee increase | Low | Medium | 🟡 Medium | Lock pricing early via business negotiation, backup channels | Business B |
-| R-003 | Core developer turnover | Low | High | 🟡 Medium | Code review process, documentation knowledge base | Project Manager |
-| R-004 | Promotion traffic exceeds expectations | Medium | High | 🔴 High | Load test to 2x expected traffic, elastic scaling | SRE |
+| R-001 | 第三方登录接口变更 | 中 | 高 | 🔴 高 | 提前对接文档，预留2天buffer | 后端A |
+| R-002 | 支付渠道费率上调 | 低 | 中 | 🟡 中 | 商务提前锁价，备选渠道 | 商务B |
+| R-003 | 核心研发人员变动 | 低 | 高 | 🟡 中 | 代码Review制度，文档沉淀 | 项目经理 |
+| R-004 | 大促流量超预期 | 中 | 高 | 🔴 高 | 压测至2倍预期流量，弹性扩容 | SRE |
 
-### 8.2 Dependencies
+### 8.2 外部依赖（Dependencies）
 
 ```mermaid
 graph LR
-    A[This Project] --> B[User Center Service / Team: Platform Group / Status: Live]
-    A --> C[Payment Gateway / Team: Finance Group / Status: Integration / Deadline: 05-20]
-    A --> D[Recommendation Algorithm / Team: AI Group / Status: Training / Deadline: 05-25]
-    A --> E[SMS Provider / External: Tencent Cloud / Status: Contract Signed]
+    A[本项目] --> B[用户中心服务 / 团队:平台组 / 状态:已上线]
+    A --> C[支付网关 / 团队:财务组 / 状态:联调中 / Deadline:05-20]
+    A --> D[推荐算法模型 / 团队:AI组 / 状态:训练中 / Deadline:05-25]
+    A --> E[短信服务商 / 外部:腾讯云 / 状态:合同已签]
 
     style C fill:#fff3e0
     style D fill:#fff3e0
@@ -641,50 +641,50 @@ graph LR
 
 ---
 
-## 9. Appendix
+## 9. 附录（Appendix）
 
-### 9.1 Competitive Analysis Summary
+### 9.1 竞品分析摘要
 
-| Competitor | Core Strength | Lessons Learned | Differentiation Strategy |
+| 竞品 | 核心优势 | 借鉴点 | 差异化策略 |
 |:---|:---|:---|:---|
-| Competitor A | Minimal login flow, 1-step completion | Reduce user input steps | We add biometric authentication for better security |
-| Competitor B | 80% social login adoption | Strengthen third-party login guidance | We keep phone number as fallback |
+| 竞品A | 登录流程极简，1步完成 | 减少用户输入步骤 | 我们增加生物识别，更安全 |
+| 竞品B | 社交登录占比80% | 强化第三方登录引导 | 我们保留手机号作为兜底 |
 
-### 9.2 Reference Documents
+### 9.2 参考文档
 
-- [Product Prototype Link (Figma/Axure)]
-- [API Documentation (Swagger/YApi)]
-- [Design Mockups (MasterGo/Figma)]
-- [Data Dashboard (Metabase/QuickBI)]
-- [Technical Specification Document]
+- [产品原型链接（Figma/Axure）]
+- [接口文档（Swagger/YApi）]
+- [设计稿（MasterGo/Figma）]
+- [数据看板（Metabase/QuickBI）]
+- [技术方案文档（Tech Spec）]
 
-### 9.3 Requirements Review Record
+### 9.3 需求评审记录
 
-| Review Date | Participants | Key Conclusions | Action Items |
+| 评审日期 | 参与人 | 主要结论 | 待办事项 |
 |:---|:---|:---|:---|
-| YYYY-MM-DD | PM, R&D, QA, Design | Approved, added 3 exception scenarios | Supplement network exception handling logic |
+| YYYY-MM-DD | PM、研发、测试、设计 | 通过，补充异常场景3个 | 补充网络异常处理逻辑 |
 
 ---
 
-## 📌 PRD Writing Checklist
+## 📌 PRD撰写Checklist（自查清单）
 
-> **Essential for PMs:** Self-check each item before submitting for review to ensure PRD quality.
+> **大厂PM必备：** 提交评审前逐项自查，确保PRD质量。
 
-- [ ] **Completeness:** Are all feature modules covered? Are there any missing edge cases?
-- [ ] **Executability:** Can developers build without looking at prototypes? Can testers write test cases directly?
-- [ ] **Consistency:** Is terminology consistent? Is the logic coherent throughout?
-- [ ] **Verifiability:** Does every feature have clear acceptance criteria? Are they quantifiable?
-- [ ] **Exception Coverage:** Is only the Happy Path written? Are exception and degradation scenarios complete?
-- [ ] **Dependency Clarity:** Are external dependencies clearly defined? Do risks have mitigation plans?
-- [ ] **Data Closed Loop:** Are tracking points complete? Can they support downstream data analysis?
-- [ ] **Version Control:** Is the change log updated? Are changes annotated?
+- [ ] **完整性：** 是否覆盖所有功能模块？是否有遗漏的边界场景？
+- [ ] **可执行性：** 研发能否不看原型直接开发？测试能否直接写用例？
+- [ ] **一致性：** 术语是否统一？前后逻辑是否自洽？
+- [ ] **可验证性：** 每个功能是否有明确的验收标准？是否可量化？
+- [ ] **异常覆盖：** 是否只写了Happy Path？异常和降级场景是否完整？
+- [ ] **依赖清晰：** 外部依赖是否明确？风险是否有应对方案？
+- [ ] **数据闭环：** 埋点是否完整？能否支撑后续数据分析？
+- [ ] **版本控制：** 修订记录是否更新？变更内容是否标注？
 
 ---
 
-**End of Document**
+**文档结束**
 
-> **Usage Suggestions:**
-> 1. Save this template as the standard template for the team Wiki
-> 2. Each requirement must be based on this template with trimming; core chapters (4-7) cannot be removed
-> 3. Complex features must include sequence diagrams and state machines; simple features may be simplified
-> 4. During review, verify each item against the Checklist to ensure delivery quality
+> **使用建议：**
+> 1. 将此模板保存为团队Wiki的标准模板
+> 2. 每个需求必须基于此模板裁剪，不可删减核心章节（4-7章）
+> 3. 复杂功能必须包含时序图和状态机，简单功能可简化
+> 4. 评审时对照Checklist逐项确认，确保交付质量

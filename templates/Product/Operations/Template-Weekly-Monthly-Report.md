@@ -1,314 +1,314 @@
-# [Team/Individual Name] - Weekly / Monthly Report
+# [团队/个人名称] - 周报/月报（Weekly / Monthly Report）
 
-> **Document Status:** 🟢 Published / 🟡 Draft
+> **文档状态：** 🟢 已发布 / 🟡 草稿中
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Report Period:** {YYYY-W## / YYYY-MM}
+> **报告周期：** {YYYY-W## / YYYY-MM}
 >
-> **Report Type:** 🟢 Weekly / 🟡 Monthly
+> **报告类型：** 🟢 周报 / 🟡 月报
 >
-> **Author:** [Name / Role]
+> **撰写人：** [姓名 / 角色]
 >
-> **Team:** [Team Name / Department]
+> **所属团队：** [团队名 / 部门]
 >
-> **Reporting To:** [Direct Manager / Team / Cross-team Sync]
+> **汇报对象：** [直接主管 / 团队 / 跨团队同步]
 >
-> **Submission Time:** YYYY-MM-DD HH:MM
+> **提交时间：** YYYY-MM-DD HH:MM
 >
-> **Related Documents:** [Previous Week/Month Report](./Previous Report Link) / [OKR](./OKR Link) / [Project Board](./Board Link)
+> **关联文档：** [上周/月报告](./上周报告链接) / [OKR](./OKR链接) / [项目看板](./看板链接)
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose & Scope
+### 0.1 文档目的与适用范围
 
-**Weekly/Monthly Report answers:** "What was done this period, how's the progress, what are the blockers, and what's planned next" — a regular sync tool for teams and individuals.
+**周报/月报回答**："本期做了什么、进展如何、有什么阻塞、下期怎么干"——团队与个人的定期同步工具。
 
-**Applicable Scenarios:**
+**适用场景：**
 
-- ✅ Individual weekly / monthly reports
-- ✅ Team weekly / monthly reports
-- ✅ Department regular reporting
-- ✅ Cross-team progress sync
-- ❌ Project retrospective (use Retrospective Report)
-- ❌ Performance summary (use performance process)
-- ❌ Detailed technical design (use TRD)
+- ✅ 个人周报 / 月报
+- ✅ 团队周报 / 月报
+- ✅ 部门例行汇报
+- ✅ 跨团队同步进展
+- ❌ 项目复盘（请用复盘报告）
+- ❌ 绩效总结（请走绩效流程）
+- ❌ 详细技术方案（请用 TRD）
 
-### 0.2 Writing Principles
+### 0.2 撰写原则
 
-| Principle | Description |
-| :--- | :--- |
-| **Results-Oriented** | Describe deliverables and impact, not a daily log |
-| **Data-Driven** | Use numbers, avoid "roughly done" |
-| **Risks Visible** | Blockers and risks must be explicitly exposed, not hidden |
-| **Conciseness First** | Single weekly report ≤ 1 page, monthly report ≤ 2 pages |
-| **Traceable** | Link to OKR / Project / Issue for future reference |
+| 原则             | 说明                                                    |
+| :--------------- | :------------------------------------------------------ |
+| **结果导向**     | 描述产出物与影响，不是流水账                            |
+| **数据驱动**     | 用数字说话，避免"完成度大概差不多"                     |
+| **风险显性**     | 阻塞与风险必须明确暴露，不藏不掖                        |
+| **简洁优先**     | 单份周报 ≤ 1 页，月报 ≤ 2 页                            |
+| **可追溯**       | 关联 OKR / 项目 / Issue，便于后续查证                   |
 
-### 0.3 Report Structure Alignment
+### 0.3 报告结构对齐
 
-> This template's chapter structure aligns with the `business/weekly-monthly-report` definition in `cangjie/references/registry.yaml`:
+> 本模板章节结构对齐 `cangjie/references/registry.yaml` 中 `business/weekly-monthly-report` 定义：
 >
-> - **Required Sections**: report_info / summary / completed_work / in_progress / blockers / next_period_plan
-> - **Optional Sections**: metrics / asks / reflections
+> - **必填章节**：report_info / summary / completed_work / in_progress / blockers / next_period_plan
+> - **可选章节**：metrics / asks / reflections
 
-| Template Section | Registry Field | Required |
-| :--- | :--- | :--- |
-| §1 Report Info | `report_info` | ✅ |
-| §2 Period Summary | `summary` | ✅ |
-| §3 Completed Work | `completed_work` | ✅ |
-| §4 Work In Progress | `in_progress` | ✅ |
-| §5 Blockers & Risks | `blockers` | ✅ |
-| §6 Next Period Plan | `next_period_plan` | ✅ |
-| §7 Data Metrics | `metrics` | ⚪ Optional |
-| §8 Support Needed | `asks` | ⚪ Optional |
-| §9 Reflections | `reflections` | ⚪ Optional |
+| 模板章节            | registry 字段              | 必填    |
+| :------------------ | :------------------------- | :------ |
+| §1 报告信息         | `report_info`              | ✅      |
+| §2 本期摘要         | `summary`                  | ✅      |
+| §3 已完成工作       | `completed_work`           | ✅      |
+| §4 进行中工作       | `in_progress`              | ✅      |
+| §5 阻塞与风险       | `blockers`                 | ✅      |
+| §6 下期计划         | `next_period_plan`         | ✅      |
+| §7 数据指标         | `metrics`                  | ⚪ 可选 |
+| §8 需要支持         | `asks`                     | ⚪ 可选 |
+| §9 反思与沉淀       | `reflections`              | ⚪ 可选 |
 
-### 0.4 Change Log
+### 0.4 变更记录
 
-| Version | Date | Author | Changes | Reviewer |
-| :--- | :--------- | :--- | :--- | :--- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft: basic structure | [Name] |
-| v0.2 | YYYY-MM-DD | [Name] | Aligned with registry required_sections | [Name] |
-| v1.0 | YYYY-MM-DD | [Name] | Review passed | [Owner] |
-
----
-
-## 1. Report Info
-
-| Element | Content |
-| :--- | :--- |
-| **Report Period** | {2026-W27 / 2026-07} |
-| **Date Range** | {2026-07-01 ~ 2026-07-05} |
-| **Report Type** | 🟢 Weekly / 🟡 Monthly |
-| **Author** | [Name / Role] |
-| **Team** | [Team / Department] |
-| **Reporting To** | [Manager / Cross-team] |
-| **Core Objectives** | [e.g., Q3 OKR progress + User Center v2.0 launch] |
-| **Overall Status** | 🟢 On Track / 🟡 At Risk / 🔴 Significantly Behind |
+| 版本 | 日期       | 修订人 | 变更内容                       | 审核人   |
+| :--- | :--------- | :----- | :----------------------------- | :------- |
+| v0.1 | YYYY-MM-DD | [姓名] | 初稿：基础结构                  | [姓名]   |
+| v0.2 | YYYY-MM-DD | [姓名] | 对齐 registry required_sections | [姓名]   |
+| v1.0 | YYYY-MM-DD | [姓名] | 评审通过                        | [Owner]  |
 
 ---
 
-## 2. Period Summary
+## 1. 报告信息（Report Info）
 
-> **30-Second Read:** The top 3 things this period + overall progress + biggest risk. **A manager can grasp the full picture by reading only this section.**
-
-### 2.1 Key Results (Top 3)
-
-1. **{Key Result 1}**: [e.g., User Center v2.0 canary released to 30%, core metrics stable]
-2. **{Key Result 2}**: [e.g., Performance optimization P99 from 800ms to 200ms]
-3. **{Key Result 3}**: [e.g., Completed onboarding for 2 new hires]
-
-### 2.2 Overall Progress
-
-| Objective | Progress | Status | Notes |
-| :--- | :--- | :--- | :--- |
-| OKR-1: Conversion Rate Improvement | 75% | 🟢 On Track | [One-line note] |
-| OKR-2: SLO Compliance | 60% | 🟡 At Risk | [One-line note] |
-| OKR-3: Team Building | 90% | 🟢 Ahead | [One-line note] |
-
-### 2.3 Biggest Risks
-
-| Risk | Level | Mitigation |
-| :--- | :--- | :--- |
-| {Risk 1} | 🔴 High | [Mitigation measure] |
-| {Risk 2} | 🟡 Medium | [Mitigation measure] |
+| 要素             | 内容                                              |
+| :--------------- | :------------------------------------------------ |
+| **报告周期**     | {2026-W27 / 2026-07}                              |
+| **时间范围**     | {2026-07-01 ~ 2026-07-05}                          |
+| **报告类型**     | 🟢 周报 / 🟡 月报                                  |
+| **撰写人**       | [姓名 / 角色]                                     |
+| **所属团队**     | [团队 / 部门]                                     |
+| **汇报对象**     | [主管 / 跨团队]                                   |
+| **核心目标**     | [如：Q3 OKR 进度推进 + 用户中心 v2.0 上线]         |
+| **本期整体状态** | 🟢 按计划推进 / 🟡 有风险 / 🔴 严重滞后            |
 
 ---
 
-## 3. Completed Work
+## 2. 本期摘要（Summary）
 
-> **Methodology**: Categorized by project / theme. Each item includes "deliverable + quantified result + related link". **Not a daily log.**
+> **30 秒说清：** 本期最重要的 3 件事 + 整体进度 + 最大风险。**主管只看这一段也能掌握全局**。
 
-### 3.1 Project Deliveries
+### 2.1 关键成果（Top 3）
 
-| Work Item | Type | Deliverable | Quantified Result | Related Link |
-| :--- | :--- | :--- | :--- | :--- |
-| {Work Item 1} | Development | [e.g., User Center v2.0 module] | [e.g., 5k lines of code / 85% test coverage] | [PR/Issue] |
-| {Work Item 2} | Review | [e.g., Architecture design review] | [e.g., Passed + 2 improvements] | [Document Link] |
-| {Work Item 3} | Documentation | [e.g., API documentation] | [e.g., 12 endpoints] | [Document Link] |
+1. **{关键成果 1}**：[如：用户中心 v2.0 灰度上线 30%，核心指标稳定]
+2. **{关键成果 2}**：[如：性能优化 P99 从 800ms 降至 200ms]
+3. **{关键成果 3}**：[如：完成 2 名新人的 Onboarding]
 
-### 3.2 Technical Contributions
+### 2.2 整体进度
 
-- **{Contribution 1}**: [e.g., Fixed 5 production bugs, including 1 P1]
-- **{Contribution 2}**: [e.g., Performance optimization, QPS +30%]
-- **{Contribution 3}**: [e.g., Code Review 8 times, 12 actionable suggestions]
+| 目标             | 进度      | 状态        | 说明                          |
+| :--------------- | :-------- | :---------- | :---------------------------- |
+| OKR-1: 转化率提升 | 75%       | 🟢 按计划   | [一句话说明]                  |
+| OKR-2: SLO 达标  | 60%       | 🟡 有风险   | [一句话说明]                  |
+| OKR-3: 团队建设  | 90%       | 🟢 超前     | [一句话说明]                  |
 
-### 3.3 Collaboration & Meetings
+### 2.3 最大风险
 
-| Meeting / Collaboration | Role | Output | Duration |
-| :--- | :--- | :--- | :--- |
-| {Meeting 1} | Facilitator / Participant | [e.g., Decision minutes] | 1h |
-| {Meeting 2} | Participant | [e.g., Plan alignment] | 30min |
-
-### 3.4 Learning & Growth
-
-- **{Learning 1}**: [e.g., Completed Rust async programming training]
-- **{Learning 2}**: [e.g., Read Chapter 5 of "Designing Data-Intensive Applications"]
-- **{Sharing 1}**: [e.g., Team sharing on "Canary Release Best Practices"]
+| 风险             | 等级      | 应对                          |
+| :--------------- | :-------- | :---------------------------- |
+| {风险 1}         | 🔴 高     | [应对措施]                    |
+| {风险 2}         | 🟡 中     | [应对措施]                    |
 
 ---
 
-## 4. Work In Progress
+## 3. 已完成工作（Completed Work）
 
-> **Methodology**: Each item includes "current progress + estimated completion date + blocker".
+> **方法论**：按项目 / 主题分类，每项含「产出物 + 量化结果 + 关联链接」。**不写流水账**。
 
-| Work Item | Current Progress | Estimated Completion | Blocker | Owner |
-| :--- | :--- | :--- | :--- | :--- |
-| {Work Item 1} | 80% | YYYY-MM-DD | [e.g., Waiting for third-party API] | [Name] |
-| {Work Item 2} | 50% | YYYY-MM-DD | — | [Name] |
-| {Work Item 3} | 30% | YYYY-MM-DD | [e.g., Test environment unavailable] | [Name] |
+### 3.1 项目交付
 
----
+| 工作项                         | 类型       | 产出物                          | 量化结果                | 关联链接     |
+| :----------------------------- | :--------- | :------------------------------ | :---------------------- | :----------- |
+| {工作项 1}                     | 开发       | [如：用户中心 v2.0 模块]        | [如：代码 5k 行 / 测试 85%] | [PR/Issue]   |
+| {工作项 2}                     | 评审       | [如：架构设计评审]              | [如：通过 + 2 项改进]    | [文档链接]   |
+| {工作项 3}                     | 文档       | [如：API 文档]                  | [如：12 个端点]          | [文档链接]   |
 
-## 5. Blockers & Risks
+### 3.2 技术贡献
 
-> **Methodology**: Blockers must be explicitly exposed. **Hidden blockers always become incidents.**
+- **{贡献 1}**：[如：修复线上 Bug 5 个，含 1 个 P1]
+- **{贡献 2}**：[如：性能优化，QPS +30%]
+- **{贡献 3}**：[如：Code Review 8 次，提出有效建议 12 条]
 
-### 5.1 Blockers
+### 3.3 协作与会议
 
-| # | Blocker Description | Affected Work | Impact | Attempted Solutions | Support Needed |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| 1 | [e.g., Third-party API test environment unavailable] | [e.g., Order module integration] | 🔴 High | [e.g., Contacted them 3 times] | [e.g., Manager help] |
-| 2 | [e.g., Test environment DB quota insufficient] | [e.g., Performance testing] | 🟡 Medium | [e.g., Request submitted] | [e.g., DBA expedite] |
+| 会议 / 协作         | 角色        | 产出                          | 时长      |
+| :------------------ | :---------- | :---------------------------- | :-------- |
+| {会议 1}            | 主持 / 参与 | [如：决策纪要]                | 1h        |
+| {会议 2}            | 参与        | [如：方案对齐]                | 30min     |
 
-### 5.2 Risk Alerts
+### 3.4 学习与成长
 
-| # | Risk Description | Probability | Impact | Response Plan | Owner |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| 1 | [e.g., Launch may be delayed 1 week] | 🟡 Medium | 🔴 High | [e.g., Compress test cycle / Add manpower] | [Name] |
-| 2 | [e.g., Third-party dependency stability declining] | 🟢 Low | 🟡 Medium | [e.g., Fallback + monitoring] | [Name] |
-
----
-
-## 6. Next Period Plan
-
-> **Methodology**: Each item includes "objective + expected deliverable + linked OKR".
-
-### 6.1 Key Objectives
-
-| Work Item | Objective | Expected Deliverable | Linked OKR | Priority |
-| :--- | :--- | :--- | :--- | :--- |
-| {Work Item 1} | [e.g., Launch] | [e.g., User Center v2.0 100% canary] | OKR-1 | P0 |
-| {Work Item 2} | [e.g., Development] | [e.g., Order module 80%] | OKR-2 | P0 |
-| {Work Item 3} | [e.g., Research] | [e.g., Tech selection report] | OKR-3 | P1 |
-
-### 6.2 Key Milestones
-
-| Date | Milestone | Acceptance Criteria |
-| :--- | :--- | :--- |
-| YYYY-MM-DD | [e.g., User Center v2.0 launch] | [e.g., 100% canary + no alerts] |
-| YYYY-MM-DD | [e.g., Performance optimization complete] | [e.g., P99 ≤ 200ms] |
+- **{学习 1}**：[如：完成 Rust 异步编程内训]
+- **{学习 2}**：[如：阅读《Designing Data-Intensive Applications》第 5 章]
+- **{分享 1}**：[如：团队分享"灰度发布最佳实践"]
 
 ---
 
-## 7. Data Metrics ⚪ Optional
+## 4. 进行中工作（In Progress）
 
-> **Methodology**: Use data, compare with previous period, annotate trends.
+> **方法论**：每项含「当前进度 + 预计完成时间 + 阻塞点」。
 
-### 7.1 Business Metrics
-
-| Metric | Previous Period | Current Period | Change | Target | Achievement |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| DAU | 12,000 | 13,500 | +12.5% | 15,000 | 🟡 90% |
-| Conversion Rate | 5.2% | 6.1% | +0.9pp | 8% | 🟡 76% |
-| Retention (Next-day) | 35% | 38% | +3pp | 45% | 🟡 84% |
-
-### 7.2 Technical Metrics
-
-| Metric | Previous Period | Current Period | Change | Target | Achievement |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| SLO | 99.85% | 99.92% | +0.07pp | 99.95% | 🟡 99.97% |
-| P99 Latency | 350ms | 220ms | -37% | 200ms | 🟡 91% |
-| Error Rate | 0.05% | 0.02% | -60% | 0.01% | 🟡 50% |
-
-### 7.3 Team Metrics
-
-| Metric | Previous Period | Current Period | Change | Target |
-| :--- | :--- | :--- | :--- | :--- |
-| PR Merges | 25 | 32 | +28% | — |
-| Test Coverage | 78% | 82% | +4pp | 80% |
-| Code Review Count | 45 | 52 | +16% | — |
-| Bugs (Production) | 8 | 5 | -38% | ≤ 5 |
+| 工作项                         | 当前进度    | 预计完成     | 阻塞点                  | 负责人    |
+| :----------------------------- | :---------- | :----------- | :---------------------- | :-------- |
+| {工作项 1}                     | 80%         | YYYY-MM-DD   | [如：等待第三方 API]    | [姓名]    |
+| {工作项 2}                     | 50%         | YYYY-MM-DD   | —                       | [姓名]    |
+| {工作项 3}                     | 30%         | YYYY-MM-DD   | [如：测试环境不可用]    | [姓名]    |
 
 ---
 
-## 8. Support Needed ⚪ Optional
+## 5. 阻塞与风险（Blockers）
 
-> **Methodology**: Clearly state requests for quick response from managers and collaborators.
+> **方法论**：阻塞必须显性暴露。**藏起来的阻塞，最后都会变成事故**。
 
-| # | Request Description | Target | Expected Time | Urgency | Current Status |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| 1 | [e.g., Coordinate DBA to expedite quota handling] | [Manager] | YYYY-MM-DD | 🔴 Urgent | ⚪ Pending |
-| 2 | [e.g., Invite architect for design review] | [Architect] | YYYY-MM-DD | 🟡 High | ⚪ Pending |
-| 3 | [e.g., Add 1 person for testing support] | [Manager] | YYYY-MM-DD | 🟡 High | 🟢 Confirmed |
+### 5.1 阻塞项
 
----
+| # | 阻塞描述                          | 影响工作              | 影响程度    | 已尝试方案          | 需要支持          |
+| :-: | :-------------------------------- | :-------------------- | :---------- | :------------------ | :---------------- |
+| 1 | [如：第三方 API 测试环境不可用]   | [如：订单模块联调]    | 🔴 高       | [如：联系对方 3 次] | [如：主管协助]    |
+| 2 | [如：测试环境 DB 配额不足]        | [如：性能测试]        | 🟡 中       | [如：申请已提]      | [如：DBA 加急]    |
 
-## 9. Reflections ⚪ Optional
+### 5.2 风险预警
 
-> **Methodology**: What was learned, what went wrong, and how to improve next time. **Unrecorded repetitive work = waste.**
-
-### 9.1 Lessons Learned
-
-- **{Lesson 1}**: [e.g., Canary releases must follow SOP; skipping steps amplifies anomalies]
-- **{Lesson 2}**: [e.g., Third-party dependencies must be coordinated 1 week in advance to avoid last-minute blockers]
-
-### 9.2 What Went Wrong
-
-- **{Issue 1}**: [e.g., Estimation was significantly off; planned 5 days actually took 8]
-- **{Issue 2}**: [e.g., Communication not timely enough, causing downstream team to wait]
-
-### 9.3 Improvements for Next Time
-
-- **{Improvement 1}**: [e.g., Apply 1.3x historical deviation factor during estimation]
-- **{Improvement 2}**: [e.g., Daily progress sync to avoid downstream blockers]
-
-### 9.4 Knowledge Capture
-
-| Item | Type | Location |
-| :--- | :--- | :--- |
-| [e.g., Canary SOP v1.0] | SOP | [Knowledge Base Link] |
-| [e.g., Third-party Integration Checklist] | Checklist | [Knowledge Base Link] |
+| # | 风险描述                          | 概率      | 影响      | 应对计划                  | 责任人    |
+| :-: | :-------------------------------- | :-------- | :-------- | :------------------------ | :-------- |
+| 1 | [如：上线时间可能延后 1 周]       | 🟡 中     | 🔴 高     | [如：压缩测试周期 / 增人力] | [姓名]    |
+| 2 | [如：第三方依赖稳定性下降]        | 🟢 低     | 🟡 中     | [如：兜底 + 监控]          | [姓名]    |
 
 ---
 
-## 10. Appendix
+## 6. 下期计划（Next Period Plan）
 
-### 10.1 Detailed Work Log
+> **方法论**：每项含「目标 + 预计产出 + 关联 OKR」。
 
-> Complete work log (if needed) can be placed in the appendix. Omitted in regular weekly reports.
+### 6.1 关键目标
 
-| Date | Work Content | Duration | Output |
-| :--- | :--- | :--- | :--- |
-| YYYY-MM-DD | {Content} | 4h | {Output} |
-| YYYY-MM-DD | {Content} | 6h | {Output} |
+| 工作项                         | 目标        | 预计产出                      | 关联 OKR      | 优先级    |
+| :----------------------------- | :---------- | :---------------------------- | :------------ | :-------- |
+| {工作项 1}                     | [如：上线]  | [如：用户中心 v2.0 100% 灰度] | OKR-1         | P0        |
+| {工作项 2}                     | [如：开发]  | [如：订单模块 80%]            | OKR-2         | P0        |
+| {工作项 3}                     | [如：调研]  | [如：技术选型报告]            | OKR-3         | P1        |
 
-### 10.2 Related Documents
+### 6.2 关键里程碑
 
-- [Previous Week/Month Report](./Previous Report Link)
-- [OKR Progress](./OKR Link)
-- [Project Board](./Board Link)
-- [Retrospective Report](./Retrospective Report Link)
+| 日期            | 里程碑                          | 验收标准                  |
+| :-------------- | :------------------------------ | :------------------------ |
+| YYYY-MM-DD      | [如：用户中心 v2.0 上线]        | [如：灰度 100% + 无告警]  |
+| YYYY-MM-DD      | [如：性能优化完成]              | [如：P99 ≤ 200ms]         |
 
 ---
 
-## 📌 Weekly/Monthly Report Writing Checklist
+## 7. 数据指标（Metrics） ⚪ 可选
 
-- [ ] §1 Report Info: Period / Type / Author / Overall Status
-- [ ] §2 Period Summary: Top 3 Key Results + Overall Progress + Biggest Risk
-- [ ] §3 Completed Work: Categorized by project, with deliverables and quantified results
-- [ ] §4 Work In Progress: With progress / estimated completion / blockers
-- [ ] §5 Blockers & Risks: Blockers explicitly exposed + risk alerts
-- [ ] §6 Next Period Plan: With objectives / expected deliverables / linked OKR
-- [ ] §7 Data Metrics (Optional): Business / Technical / Team, with previous period comparison
-- [ ] §8 Support Needed (Optional): Clear request + target + expected time
-- [ ] §9 Reflections (Optional): Lessons / Improvements / Knowledge capture
-- [ ] Single weekly report ≤ 1 page, monthly report ≤ 2 pages
-- [ ] Data-driven, avoid "roughly" / "approximately"
-- [ ] OKR / Project / Issue links complete
-- [ ] Blockers are visible, not hidden
-- [ ] Chapter structure aligns with registry `business/weekly-monthly-report` definition
+> **方法论**：用数据说话，对比上期，标注趋势。
+
+### 7.1 业务指标
+
+| 指标              | 上期值    | 本期值    | 变化      | 目标值    | 达成        |
+| :---------------- | :-------- | :-------- | :-------- | :-------- | :---------- |
+| DAU               | 12,000    | 13,500    | +12.5%    | 15,000    | 🟡 90%      |
+| 转化率            | 5.2%      | 6.1%      | +0.9pp    | 8%        | 🟡 76%      |
+| 留存率（次日）    | 35%       | 38%       | +3pp      | 45%       | 🟡 84%      |
+
+### 7.2 技术指标
+
+| 指标              | 上期值    | 本期值    | 变化      | 目标值    | 达成        |
+| :---------------- | :-------- | :-------- | :-------- | :-------- | :---------- |
+| SLO               | 99.85%    | 99.92%    | +0.07pp   | 99.95%    | 🟡 99.97%   |
+| P99 延迟          | 350ms     | 220ms     | -37%      | 200ms     | 🟡 91%      |
+| 错误率            | 0.05%     | 0.02%     | -60%      | 0.01%     | 🟡 50%      |
+
+### 7.3 团队指标
+
+| 指标              | 上期值    | 本期值    | 变化      | 目标值    |
+| :---------------- | :-------- | :-------- | :-------- | :-------- |
+| PR 合并数         | 25        | 32        | +28%      | —         |
+| 测试覆盖率        | 78%       | 82%       | +4pp      | 80%       |
+| Code Review 次数  | 45        | 52        | +16%      | —         |
+| Bug 数（线上）    | 8         | 5         | -38%      | ≤ 5       |
+
+---
+
+## 8. 需要支持（Asks） ⚪ 可选
+
+> **方法论**：明确诉求，便于主管与协作方快速响应。
+
+| # | 诉求描述                          | 对象      | 期望时间     | 紧急度    | 当前状态    |
+| :-: | :-------------------------------- | :-------- | :----------- | :-------- | :---------- |
+| 1 | [如：协调 DBA 加急处理配额]       | [主管]    | YYYY-MM-DD   | 🔴 紧急   | ⚪ 待响应   |
+| 2 | [如：邀请架构师评审设计]          | [架构师]  | YYYY-MM-DD   | 🟡 高     | ⚪ 待响应   |
+| 3 | [如：增派 1 人支援测试]           | [主管]    | YYYY-MM-DD   | 🟡 高     | 🟢 已确认   |
+
+---
+
+## 9. 反思与沉淀（Reflections） ⚪ 可选
+
+> **方法论**：本期学到什么、做得不好的、下次怎么改进。**不沉淀的重复劳动 = 浪费**。
+
+### 9.1 学到的
+
+- **{经验 1}**：[如：灰度发布必须按 SOP 执行，跳跃过大导致异常放大]
+- **{经验 2}**：[如：第三方依赖必须前置 1 周对接，避免临时阻塞]
+
+### 9.2 做得不好的
+
+- **{问题 1}**：[如：估算偏差较大，原计划 5 天的工作实际用了 8 天]
+- **{问题 2}**：[如：沟通不够及时，导致下游团队等待]
+
+### 9.3 下次改进
+
+- **{改进 1}**：[如：估算时考虑历史偏差系数 1.3]
+- **{改进 2}**：[如：每日同步进展，避免下游阻塞]
+
+### 9.4 知识沉淀
+
+| 沉淀项                          | 类型        | 位置                  |
+| :------------------------------ | :---------- | :-------------------- |
+| [如：灰度 SOP v1.0]             | SOP         | [知识库链接]          |
+| [如：第三方对接检查清单]        | Checklist   | [知识库链接]          |
+
+---
+
+## 10. 附录（Appendix）
+
+### 10.1 详细工作日志
+
+> 完整的工作日志（如需要），可放在附录。日常周报可省略。
+
+| 日期            | 工作内容                          | 时长      | 产出              |
+| :-------------- | :-------------------------------- | :-------- | :---------------- |
+| YYYY-MM-DD      | {内容}                            | 4h        | {产出}            |
+| YYYY-MM-DD      | {内容}                            | 6h        | {产出}            |
+
+### 10.2 关联文档
+
+- [上周/月报告](./上周报告链接)
+- [OKR 进度](./OKR链接)
+- [项目看板](./看板链接)
+- [复盘报告](./复盘报告链接)
+
+---
+
+## 📌 周报/月报撰写 Checklist
+
+- [ ] §1 报告信息：周期 / 类型 / 撰写人 / 整体状态
+- [ ] §2 本期摘要：Top 3 关键成果 + 整体进度 + 最大风险
+- [ ] §3 已完成工作：按项目分类，含产出物与量化结果
+- [ ] §4 进行中工作：含进度 / 预计完成 / 阻塞点
+- [ ] §5 阻塞与风险：阻塞显性暴露 + 风险预警
+- [ ] §6 下期计划：含目标 / 预计产出 / 关联 OKR
+- [ ] §7 数据指标（可选）：业务 / 技术 / 团队，含上期对比
+- [ ] §8 需要支持（可选）：明确诉求 + 对象 + 期望时间
+- [ ] §9 反思与沉淀（可选）：学到的 / 改进 / 知识沉淀
+- [ ] 单份周报 ≤ 1 页，月报 ≤ 2 页
+- [ ] 数据驱动，避免"差不多""大概"
+- [ ] 关联 OKR / 项目 / Issue 链接完整
+- [ ] 阻塞显性化，不藏不掖
+- [ ] 章节结构对齐 registry `business/weekly-monthly-report` 定义

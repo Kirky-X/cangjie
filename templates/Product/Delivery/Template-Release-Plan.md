@@ -1,251 +1,251 @@
-# [Product/System Name (English)] - Release Plan Document
+# [产品/系统名称（英文名）] - 发布计划文档（Release Plan）
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Cancelled
+> **文档状态：** 🟡 评审中 / 🟢 已批准 / 🔴 已取消
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name] (Release Manager / OnCall Owner)
+> **撰写人：** [姓名]（发布经理 / OnCall Owner）
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [角色列表]
 >
-> **Release Type:** 🟢 Regular Iteration / 🟡 Major Change / 🔴 Emergency Fix / 🔵 Experimental Canary
+> **发布类型：** 🟢 常规迭代 / 🟡 重大变更 / 🔴 紧急修复 / 🔵 实验性灰度
 >
-> **Release Window:** YYYY-MM-DD HH:mm ~ HH:mm (Beijing Time)
+> **发布窗口：** YYYY-MM-DD HH:mm ~ HH:mm（北京时间）
 >
-> **Related Documents:** [Charter ID] / [BRD ID] / [PRD ID] / [TRD ID]
+> **关联文档：** [Charter编号] / [BRD编号] / [PRD编号] / [TRD编号]
 >
-> **Tech Lead:** [Name]
+> **技术负责人：** [姓名]
 >
-> **Product Owner:** [Name]
+> **产品负责人：** [姓名]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose & Scope
+### 0.1 文档目的与适用范围
 
-[Describe the purpose, applicable scenarios, and non-applicable scenarios of this document]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Sections |
+| 文档类型 | 文件名 | 相关章节 |
 |---------|--------|---------|
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型] | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format**: Related documents use the `filename line range` format (e.g., `【Template】Technical Requirements Document (TRD).md 3-17`). Line numbers may change as documents are updated; refer to the actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Author | Changes | Reviewer |
+| 版本 | 日期 | 修订人 | 变更内容 | 审核人 |
 | :--- | :--- | :--- | :--- | :--- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft |  |
-| v0.2 | YYYY-MM-DD | [Name] | Added canary strategy and rollback SOP |  |
-| v0.3 | YYYY-MM-DD | [Name] | Release review passed | [Release Manager] |
-| v0.4 | 2026-06-09 | Xie Dong | Fix: quadrantChart template changed to table format (Feishu incompatible) | — |
-| v0.5 | 2026-06-09 | Xie Dong | Fix gantt chart to table for Feishu rendering compatibility | — |
+| v0.1 | YYYY-MM-DD | [姓名] | 初稿 |  |
+| v0.2 | YYYY-MM-DD | [姓名] | 补充灰度策略与回滚SOP |  |
+| v0.3 | YYYY-MM-DD | [姓名] | 发布评审通过 | [发布经理] |
+| v0.4 | 2026-06-09 | 谢董 | 修复：quadrantChart 模板改为表格格式（飞书不兼容） | — |
+| v0.5 | 2026-06-09 | 谢董 | 修复gantt图为表格以兼容飞书渲染 | — |
 
 ---
 
-## 1. Executive Summary
+## 1. 执行摘要（Executive Summary）
 
-> **OnCall / Management Guide:** One page explaining "what to release, how to release, when to release, and what to do if something goes wrong."
+> **值班同学/管理层导读：** 一页纸说清"发什么、怎么发、何时发、出问题怎么办"。
 
-| Element | Content |
+| 要素         | 内容                                                      |
 | :----------- | :-------------------------------------------------------- |
-| **Release Content** | [One sentence, e.g.: Order System V2.1, supporting flash sale stock pre-allocation + payment routing optimization] |
-| **Impact Scope** | [e.g.: All users / East China only / Android clients only] |
-| **Release Strategy** | [e.g.: Canary 1% → 5% → 20% → 50% → 100%, over 72h] |
-| **Core Risks** | [e.g.: Database incompatible changes, rollback window only 30 minutes] |
-| **Rollback RTO** | [e.g.: Detection <<1min, Decision <<2min, Execution <<3min, Total <<5min] |
-| **OnCall Communication** | [DingTalk group / Feishu group / Conference call number] |
+| **发布内容** | [一句话，如：订单系统V2.1，支持秒杀库存预占+支付路由优化] |
+| **影响范围** | [如：全量用户 / 仅华东区 / 仅安卓客户端]                  |
+| **发布策略** | [如：金丝雀 1% → 5% → 20% → 50% → 100%，历时 72h]         |
+| **核心风险** | [如：数据库不兼容变更，回滚窗口仅 30 分钟]                |
+| **回滚 RTO** | [如：检测<<1min，决策<<2min，执行<<3min，总计<<5min]      |
+| **值班通讯** | [钉钉群 / 飞书群 / 电话会议号]                            |
 
 ```mermaid
 mindmap
-  root((Release Overview))
-    Release Content
-      [Feature Changes]
-      [Configuration Changes]
-      [Data Changes]
-    Release Strategy
-      [Canary Percentage]
-      [Release Pace]
-      [Validation Checkpoints]
-    Risk Control
-      [Rollback Trigger Conditions]
-      [Emergency Contacts]
-      [Degradation Plans]
-    Validation Closed-Loop
-      [Monitoring Metrics]
-      [Business Validation]
-      [User Feedback]
+  root((发布总览))
+    发布内容
+      [功能变更]
+      [配置变更]
+      [数据变更]
+    发布策略
+      [灰度比例]
+      [发布节奏]
+      [验证卡点]
+    风险控制
+      [回滚触发条件]
+      [应急联系人]
+      [降级预案]
+    验证闭环
+      [监控指标]
+      [业务验证]
+      [用户反馈]
 ```
 
 ---
 
-## 2. Release Metadata
+## 2. 发布基本信息（Release Metadata）
 
-### 2.1 Version & Code Baseline
+### 2.1 版本与代码基线
 
-| Item | Content |
+| 项目           | 内容                                                  |
 | :------------- | :---------------------------------------------------- |
-| **Version** | `v2.1.0` / `release-20260525` |
-| **Code Branch** | `release/v2.1.0` (cut from `main`, Commit: `a1b2c3d`) |
-| **Build Artifact** | Docker Image: `registry/order-svc:v2.1.0` |
-| **Config Baseline** | Config Commit: `e5f6g7h`, linked Nacos/K8s ConfigMap |
-| **Database Baseline** | Flyway/Liquibase Version: `V2.1.0__add_seckill_stock` |
-| **Frontend Assets** | CDN Path: `https://cdn.example.com/static/v2.1.0/` |
+| **版本号**     | `v2.1.0` / `release-20260525`                         |
+| **代码分支**   | `release/v2.1.0`（从 `main` 切出，Commit: `a1b2c3d`） |
+| **构建产物**   | Docker Image: `registry/order-svc:v2.1.0`             |
+| **配置基线**   | Config Commit: `e5f6g7h`，关联 Nacos/K8s ConfigMap    |
+| **数据库基线** | Flyway/Liquibase Version: `V2.1.0__add_seckill_stock` |
+| **前端资源**   | CDN Path: `https://cdn.example.com/static/v2.1.0/`    |
 
-### 2.2 Release Window
+### 2.2 发布窗口
 
-| Phase | Time | Duration | Notes |
+| 阶段                    | 时间              | 时长 | 说明                                |
 | :--- | :--- | :---: | :--- |
-| **Code Freeze** | Release-1 day 18:00 | - | Stop feature admission, only accept blocking bug fixes |
-| **Release Window Opens** | Release day 02:00 | 4h | Start during off-peak hours, avoid business peak |
-| **Canary Start** | 02:30 | - | First batch 1% traffic cut-in |
-| **Observation Period** | 02:30 ~ 06:00 | 3.5h | Core metrics monitoring, business inspection |
-| **Full Release** | 06:00 (if passed) | 1h | 100% traffic, gradually remove old version |
-| **Release Window Closes** | 10:00 | - | Officially closed after Release Manager confirmation |
+| **封板（Code Freeze）** | 发布前 1 天 18:00 |  -   | 停止需求准入，仅接受阻塞性 Bug 修复 |
+| **发布窗口开启**        | 发布日 02:00      |  4h  | 低峰期开始，避开业务高峰            |
+| **灰度启动**            | 02:30             |  -   | 首批 1% 流量切入                    |
+| **观察期**              | 02:30 ~ 06:00     | 3.5h | 核心指标监控，业务巡检              |
+| **全量发布**            | 06:00（如通过）   |  1h  | 100% 流量，逐步摘除旧版本           |
+| **发布窗口关闭**        | 10:00             |  -   | 发布经理确认后正式关闭              |
 
-> **Note**: Gantt chart is incompatible with Feishu; replaced with table description.
+> **说明**：甘特图为飞书不兼容类型，改为表格描述。
 
-| Phase | Task | Start Time | Duration | Status |
+| 阶段 | 任务 | 开始时间 | 工期 | 状态 |
 |:---|:---|:---|:---:|:---:|
-| Pre-release | Code freeze & preparation | HH:MM | 2h | ⚪ |
-| Release execution | First batch canary (1%) | HH:MM | 30m | ⚪ |
-| Release execution | Monitoring verification | After first canary | 2h | ⚪ |
-| Release execution | Expand canary (5%-50%) | After monitoring verification | 2h | ⚪ |
-| Release execution | Full release | After canary expansion | 1h | ⚪ |
-| Post-release | Observation & review | After full release | 2h | ⚪ |
+| 发布前 | 封板与准备 | HH:MM | 2h | ⚪ |
+| 发布执行 | 首批灰度(1%) | HH:MM | 30m | ⚪ |
+| 发布执行 | 监控验证 | 首批灰度完成后 | 2h | ⚪ |
+| 发布执行 | 扩大灰度(5%-50%) | 监控验证完成后 | 2h | ⚪ |
+| 发布执行 | 全量发布 | 扩大灰度完成后 | 1h | ⚪ |
+| 发布后 | 观察与复盘 | 全量发布完成后 | 2h | ⚪ |
 
 ---
 
-## 3. Scope & Change Log
+## 3. 发布范围与变更清单（Scope & Change Log）
 
-> Accurately describe all changes included in this release, forming the basis of risk assessment.
+> 精确描述本次发布包含的所有变更，是风险评估的基础。
 
-### 3.1 Change Classification Matrix
+### 3.1 变更分类矩阵
 
-> **Note**: This quadrant chart template has been converted to a table description.
+> **说明**：此象限图模板已转为表格描述。
 
 <!--
-Original quadrantChart structure reference:
-- title: Change Risk Matrix (Impact vs Technical Complexity)
-- x-axis: "Low Complexity" --> "High Complexity"
-- y-axis: "Low Impact" --> "High Impact"
-- quadrant-1: Key Watch (High/High)
-- quadrant-2: Standard Execution (Low/High)
-- quadrant-3: Quick Pass (Low/Low)
-- quadrant-4: Technical Challenge (High/Low)
-- Data points: "Database DDL Change": [0.9, 0.95]; "Flash Sale Core Logic Refactor": [0.8, 0.9]; "UI Copy Adjustment": [0.1, 0.2]; "New Report API": [0.4, 0.3]; "Payment Routing Optimization": [0.7, 0.6]
+原 quadrantChart 结构参考：
+- title: 变更风险矩阵（影响面 vs 技术复杂度）
+- x-axis: "低复杂度" --> "高复杂度"
+- y-axis: "低影响面" --> "高影响面"
+- quadrant-1: 重点盯防（高/高）
+- quadrant-2: 规范执行（低/高）
+- quadrant-3: 快速通过（低/低）
+- quadrant-4: 技术攻坚（高/低）
+- 数据点: "数据库DDL变更": [0.9, 0.95]; "秒杀核心逻辑重构": [0.8, 0.9]; "UI文案调整": [0.1, 0.2]; "新增报表接口": [0.4, 0.3]; "支付路由优化": [0.7, 0.6]
 -->
 
-| Quadrant | Region Characteristics | Recommended Strategy |
+| 象限 | 区域特征 | 策略建议 |
 | :--- | :--- | :--- |
-| Quadrant 1 (High Complexity · High Impact) | Key Watch (High/High) | Strict review, canary release, full validation |
-| Quadrant 2 (Low Complexity · High Impact) | Standard Execution (Low/High) | Standard process, regression validation |
-| Quadrant 3 (Low Complexity · Low Impact) | Quick Pass (Low/Low) | Simplified review, quick deployment |
-| Quadrant 4 (High Complexity · Low Impact) | Technical Challenge (High/Low) | Technical review, independent test environment validation |
+| 象限1（高复杂度·高影响面） | 重点盯防（高/高） | 严格评审，灰度发布，全量验证 |
+| 象限2（低复杂度·高影响面） | 规范执行（低/高） | 标准流程，回归验证 |
+| 象限3（低复杂度·低影响面） | 快速通过（低/低） | 简化评审，快速上线 |
+| 象限4（高复杂度·低影响面） | 技术攻坚（高/低） | 技术评审，独立测试环境验证 |
 
-| Name | X Value | Y Value | Quadrant |
+| 名称 | X值 | Y值 | 象限 |
 | :--- | :---: | :---: | :--- |
-| Database DDL Change | 0.9 | 0.95 | Quadrant 1 (Key Watch) |
-| Flash Sale Core Logic Refactor | 0.8 | 0.9 | Quadrant 1 (Key Watch) |
-| UI Copy Adjustment | 0.1 | 0.2 | Quadrant 3 (Quick Pass) |
-| New Report API | 0.4 | 0.3 | Quadrant 3 (Quick Pass) |
-| Payment Routing Optimization | 0.7 | 0.6 | Quadrant 1 (Key Watch) |
+| 数据库DDL变更 | 0.9 | 0.95 | 象限1（重点盯防） |
+| 秒杀核心逻辑重构 | 0.8 | 0.9 | 象限1（重点盯防） |
+| UI文案调整 | 0.1 | 0.2 | 象限3（快速通过） |
+| 新增报表接口 | 0.4 | 0.3 | 象限3（快速通过） |
+| 支付路由优化 | 0.7 | 0.6 | 象限1（重点盯防） |
 
-### 3.2 Change List
+### 3.2 变更清单（Change List）
 
-| Change ID | Type | Description | Related Requirement | Impact Scope | Rollback Difficulty | Owner |
+| 变更ID      | 类型 | 描述                                  | 关联需求 | 影响范围 | 回滚难度 | 负责人 |
 | :--- | :---: | :--- | :--- | :--- | :---: | :--- |
-| **CHG-001** | Feature | New flash sale stock pre-allocation API | REQ-088 | Transaction core | 🔴 High | [Name] |
-| **CHG-002** | Feature | Payment channel adds UnionPay QuickPass | REQ-092 | Payment module | 🟡 Medium | [Name] |
-| **CHG-003** | Config | Rate limit threshold adjusted from 5000 to 8000 QPS | CONF-015 | Gateway layer | 🟢 Low | [Name] |
-| **CHG-004** | Data | Order table adds `seckill_tag` field (nullable) | DDL-021 | Order DB | 🟡 Medium | [Name] |
-| **CHG-005** | Fix | Fix order timeout auto-cancel bug | BUG-112 | Scheduler service | 🟢 Low | [Name] |
+| **CHG-001** | 功能 | 新增秒杀库存预占接口                  | REQ-088  | 交易核心 |  🔴 高   | [姓名] |
+| **CHG-002** | 功能 | 支付渠道新增银联云闪付                | REQ-092  | 支付模块 |  🟡 中   | [姓名] |
+| **CHG-003** | 配置 | 限流阈值从 5000 QPS 调整至 8000       | CONF-015 | 网关层   |  🟢 低   | [姓名] |
+| **CHG-004** | 数据 | 订单表新增 `seckill_tag` 字段（可空） | DDL-021  | 订单库   |  🟡 中   | [姓名] |
+| **CHG-005** | 修复 | 修复订单超时未自动取消 Bug            | BUG-112  | 调度服务 |  🟢 低   | [姓名] |
 
-### 3.3 Dependency Check
+### 3.3 依赖项检查
 
-| Dependency System | Required Version | Status | Validation Method |
+| 依赖系统 | 依赖版本 |   状态    | 验证方式     |
 | :------- | :------- | :-------: | :----------- |
-| User Center | ≥ v3.2.0 | ✅ Ready | API contract testing |
-| Product Center | ≥ v2.8.1 | ✅ Ready | Integration testing |
-| Payment Gateway | ≥ v1.5.0 | ✅ Ready | Joint debugging passed |
-| Message Center | ≥ v2.0.0 | ✅ Ready | Message format compatibility |
+| 用户中心 | ≥ v3.2.0 | ✅ 已就绪 | 接口契约测试 |
+| 商品中心 | ≥ v2.8.1 | ✅ 已就绪 | 集成测试     |
+| 支付网关 | ≥ v1.5.0 | ✅ 已就绪 | 联调通过     |
+| 消息中心 | ≥ v2.0.0 | ✅ 已就绪 | 消息格式兼容 |
 
 ---
 
-## 4. Release Strategy
+## 4. 发布策略与架构（Release Strategy）
 
-### 4.1 Release Method Selection
+### 4.1 发布方式选择
 
-| Strategy | Applicable Scenario | This Release | Notes |
+| 策略            | 适用场景                   | 本次是否采用 | 说明                     |
 | :-------------- | :------------------------- | :----------: | :----------------------- |
-| **Blue-Green Deployment** | Full switchover, zero downtime, double resources | ❌ | High resource cost, not used this time |
-| **Rolling Update** | Instance-by-instance replacement, resource-efficient | ❌ | Slow rollback, unsuitable for database changes |
-| **Canary/Gray Release** | Small traffic validation, gradual ramp-up | ✅ | Core strategy for this release |
-| **A/B Test** | Controlled experiment, data-driven | 🟡 | Only for new payment page frontend |
+| **蓝绿部署**    | 全量切换，零停机，资源翻倍 |      ❌      | 资源成本高，本次不采用   |
+| **滚动发布**    | 逐台替换，节省资源         |      ❌      | 回滚慢，不适合数据库变更 |
+| **金丝雀/灰度** | 小流量验证，渐进放量       |      ✅      | 本次核心策略             |
+| **A/B Test**    | 对照实验，数据驱动         |      🟡      | 仅对新支付页面前端采用   |
 
-### 4.2 Canary Release Architecture
+### 4.2 灰度发布架构
 
-> **Reference**: For detailed canary architecture design, traffic bucketing algorithm, and end-to-end swimlane design, see **【Template】Gray Release Plan.md §3-4**. This document only outlines the canary strategy for this release.
+> **引用说明**：详细的灰度架构设计、流量分桶算法、全链路泳道设计，请参阅 **【模板】灰度方案.md §3-4**。本文档仅概述本次发布的灰度策略。
 
-**Canary Strategy Summary for This Release**:
+**本次灰度策略概要**：
 
-| Strategy Dimension | This Selection | Detailed Design | Reference Document |
+| 策略维度 | 本次选择 | 详细设计 | 引用文档 |
 | :--- | :--- | :--- | :--- |
-| **Canary Mode** | [e.g., Canary + AB Gray] | Traffic bucketing algorithm | Ref Gray Release Plan §3.1 |
-| **Traffic Control** | [e.g., Device ID Hash] | Consistent Hash | Ref Gray Release Plan §3.2 |
-| **Ramp-up Pace** | [e.g., 1%→5%→20%→50%→100%] | Stage Go/No-Go criteria | Ref Gray Release Plan §5.2 |
-| **Rollback Strategy** | [e.g., Sub-second traffic switchback] | Multi-level mitigation | Ref Gray Release Plan §7.1 |
+| **灰度模式** | [如：金丝雀+AB灰度] | 流量分桶算法 | 引用灰度方案§3.1 |
+| **流量控制** | [如：按设备ID Hash] | 一致性Hash | 引用灰度方案§3.2 |
+| **放量节奏** | [如：1%→5%→20%→50%→100%] | 各阶段Go/No-Go标准 | 引用灰度方案§5.2 |
+| **回滚策略** | [如：秒级流量切回] | 多级止损机制 | 引用灰度方案§7.1 |
 
-> **Complete Design**: For canary architecture diagram, swimlane design, monitoring system, and environment management, see **【Template】Gray Release Plan.md §2-8**.
+> **完整设计**：灰度架构图、泳道设计、监控体系、环境管理详见 **【模板】灰度方案.md §2-8**。
 
-### 4.3 Canary Ramp-up Plan
+### 4.3 灰度放量计划
 
-> **Reference**: For detailed ramp-up pace, stage definitions, and Go/No-Go criteria, see **【Template】Gray Release Plan.md §5**. This document only lists the timeline for this release.
+> **引用说明**：详细的放量节奏、阶段定义和Go/No-Go标准，请参阅 **【模板】灰度方案.md §5**。本文档仅列出本次发布的时间计划。
 
-| Stage | Traffic % | Planned Start | Observation Duration | Go/No-Go Criteria | Owner |
+| 阶段 | 流量比例 | 计划开始时间 | 观察时长 | Go/No-Go 标准 | 负责人 |
 | :--- | :---: | :--- | :---: | :--- | :--- |
-| **Stage 1** | 1% | [Time] | 2h | P0 incidents = 0, error rate <0.1% | [Name] |
-| **Stage 2** | 5% | [Time] | 4h | P99 latency increase <10% | [Name] |
-| **Stage 3** | 20% | [Time] | 8h | Core funnel conversion normal | [Name] |
-| **Stage 4** | 50% | [Time] | 12h | No concentrated customer complaints | [Name] |
-| **Stage 5** | 100% | [Time] | 24h | No anomalies in 24h then close rollback | [Name] |
+| **Stage 1** | 1% | [时间] | 2h | P0事故=0，错误率<0.1% | [姓名] |
+| **Stage 2** | 5% | [时间] | 4h | P99延迟增幅<10% | [姓名] |
+| **Stage 3** | 20% | [时间] | 8h | 核心漏斗转化率无异常 | [姓名] |
+| **Stage 4** | 50% | [时间] | 12h | 客服舆情无集中投诉 | [姓名] |
+| **Stage 5** | 100% | [时间] | 24h | 24h无异常则关闭回滚 | [姓名] |
 
-> **Ramp-up Strategy**: For detailed Go/No-Go criteria, user selection strategy, and observation metrics, see **【Template】Gray Release Plan.md §5.2**.
+> **放量策略**：详细的Go/No-Go标准、用户选取策略、观察指标详见 **【模板】灰度方案.md §5.2**。
 
-### 4.4 Canary Ramp-up Strategy
+### 4.3 灰度放量策略
 
-> Canary must ensure "the same user always accesses the same version" to avoid session state confusion.
+> 灰度必须做到"同一用户始终访问同一版本"，避免会话状态错乱。
 
-| Stage | Traffic % | User Selection Strategy | Observation Duration | Go/No-Go Criteria |
+| 阶段        | 流量比例 | 用户选取策略                      | 观察时长 | Go/No-Go 标准                   |
 | :---------- | :------: | :-------------------------------- | :------: | :------------------------------ |
-| **Stage 0** | 0% | Internal test + pre-production | - | Test cases 100% passed |
-| **Stage 1** | 1% | Whitelist users (internal employees + seed customers) | 2h | P0 incidents = 0, error rate <<0.1% |
-| **Stage 2** | 5% | Device ID Hash modulo, Cookie sticky | 4h | P99 latency increase <<10%, business metrics normal |
-| **Stage 3** | 20% | Random ramp-up, retain Stage 1/2 user stickiness | 8h | Core funnel conversion rate no abnormal fluctuations |
-| **Stage 4** | 50% | Expand to half volume, monitor long-tail issues | 12h | No concentrated customer complaints |
-| **Stage 5** | 100% | Full volume, retain 24h rollback capability | 24h | No anomalies in 24h then close rollback window |
+| **Stage 0** |    0%    | 内部测试环境 + 预发环境           |    -     | 测试用例 100% 通过              |
+| **Stage 1** |    1%    | 白名单用户（内部员工+种子客户）   |    2h    | P0 事故=0，错误率<<0.1%         |
+| **Stage 2** |    5%    | 按设备ID Hash 取模，Cookie sticky |    4h    | P99 延迟增幅<<10%，业务指标正常 |
+| **Stage 3** |   20%    | 随机放量，保留 Stage 1/2 用户粘性 |    8h    | 核心漏斗转化率无异常波动        |
+| **Stage 4** |   50%    | 扩大至半量，监控长尾问题          |   12h    | 客服舆情无集中投诉              |
+| **Stage 5** |   100%   | 全量，保留 24h 回滚能力           |   24h    | 24h 无异常则关闭回滚窗口        |
 
 ```mermaid
 flowchart LR
-    S0[Stage 0 / Internal Test] --> S1[Stage 1 / 1%]
-    S1 -->|Pass| S2[Stage 2 / 5%]
-    S1 -->|Fail| R[🚨 Immediate Rollback]
-    S2 -->|Pass| S3[Stage 3 / 20%]
-    S2 -->|Fail| R
-    S3 -->|Pass| S4[Stage 4 / 50%]
-    S3 -->|Fail| R
-    S4 -->|Pass| S5[Stage 5 / 100%]
-    S4 -->|Fail| R
-    S5 -->|24h Stable| E[✅ Release Complete / Close Rollback]
+    S0[Stage 0 / 内测] --> S1[Stage 1 / 1%]
+    S1 -->|通过| S2[Stage 2 / 5%]
+    S1 -->|不通过| R[🚨 立即回滚]
+    S2 -->|通过| S3[Stage 3 / 20%]
+    S2 -->|不通过| R
+    S3 -->|通过| S4[Stage 4 / 50%]
+    S3 -->|不通过| R
+    S4 -->|通过| S5[Stage 5 / 100%]
+    S4 -->|不通过| R
+    S5 -->|24h稳定| E[✅ 发布完成 / 关闭回滚]
 
     style R fill:#ffebee,stroke:#c62828,stroke-width:2px
     style E fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
@@ -257,56 +257,56 @@ flowchart LR
 
 ---
 
-## 5. Pre-Release Checklist
+## 5. 发布前检查清单（Pre-Release Checklist）
 
-> All items must pass before entering the release window. No item may be skipped.
+> 发布前必须全部勾选通过，任何一项未通过禁止进入发布窗口。
 
-### 5.1 Code & Build
+### 5.1 代码与构建
 
-| Check Item | Standard | Status | Verifier |
+| 检查项         | 标准                            | 状态 | 验证人 |
 | :--- | :--- | :---: | :--- |
-| Code Review | Core logic approved by at least 2 people | ☐ | |
-| Unit Test Coverage | ≥ 80%, core modules ≥ 90% | ☐ | |
-| Static Code Scan | SonarQube no blocking vulnerabilities | ☐ | |
-| Build Artifacts | Docker Image pushed to registry and signed | ☐ | |
-| Config Baseline | Production config merged to `release` branch | ☐ | |
+| 代码 Review    | 核心逻辑至少 2 人 Approved      |  ☐   |        |
+| 单元测试覆盖率 | ≥ 80%，核心模块 ≥ 90%           |  ☐   |        |
+| 静态代码扫描   | SonarQube 无阻塞级漏洞          |  ☐   |        |
+| 构建产物       | Docker Image 已推送到仓库并签名 |  ☐   |        |
+| 配置基线       | 生产配置已合并到 `release` 分支 |  ☐   |        |
 
-### 5.2 Test Validation
+### 5.2 测试验证
 
-| Check Item | Standard | Status | Verifier |
+| 检查项     | 标准                       | 状态 | 验证人 |
 | :--- | :--- | :---: | :--- |
-| Functional Testing | All P0/P1 test cases passed | ☐ | |
-| Regression Testing | Core path automated regression passed | ☐ | |
-| Integration Testing | Joint testing with upstream/downstream systems passed | ☐ | |
-| Performance Testing | Load test standards met (QPS/P99/Error Rate) | ☐ | |
-| Compatibility Testing | New and old version data mutually recognized | ☐ | |
+| 功能测试   | 所有 P0/P1 用例通过        |  ☐   |        |
+| 回归测试   | 核心链路自动化回归通过     |  ☐   |        |
+| 集成测试   | 与上下游系统联调通过       |  ☐   |        |
+| 性能测试   | 压测达标（QPS/P99/错误率） |  ☐   |        |
+| 兼容性测试 | 新老版本数据互认           |  ☐   |        |
 
-### 5.3 Data & Configuration
+### 5.3 数据与配置
 
-| Check Item | Standard | Status | Verifier |
+| 检查项     | 标准                             | 状态 | 验证人 |
 | :--- | :--- | :---: | :--- |
-| Database Changes | DDL/DML executed and validated in pre-production | ☐ | |
-| Data Compatibility | Old version code can read data written by new version | ☐ | |
-| Rollback Scripts | Reverse DDL/DML scripts prepared and rehearsed | ☐ | |
-| Configuration Changes | Submitted to config center, canary switch ready | ☐ | |
-| Feature Flags/Degradation | Feature switches configured, new features can be disabled with one click | ☐ | |
+| 数据库变更 | DDL/DML 已在预发环境执行并验证   |  ☐   |        |
+| 数据兼容性 | 老版本代码能读取新版本写入的数据 |  ☐   |        |
+| 回滚脚本   | 已准备反向 DDL/DML 脚本并演练    |  ☐   |        |
+| 配置变更   | 已提交配置中心，灰度开关就绪     |  ☐   |        |
+| 开关/降级  | 功能开关已配置，可一键关闭新功能 |  ☐   |        |
 
-### 5.4 Monitoring & Emergency Response
+### 5.4 监控与应急
 
-| Check Item | Standard | Status | Verifier |
+| 检查项   | 标准                            | 状态 | 验证人 |
 | :--- | :--- | :---: | :--- |
-| Monitoring Dashboard | Release-specific Dashboard created | ☐ | |
-| Alert Rules | Error rate/P99/business metrics alerts configured | ☐ | |
-| Log Tracing | Full-chain Trace ID injection confirmed | ☐ | |
-| Rollback Plan | Documented, rollback scripts validated | ☐ | |
-| OnCall Schedule | OnCall personnel confirmed, communication channels open | ☐ | |
+| 监控大盘 | 发布专属 Dashboard 已创建       |  ☐   |        |
+| 告警规则 | 错误率/P99/业务指标告警已配置   |  ☐   |        |
+| 日志追踪 | 全链路 Trace ID 注入确认        |  ☐   |        |
+| 回滚方案 | 已文档化，回滚脚本已验证        |  ☐   |        |
+| 值班安排 | OnCall 人员已确认，通讯渠道畅通 |  ☐   |        |
 
 ```mermaid
 flowchart TD
-    A[Pre-Release Checklist] --> B{All Passed?}
-    B -->|Yes| C[✅ Release Approved]
-    B -->|No| D[❌ Blocking Items]
-    D --> E[Fix/Complete]
+    A[发布前Checklist] --> B{全部通过?}
+    B -->|是| C[✅ 允许发布]
+    B -->|否| D[❌ 阻塞项]
+    D --> E[修复/补充]
     E --> A
 
     style C fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
@@ -315,70 +315,70 @@ flowchart TD
 
 ---
 
-## 6. Release Execution
+## 6. 发布执行步骤（Release Execution）
 
-> Minute-level execution playbook, to be followed by the Release Manager.
+> 精确到分钟的执行手册，发布经理按此操作。
 
-### 6.1 Release Execution Timeline
+### 6.1 发布执行时间线
 
-| Time | Step | Operation | Owner | Validation Method |
+| 时间         | 步骤 | 操作内容                               | 负责人    | 验证方式             |
 | :--- | :---: | :--- | :--- | :--- |
-| **T-30min** | 1 | Release Manager convenes release meeting, confirms all roles are ready | Release Manager | DingTalk group check-in |
-| **T-15min** | 2 | Close non-urgent release channels, lock production permissions | SRE | Permission system confirmation |
-| **T-0min** | 3 | Execute database DDL (e.g., new nullable field) | DBA | Field existence check |
-| **T+5min** | 4 | Deploy canary version to first batch 1% nodes | SRE | K8s Pod readiness probe passed |
-| **T+10min** | 5 | Enable canary traffic, whitelist user validation | Release Manager | Whitelist user end-to-end testing |
-| **T+30min** | 6 | **Stage 1 Observation**: Monitor core metrics | OnCall | Dashboard no alerts |
-| **T+2h30m** | 7 | Expand to 5% random traffic | SRE | Canary engine config effective |
-| **T+6h30m** | 8 | **Stage 2 Observation**: Business metrics inspection | Product/Operations | Funnel data normal |
-| **T+14h30m** | 9 | Expand to 20% traffic | SRE | - |
-| **T+22h30m** | 10 | **Stage 3 Observation**: Long-tail issue investigation | Tech | Error logs no new anomalies |
-| **T+30h** | 11 | Expand to 50% traffic | SRE | - |
-| **T+42h** | 12 | **Stage 4 Observation**: Full scenario coverage | QA | Regression test sampling |
-| **T+54h** | 13 | Full 100%, old version retained 24h | SRE | 100% traffic cut to new version |
-| **T+78h** | 14 | **Release Complete**, old version decommissioned, rollback window closed | Release Manager | Resource reclaim confirmed |
+| **T-30min**  |  1   | 发布经理召集发布会议，确认各角色就位   | 发布经理  | 钉钉群签到           |
+| **T-15min**  |  2   | 关闭非紧急发布通道，锁定生产环境权限   | SRE       | 权限系统确认         |
+| **T-0min**   |  3   | 执行数据库 DDL（如新增字段，可空）     | DBA       | 字段存在性检查       |
+| **T+5min**   |  4   | 部署灰度版本至首批 1% 节点             | SRE       | K8s Pod 就绪探针通过 |
+| **T+10min**  |  5   | 开启灰度流量，白名单用户验证           | 发布经理  | 白名单用户端到端测试 |
+| **T+30min**  |  6   | **Stage 1 观察期**：监控核心指标       | OnCall    | Dashboard 无告警     |
+| **T+2h30m**  |  7   | 扩大至 5% 随机流量                     | SRE       | 灰度引擎配置生效     |
+| **T+6h30m**  |  8   | **Stage 2 观察期**：业务指标巡检       | 产品/运营 | 漏斗数据正常         |
+| **T+14h30m** |  9   | 扩大至 20% 流量                        | SRE       | -                    |
+| **T+22h30m** |  10  | **Stage 3 观察期**：长尾问题排查       | 技术      | 错误日志无新增异常   |
+| **T+30h**    |  11  | 扩大至 50% 流量                        | SRE       | -                    |
+| **T+42h**    |  12  | **Stage 4 观察期**：全场景覆盖         | QA        | 回归测试抽样         |
+| **T+54h**    |  13  | 全量 100%，旧版本保留 24h              | SRE       | 流量 100% 切入新版本 |
+| **T+78h**    |  14  | **发布完成**，旧版本下线，关闭回滚窗口 | 发布经理  | 资源回收确认         |
 
-### 6.2 Release Execution Flowchart
+### 6.2 发布执行流程图
 
 ```mermaid
 flowchart TD
-    subgraph Preparation Phase
-        P1[Permission Lock]
-        P2[Config Push]
-        P3[DB Changes]
+    subgraph 准备阶段
+        P1[权限锁定]
+        P2[配置推送]
+        P3[DB变更]
     end
 
-    subgraph Canary Phase
-        G1[1% Whitelist]
-        G2[5% Random]
-        G3[20% Ramp-up]
-        G4[50% Ramp-up]
+    subgraph 灰度阶段
+        G1[1% 白名单]
+        G2[5% 随机]
+        G3[20% 放量]
+        G4[50% 放量]
     end
 
-    subgraph Full Release Phase
-        F1[100% Full]
-        F2[Retain Old Version 24h]
-        F3[Old Version Decommission]
+    subgraph 全量阶段
+        F1[100% 全量]
+        F2[保留旧版24h]
+        F3[旧版下线]
     end
 
-    subgraph Exception Branch
-        E1[Alert Triggered]
-        E2[Auto Circuit Breaker]
-        E3[One-Click Rollback]
+    subgraph 异常分支
+        E1[触发告警]
+        E2[自动熔断]
+        E3[一键回滚]
     end
 
     P1 --> P2 --> P3 --> G1
-    G1 -->|Observation Passed| G2
-    G2 -->|Observation Passed| G3
-    G3 -->|Observation Passed| G4
-    G4 -->|Observation Passed| F1
+    G1 -->|观察通过| G2
+    G2 -->|观察通过| G3
+    G3 -->|观察通过| G4
+    G4 -->|观察通过| F1
     F1 --> F2 --> F3
 
-    G1 -->|Anomaly| E1
-    G2 -->|Anomaly| E1
-    G3 -->|Anomaly| E1
-    G4 -->|Anomaly| E1
-    F1 -->|Anomaly| E1
+    G1 --> |异常| E1
+    G2 --> |异常| E1
+    G3 --> |异常| E1
+    G4 --> |异常| E1
+    F1 --> |异常| E1
     E1 --> E2
     E2 --> E3
 
@@ -388,23 +388,23 @@ flowchart TD
 
 ---
 
-## 7. Monitoring & Validation
+## 7. 监控与验证方案（Monitoring & Validation）
 
-### 7.1 Monitoring Dashboard Design
+### 7.1 监控看板设计
 
 ```mermaid
 graph TB
-    subgraph Release Monitoring Dashboard
-        M1[🖥️ System Layer / CPU/Memory/Disk/Network]
-        M2[⚡ Application Layer / QPS/P99/Error Rate/Saturation]
-        M3[💼 Business Layer / Order Volume/Conversion/AOV/Funnel]
-        M4[👤 User Layer / NPS/Complaint Rate/Abnormal Feedback]
+    subgraph 发布监控大盘
+        M1[🖥️ 系统层 / CPU/内存/磁盘/网络]
+        M2[⚡ 应用层 / QPS/P99/错误率/饱和度]
+        M3[💼 业务层 / 订单量/转化率/客单价/漏斗]
+        M4[👤 用户层 / NPS/投诉率/异常反馈]
     end
 
-    subgraph Alert Levels
-        A1[P0 Critical / Service Unavailable / Phone & SMS]
-        A2[P1 Important / Core Metric Abnormal / SMS & DingTalk]
-        A3[P2 Normal / Non-core Feature Degraded / DingTalk]
+    subgraph 告警分级
+        A1[P0 紧急 / 服务不可用 / 电话与短信]
+        A2[P1 重要 / 核心指标异常 / 短信与钉钉]
+        A3[P2 一般 / 非核心功能降级 / 钉钉]
     end
 
     M1 --> A1
@@ -421,253 +421,252 @@ graph TB
     M4 --> A3
 ```
 
-### 7.2 Core Monitoring Metrics & Thresholds
+### 7.2 核心监控指标与阈值
 
-| Layer | Metric | Baseline | Alert Threshold | Circuit Breaker Threshold | Collection Frequency |
+| 层级     | 指标           | 基线值 | 告警阈值    | 熔断阈值   | 采集频率 |
 | :------- | :------------- | :----- | :---------- | :--------- | :------: |
-| **System** | CPU Usage | 45% | > 70% | > 85% | 1min |
-| **System** | Memory Usage | 60% | > 80% | > 90% | 1min |
-| **Application** | QPS | 5000 | Fluctuation > ±20% | - | 1min |
-| **Application** | P99 Latency | 120ms | > 200ms | > 500ms | 1min |
-| **Application** | Error Rate | 0.05% | > 0.5% | > 1% | 1min |
-| **Application** | GC Pause | 50ms | > 200ms | > 500ms | 5min |
-| **Business** | Order Creation Success Rate | 99.9% | < 99.5% | < 99% | 5min |
-| **Business** | Payment Success Rate | 99.5% | < 99% | < 98% | 5min |
-| **Business** | Core Funnel Conversion | 12% | Drop > 10% | Drop > 20% | 15min |
-| **User** | Customer Service Complaints | 5/h | > 20/h | > 50/h | Real-time |
+| **系统** | CPU 使用率     | 45%    | > 70%       | > 85%      |   1min   |
+| **系统** | 内存使用率     | 60%    | > 80%       | > 90%      |   1min   |
+| **应用** | QPS            | 5000   | 波动 > ±20% | -          |   1min   |
+| **应用** | P99 延迟       | 120ms  | > 200ms     | > 500ms    |   1min   |
+| **应用** | 错误率         | 0.05%  | > 0.5%      | > 1%       |   1min   |
+| **应用** | GC 停顿        | 50ms   | > 200ms     | > 500ms    |   5min   |
+| **业务** | 订单创建成功率 | 99.9%  | < 99.5%     | < 99%      |   5min   |
+| **业务** | 支付成功率     | 99.5%  | < 99%       | < 98%      |   5min   |
+| **业务** | 核心漏斗转化率 | 12%    | 跌幅 > 10%  | 跌幅 > 20% |  15min   |
+| **用户** | 客服投诉量     | 5件/h  | > 20件/h    | > 50件/h   |   实时   |
 
-### 7.3 Business Validation Checklist
+### 7.3 业务验证清单
 
-| Validation Item | Validation Method | Owner | Frequency |
+| 验证项         | 验证方法                     | 负责人 | 频率        |
 | :------------- | :--------------------------- | :----- | :---------- |
-| Core Path End-to-End | Simulate user order→payment→query full flow | QA | Once per stage |
-| Version Compatibility | Old version client accessing new version service | QA | Stage 1/3/5 |
-| Data Consistency | Sample comparison of order data and amount calculations | Data | Stage 2/4 |
-| Financial Reconciliation | Payment flow and order status consistency | Finance | After Stage 5 |
-| Client Experience | Real device testing iOS/Android/Web | Product | Stage 1/3 |
+| 核心链路端到端 | 模拟用户下单→支付→查询全流程 | QA     | 每阶段一次  |
+| 新老版本兼容性 | 老版本客户端访问新版本服务端 | QA     | Stage 1/3/5 |
+| 数据一致性     | 抽样比对订单数据与金额计算   | 数据   | Stage 2/4   |
+| 财务对账       | 支付流水与订单状态一致性     | 财务   | Stage 5 后  |
+| 客户端体验     | 真机测试 iOS/Android/Web     | 产品   | Stage 1/3   |
 
 ---
 
-## 8. Rollback & Emergency Response
+## 8. 回滚与应急方案（Rollback & Emergency Response）
 
-> Before release, "when to rollback, who decides, and how to execute" must be clearly defined.
+> 发布前必须明确"什么情况下回滚、谁来决策、怎么执行"。
 
-### 8.1 Rollback Trigger Conditions (Auto/Manual)
+### 8.1 回滚触发条件（Auto/Manual）
 
-| Trigger Source | Condition | Response Time | Decision Method |
+| 触发源       | 条件                                           | 响应时间 | 决策方式          |
 | :----------- | :--------------------------------------------- | :------: | :---------------- |
-| **Auto Circuit Breaker** | Error rate > 1% sustained 2min / P99 > 500ms sustained 3min | < 1min | System auto traffic switch |
-| **Monitoring Alert** | P0 alert generated (service unavailable/core function impaired) | < 3min | OnCall engineer decision |
-| **Business Feedback** | Core funnel conversion drop > 20% / Complaints > 50/h | < 5min | Product + Tech joint decision |
-| **Security Incident** | Data leak / Unauthorized access / Financial risk | < 1min | Release Manager immediate decision |
+| **自动熔断** | 错误率 > 1% 持续 2min / P99 > 500ms 持续 3min  |  < 1min  | 系统自动流量切换  |
+| **监控告警** | P0 级告警产生（服务不可用/核心功能受损）       |  < 3min  | OnCall 工程师决策 |
+| **业务反馈** | 核心漏斗转化率跌幅 > 20% / 客服投诉量 > 50件/h |  < 5min  | 产品+技术联合决策 |
+| **安全事件** | 发现数据泄露/越权访问/资金风险                 |  < 1min  | 发布经理立即决策  |
 
-### 8.2 Rollback Decision Tree
+### 8.2 回滚决策树
 
 ```mermaid
 flowchart TD
-    A[Anomaly Detected] --> B{Error Rate > 1%?}
-    B -->|Yes| C{Auto Circuit Breaker Possible?}
-    C -->|Yes| D[🤖 Auto Circuit Breaker / Traffic Switch to Old Version]
-    C -->|No| E[🚨 Manual Intervention]
-    B -->|No| F{Business Metrics Abnormal?}
-    F -->|Yes| G{Data Issue?}
-    G -->|Yes| H[⛔ No Rollback / Data Contaminated / Initiate Data Repair]
-    G -->|No| I[🔙 Execute Rollback / Code/Config Revert]
-    F -->|No| J[🔍 Continue Monitoring / Mark for Follow-up]
+    A[异常发生] --> B{错误率 / 是否>1%?}
+    B -->|是| C{是否可 / 自动熔断?}
+    C -->|是| D[🤖 自动熔断 / 流量切回旧版]
+    C -->|否| E[🚨 人工介入]
+    B -->|否| F{业务指标 / 是否异常?}
+    F -->|是| G{是否 / 数据问题?}
+    G -->|是| H[⛔ 禁止回滚 / 数据已污染 / 启动数据修复]
+    G -->|否| I[🔙 执行回滚 / 代码/配置回退]
+    F -->|否| J[🔍 继续观察 / 标记待跟进]
 
     style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
     style H fill:#ffebee,stroke:#c62828,stroke-width:2px
     style I fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
 ```
 
-### 8.3 Layered Rollback Strategy
+### 8.3 分层回滚策略
 
-| Layer | Rollback Operation | Execution Time | Applicable Scenario | Validation Method |
+| 层级         | 回滚操作                             | 执行时长 | 适用场景       | 验证方式      |
 | :----------- | :----------------------------------- | :------: | :------------- | :------------ |
-| **Traffic Layer** | Canary engine switch to 0%, or Nginx weight reset | < 30s | New version logic bug | Traffic restored |
-| **Config Layer** | Config center rollback to previous version, push effective | < 1min | Configuration error | Config value verification |
-| **Code Layer** | K8s rolling update to previous version image | < 3min | Code defect | Pod image version |
-| **Data Layer** | Execute reverse DDL/DML (additive fields can be ignored) | < 5min | Data compatibility issue | Field/data verification |
-| **Full Rollback** | Simultaneous code + config + data rollback | < 5min | Major incident | End-to-end validation |
+| **流量层**   | 灰度引擎切回 0%，或 Nginx 权重归零   |  < 30s   | 新版本逻辑 Bug | 流量恢复      |
+| **配置层**   | 配置中心回滚上一版本，推送生效       |  < 1min  | 配置错误       | 配置值校验    |
+| **代码层**   | K8s 滚动更新至上一版本镜像           |  < 3min  | 代码缺陷       | Pod 镜像版本  |
+| **数据层**   | 执行反向 DDL/DML（仅加法字段可忽略） |  < 5min  | 数据兼容问题   | 字段/数据校验 |
+| **全量回滚** | 同时执行代码+配置+数据回滚           |  < 5min  | 重大事故       | 端到端验证    |
 
-### 8.4 Rollback Execution Playbook
+### 8.4 回滚执行手册
 
 ```markdown
-## Emergency Rollback SOP (Standard Operating Procedure)
+## 紧急回滚 SOP（标准作业程序）
 
-### Scenario: Stage 2 payment success rate drop detected
+### 场景：Stage 2 发现支付成功率暴跌
 
-1. **00:00** OnCall receives P0 alert "Payment success rate < 98%"
-2. **00:01** OnCall posts in release group @Release Manager + @Tech Lead, confirming anomaly
-3. **00:02** Release Manager decision: Execute rollback
-4. **00:03** SRE executes:
-   - Canary engine: Set V2.1 traffic weight to 0%
-   - K8s: Start V1.9 image rolling expansion, gradually replace V2.1 Pods
-   - Config center: Rollback payment channel configuration to previous version
-5. **00:05** Validation: Monitoring Dashboard confirms 100% traffic on V1.9
-6. **00:08** Business validation: QA executes one payment, confirms success rate restored
-7. **00:10** Release Manager announces: Rollback complete, enter incident post-mortem process
-8. **Follow-up** Retain V2.1 Pod logs and HeapDump for issue investigation
+1. **00:00** OnCall 收到 P0 告警"支付成功率 < 98%"
+2. **00:01** OnCall 在发布群 @发布经理 + @技术负责人，确认异常
+3. **00:02** 发布经理决策：执行回滚
+4. **00:03** SRE 执行：
+   - 灰度引擎：将 V2.1 流量权重调至 0%
+   - K8s：启动 V1.9 镜像滚动扩容，逐步替换 V2.1 Pod
+   - 配置中心：回滚支付渠道配置至上一版本
+5. **00:05** 验证：监控 Dashboard 确认流量 100% 走 V1.9
+6. **00:08** 业务验证：QA 执行一笔支付，确认成功率恢复
+7. **00:10** 发布经理宣布：回滚完成，进入事故复盘流程
+8. **后续** 保留 V2.1 Pod 日志与 HeapDump，供问题定位
 ```
 
 ---
 
-## 9. Risk Assessment
+## 9. 风险评估与定级（Risk Assessment）
 
-> Based on the rollback risk assessment framework, perform risk rating for this release.
+> 基于回滚风险评估框架，对本次发布进行风险定级。
 
-### 9.1 Risk Dimension Assessment
+### 9.1 风险维度评估
 
-| Dimension | Risk Item | Level | Notes |
+| 维度       | 风险项                         | 等级  | 说明                       |
 | :--------- | :----------------------------- | :---: | :------------------------- |
-| **Database** | DDL adds field (nullable, with default) | 🟡 Medium | Old version compatible, rollback can ignore field |
-| **Database** | No DML data migration scripts | 🟢 Low | No data contamination risk |
-| **API** | New API added, old API unchanged | 🟢 Low | Fully compatible |
-| **API** | Modified core payment callback logic | 🔴 High | Incompatible change, must align frontend/backend |
-| **Config** | Rate limit threshold adjustment | 🟡 Medium | Too high may cause avalanche |
-| **Client** | Frontend asset version switch | 🟢 Low | CDN can quickly rollback |
-| **Dependency** | Depends on new payment gateway version | 🟡 Medium | Need to confirm joint debugging passed |
+| **数据库** | DDL 新增字段（可空，有默认值） | 🟡 中 | 老版本兼容，回滚可忽略字段 |
+| **数据库** | 无 DML 数据迁移脚本            | 🟢 低 | 无数据污染风险             |
+| **接口**   | 新增接口，老接口不变           | 🟢 低 | 完全兼容                   |
+| **接口**   | 修改核心支付回调逻辑           | 🔴 高 | 不兼容变更，必须前后端对齐 |
+| **配置**   | 限流阈值调整                   | 🟡 中 | 过高可能导致雪崩           |
+| **客户端** | 前端资源版本号切换             | 🟢 低 | CDN 可快速回滚             |
+| **依赖**   | 依赖支付网关新版本             | 🟡 中 | 需确认联调通过             |
 
-### 9.2 Overall Risk Rating
+### 9.2 综合风险定级
 
-> **Note**: This quadrant chart template has been converted to a table description.
+> **说明**：此象限图模板已转为表格描述。
 
 <!--
-Original quadrantChart structure reference:
-- title: Release Risk Heatmap (Rollback Difficulty vs Business Impact)
-- x-axis: "Low Rollback Difficulty" --> "High Rollback Difficulty"
-- y-axis: "Low Business Impact" --> "High Business Impact"
-- quadrant-1: High Risk (High Impact/Hard to Rollback)
-- quadrant-2: Key Watch (High Impact/Easy to Rollback)
-- quadrant-3: Low Risk (Low Impact/Easy to Rollback)
-- quadrant-4: Technical Debt (Low Impact/Hard to Rollback)
-- Data points: "This Release Overall": [0.6, 0.7]; "Ideal Low Risk": [0.2, 0.2]; "Database DDL": [0.5, 0.6]; "Payment Logic Change": [0.8, 0.9]
+原 quadrantChart 结构参考：
+- title: 发布风险热力图（回滚难度 vs 业务影响）
+- x-axis: "低回滚难度" --> "高回滚难度"
+- y-axis: "低业务影响" --> "高业务影响"
+- quadrant-1: 高风险（高影响/难回滚）
+- quadrant-2: 重点观察（高影响/易回滚）
+- quadrant-3: 低风险（低影响/易回滚）
+- quadrant-4: 技术债务（低影响/难回滚）
+- 数据点: "本次发布综合": [0.6, 0.7]; "理想低风险": [0.2, 0.2]; "数据库DDL": [0.5, 0.6]; "支付逻辑变更": [0.8, 0.9]
 -->
 
-| Quadrant | Region Characteristics | Recommended Strategy |
+| 象限 | 区域特征 | 策略建议 |
 | :--- | :--- | :--- |
-| Quadrant 1 (High Rollback Difficulty · High Impact) | High Risk (High Impact/Hard to Rollback) | Canary release + Rollback SOP + On-site OnCall |
-| Quadrant 2 (Low Rollback Difficulty · High Impact) | Key Watch (High Impact/Easy to Rollback) | Monitor alerts, rollback anytime |
-| Quadrant 3 (Low Rollback Difficulty · Low Impact) | Low Risk (Low Impact/Easy to Rollback) | Standard process, standard operations |
-| Quadrant 4 (High Rollback Difficulty · Low Impact) | Technical Debt (Low Impact/Hard to Rollback) | Evaluate rollback plan, include in iteration |
+| 象限1（高回滚难度·高影响） | 高风险（高影响/难回滚） | 灰度发布+回滚SOP+现场值班 |
+| 象限2（低回滚难度·高影响） | 重点观察（高影响/易回滚） | 监控告警，随时回滚 |
+| 象限3（低回滚难度·低影响） | 低风险（低影响/易回滚） | 常规流程，标准操作 |
+| 象限4（高回滚难度·低影响） | 技术债务（低影响/难回滚） | 评估回滚方案，纳入迭代 |
 
-| Name | X Value | Y Value | Quadrant |
+| 名称 | X值 | Y值 | 象限 |
 | :--- | :---: | :---: | :--- |
-| This Release Overall | 0.6 | 0.7 | Quadrant 1 (High Risk) |
-| Ideal Low Risk | 0.2 | 0.2 | Quadrant 3 (Low Risk) |
-| Database DDL | 0.5 | 0.6 | Quadrant 1 (High Risk) |
-| Payment Logic Change | 0.8 | 0.9 | Quadrant 1 (High Risk) |
+| 本次发布综合 | 0.6 | 0.7 | 象限1（高风险） |
+| 理想低风险 | 0.2 | 0.2 | 象限3（低风险） |
+| 数据库DDL | 0.5 | 0.6 | 象限1（高风险） |
+| 支付逻辑变更 | 0.8 | 0.9 | 象限1（高风险） |
 
-**Overall Rating:** 🟡 **Medium Risk**
-**Release Strategy Requirements:** Must use canary release, direct full release prohibited; rollback window retained ≥ 24h; core personnel on-site OnCall during release.
+**综合定级：** 🟡 **中风险**  
+**发布策略要求：** 必须采用灰度发布，禁止直接全量；回滚窗口保留 ≥ 24h；发布期间核心人员现场值班。
 
 ---
 
-## 10. Communication & OnCall
+## 10. 沟通与值班机制（Communication & OnCall）
 
-### 10.1 Release Communication Architecture
+### 10.1 发布通讯架构
 
 ```mermaid
 graph TD
-    RC[🎙️ Release Manager / Commander] --> T1[🔧 Tech Team / SRE & Development]
-    RC --> T2[📊 Business Team / Product & Operations]
-    RC --> T3[📞 Customer Service / CS & PR]
-    RC --> T4[🔒 Security Team / Security & Legal]
+    RC[🎙️ 发布经理 / 总指挥] --> T1[🔧 技术组 / SRE与开发]
+    RC --> T2[📊 业务组 / 产品与运营]
+    RC --> T3[📞 客服组 / 客服与公关]
+    RC --> T4[🔒 安全组 / 安全与法务]
 
-    T1 -->|Technical Progress| RC
-    T2 -->|Business Data| RC
-    T3 -->|User Sentiment| RC
-    T4 -->|Security Incidents| RC
+    T1 -->|技术进展| RC
+    T2 -->|业务数据| RC
+    T3 -->|用户舆情| RC
+    T4 -->|安全事件| RC
 
     style RC fill:#fff9c4,stroke:#f9a825,stroke-width:2px
 ```
 
-### 10.2 OnCall Schedule
+### 10.2 值班安排
 
-| Role | Name | Responsibilities | Contact | Standby Period |
+| 角色           | 姓名   | 职责                 | 联系方式  | 待命时段     |
 | :------------- | :----- | :------------------- | :-------- | :----------- |
-| **Release Manager** | [Name] | Commander, rollback decision authority | Phone/DingTalk | Full release window |
-| **Tech Lead** | [Name] | Technical issue investigation & fix | Phone/DingTalk | Full release window |
-| **SRE Ops** | [Name] | Release execution, monitoring, scaling | Phone/DingTalk | Full release window |
-| **DBA** | [Name] | Database changes & rollback | Phone/DingTalk | T-1h ~ T+2h |
-| **Product Owner** | [Name] | Business validation, user feedback | Phone/DingTalk | T+2h ~ T+78h |
-| **CS Lead** | [Name] | Sentiment monitoring, user appeasement | Phone/DingTalk | T+2h ~ T+78h |
+| **发布经理**   | [姓名] | 总指挥，回滚决策权   | 手机/钉钉 | 发布窗口全程 |
+| **技术负责人** | [姓名] | 技术问题定位与修复   | 手机/钉钉 | 发布窗口全程 |
+| **SRE 运维**   | [姓名] | 发布执行、监控、扩容 | 手机/钉钉 | 发布窗口全程 |
+| **DBA**        | [姓名] | 数据库变更与回滚     | 手机/钉钉 | T-1h ~ T+2h  |
+| **产品负责人** | [姓名] | 业务验证、用户反馈   | 手机/钉钉 | T+2h ~ T+78h |
+| **客服负责人** | [姓名] | 舆情监控、用户安抚   | 手机/钉钉 | T+2h ~ T+78h |
 
-### 10.3 Information Sync Mechanism
+### 10.3 信息同步机制
 
-| Timing | Content | Channel | Audience |
+| 时机       | 内容                         | 渠道          | 受众              |
 | :--------- | :--------------------------- | :------------ | :---------------- |
-| 1h before release | Release preview, remind all teams to be ready | DingTalk group | Full project team |
-| Each stage pass | "Stage X passed, proceeding to next stage" | DingTalk group | Full project team |
-| Anomaly triggered | Alert details + handling progress | DingTalk group + phone | Core OnCall team |
-| Rollback decision | Rollback reason + estimated recovery time | DingTalk group + email | Management + full project team |
-| Release complete | Release success, close window | DingTalk group + email | Full project team |
+| 发布前 1h  | 发布预告，提醒各组就位       | 钉钉群        | 全项目组          |
+| 每阶段通过 | "Stage X 通过，进入下一阶段" | 钉钉群        | 全项目组          |
+| 异常触发   | 告警详情 + 处置进展          | 钉钉群 + 电话 | 核心值班组        |
+| 回滚决策   | 回滚原因 + 预计恢复时间      | 钉钉群 + 邮件 | 管理层 + 全项目组 |
+| 发布完成   | 发布成功，关闭窗口           | 钉钉群 + 邮件 | 全项目组          |
 
 ---
 
-## 11. Post-Mortem
+## 11. 发布后复盘（Post-Mortem）
 
-> Whether the release succeeds or fails, a post-mortem must be completed within 48h.
+> 无论发布成功与否，均需在 48h 内完成复盘。
 
-### 11.1 Post-Mortem Template
+### 11.1 复盘模板
 
-| Item | Content |
+| 项目            | 内容                                           |
 | :-------------- | :--------------------------------------------- |
-| **Release Result** | ✅ Success / ❌ Rolled back / ⚠️ Released with issues |
-| **Actual Duration** | Stage 1 to Stage 5 actual time [X]h |
-| **Anomaly Events** | [If none, write "none"; if any, describe issue, root cause, fix method] |
-| **Monitoring Performance** | [Core metrics actual curve vs baseline comparison] |
-| **Decision Review** | [Was canary pace reasonable? Was rollback decision timely?] |
-| **Improvement Items** | [At least 3 actionable improvement items] |
-| **Action Tracking** | [Owner + Deadline] |
+| **发布结果**    | ✅ 成功 / ❌ 回滚 / ⚠️ 带病上线                |
+| **实际耗时**    | 从 Stage 1 到 Stage 5 实际用时 [X]h            |
+| **异常事件**    | [如无填"无"；如有描述问题现象、根因、修复方式] |
+| **监控表现**    | [核心指标实际曲线与基线对比]                   |
+| **决策回顾**    | [灰度节奏是否合理？回滚决策是否及时？]         |
+| **改进项**      | [至少 3 条可落地的改进 Action]                 |
+| **Action 跟踪** | [Owner + Deadline]                             |
 
-### 11.2 Post-Mortem Meeting Agenda
+### 11.2 复盘会议议程
 
 ```mermaid
 flowchart LR
-    A[Post-Mortem Meeting / 30min] --> B[Issue Review / 5min]
-    B --> C[Timeline Reconstruction / 10min]
-    C --> D[Root Cause Analysis / 10min]
-    D --> E[Improvement Confirmation / 5min]
-    E --> F[Action Items in JIRA/Feishu]
+    A[复盘会议 / 30min] --> B[问题回顾 / 5min]
+    B --> C[时间线还原 / 10min]
+    C --> D[根因分析 / 10min]
+    D --> E[改进项确认 / 5min]
+    E --> F[Action录入 / JIRA/飞书]
 ```
 
 ---
 
-## 12. Appendix
+## 12. 附录（Appendix）
 
-### 12.1 Glossary
+### 12.1 术语表
 
-| Term | Definition |
+| 术语               | 定义                                    |
 | :----------------- | :-------------------------------------- |
-| **RTO** | Recovery Time Objective |
-| **RPO** | Recovery Point Objective |
-| **Canary Release** | Small traffic validation followed by gradual ramp-up |
-| **Blue-Green Deployment** | Two environments with instant switchover |
-| **Rolling Update** | Instance-by-instance replacement |
-| **Sticky Session** | Same user always routed to the same version |
-| **Code Freeze** | Feature freeze, stop new requirement admission |
+| **RTO**            | Recovery Time Objective，恢复时间目标   |
+| **RPO**            | Recovery Point Objective，恢复点目标    |
+| **金丝雀发布**     | Canary Release，小流量验证后逐步放量    |
+| **蓝绿部署**       | Blue-Green Deployment，两套环境瞬时切换 |
+| **滚动发布**       | Rolling Update，逐台替换实例            |
+| **Sticky Session** | 同一用户始终路由到同一版本              |
+| **Code Freeze**    | 封板，停止新需求准入                    |
 
-### 12.2 Related Documents
+### 12.2 关联文档
 
-| Document | ID | Link |
+| 文档                | 编号          | 链接   |
 | :------------------ | :------------ | :----- |
-| Product Requirements Document (PRD) | PRD-2026-XXX | [Link] |
-| Architecture Design Document (ADD) | ADD-2026-XXX | [Link] |
-| Test Report | TEST-2026-XXX | [Link] |
-| Data Dictionary | DD-2026-XXX | [Link] |
-| Change Management | CR-2026-XXX | [Link] |
+| 产品需求文档（PRD） | PRD-2026-XXX  | [链接] |
+| 架构设计文档（ADD） | ADD-2026-XXX  | [链接] |
+| 测试报告            | TEST-2026-XXX | [链接] |
+| 数据字典            | DD-2026-XXX   | [链接] |
+| 变更管理单          | CR-2026-XXX   | [链接] |
+## 13. 发布评审签核（Release Review Sign-off）
 
-## 13. Release Review Sign-off
+> 发布前必须由以下角色联合评审并签字（或电子签批）。
 
-> Before release, the following roles must jointly review and sign off (or electronically approve).
-
-| Role | Name | Signature | Date | Review Comments |
+| 角色               | 姓名 | 签字 | 日期 | 评审意见                  |
 | :--- | :--- | :---: | :---: | :--- |
-| **Release Manager** | | | | [Approved / Rejected / Needs Supplement] |
-| **Tech Lead** | | | | [Code/architecture risks confirmed] |
-| **Test Lead** | | | | [Test coverage/test cases confirmed] |
-| **SRE/Ops Lead** | | | | [Monitoring/capacity/rollback confirmed] |
-| **Product Owner** | | | | [Business impact/user communication confirmed] |
-| **Security Lead** | | | | [Security scan/compliance confirmed] |
-| **DBA** | | | | [Database change/rollback confirmed] |
+| **发布经理**       |      |      |      | [批准/驳回/需补充]        |
+| **技术负责人**     |      |      |      | [代码/架构风险已确认]     |
+| **测试负责人**     |      |      |      | [测试覆盖率/用例已确认]   |
+| **SRE/运维负责人** |      |      |      | [监控/容量/回滚已确认]    |
+| **产品负责人**     |      |      |      | [业务影响/用户沟通已确认] |
+| **安全负责人**     |      |      |      | [安全扫描/合规已确认]     |
+| **DBA**            |      |      |      | [数据库变更/回滚已确认]   |

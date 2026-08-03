@@ -1,265 +1,265 @@
-# [Product/System Name (English)] - Architecture Design Document (ADD)
+# [产品/系统名称（英文名）] - 架构设计文档（ADD）
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 驳回
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Architect/Tech Lead]
+> **撰写人：** [架构师/技术负责人]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [Kirky.X/TL]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [角色列表]
 >
-> **Related Charter:** [Charter ID]
+> **关联 Charter：** [Charter编号]
 >
-> **Related BRD:** [BRD ID]
+> **关联 BRD：** [BRD编号]
 >
-> **Related PRD:** [PRD ID]
+> **关联 PRD：** [PRD编号]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose and Scope
+### 0.1 文档目的与适用范围
 
-[Describe the purpose of this document, applicable scenarios, and non-applicable scenarios]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename              | Relevant Sections |
-| ------------- | --------------------- | ----------------- |
-| [Type]        | [Filename] [Line Range] | [Section Description] |
+| 文档类型 | 文件名              | 相关章节   |
+| -------- | ------------------- | ---------- |
+| [类型]   | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format Note**: Related documents use the `Filename Line Range` format (e.g., `Template-Architecture.md 3-21`). Line numbers may change as the document is updated — please refer to the actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】架构设计文档.md 3-21`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date       | Author  | Change Description                                         | Reviewer   |
-| :------ | :--------- | :------ | :--------------------------------------------------------- | :--------- |
-| v0.1    | YYYY-MM-DD | [Name]  | Initial draft: context + container diagram                 | [Name]     |
-| v0.2    | YYYY-MM-DD | [Name]  | Added component diagram + deployment diagram               | [Name]     |
-| v0.3    | YYYY-MM-DD | [Name]  | Added ADR + risk assessment                                | [Name]     |
-| vX.X    | YYYY-MM-DD | [Name]  | Official release                                           | [Name]  |
-| v0.4.1  | 2026-06-09 | Xie Dong | Fix: quadrantChart template changed to table format (Feishu incompatible) | — |
-| v0.4.2  | 2026-06-09 | Xie Dong | Fix: xychart-beta diagram changed to table for Feishu rendering compatibility | — |
-| v0.4.3  | 2026-06-09 | Xie Dong | Fix: gantt chart changed to table for Feishu rendering compatibility | — |
-| v0.4.4  | 2026-06-20 | Xie Dong | Messaging middleware example Kafka→Pulsar (unified event bus specification) | — |
+| 版本   | 日期       | 修订人 | 变更内容                                           | 审核人    |
+| :----- | :--------- | :----- | :------------------------------------------------- | :-------- |
+| v0.1   | YYYY-MM-DD | [姓名] | 初稿：上下文+容器图                                | [姓名]    |
+| v0.2   | YYYY-MM-DD | [姓名] | 补充组件图+部署图                                  | [姓名]    |
+| v0.3   | YYYY-MM-DD | [姓名] | 补充ADR+风险评估                                   | [姓名]    |
+| v0.4   | YYYY-MM-DD | [姓名] | 正式发布                                           | [Kirky.X] |
+| v0.4.1 | 2026-06-09 | 谢董   | 修复：quadrantChart 模板改为表格格式（飞书不兼容） | —         |
+| v0.4.2 | 2026-06-09 | 谢董   | 修复xychart-beta图为表格以兼容飞书渲染             | —         |
+| v0.4.3 | 2026-06-09 | 谢董   | 修复gantt图为表格以兼容飞书渲染                    | —         |
+| v0.4.4 | 2026-06-20 | 谢董   | 消息中间件示例 Kafka→Pulsar（统一事件总线规范）    | —         |
 
 ---
 
-## 1. Executive Summary
+## 1. 执行摘要（Executive Summary）
 
-> **Technical Decision Layer Guide:** A one-page overview covering "system boundaries, technology selection, key risks, critical decisions."
+> **技术决策层导读：** 一页纸说清"系统边界、技术选型、核心风险、关键决策"。
 
-| Element         | Content                                                        |
-| :-------------- | :------------------------------------------------------------- |
-| **System Positioning** | [One sentence, e.g., High-availability transaction kernel supporting tens of millions of daily orders] |
-| **Core Challenges** | [e.g., High-concurrency flash sales / Distributed transaction consistency / Active-active disaster recovery] |
-| **Technology Stack** | [e.g., Spring Cloud + PostgreSQL + Redis + Pulsar + K8s] |
-| **Architecture Style** | [e.g., Microservices / Domain-Driven Design (DDD) / Event-Driven Architecture (EDA)] |
-| **Key Metrics** | QPS ≥ [X] / P99 latency ≤ [Y]ms / Availability ≥ [Z]% |
-| **Major Decisions** | [e.g., Abandoned 2PC distributed transactions, adopted Saga + local message table] |
-| **Risk Level** | 🟢 Low / 🟡 Medium / 🔴 High |
+| 要素         | 内容                                                   |
+| :----------- | :----------------------------------------------------- |
+| **系统定位** | [一句话，如：支撑日均千万级订单的高可用交易内核]       |
+| **核心挑战** | [如：高并发秒杀 / 分布式事务一致性 / 多活容灾]         |
+| **技术选型** | [如：Spring Cloud + PostgreSQL + Redis + Pulsar + K8s] |
+| **架构风格** | [如：微服务 / 领域驱动设计(DDD) / 事件驱动架构(EDA)]   |
+| **关键指标** | QPS ≥ [X] / P99 延迟 ≤ [Y]ms / 可用性 ≥ [Z]%           |
+| **重大决策** | [如：放弃分布式事务2PC，采用Saga+本地消息表]           |
+| **风险等级** | 🟢 低风险 / 🟡 中风险 / 🔴 高风险                      |
 
 ```mermaid
 mindmap
-  root((Architecture Overview))
-    Business Context
-      [User Scenarios]
-      [System Boundaries]
-    Technical Architecture
-      [C4 Views]
-      [Deployment Topology]
-    Core Decisions
-      [Technology Selection]
-      [Trade-off Analysis]
-    Quality Attributes
-      [Performance]
-      [Availability]
-      [Security]
+  root((架构总览))
+    业务上下文
+      [用户场景]
+      [系统边界]
+    技术架构
+      [C4视图]
+      [部署拓扑]
+    核心决策
+      [技术选型]
+      [取舍权衡]
+    质量属性
+      [性能]
+      [可用性]
+      [安全]
 ```
 
 ---
 
-## 2. Current State & Requirements Analysis
+## 2. 现状与需求分析（Current State & Requirements）
 
-### 2.1 Current Pain Points
+### 2.1 现状痛点
 
-| Dimension   | Current State         | Pain Point                            | Quantified Data                |
-| :---------- | :-------------------- | :------------------------------------ | :----------------------------- |
-| **Performance** | [e.g., Monolithic architecture] | [e.g., CPU 95% during peak, response timeout] | [e.g., P99=3s, target <<500ms] |
-| **Availability** | [e.g., Single data center deployment] | [e.g., Data center failure causes full site outage] | [e.g., 3 failures/year, each >2h] |
-| **Scalability** | [e.g., Vertical scaling] | [e.g., Scaling requires downtime, takes 4h] | [e.g., Peak only supports 10K QPS] |
-| **Maintainability** | [e.g., High code coupling] | [e.g., Changing one line affects 5 modules] | [e.g., Regression test cycle 2 weeks] |
+| 维度       | 现状               | 痛点                          | 量化数据                  |
+| :--------- | :----------------- | :---------------------------- | :------------------------ |
+| **性能**   | [如：单体架构]     | [如：高峰期CPU 95%，响应超时] | [如：P99=3s，目标<<500ms] |
+| **可用性** | [如：单机房部署]   | [如：机房故障导致全站停摆]    | [如：年故障3次，每次>2h]  |
+| **扩展性** | [如：垂直扩容]     | [如：扩容需停机，耗时4h]      | [如：峰值只能支撑1万QPS]  |
+| **维护性** | [如：代码耦合度高] | [如：改一行代码影响5个模块]   | [如：回归测试周期2周]     |
 
-### 2.2 Requirements Matrix (Functional + Non-functional)
+### 2.2 需求矩阵（功能性 + 非功能性）
 
-> **Reference Note**: For detailed technical requirements, performance metrics, reliability requirements, and security compliance requirements, please refer to **Template-TRD.md**. This document only references key architectural requirements.
+> **引用说明**：详细的技术需求、性能指标、可靠性要求、安全合规要求，请参阅 **【模板】技术需求文档(TRD).md**。本文档仅引用关键架构需求。
 
-| Requirement Type | Requirement Description | Priority | Architectural Impact | Source Document |
+| 需求类型 | 需求描述 | 优先级 | 架构影响 | 来源文档 |
 | :--- | :--- | :---: | :--- | :--- |
-| **Functional** | [e.g., Support 100K QPS flash sale ordering] | P0 | [Architecture design highlights] | Reference TRD§1.1 |
-| **Non-functional** | [e.g., P99 latency ≤200ms] | P0 | [Performance design highlights] | Reference TRD§3.1 |
-| **Non-functional** | [e.g., RTO≤30s, RPO≤5s] | P0 | [Disaster recovery design highlights] | Reference TRD§4.1 |
-| **Non-functional** | [e.g., Support canary deployment] | P1 | [Deployment design highlights] | Reference TRD§7.2 |
+| **功能性** | [如：支持10万QPS秒杀下单] | P0 | [架构设计要点] | 引用TRD§1.1 |
+| **非功能性** | [如：P99延迟≤200ms] | P0 | [性能设计要点] | 引用TRD§3.1 |
+| **非功能性** | [如：RTO≤30s，RPO≤5s] | P0 | [容灾设计要点] | 引用TRD§4.1 |
+| **非功能性** | [如：支持灰度发布] | P1 | [部署设计要点] | 引用TRD§7.2 |
 
-> **Complete Requirements**: For the full technical challenge list, performance baseline, capacity planning, and degradation strategies, please refer to **Template-TRD.md §1-4**.
+> **完整需求**：技术挑战清单、性能基线、容量规划、降级策略详见 **【模板】技术需求文档(TRD).md §1-4**。
 
 ---
 
-## 3. C4 Architecture Views (C4 Model Views)
+## 3. C4 架构视图（C4 Model Views）
 
-> Following Simon Brown's C4 Model, expanding layer by layer from macro to micro.
+> 遵循 Simon Brown 提出的 C4 模型，从宏观到微观逐层展开。
 
-### 3.1 Level 1: System Context Diagram
+### 3.1 Level 1：系统上下文图（System Context）
 
-> **Audience:** Everyone (Product, Operations, Management, Technical)
+> **受众：** 全员（产品、运营、管理层、技术）
 >
-> **Abstraction Level:** 30,000 feet — describes the interaction boundaries between the system and the external world.
+> **抽象层级：** 30,000 英尺，描述系统与外部世界的交互边界。
 
 ```mermaid
 C4Context
-    title System Context Diagram - [System Name]
-    Person(customer, "End User", "Browse products, place orders, make payments")
-    Person(admin, "Operations Admin", "Configure campaigns, view reports")
+    title 系统上下文图 - [系统名称]
+    Person(customer, "普通用户", "浏览商品、下单、支付")
+    Person(admin, "运营管理员", "配置活动、查看报表")
 
-    System_Boundary(c1, "System Boundary") {
-        System(orderSystem, "Order Transaction System", "Handles the full lifecycle of user orders, payments, and fulfillment")
+    System_Boundary(c1, "本系统边界") {
+        System(orderSystem, "订单交易系统", "处理用户下单、支付、履约全流程")
     }
 
-    System_Ext(paymentGateway, "Payment Gateway", "Alipay/WeChat/UnionPay")
-    System_Ext(logisticsSystem, "Logistics Platform", "SF Express/JD/Cainiao")
-    System_Ext(userCenter, "User Center", "Unified user authentication and profiles")
-    System_Ext(productCenter, "Product Center", "SKU, pricing, inventory")
-    System_Ext(messageCenter, "Message Center", "SMS/Push/Email")
+    System_Ext(paymentGateway, "支付网关", "支付宝/微信/银联")
+    System_Ext(logisticsSystem, "物流平台", "顺丰/京东/菜鸟")
+    System_Ext(userCenter, "用户中心", "统一用户认证与画像")
+    System_Ext(productCenter, "商品中心", "SKU、价格、库存")
+    System_Ext(messageCenter, "消息中心", "短信/推送/邮件")
 
-    Rel(customer, orderSystem, "Place order/Query/Cancel", "HTTPS/JSON")
-    Rel(admin, orderSystem, "Manage/Monitor", "HTTPS/JSON")
-    Rel(orderSystem, paymentGateway, "Initiate payment/Query result", "HTTPS/JSON")
-    Rel(orderSystem, logisticsSystem, "Dispatch logistics order", "HTTPS/JSON")
-    Rel(orderSystem, userCenter, "Query user info", "gRPC")
-    Rel(orderSystem, productCenter, "Query product/Verify inventory", "gRPC")
-    Rel(orderSystem, messageCenter, "Send notification", "Pulsar")
+    Rel(customer, orderSystem, "下单/查询/取消", "HTTPS/JSON")
+    Rel(admin, orderSystem, "管理/监控", "HTTPS/JSON")
+    Rel(orderSystem, paymentGateway, "发起支付/查询结果", "HTTPS/JSON")
+    Rel(orderSystem, logisticsSystem, "下发物流单", "HTTPS/JSON")
+    Rel(orderSystem, userCenter, "查询用户信息", "gRPC")
+    Rel(orderSystem, productCenter, "查询商品/校验库存", "gRPC")
+    Rel(orderSystem, messageCenter, "发送通知", "Pulsar")
 
     UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```
 
-> **If the platform does not support C4Context syntax, use the following standard Mermaid alternative:**
+> **若平台不支持 C4Context 语法，可用以下标准 Mermaid 替代：**
 
 ```mermaid
 graph TB
-    subgraph External Participants
-        U1[👤 End User / Browse/Order/Payment]
-        U2[👤 Operations Admin / Configure/Monitor]
+    subgraph 外部参与者
+        U1[👤 普通用户 / 浏览/下单/支付]
+        U2[👤 运营管理员 / 配置/监控]
     end
 
-    subgraph System Boundary
-        S1[(🟦 Order Transaction System / Order System)]
+    subgraph 本系统边界
+        S1[(🟦 订单交易系统 / Order System)]
     end
 
-    subgraph External Dependencies
-        E1[💳 Payment Gateway / Alipay/WeChat]
-        E2[🚚 Logistics Platform / SF Express/JD]
-        E3[👤 User Center / Auth/Profiles]
-        E4[📦 Product Center / SKU/Inventory]
-        E5[📧 Message Center / SMS/Push]
+    subgraph 外部依赖系统
+        E1[💳 支付网关 / 支付宝/微信]
+        E2[🚚 物流平台 / 顺丰/京东]
+        E3[👤 用户中心 / 认证/画像]
+        E4[📦 商品中心 / SKU/库存]
+        E5[📧 消息中心 / 短信/推送]
     end
 
-    U1 -->|HTTPS/JSON / Place order/Query| S1
-    U2 -->|HTTPS/JSON / Manage| S1
-    S1 -->|HTTPS/JSON / Payment| E1
-    S1 -->|HTTPS/JSON / Logistics| E2
-    S1 -.->|gRPC / User Info| E3
-    S1 -.->|gRPC / Product/Inventory| E4
-    S1 -.->|Pulsar / Notification| E5
+    U1 -->|HTTPS/JSON / 下单/查询| S1
+    U2 -->|HTTPS/JSON / 管理| S1
+    S1 -->|HTTPS/JSON / 支付| E1
+    S1 -->|HTTPS/JSON / 物流| E2
+    S1 -.->|gRPC / 用户信息| E3
+    S1 -.->|gRPC / 商品/库存| E4
+    S1 -.->|Pulsar / 通知| E5
 
     style S1 fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
     style U1 fill:#e1f5e1,stroke:#2e7d32
     style U2 fill:#e1f5e1,stroke:#2e7d32
 ```
 
-### 3.2 Level 2: Container Diagram
+### 3.2 Level 2：容器图（Container Diagram）
 
-> **Audience:** Tech leads, developers, testers, operations
+> **受众：** 技术负责人、开发、测试、运维
 >
-> **Abstraction Level:** 10,000 feet — describes deployable units (processes/services/storage) inside the system and their interactions.
+> **抽象层级：** 10,000 英尺，描述系统内部的可部署单元（进程/服务/存储）及交互。
 
 ```mermaid
 C4Container
-    title Container Diagram - [System Name] Internal Architecture
-    Person(customer, "End User")
-    Person(admin, "Operations Admin")
+    title 容器图 - [系统名称] 内部架构
+    Person(customer, "普通用户")
+    Person(admin, "运营管理员")
 
-    System_Boundary(c1, "Order Transaction System") {
-        Container(webApp, "Web App", "React", "User-facing H5/PC pages")
-        Container(mobileApp, "Mobile App", "Flutter", "iOS/Android client")
-        Container(adminWeb, "Admin Web", "React", "Operations management backend")
-        Container(apiGateway, "API Gateway", "Spring Cloud Gateway", "Unified entry/Auth/Rate limiting")
-        Container(orderService, "Order Service", "Spring Boot", "Order lifecycle management")
-        Container(payService, "Payment Service", "Spring Boot", "Payment routing/Reconciliation")
-        Container(scheduleService, "Scheduler Service", "XXL-JOB", "Timeout cancellation/Scheduled tasks")
-        ContainerDb(orderDB, "Order Database", "PostgreSQL", "Master-slave and sharding")
-        ContainerDb(orderCache, "Order Cache", "Redis Cluster", "Hot data/Distributed locks")
-        ContainerDb(orderES, "Order Search", "Elasticsearch", "Complex queries/Reports")
-        ContainerQueue(orderMQ, "Order Queue", "Pulsar", "Async decoupling/Event sourcing")
+    System_Boundary(c1, "订单交易系统") {
+        Container(webApp, "Web App", "React", "用户端H5/PC页面")
+        Container(mobileApp, "Mobile App", "Flutter", "iOS/Android客户端")
+        Container(adminWeb, "Admin Web", "React", "运营管理后台")
+        Container(apiGateway, "API Gateway", "Spring Cloud Gateway", "统一入口/鉴权/限流")
+        Container(orderService, "订单服务", "Spring Boot", "订单生命周期管理")
+        Container(payService, "支付服务", "Spring Boot", "支付路由/对账")
+        Container(scheduleService, "调度服务", "XXL-JOB", "超时取消/定时任务")
+        ContainerDb(orderDB, "订单库", "PostgreSQL", "主从与分库分表")
+        ContainerDb(orderCache, "订单缓存", "Redis Cluster", "热点数据/分布式锁")
+        ContainerDb(orderES, "订单搜索", "Elasticsearch", "复杂查询/报表")
+        ContainerQueue(orderMQ, "订单队列", "Pulsar", "异步解耦/事件溯源")
     }
 
-    System_Ext(payment, "Payment Gateway")
-    System_Ext(logistics, "Logistics Platform")
+    System_Ext(payment, "支付网关")
+    System_Ext(logistics, "物流平台")
 
-    Rel(customer, webApp, "Uses", "HTTPS")
-    Rel(customer, mobileApp, "Uses", "HTTPS")
-    Rel(admin, adminWeb, "Uses", "HTTPS")
-    Rel(webApp, apiGateway, "API calls", "JSON/HTTPS")
-    Rel(mobileApp, apiGateway, "API calls", "JSON/HTTPS")
-    Rel(adminWeb, apiGateway, "API calls", "JSON/HTTPS")
-    Rel(apiGateway, orderService, "Routes", "gRPC")
-    Rel(apiGateway, payService, "Routes", "gRPC")
-    Rel(orderService, orderDB, "Read/Write", "JDBC")
-    Rel(orderService, orderCache, "Cache/Lock", "Redis protocol")
-    Rel(orderService, orderES, "Write", "REST")
-    Rel(orderService, orderMQ, "Publish events", "Pulsar protocol")
-    Rel(payService, payment, "Calls", "HTTPS")
-    Rel(orderService, logistics, "Calls", "HTTPS")
-    Rel(scheduleService, orderService, "Trigger tasks", "gRPC")
+    Rel(customer, webApp, "使用", "HTTPS")
+    Rel(customer, mobileApp, "使用", "HTTPS")
+    Rel(admin, adminWeb, "使用", "HTTPS")
+    Rel(webApp, apiGateway, "调用API", "JSON/HTTPS")
+    Rel(mobileApp, apiGateway, "调用API", "JSON/HTTPS")
+    Rel(adminWeb, apiGateway, "调用API", "JSON/HTTPS")
+    Rel(apiGateway, orderService, "路由", "gRPC")
+    Rel(apiGateway, payService, "路由", "gRPC")
+    Rel(orderService, orderDB, "读写", "JDBC")
+    Rel(orderService, orderCache, "缓存/锁", "Redis协议")
+    Rel(orderService, orderES, "写入", "REST")
+    Rel(orderService, orderMQ, "发布事件", "Pulsar协议")
+    Rel(payService, payment, "调用", "HTTPS")
+    Rel(orderService, logistics, "调用", "HTTPS")
+    Rel(scheduleService, orderService, "触发任务", "gRPC")
 
     UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```
 
-> **Standard Mermaid Alternative:**
+> **标准 Mermaid 替代方案：**
 
 ```mermaid
 graph TB
-    subgraph Frontend Layer
+    subgraph 前端层
         F1[📱 Mobile App / Flutter]
         F2[🌐 Web App / React]
         F3[⚙️ Admin Web / React]
     end
 
-    subgraph Access Layer
-        G1[🛡️ API Gateway / Spring Cloud Gateway / Auth/Rate Limiting/Routing]
+    subgraph 接入层
+        G1[🛡️ API Gateway / Spring Cloud Gateway / 鉴权/限流/路由]
     end
 
-    subgraph Service Layer
-        S1[📋 Order Service / Spring Boot / Order Lifecycle]
-        S2[💳 Payment Service / Spring Boot / Payment Routing/Reconciliation]
-        S3[⏰ Scheduler Service / XXL-JOB / Timeout Cancellation/Scheduled Tasks]
+    subgraph 服务层
+        S1[📋 订单服务 / Spring Boot / 订单生命周期]
+        S2[💳 支付服务 / Spring Boot / 支付路由/对账]
+        S3[⏰ 调度服务 / XXL-JOB / 超时取消/定时任务]
     end
 
-    subgraph Data Layer
-        D1[(🗄️ Order Primary DB / PostgreSQL / Master-Slave Sharding)]
-        D2[(⚡ Order Cache / Redis Cluster / Hot Data/Locks)]
-        D3[(🔍 Order Search / Elasticsearch / Complex Queries)]
-        D4[(📨 Message Queue / Pulsar / Async/Events)]
+    subgraph 数据层
+        D1[(🗄️ 订单主库 / PostgreSQL / 主从与分片)]
+        D2[(⚡ 订单缓存 / Redis Cluster / 热点/锁)]
+        D3[(🔍 订单搜索 / Elasticsearch / 复杂查询)]
+        D4[(📨 消息队列 / Pulsar / 异步/事件)]
     end
 
-    subgraph External Systems
-        E1[💳 Payment Gateway]
-        E2[🚚 Logistics Platform]
+    subgraph 外部系统
+        E1[💳 支付网关]
+        E2[🚚 物流平台]
     end
 
     F1 --> |HTTPS/JSON| G1
@@ -280,45 +280,45 @@ graph TB
     style D1 fill:#ffcdd2,stroke:#c62828,stroke-width:2px
 ```
 
-### 3.3 Level 3: Component Diagram
+### 3.3 Level 3：组件图（Component Diagram）
 
-> **Audience:** Development team, architects
+> **受众：** 开发团队、架构师
 >
-> **Abstraction Level:** 1,000 feet — describes the component structure and interactions within a single container.
+> **抽象层级：** 1,000 英尺，描述单个容器内部的组件结构与交互。
 
 ```mermaid
 graph TB
-    subgraph Order Service Internal Components
-        C1[🎮 OrderController / Interface Layer / REST/gRPC Entry]
-        C2[⚙️ OrderService / Business Layer / Order State Machine/Business Rules]
-        C3[🔗 OrderManager / Aggregation Layer / Cross-domain Orchestration/Transaction Management]
-        C4[🗃️ OrderDAO / Data Layer / MyBatis/CRUD]
-        C5[🔌 RPC Client / Invocation Layer / User/Product/Inventory/Messaging]
-        C6[📦 StockComponent / Component / Inventory Deduction/Pre-allocation/Rollback]
-        C7[🎁 PromoComponent / Component / Discount Calculation/Rules Engine]
-        C8[📊 EventPublisher / Component / Domain Event Publishing]
+    subgraph 订单服务内部组件
+        C1[🎮 OrderController / 接口层 / REST/gRPC入口]
+        C2[⚙️ OrderService / 业务层 / 订单状态机/业务规则]
+        C3[🔗 OrderManager / 聚合层 / 跨域编排/事务管理]
+        C4[🗃️ OrderDAO / 数据层 / MyBatis/CRUD]
+        C5[🔌 RPC Client / 调用层 / 用户/商品/库存/消息]
+        C6[📦 StockComponent / 组件 / 库存扣减/预占/回滚]
+        C7[🎁 PromoComponent / 组件 / 优惠计算/规则引擎]
+        C8[📊 EventPublisher / 组件 / 领域事件发布]
     end
 
     C1 -->|DTO/VO| C2
     C2 --> C6
     C2 --> C7
     C2 --> C8
-    C2 -->|Domain Object| C3
-    C3 -->|Aggregate Root| C4
+    C2 -->|领域对象| C3
+    C3 -->|聚合根| C4
     C3 -->|Feign/gRPC| C5
-    C4 -->|SQL| D1[(Order Database)]
-    C5 -->|Calls| E1[External Service]
-    C8 -->|Publish| Q1[(Pulsar)]
+    C4 -->|SQL| D1[(订单库)]
+    C5 -->|调用| E1[外部服务]
+    C8 -->|发布| Q1[(Pulsar)]
 
     style C2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
     style C3 fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
 ```
 
-### 3.4 Level 4: Code/Class Diagram [Optional]
+### 3.4 Level 4：代码/类图（Code Diagram）【可选】
 
-> **Audience:** Core developers
+> **受众：** 核心开发
 >
-> **Note:** Only drawn for core complex components (e.g., state machines, rules engines). Full output is generally not recommended to avoid over-engineering.
+> **说明：** 仅对核心复杂组件（如状态机、规则引擎）绘制，一般不建议全量产出，避免过度设计。
 
 ```mermaid
 classDiagram
@@ -368,146 +368,146 @@ classDiagram
 
 ---
 
-## 4. Dynamic Behavior Views
+## 4. 动态行为视图（Dynamic Views）
 
-> Describes runtime behavior for key scenarios, supplementing the C4 static views.
+> 描述关键场景的运行时行为，补充 C4 静态视图。
 
-### 4.1 Core Flow Sequence Diagram
+### 4.1 核心流程序列图
 
-#### Scenario: End-to-End User Order and Payment Flow
+#### 场景：用户下单支付全流程
 
 ```mermaid
 sequenceDiagram
-    actor U as User
+    actor U as 用户
     participant App as Mobile/Web App
     participant GW as API Gateway
-    participant OS as Order Service
-    participant PS as Payment Service
-    participant US as User Center
-    participant PCS as Product Center
-    participant ICS as Inventory Center
+    participant OS as 订单服务
+    participant PS as 支付服务
+    participant US as 用户中心
+    participant PCS as 商品中心
+    participant ICS as 库存中心
     participant MQ as Pulsar
-    participant Pay as Payment Gateway
+    participant Pay as 支付网关
 
-    U->>App: 1. Submit order
-    App->>GW: 2. Create order request
-    GW->>OS: 3. Route to order service
-    OS->>US: 4. Verify user status
-    US-->>OS: User is active
-    OS->>PCS: 5. Query product/price
-    PCS-->>OS: Return SKU info
-    OS->>ICS: 6. Pre-allocate inventory
-    ICS-->>OS: Pre-allocation successful
-    OS->>OS: 7. Calculate discount/Generate order
-    OS->>MQ: 8. Publish OrderCreated event
-    OS-->>GW: Return order info
-    GW-->>App: Order created successfully
-    App-->>U: Display pending payment order
+    U->>App: 1. 提交订单
+    App->>GW: 2. 创建订单请求
+    GW->>OS: 3. 路由至订单服务
+    OS->>US: 4. 校验用户状态
+    US-->>OS: 用户正常
+    OS->>PCS: 5. 查询商品/价格
+    PCS-->>OS: 返回SKU信息
+    OS->>ICS: 6. 预占库存
+    ICS-->>OS: 预占成功
+    OS->>OS: 7. 计算优惠/生成订单
+    OS->>MQ: 8. 发布 OrderCreated 事件
+    OS-->>GW: 返回订单信息
+    GW-->>App: 订单创建成功
+    App-->>U: 展示待支付订单
 
-    U->>App: 9. Confirm payment
-    App->>GW: 10. Payment request
-    GW->>PS: 11. Route to payment service
-    PS->>Pay: 12. Initiate pre-order
-    Pay-->>PS: Return payment parameters
-    PS-->>GW: Return invocation parameters
-    GW-->>App: Launch checkout
-    App->>Pay: 13. User completes payment
-    Pay->>PS: 14. Async payment callback
-    PS->>OS: 15. Notify order paid
-    OS->>ICS: 16. Confirm inventory deduction
-    OS->>MQ: 17. Publish OrderPaid event
-    OS->>MQ: 18. Send payment success notification
+    U->>App: 9. 确认支付
+    App->>GW: 10. 支付请求
+    GW->>PS: 11. 路由至支付服务
+    PS->>Pay: 12. 发起预下单
+    Pay-->>PS: 返回支付参数
+    PS-->>GW: 返回调起参数
+    GW-->>App: 调起收银台
+    App->>Pay: 13. 用户完成支付
+    Pay->>PS: 14. 异步支付回调
+    PS->>OS: 15. 通知订单已支付
+    OS->>ICS: 16. 确认扣减库存
+    OS->>MQ: 17. 发布 OrderPaid 事件
+    OS->>MQ: 18. 发送支付成功通知
 ```
 
-### 4.2 State Machine Diagram
+### 4.2 状态机图
 
 ```mermaid
 stateDiagram-v2
-    [*] --> CREATED: User places order
-    CREATED --> PAID: Payment successful
-    CREATED --> CANCELLED: Timeout/Manual cancellation
-    PAID --> SHIPPED: Warehouse ships
-    PAID --> CANCELLED: Refund before shipping
-    SHIPPED --> DELIVERED: Logistics delivery confirmed
-    DELIVERED --> COMPLETED: Receipt confirmed
-    DELIVERED --> RETURNING: After-sales return
-    RETURNING --> REFUNDED: Refund completed
+    [*] --> CREATED: 用户下单
+    CREATED --> PAID: 支付成功
+    CREATED --> CANCELLED: 超时/主动取消
+    PAID --> SHIPPED: 仓库发货
+    PAID --> CANCELLED: 发货前退款
+    SHIPPED --> DELIVERED: 物流签收
+    DELIVERED --> COMPLETED: 确认收货
+    DELIVERED --> RETURNING: 售后退货
+    RETURNING --> REFUNDED: 退款完成
     CANCELLED --> [*]
     COMPLETED --> [*]
     REFUNDED --> [*]
 
     note right of CREATED
-        Payment countdown: 30 minutes
-        Auto-cancel on timeout
+        支付倒计时:30分钟
+        超时自动取消
     end note
 ```
 
-### 4.3 Exception/Compensation Flow
+### 4.3 异常/补偿流程
 
 ```mermaid
 sequenceDiagram
-    participant OS as Order Service
-    participant ICS as Inventory Center
-    participant PS as Payment Service
+    participant OS as 订单服务
+    participant ICS as 库存中心
+    participant PS as 支付服务
     participant MQ as Pulsar
-    participant CS as Compensation Service
+    participant CS as 补偿服务
 
-    MQ->>CS: Listen to OrderCancelled event
-    CS->>OS: 1. Query order status
-    OS-->>CS: Cancelled
-    CS->>ICS: 2. Release pre-allocated inventory
-    ICS-->>CS: Released successfully
-    CS->>PS: 3. Query payment status
-    PS-->>CS: Paid (needs refund)
-    CS->>PS: 4. Initiate refund via original channel
-    PS-->>CS: Refund accepted
-    CS->>MQ: 5. Publish RefundInitiated event
+    MQ->>CS: 监听 OrderCancelled 事件
+    CS->>OS: 1. 查询订单状态
+    OS-->>CS: 已取消
+    CS->>ICS: 2. 释放预占库存
+    ICS-->>CS: 释放成功
+    CS->>PS: 3. 查询支付状态
+    PS-->>CS: 已支付（需退款）
+    CS->>PS: 4. 发起原路退款
+    PS-->>CS: 退款受理
+    CS->>MQ: 5. 发布 RefundInitiated 事件
 ```
 
 ---
 
-## 5. Deployment Architecture
+## 5. 部署架构（Deployment Architecture）
 
-> Describes how containers map to infrastructure, answering "where it runs and how disaster recovery works."
+> 描述容器如何映射到基础设施，回答"跑在哪里、怎么容灾"。
 
-### 5.1 Deployment Topology Diagram
+### 5.1 部署拓扑图
 
 ```mermaid
 graph TB
-    subgraph Traffic Entry Layer
-        DNS[🌍 DNS / GeoDNS/Smart Resolution]
-        CDN[📦 CDN / Static Asset Acceleration]
-        WAF[🛡️ WAF / Firewall/DDoS Protection]
+    subgraph 流量入口层
+        DNS[🌍 DNS / GeoDNS/智能解析]
+        CDN[📦 CDN / 静态资源加速]
+        WAF[🛡️ WAF / 防火墙/DDoS防护]
     end
 
-    subgraph Availability Zone AZ-1a
-        LB1[⚖️ SLB-1a / Load Balancer]
+    subgraph 可用区 AZ-1a
+        LB1[⚖️ SLB-1a / 负载均衡]
         K8S1[☸️ K8s Cluster-1a]
-        APP1[🟦 Order Service Pod]
-        APP2[🟦 Payment Service Pod]
-        DB1[(🗄️ PostgreSQL Primary / Master)]
-        RED1[(⚡ Redis Primary / Master)]
+        APP1[🟦 订单服务 Pod]
+        APP2[🟦 支付服务 Pod]
+        DB1[(🗄️ PostgreSQL 主 / Master)]
+        RED1[(⚡ Redis 主 / Master)]
     end
 
-    subgraph Availability Zone AZ-1b
-        LB2[⚖️ SLB-1b / Load Balancer]
+    subgraph 可用区 AZ-1b
+        LB2[⚖️ SLB-1b / 负载均衡]
         K8S2[☸️ K8s Cluster-1b]
-        APP3[🟦 Order Service Pod]
-        APP4[🟦 Payment Service Pod]
-        DB2[(🗄️ PostgreSQL Replica / Slave)]
-        RED2[(⚡ Redis Replica / Slave)]
+        APP3[🟦 订单服务 Pod]
+        APP4[🟦 支付服务 Pod]
+        DB2[(🗄️ PostgreSQL 从 / Slave)]
+        RED2[(⚡ Redis 从 / Slave)]
     end
 
-    subgraph Availability Zone AZ-1c
-        DB3[(🗄️ PostgreSQL Replica / Slave)]
-        RED3[(⚡ Redis Replica / Slave)]
-        ES1[(🔍 ES Node 1)]
-        ES2[(🔍 ES Node 2)]
+    subgraph 可用区 AZ-1c
+        DB3[(🗄️ PostgreSQL 从 / Slave)]
+        RED3[(⚡ Redis 从 / Slave)]
+        ES1[(🔍 ES 节点1)]
+        ES2[(🔍 ES 节点2)]
     end
 
-    subgraph Middleware Layer
-        PULSAR[📨 Pulsar Cluster / 3 Brokers]
-        ZK[🔍 ZooKeeper / Coordination]
+    subgraph 中间件层
+        PULSAR[📨 Pulsar Cluster / 3 Broker]
+        ZK[🔍 ZooKeeper / 协调]
     end
 
     DNS --> CDN --> WAF
@@ -524,15 +524,15 @@ graph TB
     APP2 --> DB1
     APP3 --> DB1
     APP4 --> DB1
-    DB1 -.->|Master-Slave Sync| DB2
-    DB1 -.->|Master-Slave Sync| DB3
+    DB1 -.->|主从同步| DB2
+    DB1 -.->|主从同步| DB3
 
     APP1 --> RED1
     APP2 --> RED1
     APP3 --> RED1
     APP4 --> RED1
-    RED1 -.->|Replication| RED2
-    RED1 -.->|Replication| RED3
+    RED1 -.->|复制| RED2
+    RED1 -.->|复制| RED3
 
     APP1 --> PULSAR
     APP2 --> PULSAR
@@ -548,48 +548,48 @@ graph TB
     style PULSAR fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
 ```
 
-### 5.2 Active-Active/Disaster Recovery Strategy
+### 5.2 多活/容灾策略
 
-| Strategy              | Implementation                                                      | RTO   | RPO  | Applicable Scenario     |
-| :-------------------- | :------------------------------------------------------------------ | :---: | :--: | :---------------------- |
-| **Same-city Active-Active** | AZ-1a / AZ-1b simultaneously handle traffic, DB master-slave failover | 30s | 0s  | Data center-level failure |
-| **Remote Cold Standby** | AZ-2 periodic backups, manual failover on failure                   | 30min | 5min | City-level disaster      |
-| **Multi-replica Data** | PostgreSQL semi-synchronous replication + Redis Cluster 3M3S       | -     | -    | Data reliability         |
-| **Degradation Plan**   | Inventory check falls back to cache / Payment falls back to backup channel | 5s | -  | Dependency service failure |
+| 策略           | 实现方式                                     |  RTO  | RPO  | 适用场景     |
+| :------------- | :------------------------------------------- | :---: | :--: | :----------- |
+| **同城双活**   | AZ-1a / AZ-1b 同时承接流量，数据库主从切换   |  30s  |  0s  | 机房级故障   |
+| **异地冷备**   | AZ-2 定时备份，故障时手动切换                | 30min | 5min | 城市级灾难   |
+| **数据多副本** | PostgreSQL 半同步复制 + Redis Cluster 3主3从 |   -   |  -   | 数据可靠性   |
+| **降级预案**   | 库存校验降级读缓存 / 支付降级走兜底通道      |  5s   |  -   | 依赖服务故障 |
 
 ---
 
-## 6. Data Architecture
+## 6. 数据架构（Data Architecture）
 
-### 6.1 Data Flow Diagram
+### 6.1 数据流图
 
 ```mermaid
 flowchart LR
-    subgraph Business Systems
-        A1[Order Service]
-        A2[Payment Service]
+    subgraph 业务系统
+        A1[订单服务]
+        A2[支付服务]
     end
 
-    subgraph Real-time Pipeline
-        B1[Binlog Collection / Canal]
-        B2[Pulsar / Real-time Stream]
-        B3[Flink / Real-time Computing]
+    subgraph 实时链路
+        B1[Binlog采集 / Canal]
+        B2[Pulsar / 实时流]
+        B3[Flink / 实时计算]
     end
 
-    subgraph Offline Pipeline
-        C1[ODS Source Layer]
-        C2[DWD Detail Layer]
-        C3[DWS Summary Layer]
-        C4[ADM Application Layer]
+    subgraph 离线链路
+        C1[ODS贴源层]
+        C2[DWD明细层]
+        C3[DWS汇总层]
+        C4[ADM应用层]
     end
 
-    subgraph Data Consumers
-        D1[BI Reports]
-        D2[ML Models]
-        D3[Reconciliation System]
+    subgraph 数据消费
+        D1[BI报表]
+        D2[算法模型]
+        D3[对账系统]
     end
 
-    A1 -->|Business Write| DB1[(PostgreSQL)]
+    A1 -->|业务写入| DB1[(PostgreSQL)]
     DB1 -->|Canal| B1
     B1 --> B2
     B2 --> B3
@@ -600,108 +600,108 @@ flowchart LR
     B2 --> D3
 ```
 
-### 6.2 Data Sharding and Routing
+### 6.2 数据分片与路由
 
-| Data Type    | Shard Key       | Sharding Strategy                | Routing Method      |
-| :----------- | :-------------- | :------------------------------- | :------------------ |
-| Order Master | `user_id`       | 128 shards, Hash modulo          | ShardingSphere      |
-| Order Detail | `order_id`      | Co-located with master (bound table) | Local routing   |
-| Payment Log  | `order_id`      | 128 shards                       | ShardingSphere      |
-| Logs/Audit   | `create_time`   | Monthly partitioning              | Time-range routing  |
+| 数据类型  | 分片键        | 分片策略               | 路由方式       |
+| :-------- | :------------ | :--------------------- | :------------- |
+| 订单主表  | `user_id`     | 128 分片，Hash 取模    | ShardingSphere |
+| 订单明细  | `order_id`    | 与主表同分片（绑定表） | 本地路由       |
+| 支付流水  | `order_id`    | 128 分片               | ShardingSphere |
+| 日志/审计 | `create_time` | 按月分区               | 时间范围路由   |
 
 ---
 
-## 7. Core Algorithms and Mechanism Design
+## 7. 核心算法与机制设计（Core Mechanisms）
 
-### 7.1 Global Unique ID Generation
+### 7.1 全局唯一ID生成
 
 ```mermaid
 flowchart LR
-    A[Timestamp / 41bit] --> E[Snowflake Algorithm / 64bit]
-    B[Machine ID / 10bit] --> E
-    C[Sequence Number / 12bit] --> E
-    D[Business Tag / 1bit] --> E
-    E --> F[Long type / Globally Unique ID]
+    A[时间戳 / 41bit] --> E[雪花算法 / 64bit]
+    B[机器ID / 10bit] --> E
+    C[序列号 / 12bit] --> E
+    D[业务标识 / 1bit] --> E
+    E --> F[Long类型 / 全局唯一ID]
 
     style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px
 ```
 
-| Attribute     | Design Value | Description                                |
-| :------------ | :----------- | :----------------------------------------- |
-| Timestamp bits | 41bit       | Supports ~69 years (from custom start time) |
-| Machine ID bits | 10bit     | Supports 1024 nodes                        |
-| Sequence bits  | 12bit      | 4096 IDs per node per millisecond          |
-| Business Tag   | 1bit       | Distinguishes different business lines (orders/payments) |
+| 属性     | 设计值 | 说明                           |
+| :------- | :----- | :----------------------------- |
+| 时间戳位 | 41bit  | 支持约69年（从自定义起始时间） |
+| 机器ID位 | 10bit  | 支持1024个节点                 |
+| 序列号位 | 12bit  | 每节点每毫秒4096个ID           |
+| 业务标识 | 1bit   | 区分不同业务线（订单/支付）    |
 
-### 7.2 Distributed Lock Design
+### 7.2 分布式锁设计
 
-| Scenario                | Implementation       | Key Design                   | Expiry Time | Renewal Strategy       |
-| :---------------------- | :------------------- | :--------------------------- | :---------: | :--------------------- |
-| Inventory deduction     | Redis RedLock        | `lock:stock:{skuId}`         |     10s     | Watchdog auto-renewal  |
-| Order creation dedup    | DB unique index      | `uniq:order:{userId}:{date}` |   Forever   | No renewal needed      |
-| Payment callback idempotency | Redis SET NX EX | `lock:pay:{orderId}`         |     60s     | Active release on completion |
+| 场景         | 实现方案        | Key设计                      | 过期时间 | 续期策略         |
+| :----------- | :-------------- | :--------------------------- | :------: | :--------------- |
+| 库存扣减     | Redis RedLock   | `lock:stock:{skuId}`         |   10s    | Watchdog自动续期 |
+| 订单创建防重 | DB唯一索引      | `uniq:order:{userId}:{date}` |   永久   | 无需续期         |
+| 支付回调幂等 | Redis SET NX EX | `lock:pay:{orderId}`         |   60s    | 业务完成主动释放 |
 
-### 7.3 Caching Strategy
+### 7.3 缓存策略
 
 ```mermaid
 flowchart TD
-    A[Read Request] --> B{Cache Hit?}
-    B -->|Yes| C[Return cached data]
-    B -->|No| D[Query database]
-    D --> E[Write to cache]
+    A[读请求] --> B{缓存命中?}
+    B -->|是| C[返回缓存数据]
+    B -->|否| D[查询数据库]
+    D --> E[写入缓存]
     E --> C
-    F[Write Request] --> G[Update database]
-    G --> H[Delete/Update cache / Cache Aside]
+    F[写请求] --> G[更新数据库]
+    G --> H[删除/更新缓存 / Cache Aside]
 
     style C fill:#e1f5e1,stroke:#2e7d32
     style H fill:#fff3e0,stroke:#ef6c00
 ```
 
-| Strategy        | Applicable Scenario    | Consistency Level | Implementation             |
-| :-------------- | :--------------------- | :---------------- | :------------------------- |
-| Cache Aside     | Order detail queries   | Eventual          | Read-through on miss, delete on write |
-| Write Through   | Real-time inventory deduction | Strong       | Synchronous DB + cache write |
-| Read Through    | Product basic info     | Eventual          | Cache component auto-read-through |
+| 策略          | 适用场景     | 一致性等级 | 实现方式             |
+| :------------ | :----------- | :--------- | :------------------- |
+| Cache Aside   | 订单详情查询 | 最终一致   | 读时回源，写时删缓存 |
+| Write Through | 库存实时扣减 | 强一致     | 同步写库+写缓存      |
+| Read Through  | 商品基础信息 | 最终一致   | 缓存组件自动回源     |
 
 ---
 
-## 8. Non-Functional Requirements Design (NFR / Quality Attributes)
+## 8. 非功能需求设计（NFR / Quality Attributes）
 
-### 8.1 Performance Design
+### 8.1 性能设计
 
-| Metric         | Target    | Achievement Method                            |
-| :------------- | :-------- | :-------------------------------------------- |
-| **Peak QPS**   | ≥ 100,000 | Horizontal scaling + cache warming + async     |
-| **P99 Latency** | ≤ 200ms  | Local cache + DB index optimization + connection pool |
-| **Concurrent Connections** | ≥ 50,000 | Gateway long connection optimization + K8s HPA |
+| 指标         | 目标值    | 达成手段                           |
+| :----------- | :-------- | :--------------------------------- |
+| **峰值 QPS** | ≥ 100,000 | 水平扩展 + 缓存预热 + 异步化       |
+| **P99 延迟** | ≤ 200ms   | 本地缓存 + 数据库索引优化 + 连接池 |
+| **并发连接** | ≥ 50,000  | 网关长连接优化 + K8s HPA           |
 
-> **Note**: xychart-beta is an incompatible Mermaid type for Feishu; replaced with table description (template sample data).
+> **说明**：xychart-beta为飞书不兼容Mermaid类型，改为表格描述（模板示例数据）。
 
-**Performance Capacity Planning**
+**性能容量规划**
 
-| Time Point  |   QPS    |
-| :---------- | :------: |
-| Current     |  5,000   |
-| +3 months   | 30,000   |
-| +6 months   | 80,000   |
-| +12 months  | 120,000  |
+| 时间节点 |   QPS   |
+| :------- | :-----: |
+| 当前     |  5,000  |
+| 3个月后  | 30,000  |
+| 6个月后  | 80,000  |
+| 12个月后 | 120,000 |
 
-### 8.2 High Availability Design
+### 8.2 高可用设计
 
 ```mermaid
 flowchart LR
-    subgraph Failure Scenarios
-        F1[Service instance failure]
-        F2[Database primary failure]
-        F3[Cache primary node failure]
-        F4[Dependency service failure]
+    subgraph 故障场景
+        F1[服务实例故障]
+        F2[数据库主库故障]
+        F3[缓存主节点故障]
+        F4[依赖服务故障]
     end
 
-    subgraph Response Strategies
-        S1[K8s auto-restart / Traffic removal]
-        S2[Master-slave failover / VIP drift]
-        S3[Sentinel election / Master-slave failover]
-        S4[Circuit breaker degradation / Fallback response]
+    subgraph 应对策略
+        S1[K8s自动重启 / 流量摘除]
+        S2[主从切换 / VIP漂移]
+        S3[哨兵选举 / 主从切换]
+        S4[熔断降级 / 兜底响应]
     end
 
     F1 --> S1
@@ -710,176 +710,176 @@ flowchart LR
     F4 --> S4
 ```
 
-### 8.3 Security Design
+### 8.3 安全设计
 
-| Layer         | Measures                                   | Implementation                       |
-| :------------ | :----------------------------------------- | :----------------------------------- |
-| **Access Layer** | HTTPS/TLS 1.3, WAF, DDoS protection   | Cloud vendor security products       |
-| **Gateway Layer** | OAuth2.1 + JWT, signature verification, rate limiting | Spring Security + custom filters |
-| **Service Layer** | Zero-trust network, mTLS, RBAC        | Istio Service Mesh                   |
-| **Data Layer** | Sensitive field encryption, SQL injection prevention | AES-256-GCM + MyBatis parameterized |
-| **Audit Layer** | Full-chain logging, operation audit     | SkyWalking + audit tables            |
+| 层级       | 措施                               | 实现                           |
+| :--------- | :--------------------------------- | :----------------------------- |
+| **接入层** | HTTPS/TLS 1.3、WAF、DDoS防护       | 云厂商安全产品                 |
+| **网关层** | OAuth2.1 + JWT、签名验签、限流防刷 | Spring Security + 自定义过滤器 |
+| **服务层** | 零信任网络、mTLS、RBAC             | Istio Service Mesh             |
+| **数据层** | 敏感字段加密、SQL注入防护          | AES-256-GCM + MyBatis参数化    |
+| **审计层** | 全链路日志、操作审计               | SkyWalking + 审计表            |
 
 ---
 
-## 9. Architecture Decision Records (ADR)
+## 9. 架构决策记录（ADR）
 
-> All decisions affecting two or more services, or that are irreversible, must be recorded as ADRs.
+> 所有影响两个以上服务、或不可逆转的决策必须记录 ADR。
 
-| Decision ID  | Decision Topic       | Status    | Context                              | Decision                            | Consequences                           | Date       |
-| :----------- | :------------------- | :-------: | :----------------------------------- | :---------------------------------- | :------------------------------------- | :--------- |
-| **ADR-001**  | Microservices vs Monolith | ✅ Adopted | Team >50 people, need independent iteration | Adopt microservices, split by domain | Increased operational complexity, need DevOps capability | YYYY-MM-DD |
-| **ADR-002**  | Database Selection   | ✅ Adopted | Team familiar with PostgreSQL, TiDB high learning cost | PostgreSQL master-slave + sharding | Sharding logic built in-house, mid-term migration to TiDB possible | YYYY-MM-DD |
-| **ADR-003**  | Distributed Transaction Solution | ✅ Adopted | Performance priority, brief inconsistency allowed | Saga + local message table (eventual consistency) | Need reconciliation compensation, abandon strong consistency | YYYY-MM-DD |
-| **ADR-004**  | Cache Consistency Strategy | ✅ Adopted | High-concurrency read-heavy, write-light | Cache Aside + delayed double-delete | Brief inconsistency possible in extreme cases | YYYY-MM-DD |
-| **ADR-005**  | Deployment Method   | ✅ Adopted | Elastic scaling needs, cloud-native trend | K8s + Docker containerization | Need K8s operations capability         | YYYY-MM-DD |
+| 决策ID      | 决策内容       |   状态    | 上下文                             | 决策                          | 后果                             | 日期       |
+| :---------- | :------------- | :-------: | :--------------------------------- | :---------------------------- | :------------------------------- | :--------- |
+| **ADR-001** | 微服务 vs 单体 | ✅ 已采纳 | 团队>50人，需独立迭代              | 采用微服务，按领域拆分        | 运维复杂度增加，需建设DevOps能力 | YYYY-MM-DD |
+| **ADR-002** | 数据库选型     | ✅ 已采纳 | 团队熟悉PostgreSQL，TiDB学习成本高 | PostgreSQL主从+分库分表       | 分片逻辑自研，中期可迁移TiDB     | YYYY-MM-DD |
+| **ADR-003** | 分布式事务方案 | ✅ 已采纳 | 性能优先，允许短暂不一致           | Saga + 本地消息表（最终一致） | 需对账补偿机制，放弃强一致       | YYYY-MM-DD |
+| **ADR-004** | 缓存一致性策略 | ✅ 已采纳 | 高并发读多写少                     | Cache Aside + 延迟双删        | 极端情况下存在短暂不一致         | YYYY-MM-DD |
+| **ADR-005** | 部署方式       | ✅ 已采纳 | 弹性伸缩需求，云原生趋势           | K8s + Docker 容器化           | 需建设K8s运维能力                | YYYY-MM-DD |
 
-### ADR Detailed Example: ADR-003 Distributed Transaction
+### ADR 详细示例：ADR-003 分布式事务
 
 ```markdown
-## ADR-003: Distributed Transaction Consistency Solution
+## ADR-003：分布式事务一致性方案
 
-### Status
+### 状态
 
-Adopted ✅
+已采纳 ✅
 
-### Context
+### 上下文
 
-Order creation involves three independent databases: order database, inventory database, and coupon database. Data consistency must be ensured.
+订单创建涉及订单库、库存库、优惠券库三个独立数据库，需保证数据一致性。
 
-### Candidate Solutions
+### 候选方案
 
-1. **2PC/XA**: Strong consistency, but blocking with poor performance; unsuitable for high concurrency.
-2. **TCC**: Better performance, but high business invasiveness; requires Try/Confirm/Cancel for each operation.
-3. **Saga + Local Message Table**: Eventual consistency with best performance; ensures consistency through async compensation.
+1. **2PC/XA**：强一致，但阻塞性能差，不适合高并发。
+2. **TCC**：性能较好，但业务侵入性高，需为每个操作写Try/Confirm/Cancel。
+3. **Saga + 本地消息表**：最终一致，性能最好，通过异步补偿保证一致性。
 
-### Decision
+### 决策
 
-Choose Solution 3: Saga + Local Message Table.
+选择方案3：Saga + 本地消息表。
 
-### Rationale
+### 理由
 
-- Business scenario allows second-level inconsistency (inventory pre-allocation not immediately deducted does not affect user experience)
-- Team already has messaging infrastructure (Pulsar)
-- Avoids 2PC's blocking and single-point issues
+- 业务场景允许秒级不一致（库存预占后未及时扣减不影响用户体验）
+- 团队已有消息队列基础设施（Pulsar）
+- 避免2PC的阻塞和单点问题
 
-### Consequences
+### 后果
 
-- Need to develop a reconciliation compensation service to periodically scan abnormal orders
-- Need to establish manual intervention process for compensation failures
-- Monitoring must cover "long-pending transactions" alerts
+- 需开发对账补偿服务，定时扫描异常状态订单
+- 需建立人工介入流程，处理补偿失败订单
+- 监控需覆盖"长时间未完结事务"告警
 ```
 
 ---
 
-## 10. Risk Assessment and Mitigation
+## 10. 风险评估与缓解（Risk Assessment）
 
-> **Reference Note**: For project-level risks (business risks, market risks, personnel risks), please refer to **Template-Project-Charter.md §11.1**. This document only lists risks at the technical architecture level.
+> **引用说明**：项目级风险（商业风险、市场风险、人员风险）请参阅 **【模板】项目任务书.md §11.1**。本文档仅列出技术架构层面的风险。
 
-| Risk ID   | Risk Description                          | Probability | Impact | Risk Level | Mitigation Measures                           | Owner    |
-| :-------- | :---------------------------------------- | :---------: | :----: | :--------: | :-------------------------------------------- | :------- |
-| **R-001** | Poor cross-shard query performance after sharding | High | High | 🔴 | ES stores full data, complex queries via search | [Name]  |
-| **R-002** | Cache avalanche crashes DB                | Medium | High | 🔴 | Multi-level cache + randomized expiry + circuit breaker | [Name] |
-| **R-003** | Message queue consumption delay causes inventory inconsistency | Medium | Medium | 🟡 | Monitor consumption delay, auto-scale consumers on threshold | [Name] |
-| **R-004** | K8s cluster failure causes all services unavailable | Low | High | 🟡 | Same-city active-active + remote DR, core services keep VM deployment | [Name] |
-| **R-005** | Third-party payment API changes           | Medium | Medium | 🟡 | Abstract payment adapter layer, support multi-channel quick switching | [Name] |
+| 风险ID    | 风险描述                       | 可能性 | 影响度 | 风险等级 | 缓解措施                              | 责任人 |
+| :-------- | :----------------------------- | :----: | :----: | :------: | :------------------------------------ | :----- |
+| **R-001** | 分库分表后跨分片查询性能差     |   高   |   高   |    🔴    | ES冗余全量数据，复杂查询走搜索        | [姓名] |
+| **R-002** | 缓存雪崩导致DB被打挂           |   中   |   高   |    🔴    | 多级缓存+随机过期+熔断降级            | [姓名] |
+| **R-003** | 消息队列消费延迟导致库存不一致 |   中   |   中   |    🟡    | 监控消费延迟，超阈值自动扩容消费者    | [姓名] |
+| **R-004** | K8s集群故障导致全量服务不可用  |   低   |   高   |    🟡    | 同城双活+异地灾备，核心服务保留VM部署 | [姓名] |
+| **R-005** | 第三方支付接口变更             |   中   |   中   |    🟡    | 抽象支付适配层，支持多渠道快速切换    | [姓名] |
 
-> **Project-level Risks**: For the complete project-level risk register (including trigger and exit conditions) covering policy risks, market risks, and personnel risks, please refer to **Template-Project-Charter.md §11.1**.
+> **项目级风险**：政策风险、市场风险、人员风险等项目级风险的完整登记册（含触发条件和退出条件）详见 **【模板】项目任务书.md §11.1**。
 
-> **Note**: This quadrant diagram template has been converted to a table description.
+> **说明**：此象限图模板已转为表格描述。
 
 <!--
-Original quadrantChart structure reference:
-- title: Risk Heat Map (Probability vs Impact)
-- x-axis: "Low Probability" --> "High Probability"
+原 quadrantChart 结构参考：
+- title: 风险热力图（可能性 vs 影响度）
+- x-axis: "低可能性" --> "高可能性"
 
-- y-axis: "Low Impact" --> "High Impact"
-- quadrant-1: Focus Area (High/High)
-- quadrant-2: Close Monitoring (Low/High)
-- quadrant-3: General Attention (Low/Low)
-- quadrant-4: Periodic Review (High/Low)
-- Data points: "R-001 Shard Query": [0.8, 0.9]; "R-002 Cache Avalanche": [0.6, 0.9]; "R-003 Consumption Delay": [0.5, 0.6]; "R-004 K8s Failure": [0.3, 0.9]; "R-005 Payment Changes": [0.5, 0.5]
+- y-axis: "低影响度" --> "高影响度"
+- quadrant-1: 重点关注（高/高）
+- quadrant-2: 密切监控（低/高）
+- quadrant-3: 一般关注（低/低）
+- quadrant-4: 定期回顾（高/低）
+- 数据点: "R-001 分片查询": [0.8, 0.9]; "R-002 缓存雪崩": [0.6, 0.9]; "R-003 消费延迟": [0.5, 0.6]; "R-004 K8s故障": [0.3, 0.9]; "R-005 支付变更": [0.5, 0.5]
   -->
 
-| Quadrant                                  | Zone Characteristics       | Recommended Strategy            |
-| :---------------------------------------- | :------------------------- | :------------------------------ |
-| Quadrant 1 (High Probability · High Impact) | Focus Area (High/High)    | Develop emergency plans, conduct regular drills |
-| Quadrant 2 (Low Probability · High Impact) | Close Monitoring (Low/High) | Set alert thresholds, continuous tracking |
-| Quadrant 3 (Low Probability · Low Impact) | General Attention (Low/Low) | Routine management, no excessive focus needed |
-| Quadrant 4 (High Probability · Low Impact) | Periodic Review (High/Low) | Establish process-driven management |
+| 象限                       | 区域特征          | 策略建议               |
+| :------------------------- | :---------------- | :--------------------- |
+| 象限1（高可能性·高影响度） | 重点关注（高/高） | 制定应急预案，定期演练 |
+| 象限2（低可能性·高影响度） | 密切监控（低/高） | 设定预警阈值，持续跟踪 |
+| 象限3（低可能性·低影响度） | 一般关注（低/低） | 常规管理，不必过度关注 |
+| 象限4（高可能性·低影响度） | 定期回顾（高/低） | 建立流程化管理         |
 
-| Name              | X Value | Y Value | Quadrant                  |
-| :---------------- | :-----: | :-----: | :------------------------ |
-| R-001 Shard Query | 0.8     | 0.9     | Quadrant 1 (Focus Area)   |
-| R-002 Cache Avalanche | 0.6  | 0.9     | Quadrant 1 (Focus Area)   |
-| R-003 Consumption Delay | 0.5 | 0.6   | Quadrant 1 (Focus Area)   |
-| R-004 K8s Failure | 0.3     | 0.9     | Quadrant 2 (Close Monitoring) |
-| R-005 Payment Changes | 0.5 | 0.5   | Center Line                |
-
----
-
-## 11. Implementation Roadmap
-
-> **Note**: Gantt chart is an incompatible type for Feishu; replaced with table description.
-
-| Phase          | Task                    | Start Date     | Duration | Status |
-| :------------- | :---------------------- | :------------- | :------: | :----: |
-| Infrastructure | K8s cluster setup       | YYYY-MM-DD     | 14d      |  ⚪    |
-| Infrastructure | Middleware deployment   | After cluster setup | 10d  |  ⚪    |
-| Core Services  | Order service development | YYYY-MM-DD   | 20d      |  ⚪    |
-| Core Services  | Payment service development | YYYY-MM-DD | 20d      |  ⚪    |
-| Core Services  | Integration testing    | After development | 10d   |  ⚪    |
-| Data Migration | Sharding design        | YYYY-MM-DD     | 10d      |  ⚪    |
-| Data Migration | Dual-write migration   | After design   | 15d      |  ⚪    |
-| Data Migration | Traffic cutover verification | After dual-write | 10d |  ⚪   |
-| Launch         | Canary deployment      | After integration testing | 7d |  ⚪  |
-| Launch         | Full rollout           | After canary   | 3d       |  ⚪    |
-| Launch         | Monitoring & alerting  | After full rollout | 5d    |  ⚪    |
-
-| Phase        | Milestone                | Timeline | Deliverables        | Pass Criteria              |
-| :----------- | :----------------------- | :------- | :------------------ | :------------------------- |
-| **Phase 1**  | Infrastructure ready     | T+2 weeks | K8s cluster, middleware | Load test passed        |
-| **Phase 2**  | Core services development complete | T+6 weeks | Order/Payment service code | Unit test coverage >80% |
-| **Phase 3**  | Data migration complete  | T+10 weeks | Dual-write verification report | Data consistency check passed |
-| **Phase 4**  | Canary rollout           | T+12 weeks | Canary monitoring report | P0 incidents = 0, key metrics met |
-| **Phase 5**  | Full rollout             | T+13 weeks | Launch report      | Business validation passed |
+| 名称           | X值 | Y值 | 象限              |
+| :------------- | :-: | :-: | :---------------- |
+| R-001 分片查询 | 0.8 | 0.9 | 象限1（重点关注） |
+| R-002 缓存雪崩 | 0.6 | 0.9 | 象限1（重点关注） |
+| R-003 消费延迟 | 0.5 | 0.6 | 象限1（重点关注） |
+| R-004 K8s故障  | 0.3 | 0.9 | 象限2（密切监控） |
+| R-005 支付变更 | 0.5 | 0.5 | 中线位置          |
 
 ---
 
-## 12. Appendix
+## 11. 实施路线图（Implementation Roadmap）
 
-### 12.1 Glossary
+> **说明**：甘特图为飞书不兼容类型，改为表格描述。
 
-| Term         | Definition                                                        |
-| :----------- | :---------------------------------------------------------------- |
-| **C4 Model** | Context/Container/Component/Code — four-layer architecture description model |
-| **ADR**      | Architecture Decision Record                                      |
-| **Saga**     | Distributed transaction pattern; achieves eventual consistency via local transactions + compensation |
-| **RTO**      | Recovery Time Objective                                           |
-| **RPO**      | Recovery Point Objective                                          |
-| **QPS**      | Queries Per Second                                                |
-| **P99**      | 99th percentile latency                                           |
+| 阶段     | 任务             | 开始日期       | 工期 | 状态 |
+| :------- | :--------------- | :------------- | :--: | :--: |
+| 基础设施 | K8s集群搭建      | YYYY-MM-DD     | 14d  |  ⚪  |
+| 基础设施 | 中间件部署       | 集群搭建完成后 | 10d  |  ⚪  |
+| 核心服务 | 订单服务开发     | YYYY-MM-DD     | 20d  |  ⚪  |
+| 核心服务 | 支付服务开发     | YYYY-MM-DD     | 20d  |  ⚪  |
+| 核心服务 | 集成测试         | 开发完成后     | 10d  |  ⚪  |
+| 数据迁移 | 分库分表方案设计 | YYYY-MM-DD     | 10d  |  ⚪  |
+| 数据迁移 | 双写迁移         | 方案设计完成后 | 15d  |  ⚪  |
+| 数据迁移 | 切流验证         | 双写迁移完成后 | 10d  |  ⚪  |
+| 上线     | 灰度发布         | 集成测试完成后 |  7d  |  ⚪  |
+| 上线     | 全量上线         | 灰度发布完成后 |  3d  |  ⚪  |
+| 上线     | 监控告警         | 全量上线完成后 |  5d  |  ⚪  |
 
-### 12.2 Related Documents
-
-| Document                  | ID            | Link   |
-| :------------------------ | :------------ | :----- |
-| Product Requirements Document (PRD) | PRD-2026-XXX | [Link] |
-| Data Dictionary           | DD-2026-XXX   | [Link] |
-| API Documentation         | API-2026-XXX  | [Link] |
-| Test Plan                 | TEST-2026-XXX | [Link] |
-| Operations Manual         | OPS-2026-XXX  | [Link] |
+| 阶段        | 里程碑           | 时间   | 交付物            | 通过标准               |
+| :---------- | :--------------- | :----- | :---------------- | :--------------------- |
+| **Phase 1** | 基础设施就绪     | T+2周  | K8s集群、中间件   | 压测通过               |
+| **Phase 2** | 核心服务开发完成 | T+6周  | 订单/支付服务代码 | 单元测试>80%           |
+| **Phase 3** | 数据迁移完成     | T+10周 | 双写验证报告      | 数据一致性校验通过     |
+| **Phase 4** | 灰度上线         | T+12周 | 灰度监控报告      | P0事故=0，核心指标达标 |
+| **Phase 5** | 全量上线         | T+13周 | 上线发布报告      | 业务验证通过           |
 
 ---
 
-## 13. Review & Sign-off
+## 12. 附录（Appendix）
 
-| Role          | Name | Signature | Date | Review Comments |
-| :------------ | :--- | :-------: | :--: | :-------------- |
-| Tech Lead     |      |           |      |                 |
-| Architect     |      |           |      |                 |
-| Dev Representative |  |           |      |                 |
-| QA Representative |   |           |      |                 |
-| Ops Representative |   |           |      |                 |
-| Security Lead |      |           |      |                 |
-| Project Director |   |           |      |                 |
+### 12.1 术语表
+
+| 术语         | 定义                                              |
+| :----------- | :------------------------------------------------ |
+| **C4 Model** | Context/Container/Component/Code 四层架构描述模型 |
+| **ADR**      | Architecture Decision Record，架构决策记录        |
+| **Saga**     | 分布式事务模式，通过本地事务+补偿实现最终一致     |
+| **RTO**      | Recovery Time Objective，恢复时间目标             |
+| **RPO**      | Recovery Point Objective，恢复点目标              |
+| **QPS**      | Queries Per Second，每秒查询数                    |
+| **P99**      | 99%分位延迟                                       |
+
+### 12.2 关联文档
+
+| 文档                | 编号          | 链接   |
+| :------------------ | :------------ | :----- |
+| 产品需求文档（PRD） | PRD-2026-XXX  | [链接] |
+| 数据字典            | DD-2026-XXX   | [链接] |
+| 接口文档（API Doc） | API-2026-XXX  | [链接] |
+| 测试方案            | TEST-2026-XXX | [链接] |
+| 运维手册            | OPS-2026-XXX  | [链接] |
+
+---
+
+## 13. 评审签核（Review & Sign-off）
+
+| 角色       | 姓名 | 签字 | 日期 | 评审意见 |
+| :--------- | :--- | :--: | :--: | :------- |
+| 技术负责人 |      |      |      |          |
+| 架构师     |      |      |      |          |
+| 开发代表   |      |      |      |          |
+| 测试代表   |      |      |      |          |
+| 运维代表   |      |      |      |          |
+| 安全负责人 |      |      |      |          |
+| 项目总监   |      |      |      |          |

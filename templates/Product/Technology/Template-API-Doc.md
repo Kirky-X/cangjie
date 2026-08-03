@@ -1,92 +1,92 @@
-# [Product/System Name (English)] - API Documentation
+# [产品/系统名称（英文名）] - API 文档
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 驳回
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Backend Lead / API Owner]
+> **撰写人：** [后端负责人 / API Owner]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [前端负责人 / 架构师]
 >
-> **Audience:** [Role List]
+> **阅读对象：** 前端工程师、后端工程师、测试工程师、第三方接入方、SDK 维护者
 >
-> **Related TRD:** [TRD number/filename]
+> **关联 TRD：** [TRD编号/文件名]
 >
-> **Related Architecture Doc:** [ADD number/filename]
+> **关联架构文档：** [ADD编号/文件名]
 >
-> **OpenAPI Spec:** [openapi.yaml path or URL]
+> **OpenAPI Spec：** [openapi.yaml 路径或 URL]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Purpose and Scope
+### 0.1 文档目的与适用范围
 
-**API Documentation answers:** "What do endpoints look like, how to call them, what they return, and how to handle errors" — the contract layer between frontend, backend, third-party integrators, and SDK maintainers.
+**API 文档回答**："端点长什么样、怎么调、返回什么、出错怎么办"——前后端、第三方与 SDK 维护者的契约层。
 
-**Applicable scenarios:**
+**适用场景：**
 
-- ✅ Public-facing REST / GraphQL / gRPC interface contracts
-- ✅ Interface integration reference for frontend-backend separation architecture
-- ✅ Third-party integration, SDK auto-generation (based on OpenAPI 3.x)
-- ✅ Single source of truth for API gateways, mock services, and contract testing
-- ❌ Internal function signatures (use code comments / TSDoc / rustdoc)
-- ❌ Database table structures (use DB design documents)
+- ✅ 对外开放的 REST / GraphQL / gRPC 接口契约
+- ✅ 前后端分离架构下的接口联调依据
+- ✅ 第三方接入、SDK 自动生成（基于 OpenAPI 3.x）
+- ✅ API 网关、Mock 服务、契约测试的单一事实源
+- ❌ 内部函数签名（用代码注释 / TSDoc / rustdoc）
+- ❌ 数据库表结构（用 DB 设计文档）
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename             | Related Section  |
-| :------------ | :------------------- | :--------------- |
-| [Type]        | [Filename] [Line Range] | [Section Description] |
+| 文档类型 | 文件名              | 相关章节   |
+| :------- | :------------------ | :--------- |
+| [类型]   | [文件名] [行号范围] | [章节描述] |
 
-> **Reference format**: Related documents use the `filename line range` format (e.g., `【Template】Technical Design Document (TRD).md 3-17`). Line numbers may change as documents are updated — refer to the actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date       | Author   | Change Description                                                     | Reviewer  |
-| :------ | :--------- | :------- | :--------------------------------------------------------------------- | :-------- |
-| v0.1    | YYYY-MM-DD | [Name]   | Initial draft: core endpoint list + authentication method             | [Name]    |
-| v0.2    | YYYY-MM-DD | [Name]   | Added error code dictionary + rate limiting strategy                   | [Name]    |
-| v1.0    | YYYY-MM-DD | [Name]   | Official release, aligned with OpenAPI 3.1                             | [Architect] |
-| v1.0.1  | YYYY-MM-DD | [Name]   | Fixed `/v1/users/{id}` response field `deleted_at` nullable annotation | —         |
+| 版本   | 日期       | 修订人 | 变更内容                                                                 | 审核人   |
+| :----- | :--------- | :----- | :----------------------------------------------------------------------- | :------- |
+| v0.1   | YYYY-MM-DD | [姓名] | 初稿：核心端点列表 + 认证方式                                             | [姓名]   |
+| v0.2   | YYYY-MM-DD | [姓名] | 补充错误码字典 + 限流策略                                                 | [姓名]   |
+| v1.0   | YYYY-MM-DD | [姓名] | 正式发布，对齐 OpenAPI 3.1                                                | [架构师] |
+| v1.0.1 | YYYY-MM-DD | [姓名] | 修正 `/v1/users/{id}` 响应字段 `deleted_at` 可空性标注                    | —        |
 
 ---
 
-## 1. Overview
+## 1. 概述（Overview）
 
-> **5-second summary:** What kind of API is this, who is it for, and what problem does it solve.
+> **5 秒说清：** 这是一套什么 API、给谁用、解决什么问题。
 
-| Element          | Content                                                           |
+| 要素             | 内容                                                              |
 | :--------------- | :---------------------------------------------------------------- |
-| **API Name**     | [e.g., User Center OpenAPI]                                      |
-| **API Purpose**  | [e.g., Unified user asset query and modification interface for mobile / Web / third-party ISV] |
-| **Protocol**     | HTTPS / RESTful / GraphQL / gRPC                                  |
-| **Base URL**     | `https://{env}.example.com/api/v{version}`                        |
-| **Environment**  | Production: `api.example.com` / Staging: `api-pre.example.com` / Sandbox: `sandbox.example.com` |
-| **Current Version** | v1                                                             |
-| **OpenAPI Version** | OpenAPI 3.1.0                                                   |
-| **MIME Type**    | `application/json; charset=utf-8`                                 |
-| **Character Set**| UTF-8                                                             |
-| **Timezone**     | All timestamps use ISO 8601 UTC (e.g., `2026-07-05T08:00:00Z`)   |
+| **API 名称**     | [如：用户中心 OpenAPI]                                            |
+| **API 定位**     | [如：面向移动端 / Web / 第三方 ISV 的统一用户资产查询与变更接口] |
+| **协议**         | HTTPS / RESTful / GraphQL / gRPC                                  |
+| **基础 URL**     | `https://{env}.example.com/api/v{version}`                        |
+| **环境**         | 线上：`api.example.com` / 预发：`api-pre.example.com` / 沙箱：`sandbox.example.com` |
+| **当前版本**     | v1                                                                |
+| **OpenAPI 版本** | OpenAPI 3.1.0                                                     |
+| **MIME 类型**    | `application/json; charset=utf-8`                                 |
+| **字符集**       | UTF-8                                                             |
+| **时区**         | 所有时间戳使用 ISO 8601 UTC（如 `2026-07-05T08:00:00Z`）          |
 
 ---
 
-## 2. Authentication & Authorization
+## 2. 认证与授权（Authentication & Authorization）
 
-### 2.1 Authentication Methods
+### 2.1 认证方式
 
-| Method           | Applicable Scenario       | Credential Location                          | Credential Validity     |
-| :--------------- | :------------------------ | :------------------------------------------- | :---------------------- |
-| **Bearer Token** | User-facing API           | `Authorization: Bearer {access_token}`       | 2 hours, refreshable   |
-| **API Key**      | Server-to-server          | `X-API-Key: {api_key}`                       | Long-term, revocable   |
-| **OAuth 2.1**    | Third-party integration   | `Authorization: Bearer {oauth_token}`        | Determined by authorization flow |
-| **mTLS**         | Financial / internal sensitive channels | Client certificate | Determined by certificate lifecycle |
+| 方式             | 适用场景               | 凭证位置                                  | 凭证有效期       |
+| :--------------- | :--------------------- | :---------------------------------------- | :--------------- |
+| **Bearer Token** | 用户态 API             | `Authorization: Bearer {access_token}`   | 2 小时，可刷新   |
+| **API Key**      | 服务端到服务端         | `X-API-Key: {api_key}`                    | 长期，可吊销     |
+| **OAuth 2.1**    | 第三方接入             | `Authorization: Bearer {oauth_token}`    | 由授权流程决定   |
+| **mTLS**         | 金融级 / 内网敏感链路  | 客户端证书                                | 由证书生命周期决定 |
 
-### 2.2 Obtaining a Token
+### 2.2 获取 Token
 
 ```http
 POST /v1/auth/token HTTP/1.1
@@ -112,45 +112,45 @@ Content-Type: application/json
 }
 ```
 
-### 2.3 Permission Model (Scope)
+### 2.3 权限模型（Scope）
 
-| Scope            | Description            | Applicable Endpoints                |
-| :--------------- | :--------------------- | :---------------------------------- |
-| `user:read`      | Read basic user info   | `GET /v1/users/*`                   |
-| `user:write`     | Modify user info       | `POST/PUT/PATCH /v1/users/*`        |
-| `order:read`     | Read orders            | `GET /v1/orders/*`                  |
-| `order:write`    | Create/cancel orders   | `POST /v1/orders`                   |
-| `admin:*`        | Full admin access      | Internal admin only                 |
+| Scope            | 描述                 | 适用端点                       |
+| :--------------- | :------------------- | :----------------------------- |
+| `user:read`      | 读取用户基础信息     | `GET /v1/users/*`              |
+| `user:write`     | 修改用户信息         | `POST/PUT/PATCH /v1/users/*`   |
+| `order:read`     | 读取订单             | `GET /v1/orders/*`             |
+| `order:write`    | 创建/取消订单        | `POST /v1/orders`              |
+| `admin:*`        | 管理后台全权         | 仅内网管理端                   |
 
-### 2.4 Authorization Failure Responses
+### 2.4 鉴权失败响应
 
-| HTTP Status Code | error_code            | Description                       |
-| :--------------: | :-------------------- | :-------------------------------- |
-| 401              | `UNAUTHENTICATED`     | Missing credentials / Token expired |
-| 403              | `PERMISSION_DENIED`   | Insufficient Scope                |
-| 403              | `TOKEN_REVOKED`       | Token has been revoked            |
+| HTTP 状态码 | error_code            | 说明                  |
+| :---------: | :-------------------- | :-------------------- |
+| 401         | `UNAUTHENTICATED`     | 缺少凭证 / Token 失效 |
+| 403         | `PERMISSION_DENIED`   | Scope 不足            |
+| 403         | `TOKEN_REVOKED`       | Token 已被吊销        |
 
 ---
 
-## 3. Conventions
+## 3. 通用约定（Conventions）
 
-### 3.1 Request Format
+### 3.1 请求格式
 
-- **Content-Type**: `application/json; charset=utf-8` (except file uploads using `multipart/form-data`)
-- **Accept**: `application/json`
-- **Required Headers**:
+- **Content-Type**：`application/json; charset=utf-8`（除文件上传用 `multipart/form-data`）
+- **Accept**：`application/json`
+- **必填请求头**：
 
-| Header            | Description                         | Example                       |
-| :---------------- | :---------------------------------- | :---------------------------- |
-| `Authorization`   | Bearer Token / API Key              | `Bearer eyJhbGciOi...`        |
-| `X-Request-Id`    | Request tracing ID (auto-generated by gateway if omitted) | `req_8f14e45f-ceea-...` |
-| `X-Timestamp`     | Client timestamp (replay prevention)| `1752835200`                  |
-| `X-Signature`     | Request signature (required for sensitive endpoints) | `HMAC-SHA256` output |
-| `User-Agent`      | Client identifier                  | `MyApp/1.0 (iOS 17)`          |
+| Header              | 说明                            | 示例                          |
+| :------------------ | :------------------------------ | :---------------------------- |
+| `Authorization`     | Bearer Token / API Key          | `Bearer eyJhbGciOi...`        |
+| `X-Request-Id`      | 请求追踪 ID（缺省由网关生成）   | `req_8f14e45f-ceea-...`       |
+| `X-Timestamp`       | 客户端时间戳（防重放）          | `1752835200`                  |
+| `X-Signature`       | 请求签名（敏感接口必填）        | `HMAC-SHA256` 输出            |
+| `User-Agent`        | 客户端标识                       | `MyApp/1.0 (iOS 17)`          |
 
-### 3.2 Response Format (Unified Envelope)
+### 3.2 响应格式（统一信封）
 
-**Success Response:**
+**成功响应：**
 
 ```json
 {
@@ -162,41 +162,41 @@ Content-Type: application/json
 }
 ```
 
-**Error Response:**
+**错误响应：**
 
 ```json
 {
   "code": 40001,
-  "message": "Parameter validation failed",
+  "message": "参数校验失败",
   "errors": [
-    { "field": "email", "issue": "Invalid format" }
+    { "field": "email", "issue": "格式不合法" }
   ],
   "request_id": "req_8f14e45f-ceea-467f-a830-...",
   "timestamp": "2026-07-05T08:00:00Z"
 }
 ```
 
-| Field         | Type    | Description                                       |
-| :------------ | :------ | :------------------------------------------------ |
-| `code`        | integer | 0 indicates success; non-0 indicates business error code |
-| `message`     | string  | Human-readable brief description                  |
-| `data`        | object  | Business data; omitted on error                   |
-| `errors`      | array   | Field-level error details; returned only on validation failure |
-| `request_id`  | string  | Full-chain tracing ID; required when investigating issues |
-| `timestamp`   | string  | Server response time, ISO 8601 UTC                |
+| 字段          | 类型     | 说明                                          |
+| :------------ | :------- | :-------------------------------------------- |
+| `code`        | integer  | 0 表示成功，非 0 表示业务错误码                |
+| `message`     | string   | 面向人类的简短描述                             |
+| `data`        | object   | 业务数据，错误时缺省                           |
+| `errors`      | array    | 字段级错误明细，仅校验失败时返回               |
+| `request_id`  | string   | 全链路追踪 ID，排查问题必提供                  |
+| `timestamp`   | string   | 服务端响应时间，ISO 8601 UTC                   |
 
-### 3.3 Pagination Conventions
+### 3.3 分页约定
 
-- **Method**: Cursor-based pagination (recommended) / Offset-based pagination (for backward compatibility)
-- **Request Parameters**:
+- **方式**：游标分页（推荐）/ 偏移分页（兼容）
+- **请求参数**：
 
-| Parameter   | Type    | Default | Description                              |
-| :---------- | :------ | :------ | :--------------------------------------- |
-| `page_size` | integer | 20      | Items per page, maximum 100              |
-| `cursor`    | string  | —       | Cursor; omit on first request; obtain from response |
-| `page`      | integer | 1       | Used with offset pagination; mutually exclusive with cursor |
+| 参数        | 类型    | 默认 | 说明                                   |
+| :---------- | :------ | :--- | :------------------------------------- |
+| `page_size` | integer | 20   | 每页数量，上限 100                     |
+| `cursor`    | string  | —    | 游标，首次请求不传，后续从响应取回     |
+| `page`      | integer | 1    | 偏移分页时使用，与 cursor 互斥         |
 
-- **Response Fields**:
+- **响应字段**：
 
 ```json
 {
@@ -211,74 +211,74 @@ Content-Type: application/json
 }
 ```
 
-### 3.4 Naming and Type Conventions
+### 3.4 命名与类型约定
 
-| Dimension    | Convention                                              | Example                       |
-| :----------- | :------------------------------------------------------ | :---------------------------- |
-| Field naming | `snake_case`                                            | `user_id` / `created_at`      |
-| Time format  | ISO 8601 UTC string                                     | `2026-07-05T08:00:00Z`        |
-| Amount       | Integer + string (smallest currency unit, avoids floating-point errors) | `"199"` represents ¥1.99 |
-| Boolean      | `true` / `false`                                        | Do not use 0/1 as substitute  |
-| Enum         | Lowercase snake_case                                    | `order_status: "paid"`        |
-| ID type      | String (avoids JSON number precision loss)              | `"id": "1234567890123456789"` |
-| Null value   | `null` instead of field omission                        | Keep field nullability explicit |
-| Currency symbol | `$` in Feishu / Markdown must be escaped as `\$`    | `\$0.05`                      |
+| 维度         | 约定                                                   | 示例                          |
+| :----------- | :----------------------------------------------------- | :---------------------------- |
+| 字段命名     | `snake_case`                                           | `user_id` / `created_at`      |
+| 时间格式     | ISO 8601 UTC 字符串                                    | `2026-07-05T08:00:00Z`        |
+| 金额         | 整数 + 字符串（最小货币单位，避免浮点误差）            | `"199"` 表示 ¥1.99            |
+| 布尔         | `true` / `false`                                       | 不使用 0/1 替代               |
+| 枚举         | 小写蛇形                                                | `order_status: "paid"`        |
+| ID 类型      | 字符串（避免 JSON 数字精度丢失）                        | `"id": "1234567890123456789"` |
+| 空值         | `null` 而非省略字段                                     | 保持字段可空性显式             |
+| 金额符号     | `$` 在飞书 / Markdown 中需转义为 `\$`                   | `\$0.05`                      |
 
-### 3.5 HTTP Method Semantics
+### 3.5 HTTP 方法语义
 
-| Method   | Semantics       | Idempotent | Safe  | Example                    |
-| :------- | :-------------- | :--------: | :---: | :------------------------- |
-| `GET`    | Query           |    ✅      |  ✅   | `GET /v1/users/123`        |
-| `POST`   | Create / Action |    ❌      |  ❌   | `POST /v1/users`           |
-| `PUT`    | Full Replace    |    ✅      |  ❌   | `PUT /v1/users/123`        |
-| `PATCH`  | Partial Update  |    ❌      |  ❌   | `PATCH /v1/users/123`      |
-| `DELETE` | Delete          |    ✅      |  ❌   | `DELETE /v1/users/123`     |
+| 方法     | 语义         | 幂等性 | 安全性 | 示例                       |
+| :------- | :----------- | :----: | :----: | :------------------------- |
+| `GET`    | 查询         |   ✅   |   ✅   | `GET /v1/users/123`        |
+| `POST`   | 创建 / 动作  |   ❌   |   ❌   | `POST /v1/users`           |
+| `PUT`    | 全量替换     |   ✅   |   ❌   | `PUT /v1/users/123`        |
+| `PATCH`  | 部分更新     |   ❌   |   ❌   | `PATCH /v1/users/123`      |
+| `DELETE` | 删除         |   ✅   |   ❌   | `DELETE /v1/users/123`     |
 
-### 3.6 Idempotency
+### 3.6 幂等性
 
-- **Write operation idempotency**: Client passes a UUID in the `Idempotency-Key` header; server returns the first result for the same key within 24 hours
-- **Applicable to**: All `POST` / `PUT` / `PATCH` / `DELETE`
-- **Example**: `Idempotency-Key: 8f14e45f-ceea-467f-a830-a0d4e8d6c5b1`
+- **写操作幂等**：客户端在 `Idempotency-Key` 头中传入 UUID，服务端 24 小时内对相同 key 返回首次结果
+- **适用范围**：所有 `POST` / `PUT` / `PATCH` / `DELETE`
+- **示例**：`Idempotency-Key: 8f14e45f-ceea-467f-a830-a0d4e8d6c5b1`
 
 ---
 
-## 4. Endpoint Index
+## 4. 端点列表（Endpoint Index）
 
-> **Note**: Full endpoint details are in §5; this table serves as a quick reference.
+> **说明**：所有端点详述见 §5；本表为快速索引。
 
-| #   | Method   | Path                           | Name           | Scope          | Notes          |
+| #   | 方法     | 路径                           | 名称           | Scope          | 备注           |
 | :-: | :------- | :----------------------------- | :------------- | :------------- | :------------- |
-| 1   | `POST`   | `/v1/auth/token`               | Obtain Token   | —              | Public endpoint |
-| 2   | `POST`   | `/v1/auth/token:refresh`       | Refresh Token  | —              | Requires refresh_token |
-| 3   | `GET`    | `/v1/users/{user_id}`          | Query User     | `user:read`    |                |
-| 4   | `POST`   | `/v1/users`                    | Create User    | `user:write`   |                |
-| 5   | `PATCH`  | `/v1/users/{user_id}`          | Update User    | `user:write`   | Partial update |
-| 6   | `DELETE` | `/v1/users/{user_id}`          | Delete User    | `user:write`   | Soft delete    |
-| 7   | `GET`    | `/v1/users`                    | User List      | `user:read`    | Paginated      |
-| 8   | `GET`    | `/v1/orders/{order_id}`        | Query Order    | `order:read`   |                |
-| 9   | `POST`   | `/v1/orders`                   | Create Order   | `order:write`  | Idempotency required |
-| 10  | `POST`   | `/v1/orders/{order_id}:cancel` | Cancel Order   | `order:write`  |                |
+| 1   | `POST`   | `/v1/auth/token`               | 获取 Token     | —              | 公开端点       |
+| 2   | `POST`   | `/v1/auth/token:refresh`       | 刷新 Token     | —              | 需要 refresh_token |
+| 3   | `GET`    | `/v1/users/{user_id}`          | 查询用户       | `user:read`    |                |
+| 4   | `POST`   | `/v1/users`                    | 创建用户       | `user:write`   |                |
+| 5   | `PATCH`  | `/v1/users/{user_id}`          | 更新用户       | `user:write`   | 部分更新       |
+| 6   | `DELETE` | `/v1/users/{user_id}`          | 删除用户       | `user:write`   | 软删除         |
+| 7   | `GET`    | `/v1/users`                    | 用户列表       | `user:read`    | 分页           |
+| 8   | `GET`    | `/v1/orders/{order_id}`        | 查询订单       | `order:read`   |                |
+| 9   | `POST`   | `/v1/orders`                   | 创建订单       | `order:write`  | 幂等必填       |
+| 10  | `POST`   | `/v1/orders/{order_id}:cancel` | 取消订单       | `order:write`  |                |
 
 ---
 
-## 5. Endpoint Reference
+## 5. 端点详述（Endpoint Reference）
 
-### 5.1 Obtain Token
+### 5.1 获取 Token
 
 `POST /v1/auth/token`
 
-**Description**: Exchange client credentials for an access token.
+**描述**：使用客户端凭证换取访问 Token。
 
-**Request Parameters**
+**请求参数**
 
-| Location | Field           | Type    | Required | Description                       |
-| :------- | :-------------- | :------ | :------: | :-------------------------------- |
-| body     | `grant_type`    | string  |    ✅    | `client_credentials` / `refresh_token` |
-| body     | `client_id`     | string  |    ✅    | Client ID                         |
-| body     | `client_secret` | string  |    ✅    | Client secret                     |
-| body     | `refresh_token` | string  |    —     | Required when grant_type=refresh_token |
+| 位置     | 字段            | 类型    | 必填 | 说明                |
+| :------- | :-------------- | :------ | :--: | :------------------ |
+| body     | `grant_type`    | string  |  ✅  | `client_credentials` / `refresh_token` |
+| body     | `client_id`     | string  |  ✅  | 客户端 ID           |
+| body     | `client_secret` | string  |  ✅  | 客户端密钥          |
+| body     | `refresh_token` | string  |  —  | grant_type=refresh_token 时必填 |
 
-**Request Example**
+**请求示例**
 
 ```bash
 curl -X POST https://api.example.com/v1/auth/token \
@@ -290,7 +290,7 @@ curl -X POST https://api.example.com/v1/auth/token \
   }'
 ```
 
-**Success Response** `200 OK`
+**成功响应** `200 OK`
 
 ```json
 {
@@ -307,42 +307,42 @@ curl -X POST https://api.example.com/v1/auth/token \
 }
 ```
 
-**Error Response**
+**错误响应**
 
-| HTTP | code   | message                    |
-| ---: | :----- | :------------------------- |
-| 400  | 40001  | Parameter validation failed |
-| 401  | 40101  | client_id does not exist   |
-| 401  | 40102  | client_secret incorrect    |
+| HTTP | code   | message          |
+| ---: | :----- | :--------------- |
+| 400  | 40001  | 参数校验失败     |
+| 401  | 40101  | client_id 不存在 |
+| 401  | 40102  | client_secret 错误 |
 
 ---
 
-### 5.2 Query User
+### 5.2 查询用户
 
 `GET /v1/users/{user_id}`
 
-**Description**: Query user details by user ID.
+**描述**：根据用户 ID 查询用户详情。
 
-**Path Parameters**
+**路径参数**
 
-| Field      | Type   | Required | Description          |
-| :--------- | :----- | :------: | :------------------- |
-| `user_id`  | string |    ✅    | User unique identifier |
+| 字段       | 类型   | 必填 | 说明              |
+| :--------- | :----- | :--: | :---------------- |
+| `user_id`  | string |  ✅  | 用户唯一标识      |
 
-**Query Parameters**
+**查询参数**
 
-| Field      | Type    | Required | Description                         |
-| :--------- | :------ | :------: | :---------------------------------- |
-| `fields`   | string  |    —     | Field filtering, comma-separated    |
+| 字段       | 类型    | 必填 | 说明                          |
+| :--------- | :------ | :--: | :---------------------------- |
+| `fields`   | string  |  —  | 返回字段筛选，逗号分隔        |
 
-**Request Example**
+**请求示例**
 
 ```bash
 curl -X GET https://api.example.com/v1/users/123 \
   -H "Authorization: Bearer {access_token}"
 ```
 
-**Success Response** `200 OK`
+**成功响应** `200 OK`
 
 ```json
 {
@@ -350,8 +350,8 @@ curl -X GET https://api.example.com/v1/users/123 \
   "message": "ok",
   "data": {
     "user_id": "123",
-    "nickname": "John Doe",
-    "email": "john@example.com",
+    "nickname": "张三",
+    "email": "zhangsan@example.com",
     "phone": "138****0000",
     "avatar_url": "https://cdn.example.com/avatar/123.png",
     "status": "active",
@@ -363,32 +363,32 @@ curl -X GET https://api.example.com/v1/users/123 \
 }
 ```
 
-**Error Response**
+**错误响应**
 
-| HTTP | code   | message              |
-| ---: | :----- | :------------------- |
-| 401  | 40100  | Unauthenticated      |
-| 403  | 40300  | Insufficient Scope   |
-| 404  | 40400  | User does not exist  |
+| HTTP | code   | message          |
+| ---: | :----- | :--------------- |
+| 401  | 40100  | 未认证           |
+| 403  | 40300  | Scope 不足       |
+| 404  | 40400  | 用户不存在       |
 
 ---
 
-### 5.3 Create User
+### 5.3 创建用户
 
 `POST /v1/users`
 
-**Description**: Create a new user.
+**描述**：创建一个新用户。
 
-**Request Body**
+**请求体**
 
-| Field       | Type    | Required | Validation Rules                    | Description   |
-| :---------- | :------ | :------: | :---------------------------------- | :------------ |
-| `nickname`  | string  |    ✅    | 1-32 characters, no sensitive words | Nickname      |
-| `email`     | string  |    ✅    | RFC 5322 email format               | Email         |
-| `phone`     | string  |    —     | E.164 format `+8613800000000`       | Phone number  |
-| `password`  | string  |    ✅    | ≥ 8 characters, includes uppercase + lowercase + digits | Password (sent in plaintext, server-side bcrypt) |
+| 字段        | 类型    | 必填 | 校验规则                       | 说明         |
+| :---------- | :------ | :--: | :----------------------------- | :----------- |
+| `nickname`  | string  |  ✅  | 1-32 字符，不含敏感词          | 昵称         |
+| `email`     | string  |  ✅  | RFC 5322 邮箱格式              | 邮箱         |
+| `phone`     | string  |  —  | E.164 格式 `+8613800000000`    | 手机号       |
+| `password`  | string  |  ✅  | ≥ 8 位，含大小写 + 数字         | 密码（明文传入，服务端 bcrypt）|
 
-**Request Example**
+**请求示例**
 
 ```bash
 curl -X POST https://api.example.com/v1/users \
@@ -396,13 +396,13 @@ curl -X POST https://api.example.com/v1/users \
   -H "Idempotency-Key: 8f14e45f-ceea-467f-a830-a0d4e8d6c5b1" \
   -H "Content-Type: application/json" \
   -d '{
-    "nickname": "John Doe",
-    "email": "john@example.com",
+    "nickname": "张三",
+    "email": "zhangsan@example.com",
     "password": "********"
   }'
 ```
 
-**Success Response** `201 Created`
+**成功响应** `201 Created`
 
 ```json
 {
@@ -410,8 +410,8 @@ curl -X POST https://api.example.com/v1/users \
   "message": "ok",
   "data": {
     "user_id": "124",
-    "nickname": "John Doe",
-    "email": "john@example.com",
+    "nickname": "张三",
+    "email": "zhangsan@example.com",
     "status": "active",
     "created_at": "2026-07-05T08:00:00Z"
   },
@@ -420,154 +420,154 @@ curl -X POST https://api.example.com/v1/users \
 }
 ```
 
-**Error Response**
+**错误响应**
 
 | HTTP | code   | message              |
 | ---: | :----- | :------------------- |
-| 400  | 40001  | Parameter validation failed |
-| 409  | 40901  | Email already registered |
+| 400  | 40001  | 参数校验失败         |
+| 409  | 40901  | 邮箱已注册           |
 
 ---
 
-> **Endpoint continuation note**: Remaining endpoints (5.4 ~ 5.10) follow the same structure: path parameters / query parameters / request body / request examples / success response / error response. Maintain identical structure to avoid style drift.
+> **端点续写说明**：后续端点（5.4 ~ 5.10）按上述结构补充：路径参数 / 查询参数 / 请求体 / 请求示例 / 成功响应 / 错误响应。结构保持完全一致，避免风格漂移。
 
 ---
 
-## 6. Schemas
+## 6. 数据模型（Schemas）
 
-> **Note**: This section defines all data models shared by endpoints, corresponding one-to-one with OpenAPI `components.schemas`.
+> **说明**：本节定义所有端点共享的数据模型，与 OpenAPI `components.schemas` 一一对应。
 
 ### 6.1 User
 
-| Field         | Type      | Required | Nullable | Description                         |
-| :------------ | :-------- | :------: | :------: | :---------------------------------- |
-| `user_id`     | string    |    ✅    |    —     | User unique ID                      |
-| `nickname`    | string    |    ✅    |    —     | Nickname                            |
-| `email`       | string    |    ✅    |    —     | Email                               |
-| `phone`       | string    |    —     |    ✅    | Phone number (E.164)                |
-| `avatar_url`  | string    |    —     |    ✅    | Avatar URL                          |
-| `status`      | enum      |    ✅    |    —     | `active` / `inactive` / `banned`    |
-| `created_at`  | datetime  |    ✅    |    —     | Creation time (ISO 8601 UTC)        |
-| `updated_at`  | datetime  |    ✅    |    —     | Last update time (ISO 8601 UTC)     |
-| `deleted_at`  | datetime  |    —     |    ✅    | Soft delete time; null if not deleted |
+| 字段          | 类型      | 必填 | 可空 | 说明                          |
+| :------------ | :-------- | :--: | :--: | :---------------------------- |
+| `user_id`     | string    |  ✅  |  —   | 用户唯一 ID                   |
+| `nickname`    | string    |  ✅  |  —   | 昵称                          |
+| `email`       | string    |  ✅  |  —   | 邮箱                          |
+| `phone`       | string    |  —   |  ✅  | 手机号（E.164）               |
+| `avatar_url`  | string    |  —   |  ✅  | 头像 URL                      |
+| `status`      | enum      |  ✅  |  —   | `active` / `inactive` / `banned` |
+| `created_at`  | datetime  |  ✅  |  —   | 创建时间（ISO 8601 UTC）      |
+| `updated_at`  | datetime  |  ✅  |  —   | 更新时间（ISO 8601 UTC）      |
+| `deleted_at`  | datetime  |  —   |  ✅  | 软删除时间，未删除为 null     |
 
 ### 6.2 Order
 
-| Field         | Type      | Required | Nullable | Description                         |
-| :------------ | :-------- | :------: | :------: | :---------------------------------- |
-| `order_id`    | string    |    ✅    |    —     | Order ID                            |
-| `user_id`     | string    |    ✅    |    —     | Ordering user's ID                  |
-| `amount`      | string    |    ✅    |    —     | Amount (smallest currency unit, string) |
-| `currency`    | string    |    ✅    |    —     | ISO 4217 currency code (e.g., `CNY`) |
-| `order_status`| enum      |    ✅    |    —     | `pending` / `paid` / `shipped` / `cancelled` / `refunded` |
-| `items`       | array     |    ✅    |    —     | Item list                           |
-| `created_at`  | datetime  |    ✅    |    —     | Order creation time                 |
-| `paid_at`     | datetime  |    —     |    ✅    | Payment time                        |
+| 字段            | 类型      | 必填 | 可空 | 说明                          |
+| :-------------- | :-------- | :--: | :--: | :---------------------------- |
+| `order_id`      | string    |  ✅  |  —   | 订单 ID                       |
+| `user_id`       | string    |  ✅  |  —   | 下单用户 ID                   |
+| `amount`        | string    |  ✅  |  —   | 金额（最小货币单位，字符串）  |
+| `currency`      | string    |  ✅  |  —   | ISO 4217 货币码（如 `CNY`）   |
+| `order_status`  | enum      |  ✅  |  —   | `pending` / `paid` / `shipped` / `cancelled` / `refunded` |
+| `items`         | array     |  ✅  |  —   | 商品列表                      |
+| `created_at`    | datetime  |  ✅  |  —   | 下单时间                      |
+| `paid_at`       | datetime  |  —   |  ✅  | 支付时间                      |
 
 ### 6.3 Pagination
 
-| Field         | Type     | Required | Description                       |
-| :------------ | :------- | :------: | :-------------------------------- |
-| `items`       | array    |    ✅    | Current page data                 |
-| `page_info`   | object   |    ✅    | Pagination info                   |
-| `page_info.has_next`   | boolean | ✅ | Whether there is a next page      |
-| `page_info.next_cursor`| string  | —  | Next page cursor                  |
-| `page_info.total`      | integer | —  | Total count (returned for offset pagination) |
+| 字段          | 类型     | 必填 | 说明                            |
+| :------------ | :------- | :--: | :------------------------------ |
+| `items`       | array    |  ✅  | 当前页数据                      |
+| `page_info`   | object   |  ✅  | 分页信息                        |
+| `page_info.has_next`   | boolean | ✅ | 是否有下一页                    |
+| `page_info.next_cursor`| string  | — | 下一页游标                      |
+| `page_info.total`      | integer | — | 总条数（偏移分页时返回）        |
 
 ---
 
-## 7. Error Codes
+## 7. 错误码字典（Error Codes）
 
-### 7.1 Error Code Structure
+### 7.1 错误码结构
 
-Error codes are 5-digit integers, segmented as follows:
+错误码为 5 位整数，分段如下：
 
-| Segment   | Meaning                  | Example               |
-| :-------- | :----------------------- | :-------------------- |
-| 1st digit | HTTP status code abbreviation | `4` = 4xx, `5` = 5xx |
-| 2nd-3rd digits | Module number       | `00` = general, `01` = auth, `02` = user |
-| 4th-5th digits | Error sequence within module | `01` = 1st error |
+| 段位      | 含义                     | 示例                |
+| :-------- | :----------------------- | :------------------ |
+| 第 1 位   | HTTP 状态码缩写          | `4` = 4xx，`5` = 5xx |
+| 第 2-3 位 | 模块编号                 | `00` = 通用，`01` = 认证，`02` = 用户 |
+| 第 4-5 位 | 模块内错误序号           | `01` = 第 1 个错误   |
 
-### 7.2 General Error Codes
+### 7.2 通用错误码
 
-| HTTP | code   | message              | Description                     |
-| ---: | :----- | :------------------- | :------------------------------ |
-| 400  | 40000  | Malformed request    | JSON parse failure / missing required header |
-| 400  | 40001  | Parameter validation failed | Field-level errors in `errors` |
-| 401  | 40100  | Unauthenticated      | Missing / expired Token         |
-| 403  | 40300  | Insufficient permission | Scope mismatch                |
-| 404  | 40400  | Resource not found   |                                 |
-| 409  | 40900  | Resource conflict    | Uniqueness conflict             |
-| 422  | 42200  | Business validation failed | Business rule not satisfied |
-| 429  | 42900  | Too many requests    | Rate limit triggered            |
-| 500  | 50000  | Internal server error | Contact ops, provide request_id |
-| 502  | 50200  | Gateway error        | Upstream unreachable            |
-| 503  | 50300  | Service unavailable  | Under maintenance / overloaded  |
-| 504  | 50400  | Gateway timeout      |                                 |
+| HTTP | code   | message              | 说明                          |
+| ---: | :----- | :------------------- | :---------------------------- |
+| 400  | 40000  | 请求格式错误         | JSON 解析失败 / 缺少必填头    |
+| 400  | 40001  | 参数校验失败         | 字段级错误见 `errors`         |
+| 401  | 40100  | 未认证               | 缺少 / 失效的 Token           |
+| 403  | 40300  | 权限不足             | Scope 不匹配                  |
+| 404  | 40400  | 资源不存在           |                               |
+| 409  | 40900  | 资源冲突             | 唯一性冲突                    |
+| 422  | 42200  | 业务校验失败         | 业务规则不允许                |
+| 429  | 42900  | 请求过多             | 触发限流                      |
+| 500  | 50000  | 服务内部错误         | 联系运维，提供 request_id     |
+| 502  | 50200  | 网关错误             | 上游不可达                    |
+| 503  | 50300  | 服务不可用           | 维护中 / 过载                 |
+| 504  | 50400  | 网关超时             |                               |
 
-### 7.3 Business Error Codes
+### 7.3 业务错误码
 
-| HTTP | code   | message              | Module    |
-| ---: | :----- | :------------------- | :-------- |
-| 401  | 40101  | client_id does not exist | Auth   |
-| 401  | 40102  | client_secret incorrect  | Auth   |
-| 409  | 40901  | Email already registered | User   |
-| 409  | 40902  | Phone number already bound | User  |
-| 422  | 42201  | Order cannot be cancelled | Order  |
-| 422  | 42202  | Insufficient stock    | Order     |
+| HTTP | code   | message              | 模块     |
+| ---: | :----- | :------------------- | :------- |
+| 401  | 40101  | client_id 不存在     | 认证     |
+| 401  | 40102  | client_secret 错误   | 认证     |
+| 409  | 40901  | 邮箱已注册           | 用户     |
+| 409  | 40902  | 手机号已绑定         | 用户     |
+| 422  | 42201  | 订单不可取消         | 订单     |
+| 422  | 42202  | 库存不足             | 订单     |
 
 ---
 
-## 8. Versioning
+## 8. 版本管理（Versioning）
 
-### 8.1 Versioning Strategy
+### 8.1 版本策略
 
-- **Version location**: URL path prefix (`/v1/`, `/v2/`)
-- **Compatibility commitment**:
-  - Within the same major version: adding fields / adding endpoints / relaxing validation → backward compatible, no client breakage
-  - Removing fields / changing field types / tightening validation / removing endpoints → must bump major version
-- **Support lifecycle**: Old major versions maintained for ≥ 12 months after new version release; deprecation announced 90 days before end-of-life
+- **版本位置**：URL 路径前缀（`/v1/`、`/v2/`）
+- **兼容性承诺**：
+  - 同一大版本内：新增字段 / 新增端点 / 放宽校验 → 向后兼容，不破坏客户端
+  - 删除字段 / 改变字段类型 / 收紧校验 / 删除端点 → 必须升大版本
+- **支持周期**：旧大版本在新版本发布后维护 ≥ 12 个月，到期前 90 天公告废弃
 
-### 8.2 Deprecation Process
+### 8.2 废弃流程
 
 ```mermaid
 flowchart LR
-    A[New Version Released] --> B[Old Version Marked Deprecated]
-    B --> C[Response Header Returns Sunset: date]
-    C --> D[90-Day Announcement Period]
-    D --> E[Old Version Decommissioned]
+    A[新版发布] --> B[旧版标记 Deprecated]
+    B --> C[响应头返回 Sunset: date]
+    C --> D[90 天公告期]
+    D --> E[下线旧版]
     style A fill:#c8e6c9
     style E fill:#ffcdd2
 ```
 
-- **Response header annotation**: `Deprecation: true` + `Sunset: Wed, 5 Oct 2026 00:00:00 GMT`
-- **Announcement channels**: Developer email + API documentation homepage + response header — triple notification
+- **响应头标注**：`Deprecation: true` + `Sunset: Wed, 5 Oct 2026 00:00:00 GMT`
+- **公告渠道**：开发者邮件 + API 文档首页 + 响应头三重告知
 
-### 8.3 Change Classification
+### 8.3 变更分类
 
-| Change Type               | Compatible? | Version Bump Required? | Example                              |
-| :------------------------ | :---------: | :---------------------: | :----------------------------------- |
-| Add optional request field|     ✅      |           ❌            | Add `fields` query parameter         |
-| Add response field        |     ✅      |           ❌            | Add `avatar_url` to User             |
-| Remove field              |     ❌      |           ✅            | Remove `phone`                       |
-| Change field type         |     ❌      |           ✅            | Change `amount` from number to string |
-| Tighten validation rules  |     ❌      |           ✅            | `password` minimum length 6 → 8      |
-| Change error code semantics |   ❌      |           ✅            | 40101 changed from "client_id incorrect" to "Token expired" |
+| 变更类型           | 是否兼容 | 是否需升版本 | 示例                                |
+| :----------------- | :------: | :----------: | :---------------------------------- |
+| 新增可选请求字段   |   ✅     |     ❌       | 增加 `fields` 查询参数              |
+| 新增响应字段       |   ✅     |     ❌       | User 增加 `avatar_url`              |
+| 删除字段           |   ❌     |     ✅       | 移除 `phone`                        |
+| 改变字段类型       |   ❌     |     ✅       | `amount` 从 number 改为 string      |
+| 收紧校验规则       |   ❌     |     ✅       | `password` 最小长度 6 → 8           |
+| 改变错误码语义     |   ❌     |     ✅       | 40101 从"client_id 错误"改为"Token 失效" |
 
 ---
 
-## 9. Security & Rate Limiting
+## 9. 安全与限流（Security & Rate Limiting）
 
-### 9.1 Rate Limiting Strategy
+### 9.1 限流策略
 
-| Dimension    | Limit                | Action After Trigger             | Header Hint                            |
-| :----------- | :------------------- | :------------------------------- | :------------------------------------- |
-| Per Token    | 600 requests/min     | 429 + `Retry-After`              | `X-RateLimit-Remaining`                |
-| Per IP       | 1200 requests/min    | 429                              | `X-RateLimit-Limit`                    |
-| Per App      | 1 million requests/day | 429 + alert                    | `X-RateLimit-Reset`                    |
-| Write ops    | 60 requests/min      | 429                              | —                                      |
+| 维度         | 限制                 | 触发后行为                | Header 提示                          |
+| :----------- | :------------------- | :------------------------ | :----------------------------------- |
+| 单 Token      | 600 次 / 分钟        | 429 + `Retry-After`       | `X-RateLimit-Remaining`              |
+| 单 IP         | 1200 次 / 分钟       | 429                       | `X-RateLimit-Limit`                  |
+| 单应用        | 100 万次 / 天        | 429 + 告警                | `X-RateLimit-Reset`                  |
+| 写操作        | 60 次 / 分钟         | 429                       | —                                    |
 
-**429 Response Example:**
+**429 响应示例：**
 
 ```http
 HTTP/1.1 429 Too Many Requests
@@ -579,61 +579,61 @@ X-RateLimit-Reset: 1752835230
 
 {
   "code": 42900,
-  "message": "Too many requests, please try again later",
+  "message": "请求过多，请稍后再试",
   "request_id": "req_8f14e45f-ceea-467f-a830-a0d4e8d6c5b1",
   "timestamp": "2026-07-05T08:00:00Z"
 }
 ```
 
-### 9.2 Quota Management
+### 9.2 配额管理
 
-| Quota Item          | Default Value  | Upgrade Path                        |
-| :------------------ | :------------- | :---------------------------------- |
-| Daily call volume   | 1 million      | Apply for enterprise quota          |
-| Concurrent connections | 100          | Contact sales                       |
-| Historical data query | 30 days      | Upgrade data retention plan         |
+| 配额项       | 默认值       | 升级路径                       |
+| :----------- | :----------- | :----------------------------- |
+| 日调用量     | 100 万次     | 申请企业版配额                 |
+| 并发连接     | 100          | 联系商务                       |
+| 历史数据查询 | 30 天        | 升级数据留存套餐               |
 
-### 9.3 Security Best Practices
+### 9.3 安全最佳实践
 
-- **Transport encryption**: Enforce TLS 1.3; disable older versions
-- **Request signing**: Sensitive endpoints (payment, refund, delete) require `X-Signature`
-- **Replay prevention**: Reject `X-Timestamp` beyond ±5 minutes; nonce not reusable within 5 minutes
-- **Secret storage**: Client secrets must not be hardcoded; use KMS / environment variables
-- **Audit logs**: All write operations and sensitive read operations logged for ≥ 1 year
-- **PII masking**: Phone numbers, ID numbers, and emails masked by default in responses; request `pii:read` scope for plaintext
+- **传输加密**：强制 TLS 1.3，禁用旧版本
+- **请求签名**：敏感接口（支付、退款、删除）强制 `X-Signature`
+- **防重放**：`X-Timestamp` 偏差 ±5 分钟外拒绝；nonce 5 分钟内不可重复
+- **密钥存储**：客户端密钥不可硬编码，使用 KMS / 环境变量
+- **审计日志**：所有写操作、敏感读操作记录 ≥ 1 年
+- **PII 脱敏**：响应中手机号、身份证、邮箱默认脱敏，需明文时申请 `pii:read` scope
 
 ---
 
-## 10. Appendix
+## 10. 附录（Appendix）
 
-### 10.1 SDKs and Tools
+### 10.1 SDK 与工具
 
-| Language | Repository                          | Auto-generation Method  |
-| :------- | :---------------------------------- | :---------------------- |
-| Java     | `github.com/example/sdk-java`       | OpenAPI Generator       |
-| Python   | `github.com/example/sdk-python`     | openapi-python-client   |
-| Node.js  | `github.com/example/sdk-node`       | openapi-typescript      |
-| Go       | `github.com/example/sdk-go`         | oapi-codegen            |
+| 语言     | 仓库                                | 自动生成方式       |
+| :------- | :---------------------------------- | :----------------- |
+| Java     | `github.com/example/sdk-java`       | OpenAPI Generator  |
+| Python   | `github.com/example/sdk-python`     | openapi-python-client |
+| Node.js  | `github.com/example/sdk-node`       | openapi-typescript |
+| Go       | `github.com/example/sdk-go`         | oapi-codegen       |
 
-### 10.2 Mock and Contract Testing
+### 10.2 Mock 与契约测试
 
-- **Mock service**: Auto-generated from OpenAPI; URL `https://mock.example.com`
-- **Contract testing**: Pact / Dredd; validate implementation matches documentation in CI
-- **Postman Collection**: `postman/api-collection.json`
+- **Mock 服务**：基于 OpenAPI 自动生成，URL `https://mock.example.com`
+- **契约测试**：Pact / Dredd，CI 中校验实现与文档一致
+- **Postman Collection**：`postman/api-collection.json`
 
-### 10.3 Glossary
+### 10.3 术语表
 
-| Term        | English           | Definition                          |
-| :---------- | :---------------- | :---------------------------------- |
-| Scope       | Scope             | Authorization scope                 |
-| Cursor      | Cursor            | Cursor-based pagination locator     |
-| Idempotency | Idempotency       | Property of operations that produce the same result regardless of repetition |
-| RFC 5322    | RFC 5322          | Email format standard               |
-| E.164       | E.164             | International telephone number format standard |
-| ISO 8601    | ISO 8601          | Time representation standard        |
-| ISO 4217    | ISO 4217          | Currency code standard              |
+| 术语        | 英文              | 释义                          |
+| :---------- | :---------------- | :---------------------------- |
+| Scope       | Scope             | 授权范围                      |
+| Cursor      | Cursor            | 游标分页定位符                |
+| Idempotency | Idempotency       | 幂等性                        |
+| RFC 5322    | RFC 5322          | 邮箱格式标准                  |
+| E.164       | E.164             | 国际电话号码格式标准          |
+| ISO 8601    | ISO 8601          | 时间表示标准                  |
+| ISO 4217    | ISO 4217          | 货币代码标准                  |
 
-### 10.4 References
+### 10.4 参考文献
 
 1. OpenAPI Initiative. (2021). _OpenAPI Specification 3.1.0_. https://spec.openapis.org/oas/v3.1.0
 2. IETF. (2015). _RFC 7807: Problem Details for HTTP APIs_. https://datatracker.ietf.org/doc/html/rfc7807
@@ -641,18 +641,18 @@ X-RateLimit-Reset: 1752835230
 
 ---
 
-## 📌 API Documentation Checklist
+## 📌 API 文档撰写 Checklist
 
-- [ ] §0 Document Guide: purpose & scope / related documents / change log
-- [ ] §1 Overview: base URL / protocol / version / environment list
-- [ ] §2 Authentication & Authorization: ≥ 1 auth method + Scope model + authorization failure responses
-- [ ] §3 Conventions: request / response envelope / pagination / naming / HTTP method semantics / idempotency
-- [ ] §4 Endpoint Index: ≥ all public endpoints
-- [ ] §5 Endpoint Reference: each endpoint includes path parameters / request body / request examples / success response / error response
-- [ ] §6 Schemas: all shared schemas with field types / required / nullable
-- [ ] §7 Error Code Dictionary: general + business error codes, with HTTP status code and message
-- [ ] §8 Versioning: compatibility commitment / deprecation process / change classification table
-- [ ] §9 Security & Rate Limiting: rate limiting strategy / quotas / security best practices
-- [ ] §10 Appendix: SDK / Mock / glossary / references
-- [ ] Related document links complete (TRD / architecture doc / OpenAPI Spec)
-- [ ] All examples are copy-paste runnable
+- [ ] §0 文档导读：目的与适用范围 / 相关文档 / 变更记录
+- [ ] §1 概述：基础 URL / 协议 / 版本 / 环境列表
+- [ ] §2 认证授权：≥ 1 种认证方式 + Scope 模型 + 鉴权失败响应
+- [ ] §3 通用约定：请求 / 响应信封 / 分页 / 命名 / HTTP 方法语义 / 幂等
+- [ ] §4 端点列表：≥ 全部公开端点
+- [ ] §5 端点详述：每个端点含路径参数 / 请求体 / 请求示例 / 成功响应 / 错误响应
+- [ ] §6 数据模型：所有共享 Schema 含字段类型 / 必填 / 可空
+- [ ] §7 错误码字典：通用 + 业务错误码，含 HTTP 状态码与 message
+- [ ] §8 版本管理：兼容性承诺 / 废弃流程 / 变更分类表
+- [ ] §9 安全限流：限流策略 / 配额 / 安全最佳实践
+- [ ] §10 附录：SDK / Mock / 术语 / 参考文献
+- [ ] 关联文档链接完整（TRD / 架构文档 / OpenAPI Spec）
+- [ ] 所有示例可复制粘贴运行

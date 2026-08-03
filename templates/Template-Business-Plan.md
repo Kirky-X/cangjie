@@ -1,88 +1,88 @@
-# [Product/System Name (English Name)] - Business Plan (BP)
+# [产品/系统名称（英文名）] - 商业计划书（BP）
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 驳回
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name/Role]
+> **撰写人：** [姓名/角色]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [角色列表]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose and Scope
+### 0.1 文档目的与适用范围
 
-[Describe the purpose, applicable scenarios, and non-applicable scenarios of this document]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Sections |
+| 文档类型 | 文件名 | 相关章节 |
 |---------|--------|---------|
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型] | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format Note**: Related documents use the `Filename Line Range` format (e.g., `【Template】Technical Requirements Document(TRD).md 3-17`). Line numbers may change as documents are updated; please refer to the actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Reviser | Changes | Reviewer |
+| 版本 | 日期 | 修订人 | 变更内容 | 审核人 |
 | :--- | :--- | :--- | :--- | :--- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft | [Reviewer] |
+| v0.1 | YYYY-MM-DD | [姓名] | 初稿 | [审核人] |
 
 ---
 
-## 2. Executive Summary
+## 2. 执行摘要（Executive Summary）
 
-> ⚠️ **Core Principle**: This is the most critical section of the entire BP. Investors use 3-5 minutes to decide whether to continue reading. Keep it to **1-2 pages**, with no more than 3 lines per paragraph.
+> ⚠️ **核心原则**：这是整份 BP 中最重要的部分，投资人用 3-5 分钟决定是否继续阅读。控制在 **1-2 页**，每段不超过 3 行。
 
-### 2.1 Investment Highlights
-- **Track**: Operating in the [XX] industry, market size of [XX] billion RMB, CAGR of [XX]%
-- **Product**: [Product Name], PMF validated, core metrics [XX]
-- **Team**: Founders from [top company/prestigious university], previously managed [XX]-scale business
-- **Fundraising**: Seeking [XX] million RMB / [XX] million USD in this round, offering [XX]% equity
+### 2.1 投资亮点
+- **赛道**：处于 [XX] 行业，市场规模 [XX] 亿元，年复合增长率 [XX]%
+- **产品**：[产品名称]，已验证 PMF，核心指标 [XX]
+- **团队**：创始人来自 [大厂/名校]，曾操盘 [XX] 量级业务
+- **融资**：本轮寻求 [XX] 万元/[XX] 万美元，出让 [XX]% 股权
 
-### 2.2 Project Overview
+### 2.2 项目概览
 
 ```mermaid
 mindmap
-  root((Project Overview))
-    Company Info
-      Founded:YYYY-MM
-      Location:City
-      Stage:Angel/Pre-A/Series A
-    Core Data
-      Users:XX K
-      Revenue:XX K/month
-      Growth Rate:XX% MoM
-    Current Round
-      Amount:XX K
-      Use of Funds:Product R&D 40% Market Expansion 35% Operations Reserve 25%
+  root((项目概览))
+    公司信息
+      成立时间:YYYY-MM
+      注册地:城市
+      阶段:天使/Pre-A/A轮
+    核心数据
+      用户数:XX万
+      营收:XX万/月
+      增长率:XX% MoM
+    本轮融资
+      融资金额:XX万
+      资金用途:产品研发40% 市场扩张35% 运营储备25%
 ```
 
 ---
 
-## 3. Pain Points and Market Opportunity
+## 3. 痛点与市场机会
 
-### 3.1 Core Pain Point Analysis
+### 3.1 核心痛点分析
 
-> 💡 **Writing Tip**: Describe pain points using "user's own words," not self-congratulatory descriptions. Prove these are **real needs, high-frequency, with strong willingness to pay**.
+> 💡 **撰写要点**：用"用户原话"描述痛点，而非自嗨式描述。证明这是**真需求、高频、付费意愿强**的痛点。
 
-| Pain Dimension | Current State | User Cost | Market Gap |
+| 痛点维度 | 现状描述 | 用户代价 | 市场空白 |
 |---------|---------|---------|---------|
-| **Low Efficiency** | Traditional methods require [X] hours to complete | Labor cost [XX] RMB/order | No automation tools |
-| **Information Silos** | Data scattered across [N] systems | Decision delay [X] days | No unified platform |
-| **High Cost** | Existing solutions priced at [XX] K/year | Unaffordable for SMBs | No affordable products |
+| **效率低下** | 传统方式需 [X] 小时完成 | 人力成本 [XX] 元/单 | 无自动化工具 |
+| **信息孤岛** | 数据分散在 [N] 个系统 | 决策延迟 [X] 天 | 缺乏统一平台 |
+| **成本高昂** | 现有方案价格 [XX] 万/年 | 中小企业无法承受 | 无普惠型产品 |
 
-### 3.2 Market Size and Trends
+### 3.2 市场规模与趋势
 
-| Category | Bar Value | Line Value |
+| 类别 | 柱状值 | 折线值 |
 |:---|:---:|:---:|
 | 2024 | 120 | 120 |
 | 2025 | 180 | 180 |
@@ -90,213 +90,213 @@ mindmap
 | 2027 | 350 | 350 |
 | 2028 | 480 | 480 |
 
-> **Note**: xychart-beta is an incompatible Mermaid type for Feishu; replaced with table descriptions (template sample data).
+> **说明**：xychart-beta为飞书不兼容Mermaid类型，改为表格描述（模板示例数据）。
 
-**Market Data Support**:
-- **TAM (Total Addressable Market)**: [XX] billion RMB
-- **SAM (Serviceable Addressable Market)**: [XX] billion RMB
-- **SOM (Serviceable Obtainable Market)**: [XX] billion RMB (3-year target)
+**市场数据支撑**：
+- **TAM（总可触达市场）**：[XX] 亿元
+- **SAM（可服务市场）**：[XX] 亿元
+- **SOM（可获得市场）**：[XX] 亿元（未来 3 年目标）
 
 ---
 
-## 4. Product and Service Solutions
+## 4. 产品与服务解决方案
 
-### 4.1 Product Architecture
+### 4.1 产品架构
 
 ```mermaid
 graph TB
-    subgraph User End
-        A[Web Console] --> B[Mobile App]
-        A --> C[Mini Program/Lite App]
+    subgraph 用户端
+        A[Web 控制台] --> B[移动端 App]
+        A --> C[小程序/轻应用]
     end
 
-    subgraph Core Engine
-        D[AI Decision Engine] --> E[Real-time Computing Layer]
-        E --> F[Data Middle Platform]
+    subgraph 核心引擎
+        D[AI 决策引擎] --> E[实时计算层]
+        E --> F[数据中台]
     end
 
-    subgraph Infrastructure
-        G[Cloud-native Architecture] --> H[Security & Compliance Layer]
-        H --> I[Multi-tenant Isolation]
+    subgraph 基础设施
+        G[云原生架构] --> H[安全合规层]
+        H --> I[多租户隔离]
     end
 
-    User End --> Core Engine
-    Core Engine --> Infrastructure
+    用户端 --> 核心引擎
+    核心引擎 --> 基础设施
 
     style D fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     style E fill:#e1f5fe,stroke:#01579b,stroke-width:2px
 ```
 
-### 4.2 Product Value Matrix
+### 4.2 产品价值矩阵
 
-| Feature Module | Pain Point Solved | Core Advantage | Technical Barrier |
+| 功能模块 | 解决痛点 | 核心优势 | 技术壁垒 |
 |---------|---------|---------|---------|
-| Intelligent Analysis | Slow manual processing | 10x efficiency improvement | Proprietary NLP algorithms |
-| Automated Orchestration | Tedious processes | Zero-code configuration | Patented workflow engine |
-| Real-time Alerts | Post-hoc remediation | 24h advance alerts | Time-series prediction models |
+| 智能分析 | 人工处理慢 | 效率提升 10x | 自研 NLP 算法 |
+| 自动编排 | 流程繁琐 | 零代码配置 | 专利工作流引擎 |
+| 实时预警 | 事后补救 | 提前 24h 预警 | 时序预测模型 |
 
-### 4.3 User Journey and Aha Moment
+### 4.3 用户旅程与 Aha Moment
 
 ```mermaid
 journey
-    title User Experience Journey Map
-    section Awareness Phase
-      Discover Need: 5: User
-      Search Solutions: 4: User
-      Compare Competitors: 3: User
-    section Experience Phase
-      Register Trial: 4: User, Product
-      Complete First Order: 5: User, Product
-      Realize Value: 5: User, Product
-    section Payment Phase
-      Choose Plan: 4: User
-      Team Expansion: 5: User, Sales
-      Renewal/Upgrade: 5: User, Product
+    title 用户体验旅程地图
+    section 认知阶段
+      发现需求: 5: 用户
+      搜索方案: 4: 用户
+      对比竞品: 3: 用户
+    section 体验阶段
+      注册试用: 4: 用户, 产品
+      完成首单: 5: 用户, 产品
+      获得价值: 5: 用户, 产品
+    section 付费阶段
+      选择套餐: 4: 用户
+      团队扩容: 5: 用户, 销售
+      续费升级: 5: 用户, 产品
 ```
 
 ---
 
-## 5. Business Model and Monetization Path
+## 5. 商业模式与盈利路径
 
-### 5.1 Business Model Canvas
+### 5.1 商业模式画布
 
 ```mermaid
 graph LR
-    subgraph bmc[Business Model Canvas]
-        KP[Key Partners / Cloud Providers · Channel Partners · ISVs] --> KA[Key Activities / Product R&D · Customer Success · Data Training]
-        KR[Key Resources / Tech Team · Data Assets · Brand Trust] --> VP[Value Proposition / Cost Reduction · Intelligent Decisions · Rapid Deployment]
-        VP --> CR[Customer Relationships / 1v1 Dedicated · Self-service · Community]
-        VP --> CH[Channels / Direct Sales · Online · Ecosystem Cooperation]
-        CR --> CS[Customer Segments / SMBs · Mid-to-Large Enterprises]
+    subgraph bmc[商业模式画布]
+        KP[关键合作伙伴 / 云服务商 · 渠道商 · ISV] --> KA[关键活动 / 产品研发 · 客户成功 · 数据训练]
+        KR[关键资源 / 技术团队 · 数据资产 · 品牌信誉] --> VP[价值主张 / 降本增效 · 智能决策 · 快速部署]
+        VP --> CR[客户关系 / 1v1专属 · 自助式 · 社区]
+        VP --> CH[渠道通路 / 直销 · 线上 · 生态合作]
+        CR --> CS[客户细分 / 中小企业 · 中大型企业]
         CH --> CS
     end
-    COST[Cost Structure / R&D 40% · Marketing 35% · Operations 25%] --- REV[Revenue Streams / SaaS Subscription · Value-added Services · Enterprise Customization · Ecosystem Commission]
+    COST[成本结构 / 研发40% · 市场35% · 运营25%] --- REV[收入来源 / SaaS订阅 · 增值服务 · 企业定制 · 生态佣金]
 ```
 
-### 5.2 Revenue Model
+### 5.2 收入模型
 
 ```mermaid
 pie showData
-    title Revenue Composition (Target State)
-    "SaaS Subscription Fees" : 45
-    "Value-added Services/Premium Features" : 25
-    "Enterprise Custom Solutions" : 20
-    "Ecosystem Commission/Monetization" : 10
+    title 营收构成（目标状态）
+    "SaaS 订阅费" : 45
+    "增值服务/高级功能" : 25
+    "企业定制方案" : 20
+    "生态佣金/流量变现" : 10
 ```
 
-### 5.3 Unit Economics Model
+### 5.3 单位经济模型（Unit Economics）
 
-| Metric | Value | Industry Benchmark | Description |
+| 指标 | 数值 | 行业对标 | 说明 |
 |-----|------|---------|------|
-| **CAC (Customer Acquisition Cost)** | ¥[XX] | ¥[XX] | Including sales + marketing costs |
-| **LTV (User Lifetime Value)** | ¥[XX] | ¥[XX] | Calculated over 36 months |
-| **LTV/CAC** | [X]:1 | >3:1 Healthy | Return on investment ratio |
-| **Monthly Churn Rate** | [X]% | <5% Healthy | Including paid downgrades |
-| **Payback Period** | [X] months | <12 months ideal | CAC recovery cycle |
+| **CAC（获客成本）** | ¥[XX] | ¥[XX] | 含销售+市场费用 |
+| **LTV（用户终身价值）** | ¥[XX] | ¥[XX] | 按 36 个月计算 |
+| **LTV/CAC** | [X]:1 | >3:1 健康 | 投资回报比 |
+| **月流失率** | [X]% | <5% 健康 | 含付费降级 |
+| **回本周期** | [X] 月 | <12 月理想 | CAC 回收周期 |
 
 ---
 
-## 6. Market Competition and Moat
+## 6. 市场竞争与护城河
 
-### 6.1 Competitive Landscape Map
+### 6.1 竞争格局图谱
 
 ```mermaid
 graph TB
-    subgraph matrix[Competitive Positioning Matrix: Feature Completeness vs Cost-effectiveness]
-        subgraph complete[Feature Complete]
-            WE[Us / High cost-effectiveness · Feature complete]
-            TA[Traditional Vendor A / Low cost-effectiveness · Feature complete]
+    subgraph matrix[竞争定位矩阵:功能完整度 vs 性价比]
+        subgraph complete[功能完整]
+            WE[我们 / 高性价比 · 功能完整]
+            TA[传统厂商A / 低性价比 · 功能完整]
         end
-        subgraph incomplete[Feature Incomplete]
-            LB[Low-price Competitor B / High cost-effectiveness · Feature incomplete]
-            NC[Emerging Competitor C / Low cost-effectiveness · Feature incomplete]
+        subgraph incomplete[功能不完整]
+            LB[低价竞品B / 高性价比 · 功能不完整]
+            NC[新兴竞品C / 低性价比 · 功能不完整]
         end
         WE --- TA
         LB --- NC
     end
 ```
 
-### 6.2 Competitive Comparison Analysis
+### 6.2 竞品对比分析
 
-| Comparison Dimension | Us | Competitor A (Traditional) | Competitor B (Emerging) | Competitor C (International) |
+| 对比维度 | 我们 | 竞品 A（传统） | 竞品 B（新兴） | 竞品 C（国际） |
 |---------|------|---------------|---------------|---------------|
-| **Pricing Model** | On-demand Subscription | High annual fees | Free + Premium | Usage-based |
-| **Deployment** | 5-minute onboarding | 2-week implementation required | SaaS only | Hybrid cloud |
-| **Core Algorithm** | Proprietary/Patented | Open-source | Third-party API | Proprietary |
-| **Customer Success** | 1v1 Dedicated | Ticket-based | Community support | Email support |
-| **Data Security** | Level 3 Compliance | Level 2 Compliance | No certification | SOC2 |
+| **定价模式** | 按需订阅 | 高额年费 | 免费+增值 | 按量计费 |
+| **部署方式** | 5分钟接入 | 需 2 周实施 | 仅 SaaS | 混合云 |
+| **核心算法** | 自研/专利 | 开源方案 | 第三方 API | 自研 |
+| **客户成功** | 1v1 专属 | 工单制 | 社区支持 | 邮件支持 |
+| **数据安全** | 等保三级 | 等保二级 | 无认证 | SOC2 |
 
-### 6.3 Moat Construction
+### 6.3 护城河构建
 
 ```mermaid
 graph LR
-    subgraph Moat System
-        A[Network Effects] --> B[Switching Costs]
-        B --> C[Economies of Scale]
-        C --> D[Brand Awareness]
-        D --> E[Technical Patents]
+    subgraph 护城河体系
+        A[网络效应] --> B[转换成本]
+        B --> C[规模经济]
+        C --> D[品牌认知]
+        D --> E[技术专利]
     end
 
-    subgraph Current Stage
-        F[Data Flywheel / More users → Better data → More accurate product]
+    subgraph 当前阶段
+        F[数据飞轮 / 用户越多→数据越好→产品越准]
     end
 
-    Moat System --> F
+    护城河体系 --> F
     style A fill:#c8e6c9,stroke:#2e7d32
     style E fill:#c8e6c9,stroke:#2e7d32
 ```
 
 ---
 
-## 7. Operations Plan and Milestones
+## 7. 运营计划与里程碑
 
-### 7.1 Development Stage Roadmap
+### 7.1 发展阶段路线图
 
-> **Note**: Gantt charts are incompatible with Feishu; replaced with table descriptions.
+> **说明**：甘特图为飞书不兼容类型，改为表格描述。
 
-| Stage | Task | Start Date | End Date | Duration | Status |
+| 阶段 | 任务 | 开始日期 | 结束日期 | 工期 | 状态 |
 |------|------|----------|----------|------|------|
-| Product R&D | MVP Validation | 2024-01 | 2024-06 | 6 months | Completed |
-| Product R&D | Core Features V1.0 | 2024-07 | 2024-12 | 6 months | Completed |
-| Product R&D | Platform V2.0 | 2025-01 | 2025-06 | 6 months | In Progress |
-| Product R&D | Ecosystem V3.0 | 2025-07 | 2025-12 | 6 months | Not Started |
-| Market Expansion | Seed Users 100 | 2024-01 | 2024-06 | 6 months | Completed |
-| Market Expansion | Industry Benchmarks 10 | 2024-07 | 2024-12 | 6 months | Completed |
-| Market Expansion | Scale to 1000 | 2025-01 | 2025-06 | 6 months | In Progress |
-| Market Expansion | Overseas/New Industries | 2025-07 | 2025-12 | 6 months | Not Started |
-| Team Building | Core Team 10 | 2024-01 | 2024-06 | 6 months | Completed |
-| Team Building | Expand to 30 | 2024-07 | 2024-12 | 6 months | Completed |
-| Team Building | Expand to 80 | 2025-01 | 2025-06 | 6 months | In Progress |
-| Team Building | Expand to 150 | 2025-07 | 2025-12 | 6 months | Not Started |
+| 产品研发 | MVP 验证 | 2024-01 | 2024-06 | 6个月 | 已完成 |
+| 产品研发 | 核心功能 V1.0 | 2024-07 | 2024-12 | 6个月 | 已完成 |
+| 产品研发 | 平台化 V2.0 | 2025-01 | 2025-06 | 6个月 | 进行中 |
+| 产品研发 | 生态构建 V3.0 | 2025-07 | 2025-12 | 6个月 | 待开始 |
+| 市场拓展 | 种子用户 100家 | 2024-01 | 2024-06 | 6个月 | 已完成 |
+| 市场拓展 | 行业标杆 10家 | 2024-07 | 2024-12 | 6个月 | 已完成 |
+| 市场拓展 | 规模化 1000家 | 2025-01 | 2025-06 | 6个月 | 进行中 |
+| 市场拓展 | 出海/新行业 | 2025-07 | 2025-12 | 6个月 | 待开始 |
+| 团队建设 | 核心团队 10人 | 2024-01 | 2024-06 | 6个月 | 已完成 |
+| 团队建设 | 扩张至 30人 | 2024-07 | 2024-12 | 6个月 | 已完成 |
+| 团队建设 | 扩张至 80人 | 2025-01 | 2025-06 | 6个月 | 进行中 |
+| 团队建设 | 扩张至 150人 | 2025-07 | 2025-12 | 6个月 | 待开始 |
 
-### 7.2 Key Milestones and KPIs
+### 7.2 关键里程碑与 KPI
 
-| Stage | Period | Core Objective | Key Metrics |
+| 阶段 | 时间 | 核心目标 | 关键指标 |
 |-----|------|---------|---------|
-| **Validation** | Completed | PMF Validation | NPS > 40, Retention > 60% |
-| **Growth** | Current | Scalable Customer Acquisition | ARR exceeding [XX] K |
-| **Expansion** | Next 12 months | Market Penetration | [XX] paying customers |
-| **Profitability** | Next 24 months | Positive Cash Flow | Monthly breakeven |
+| **验证期** | 已完成 | PMF 验证 | NPS > 40，留存 > 60% |
+| **增长期** | 当前 | 规模化获客 | ARR 突破 [XX] 万 |
+| **扩张期** | 未来 12 月 | 市场渗透 | 付费客户 [XX] 家 |
+| **盈利期** | 未来 24 月 | 正向现金流 | 单月盈亏平衡 |
 
 ---
 
-## 8. Core Management Team
+## 8. 核心管理团队
 
-> 💡 **Investor Perspective**: Early-stage projects are judged by the team, growth-stage by data. Team introduction must be **specific and verifiable**—avoid empty phrases like "10 years of industry experience."
+> 💡 **投资人视角**：早期项目看团队，成长期看数据。团队介绍要**具体、可验证**，避免"10年行业经验"这类空话。
 
-### 8.1 Founding Team
+### 8.1 创始团队
 
 ```mermaid
 graph TD
-    subgraph Core Team
-        CEO[CEO/Founder / Name:XXX / Former XX Company VP / Serial Entrepreneur / Managed 100M+ user products]
-        CTO[CTO/Co-founder / Name:XXX / Former XX Tech Giant Architect / 10 years distributed systems experience / X technical patents]
-        COO[COO/Co-founder / Name:XXX / Former XX Consulting Partner / Expert in B2B scaling / Led XX billion annual revenue business]
+    subgraph 核心团队
+        CEO[CEO/创始人 / 姓名:XXX / 前 XX 公司 VP / 连续创业者 / 操盘过亿级用户产品]
+        CTO[CTO/联合创始人 / 姓名:XXX / 前 XX 大厂架构师 / 10年分布式系统经验 / X 项技术专利]
+        COO[COO/联合创始人 / 姓名:XXX / 前 XX 咨询合伙人 / 擅长 B2B 规模化 / 主导过年营收 X 亿业务]
     end
 
-    subgraph Advisory Team
-        ADV1[Strategic Advisor / XX Fund Partner]
-        ADV2[Technical Advisor / XX University Professor/Academician]
+    subgraph 顾问团队
+        ADV1[战略顾问 / XX 基金合伙人]
+        ADV2[技术顾问 / XX 大学教授/院士]
     end
 
     CEO --> CTO
@@ -309,24 +309,24 @@ graph TD
     style COO fill:#fff3e0,stroke:#e65100,stroke-width:2px
 ```
 
-### 8.2 Team Background and Responsibilities
+### 8.2 团队背景与分工
 
-| Position | Name | Core Resume | Responsibilities | Full-time/Part-time |
+| 职位 | 姓名 | 核心履历 | 负责板块 | 全职/兼职 |
 |-----|------|---------|---------|----------|
-| CEO | [Name] | [Top Company] [X] years, [Specific Achievements] | Strategy/Fundraising/Product | Full-time |
-| CTO | [Name] | [Prestigious University] [Major], [Patents/Publications] | Technology/R&D | Full-time |
-| CMO | [Name] | [Notable Cases], [Channel Resources] | Marketing/Brand | Full-time |
-| Sales VP | [Name] | [Industry Customer Resources], [Track Record] | Commercialization/Customer Success | Full-time |
+| CEO | [姓名] | [大厂] [X] 年，[具体成果] | 战略/融资/产品 | 全职 |
+| CTO | [姓名] | [名校] [专业]，[专利/论文] | 技术/研发 | 全职 |
+| CMO | [姓名] | [知名案例]，[渠道资源] | 市场/品牌 | 全职 |
+| 销售 VP | [姓名] | [行业客户资源]，[历史业绩] | 商业化/客户成功 | 全职 |
 
 ---
 
-## 9. Financial Projections and Fundraising Needs
+## 9. 财务预测与融资需求
 
-### 9.1 Historical and Projected Financial Data
+### 9.1 历史与预测财务数据
 
-**Revenue Projections**:
+**营收预测**：
 
-| Category | Bar Value | Line Value |
+| 类别 | 柱状值 | 折线值 |
 |:---|:---:|:---:|
 | 2023 | 50 | 50 |
 | 2024 | 300 | 300 |
@@ -334,9 +334,9 @@ graph TD
 | 2026E | 3,500 | 3,500 |
 | 2027E | 8,000 | 8,000 |
 
-**Net Profit Projections**:
+**净利润预测**：
 
-| Category | Bar Value | Line Value |
+| 类别 | 柱状值 | 折线值 |
 |:---|:---:|:---:|
 | 2023 | -200 | -200 |
 | 2024 | -500 | -500 |
@@ -344,121 +344,121 @@ graph TD
 | 2026E | 500 | 500 |
 | 2027E | 2,000 | 2,000 |
 
-> **Note**: xychart-beta is an incompatible Mermaid type for Feishu; replaced with table descriptions (template sample data).
+> **说明**：xychart-beta为飞书不兼容Mermaid类型，改为表格描述（模板示例数据）。
 
-### 9.2 Financial Projection Table (Next 3-5 Years)
+### 9.2 财务预测表（未来 3-5 年）
 
-| Metric (10K RMB) | 2024 Actual | 2025 Projected | 2026 Projected | 2027 Projected |
+| 指标（万元） | 2024 实际 | 2025 预测 | 2026 预测 | 2027 预测 |
 |------------|----------|----------|----------|----------|
-| **Operating Revenue** | [XX] | [XX] | [XX] | [XX] |
-| **Gross Profit** | [XX] | [XX] | [XX] | [XX] |
-| **Gross Margin** | [XX]% | [XX]% | [XX]% | [XX]% |
-| **Operating Expenses** | [XX] | [XX] | [XX] | [XX] |
-| **Net Profit** | [XX] | [XX] | [XX] | [XX] |
-| **Net Margin** | [XX]% | [XX]% | [XX]% | [XX]% |
+| **营业收入** | [XX] | [XX] | [XX] | [XX] |
+| **毛利润** | [XX] | [XX] | [XX] | [XX] |
+| **毛利率** | [XX]% | [XX]% | [XX]% | [XX]% |
+| **运营费用** | [XX] | [XX] | [XX] | [XX] |
+| **净利润** | [XX] | [XX] | [XX] | [XX] |
+| **净利率** | [XX]% | [XX]% | [XX]% | [XX]% |
 
-### 9.3 Fundraising Needs and Use of Funds
+### 9.3 融资需求与资金用途
 
 ```mermaid
 pie showData
-    title This Round [XX] K RMB Fund Allocation
-    "Product R&D (40%)" : 40
-    "Marketing & Sales (35%)" : 35
-    "Operations & Infrastructure (15%)" : 15
-    "Talent & Reserve (10%)" : 10
+    title 本轮融资 [XX] 万元资金分配
+    "产品研发（40%）" : 40
+    "市场与销售（35%）" : 35
+    "运营与基础设施（15%）" : 15
+    "人才与储备（10%）" : 10
 ```
 
-**Fundraising Details**:
-- **Round**: [Angel/Pre-A/Series A/B] Round
-- **Amount**: [XX] million RMB / [XX] million USD
-- **Equity Offered**: [XX]%
-- **Pre-money Valuation**: [XX] million RMB (based on [XX]x ARR or [XX]x PS)
-- **Use of Funds**:
-  - Product R&D: [XX] K (40%) — Core algorithm optimization, V2.0 platform development
-  - Market Expansion: [XX] K (35%) — Sales team building, brand advertising, channel development
-  - Operations Reserve: [XX] K (15%) — Cloud resources, compliance certification, office space
-  - Talent Acquisition: [XX] K (10%) — Key position recruitment, option pool replenishment
+**融资详情**：
+- **轮次**：[天使/Pre-A/A/B] 轮
+- **融资金额**：[XX] 万元人民币 / [XX] 万美元
+- **出让股权**：[XX]%
+- **投前估值**：[XX] 万元（基于 [XX] 倍 ARR 或 [XX] 倍 PS）
+- **资金用途**：
+  - 产品研发：[XX] 万（占比 40%）— 核心算法优化、V2.0 平台开发
+  - 市场扩张：[XX] 万（占比 35%）— 销售团队搭建、品牌投放、渠道建设
+  - 运营储备：[XX] 万（占比 15%）— 云资源、合规认证、办公场地
+  - 人才招募：[XX] 万（占比 10%）— 关键岗位招聘、期权池补充
 
 ---
 
-## 10. Risk Analysis and Mitigation Strategies
+## 10. 风险分析与应对策略
 
-### 10.1 SWOT Analysis
+### 10.1 SWOT 分析
 
 ```mermaid
 graph TB
-    subgraph swot[SWOT Strategic Analysis]
-        subgraph positive[Positive Factors]
-            S[Strengths / Technology leadership · Complete team]
-            O[Opportunities / Policy tailwinds · Market growth]
+    subgraph swot[SWOT 战略分析]
+        subgraph positive[积极因素]
+            S[优势 Strengths / 技术领先 · 团队完整]
+            O[机会 Opportunities / 政策利好 · 市场增长]
         end
-        subgraph negative[Negative Factors]
-            W[Weaknesses / Brand newly established · Limited capital]
-            T[Threats / Big Tech entry · Economic downturn]
+        subgraph negative[消极因素]
+            W[劣势 Weaknesses / 品牌初建 · 资金有限]
+            T[威胁 Threats / 巨头入局 · 经济下行]
         end
         S --- W
         O --- T
     end
 ```
 
-### 10.2 Core Risks and Mitigation Plans
+### 10.2 核心风险与缓解方案
 
-| Risk Type | Specific Description | Probability | Impact | Mitigation Strategy |
+| 风险类型 | 具体描述 | 发生概率 | 影响程度 | 应对策略 |
 |---------|---------|---------|---------|---------|
-| **Market Risk** | Big Tech rapid follow-up, price war | Medium | High | Deep vertical focus, build data barrier |
-| **Technology Risk** | Core algorithm underperformance | Low | High | Dual technology routes, prepare Plan B |
-| **Operational Risk** | Key talent loss | Medium | Medium | Comprehensive equity incentives, knowledge documentation |
-| **Financial Risk** | Fundraising environment deterioration | Medium | High | Control burn rate, maintain 18-month runway |
-| **Compliance Risk** | Data regulation policy changes | Low | Medium | Proactive compliance/ISO applications, legal first |
+| **市场风险** | 巨头快速跟进，价格战 | 中 | 高 | 深耕垂直场景，建立数据壁垒 |
+| **技术风险** | 核心算法效果不达预期 | 低 | 高 | 双技术路线并行，预留 Plan B |
+| **运营风险** | 关键人才流失 | 中 | 中 | 完善期权激励，建立知识文档化 |
+| **财务风险** | 融资环境恶化 | 中 | 高 | 控制烧钱速度，保持 18 个月 runway |
+| **合规风险** | 数据监管政策变化 | 低 | 中 | 提前申请等保/ISO，法务前置 |
 
 ---
 
-## Appendix
+## 📎 附录（Appendix）
 
-> The following can be organized as separate appendix documents for deep due diligence review.
+> 以下内容可单独整理为附录文档，供深度尽调时查阅。
 
-1. **Detailed Financial Model** (Excel): 3-5 year complete three-statement projections and assumptions
-2. **Product Demo Video/Demo**: Core feature operation flow
-3. **Customer Testimonials/Case Studies**: [Benchmark customer] before/after comparison data
-4. **Intellectual Property List**: Patents, software copyrights, trademarks
-5. **Detailed Team Resumes**: Complete backgrounds of core members
-6. **Industry Research Reports**: Third-party authoritative data sources
+1. **详细财务模型**（Excel）：3-5 年完整三张表预测及假设条件
+2. **产品演示视频/Demo**：核心功能操作流程
+3. **客户证言/案例研究**：[标杆客户] 使用前后对比数据
+4. **知识产权清单**：专利、软著、商标列表
+5. **团队详细简历**：核心成员完整履历
+6. **行业研究报告**：引用第三方权威数据来源
 
 ---
 
-## Writing Checklist (Pre-submission Self-Check)
+## ✅ 撰写 checklist（投递前自检）
 
-| Check Item | Status | Description |
+| 检查项 | 状态 | 说明 |
 |-------|------|------|
-| Is the one-liner value proposition clear? | ☐ | Understandable to non-industry people |
-| Are pain points described in user's own words? | ☐ | Avoid self-congratulatory expressions |
-| Are market data from authoritative sources? | ☐ | Cite iResearch/IDC/Government reports |
-| Is the business model clear on how it makes money? | ☐ | Revenue sources, pricing, cost structure |
-| Is the competitive analysis objective? | ☐ | Don't disparage competitors, highlight differentiation |
-| Are financial projections reasonable? | ☐ | Avoid "1 billion profit in one year" |
-| Is the fundraising amount and use of funds clear? | ☐ | 33% of BPs fail here |
-| Is contact information complete? | ☐ | Founder's phone + WeChat + email |
+| 一句话价值主张是否清晰？ | ☐ | 让非行业人士也能听懂 |
+| 痛点是否用用户原话描述？ | ☐ | 避免自嗨式表达 |
+| 市场数据是否有权威来源？ | ☐ | 引用艾瑞/IDC/政府报告 |
+| 商业模式是否说清怎么赚钱？ | ☐ | 收入来源、定价、成本结构 |
+| 竞品分析是否客观？ | ☐ | 不贬低对手，突出差异化 |
+| 财务预测是否合理？ | ☐ | 避免"一年内 10 亿利润" |
+| 融资金额和用途是否明确？ | ☐ | 33% 的 BP 死在这里 |
+| 联系方式是否留全？ | ☐ | 创始人手机号+微信+邮箱 |
 
 ---
 
-> 📧 **Contact Information**
-> - Founder: [Name]
-> - Phone: [Number]
-> - WeChat: [WeChat ID]
-> - Email: [email@company.com]
-> - Company Website: [www.company.com]
+> 📧 **联系方式**
+> - 创始人：[姓名]
+> - 手机：[号码]
+> - 微信：[微信号]
+> - 邮箱：[email@company.com]
+> - 公司官网：[www.company.com]
 
 ---
 
-### 💡 Usage Suggestions
+### 💡 使用建议
 
-1. **Version Management**: Prepare three versions
-   - **1-page Executive Summary** (PDF, for initial email outreach)
-   - **12-15 page Presentation Version** (PPT/Markdown, for roadshows)
-   - **30-50 page Full Version** (Word/Markdown, for deep due diligence)
+1. **版本管理**：准备三个版本
+   - **1 页执行摘要**（PDF，用于初次邮件触达）
+   - **12-15 页演示版**（PPT/Markdown，用于路演）
+   - **30-50 页完整版**（Word/Markdown，用于深度尽调）
 
-2. **Charts First**: Every page must have at least 1 chart or data point, with no more than 100 words of text.
+2. **图表优先**：每页必有 1 个图表或数据点，文字不超过 100 字。
 
-3. **Data Authenticity**: All projections based on verifiable assumptions. Prepare Excel workbooks for follow-up questions.
+3. **数据真实**：所有预测基于可验证的假设，准备好 Excel 底稿应对追问。
 
-4. **Customized Modifications**: Adjust emphasis for different investor types—financial VCs look at growth data, strategic investors look at synergy value.
+4. **定制修改**：针对不同投资机构调整侧重点——财务 VC 看增长数据，战略投资人看协同价值。

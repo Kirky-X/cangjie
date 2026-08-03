@@ -1,196 +1,196 @@
-# [Product/System Name (English Name)] - Minutes of Meeting (MoM)
+# [产品/系统名称（英文名）] - 会议纪要（MoM）
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 驳回
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name/Role]
+> **撰写人：** [姓名/角色]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [角色列表]
 >
-> **Meeting Summary**: {Summarize the core decisions and key actions of this meeting in 2-3 sentences. Non-attendees reading this paragraph should understand "why this meeting was held" and "what was ultimately decided" within 30 seconds.}
+> **会议摘要**：{用2-3句话概括本次会议的核心决策与关键行动。未参会者阅读此段后，应在30秒内理解"为什么开这个会"以及"最终决定做什么"。}
 >
-> Example: This meeting reached consensus on the Q3 product pricing strategy, decided to adjust the starter plan from ¥29 to ¥39, and clarified the user communication plan and A/B testing plan before the new price goes live.
+> 示例：本次会议就Q3产品定价策略达成一致，决定将入门套餐从¥29调整为¥39，并明确了新价格上线前的用户沟通方案与AB测试计划。
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose and Scope
+### 0.1 文档目的与适用范围
 
-Record core decisions and action items from meetings, ensuring attendees are aligned on understanding and non-attendees can quickly grasp conclusions.
+记录会议核心决策与行动项，确保参会者对齐认知、未参会者快速了解结论。
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Section |
+| 文档类型 | 文件名 | 相关章节 |
 |---------|--------|---------|
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型] | [文件名] [行号范围] | [章节描述] |
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Reviser | Changes | Reviewer |
+| 版本 | 日期 | 修订人 | 变更内容 | 审核人 |
 | :--- | :--- | :--- | :--- | :--- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft | [Reviewer] |
+| v0.1 | YYYY-MM-DD | [姓名] | 初稿 | [审核人] |
 
 ---
 
-## 1. Meeting Information
+## 1. 会议信息
 
-| Item            | Content                                                                  |
-| --------------- | ----------------------------------------------------------------------- |
-| 🆔 Meeting ID       | `{MEETING-YYYY-MM-DD-NN}` <!-- Unique number, e.g., MEETING-2026-05-22-01 --> |
-| 📋 Meeting Topic     | {Topic Name}                                                            |
-| 📅 Meeting Time     | {YYYY-MM-DD HH:MM - HH:MM}                                          |
-| ⏱️ Meeting Duration     | {X hours X minutes}                                                          |
-| 📍 Meeting Location     | {In-person location / Feishu Meeting / Tencent Meeting (Meeting ID: XXX)}                       |
-| 🎤 Facilitator       | {Name}                                                                |
-| ✍️ Note-taker       | {Name}                                                                |
-| 👥 Attendees     | {Name A, Name B, Name C}                                                 |
-| 🚫 Absentees    | {Name (Reason)} <!-- Write "None" if applicable -->                                    |
-| 🔄 Version Status     | `v1.0-draft` → `v1.1-approved` <!-- Draft/Under Review/Published -->            |
-| ⚠️ Conflict of Interest Declaration | {If any attendee has a conflict of interest on an agenda item, state here; otherwise write "None"}                |
+| 项目            | 内容                                                                  |
+| --------------- | --------------------------------------------------------------------- |
+| 🆔 会议ID       | `{MEETING-YYYY-MM-DD-NN}` <!-- 唯一编号，如 MEETING-2026-05-22-01 --> |
+| 📋 会议主题     | {主题名称}                                                            |
+| 📅 会议时间     | {YYYY年M月D日 HH:MM - HH:MM}                                          |
+| ⏱️ 会议时长     | {X小时X分钟}                                                          |
+| 📍 会议地点     | {线下地点 / 飞书会议 / 腾讯会议（会议号：XXX）}                       |
+| 🎤 主持人       | {姓名}                                                                |
+| ✍️ 记录人       | {姓名}                                                                |
+| 👥 参会人员     | {姓名A、姓名B、姓名C}                                                 |
+| 🚫 请假/缺席    | {姓名（原因）} <!-- 无则写"无" -->                                    |
+| 🔄 版本状态     | `v1.0-draft` → `v1.1-approved` <!-- 初稿/审核中/已发布 -->            |
+| ⚠️ 利益冲突声明 | {如有参会者利益相关需回避的议题，在此说明；无则写"无"}                |
 
 ---
 
-## 2. Agenda and Discussion
+## 2. 议程与讨论
 
 <!--
-Writing Principles:
-1. Record outcomes, not conversations. Don't write "who said what," only write "what was agreed upon after discussion."
-2. Each agenda item must include: context (1-2 sentences) → decision (bolded) → action items (numbered) → disagreements (if any).
-3. Decisions and action items are physically bound to ensure "every decision has an action."
-4. Use 🟢Decision / 🟡Information / 🔴Action Item / ⚪Background prefixes for scannability.
+编写原则：
+1. 记录结果，不记录对话。不要写"谁说了什么"，只写"讨论后达成了什么"。
+2. 每个议题必须包含：上下文（1-2句）→ 决策（加粗）→ 行动项（带编号）→ 分歧（如有）。
+3. 决策与行动项物理绑定，确保"每个决策都有落地动作"。
+4. 使用 🟢决策 / 🟡信息 / 🔴行动项 / ⚪背景 前缀，方便扫读。
 -->
 
-### 🟢 Agenda Item 1: {Topic Name} [Estimated XX min / Actual XX min]
+### 🟢 议题 1：{主题名称} [预估 XX 分钟 / 实际 XX 分钟]
 
-**⚪ Context**: {1-2 sentences explaining why this topic was discussed, helping future readers understand the background.}
+**⚪ 背景**：{1-2句话说明为什么讨论这个话题，帮助后续读者理解上下文。}
 
-**🟢 Decision**: {**Summarize the conclusion in one sentence using neutral language**. Don't write "after discussion it was decided," just state the conclusion.}
+**🟢 决策**：{**用一句话中性语言概括结论**。不要写"经过讨论决定"，直接陈述结论。}
 
-**🔴 Action Items**:
-| ID | Task Description | Owner | Deadline | Success Criteria (Acceptance Indicator) | Status |
+**🔴 行动项**：
+| 编号 | 任务描述 | 责任人 | 截止日期 | 成功标准（验收指标） | 状态 |
 |------|----------|--------|----------|---------------------|------|
-| `ACTION-{YYYY-MM-DD}-01` | {Specific, actionable task description} | {Name} | {YYYY-MM-DD} | {How to verify completion, e.g., "Forecast variance < 2%" or "Passed legal review"} | Not Started |
-| `ACTION-{YYYY-MM-DD}-02` | {Specific task} | {Name} | {YYYY-MM-DD} | {Acceptance indicator} | Not Started |
+| `ACTION-{YYYY-MM-DD}-01` | {具体、可执行的任务描述} | {姓名} | {YYYY-MM-DD} | {如何验证完成，如"预测偏差<2%"或"通过法务审核"} | 未开始 |
+| `ACTION-{YYYY-MM-DD}-02` | {具体任务} | {姓名} | {YYYY-MM-DD} | {验收指标} | 未开始 |
 
-**🟡 Disagreement (if any)**: {Briefly describe the points not agreed upon, reasons, and prerequisites for next discussion. Delete this line if none.}
+**🟡 分歧（如有）**：{简要描述未达成一致的点、原因及下次讨论的前提条件。无则删除此行。}
 
 ---
 
-### 🟢 Agenda Item 2: {Topic Name} [Estimated XX min / Actual XX min]
+### 🟢 议题 2：{主题名称} [预估 XX 分钟 / 实际 XX 分钟]
 
-**⚪ Context**: {Background explanation}
+**⚪ 背景**：{背景说明}
 
-**🟢 Decision**: {**Conclusion**}
+**🟢 决策**：{**结论**}
 
-**🔴 Action Items**:
-| ID | Task Description | Owner | Deadline | Success Criteria | Status |
+**🔴 行动项**：
+| 编号 | 任务描述 | 责任人 | 截止日期 | 成功标准 | 状态 |
 |------|----------|--------|----------|----------|------|
-| `ACTION-{YYYY-MM-DD}-03` | {Task} | {Name} | {Date} | {Acceptance indicator} | Not Started |
+| `ACTION-{YYYY-MM-DD}-03` | {任务} | {姓名} | {日期} | {验收指标} | 未开始 |
 
-**🟡 Disagreement (if any)**: {Points not agreed upon}
-
----
-
-<!-- Copy the above "Agenda Item" block as needed. For purely informational items without decisions, remove the "Decision" line and keep "⚪ Context" and "🟡 Key Information Points." -->
+**🟡 分歧（如有）**：{未达成一致的点}
 
 ---
 
-## 3. Risks and Open Issues
+<!-- 按需复制上方"议题"模块。对于纯信息同步类议题（无需决策），删除"决策"行，保留"⚪ 背景"和"🟡 关键信息点"。 -->
 
-<!-- Risks and issues identified during the meeting but unresolved, along with escalation paths. -->
+---
 
-| 🆔 ID                | Risk/Issue Description | Impact Scope   | Follow-up Owner | Expected Resolution Time | Escalation Path (if not resolved by deadline) |
+## 3. 风险与待解决问题
+
+<!-- 会议中识别出但尚未解决的风险和问题，以及升级路径。 -->
+
+| 🆔 编号              | 风险/问题描述 | 影响范围   | 跟进责任人 | 预期解决时间 | 升级路径（超期未解决时） |
 | ---------------------- | ------------- | ---------- | ------ | ------------ | ------------------------ |
-| `RISK-{YYYY-MM-DD}-01` | {Problem Description}    | {Impact Scope} | {Name} | {YYYY-MM-DD} | {Escalate to whom / How to handle}    |
-| `RISK-{YYYY-MM-DD}-02` | {Problem Description}    | {Impact Scope} | {Name} | {YYYY-MM-DD} | {Escalation Path}               |
+| `RISK-{YYYY-MM-DD}-01` | {问题描述}    | {影响范围} | {姓名} | {YYYY-MM-DD} | {升级给谁 / 如何处理}    |
+| `RISK-{YYYY-MM-DD}-02` | {问题描述}    | {影响范围} | {姓名} | {YYYY-MM-DD} | {升级路径}               |
 
 ---
 
-## 4. Parking Lot
+## 4. 停车场
 
-<!-- Topics mentioned during the meeting that are valuable but didn't have time for discussion, preventing them from being lost in chat records. Prioritize these for the next meeting. -->
+<!-- 会议中提到有价值但来不及讨论的话题，避免淹没在聊天记录中。下次会议优先处理。 -->
 
-| No. | Topic       | Raised By | Suggested Discussion Timing        | Related Agenda Item       |
+| 序号 | 话题       | 提出人 | 建议讨论时间        | 关联议题       |
 | ---- | ---------- | ------ | ------------------- | -------------- |
-| 1    | {Topic Description} | {Name} | {Next regular meeting / Special meeting} | {Related agenda item} |
-| 2    | {Topic Description} | {Name} | {Suggested timing}          | {Related agenda item}     |
+| 1    | {话题描述} | {姓名} | {下次例会 / 专题会议} | {关联议题} |
+| 2    | {话题描述} | {姓名} | {建议时间}          | {关联议题}     |
 
 ---
 
-## 5. Next Meeting Plan
+## 5. 下次会议计划
 
-| Item                  | Content                                                                                                      |
+| 项目                  | 内容                                                                                                      |
 | --------------------- | --------------------------------------------------------------------------------------------------------- |
-| 📅 Planned Time           | {YYYY-MM-DD HH:MM}                                                                                      |
-| 📋 Suggested Agenda           | 1. {Agenda Item 1} 2. {Agenda Item 2} 3. **Review completion status of this meeting's action items (ACTION-{YYYY-MM-DD}-01 to ACTION-{YYYY-MM-DD}-NN)** |
-| 📎 Pre-meeting Preparation           | {Materials or work attendees need to prepare in advance}                                                                          |
-| 🎯 Key Items to Review from This Meeting | {List 2-3 critical decisions or actions that must be closed out}                                                                   |
+| 📅 计划时间           | {YYYY-MM-DD HH:MM}                                                                                        |
+| 📋 建议议程           | 1. {议题1} 2. {议题2} 3. **回顾本次会议行动项完成情况（ACTION-{YYYY-MM-DD}-01 至 ACTION-{YYYY-MM-DD}-NN）** |
+| 📎 会前准备           | {需要提前准备的材料或工作}                                                                                |
+| 🎯 重点回顾项         | {列出2-3个必须闭环的关键决策或行动}                                                                       |
 
 ---
 
-## 6. Attachments
+## 6. 附件
 
-<!-- Include only links, not full files, to keep minutes lightweight. -->
+<!-- 只放链接，不放完整文件，保持纪要轻量化。 -->
 
-- [{Attachment 1 Name}]({Link or Storage Path})
-- [{Attachment 2 Name}]({Link or Storage Path})
-- [Meeting Recording/Screen Capture]({Link}) <!-- If available and with attendee consent -->
+- [{附件1名称}]({链接或存储路径})
+- [{附件2名称}]({链接或存储路径})
+- [会议录像/截屏]({链接}) <!-- 如有且经参会者同意 -->
 
 ---
 
-## Usage Guidelines (Do not include in final meeting minutes)
+## 使用指南（正式会议纪要中不要包含此部分）
 
-### File Management
+### 文件管理
 
-- **Naming Convention**: `【Meeting Minutes】{Topic}-{YYYY-MM-DD}-v{Version}.md`
-- **Storage Path**: `lark/Meeting Minutes/{YYYY-MM}/`
-- **Version Status**:
-  - `v1.0-draft`: Initial draft sent within 1 hour after meeting ends
-  - `v1.1-approved`: Final version after facilitator/core decision-maker review
-  - `v1.2-final`: Archived final version after all action items are completed
+- **命名规范**：`【会议纪要】{主题}-{YYYY-MM-DD}-v{版本}.md`
+- **存储路径**：`lark/会议纪要/{YYYY-MM}/`
+- **版本状态**：
+  - `v1.0-draft`：会议结束后1小时内发出初稿
+  - `v1.1-approved`：主持人/核心决策人审核后的正式版
+  - `v1.2-final`：所有行动项完成后归档的最终版
 
-### Timeliness Requirements
+### 时效要求
 
-| Phase       | Time Limit                    | Responsible        |
+| 阶段       | 时限                    | 责任人        |
 | ---------- | ----------------------- | ------------- |
-| Draft Completion   | **Within 1 hour** after meeting ends  | Note-taker        |
-| Attendee Confirmation | **Within 4 hours** after draft is sent  | All attendees    |
-| Final Publication   | **Within 24 hours** after meeting ends | Facilitator/Note-taker |
-| Action Item Review | **10 minutes** at next meeting opening | Facilitator        |
+| 初稿完成   | 会议结束后 **1小时内**  | 记录人        |
+| 参会者确认 | 初稿发出后 **4小时内**  | 全体参会者    |
+| 正式发布   | 会议结束后 **24小时内** | 主持人/记录人 |
+| 行动项回顾 | 下次会议开头 **10分钟** | 主持人        |
 
-### Writing Principles (FAR Principle)
+### 编写原则（FAR 原则）
 
-1. **F - Focused**: Record decisions and actions, not conversation. Don't write "Zhang San argued... Li Si countered..."—only write "the conclusion was..."
-2. **A - Actionable**: Every action item must have four elements: "what to do, who does it, when it's due, and how completion is measured."
-3. **R - Referencable**: Meeting IDs, action item IDs, and risk IDs are globally unique and can be directly located when referenced across meetings.
-4. **Closed-loop tracking**: The next meeting must review the completion rate of previous action items, with a target completion rate ≥ 80%. Incomplete items require explanation of reasons and a new deadline.
+1. **F - Focused（聚焦）**：记决策和行动，不记对话。不要写"张三说……李四反驳……"，只写"结论是……"
+2. **A - Actionable（可执行）**：每个行动项必须四要素齐全："做什么、谁来做、什么时候交、怎么算完成"
+3. **R - Referencable（可检索）**：会议编号、行动项编号、风险编号全局唯一，跨会议引用时可直接定位
+4. **闭环跟踪**：下次会议必须回顾上次行动项完成率，目标完成率 ≥ 80%。未完成的需说明原因并重新设定截止日期
 
-### Trimming Guide (By Meeting Type)
+### 精简指南（按会议类型）
 
-| Meeting Type          | Required Sections                                                                | Optional Sections              | Can Be Deleted/Simplified                          |
+| 会议类型          | 必须包含的章节                                                                | 可选章节              | 可删除/简化                          |
 | ----------------- | ----------------------------------------------------------------------- | --------------------- | ------------------------------------ |
-| **Project Kickoff**    | Summary, Meeting Info, Agenda & Discussion (with decisions + actions), Risks, Next Meeting               | Parking Lot           | —                                    |
-| **Regular Meetings**      | Summary, Meeting Info, Agenda & Discussion (action items + risks only), Next Meeting                   | Parking Lot, Attachments     | Detailed decision context (simplify to 1 sentence)        |
-| **Competitive/Research Analysis** | Summary, Meeting Info, Agenda & Discussion (information points + actions), Attachments                       | Parking Lot           | Risks, Detailed decisions                       |
-| **Product Planning**    | Summary, Meeting Info, Agenda & Discussion (with decisions + actions + disagreements), Risks, Parking Lot       | Attachments                  | —                                    |
-| **Brainstorming**      | Meeting Info, Agenda & Discussion (only record idea topics, not decisions), Parking Lot, Next Meeting | —                     | Decisions, Risks, Attachments (unless decisions are made on the spot) |
-| **Decision Review**    | Summary, Meeting Info, Agenda & Discussion (decisions + disagreements + actions), Risks                      | Parking Lot, Next Meeting | —                                    |
+| **项目启动会**    | 摘要、会议信息、议程与讨论（含决策+行动项）、风险、下次会议               | 停车场           | —                                    |
+| **例会**          | 摘要、会议信息、议程与讨论（仅行动项+风险）、下次会议                     | 停车场、附件     | 详细决策上下文（简化为1句话）        |
+| **竞品/调研分析** | 摘要、会议信息、议程与讨论（信息点+行动项）、附件                         | 停车场           | 风险、详细决策                       |
+| **产品规划会**    | 摘要、会议信息、议程与讨论（含决策+行动项+分歧）、风险、停车场            | 附件             | —                                    |
+| **头脑风暴会**    | 会议信息、议程与讨论（只记录议题方向，不记决策）、停车场、下次会议        | —                 | 决策、风险、附件（除非当场拍板决策） |
+| **决策评审会**    | 摘要、会议信息、议程与讨论（决策+分歧+行动项）、风险                      | 停车场、下次会议 | —                                    |
 
-### Quality Checklist (Pre-publish Self-Check)
+### 质量清单（发布前自查）
 
-- [ ] Meeting summary allows non-attendees to understand core conclusions within 30 seconds
-- [ ] Every decision has at least one numbered action item below it
-- [ ] Every action item has clear "success criteria/acceptance indicator"
-- [ ] All action item IDs are sequential with no gaps
-- [ ] No vague time expressions like "ASAP" or "when appropriate"—all replaced with specific dates
-- [ ] All subjective evaluations from the note-taker have been removed (e.g., "discussion was heated," "everyone agreed")
-- [ ] No important topics are missing from the Parking Lot
-- [ ] File naming follows convention, version number is correct
+- [ ] 会议摘要让未参会者30秒内理解核心结论
+- [ ] 每个决策下方至少有一个编号行动项
+- [ ] 每个行动项有明确的"成功标准/验收指标"
+- [ ] 所有行动项编号连续、无跳号
+- [ ] 无"尽快""酌情"等模糊时间表述——全部替换为具体日期
+- [ ] 已移除记录人的所有主观评价（如"讨论很热烈""大家一致同意"）
+- [ ] 停车场无遗漏的重要话题
+- [ ] 文件命名规范、版本号正确

@@ -1,114 +1,114 @@
-# [Product/System Name (English)] - Dashboard Design Document
+# [产品/系统名称（英文名）] - 数据看板设计文档（Dashboard Design Document）
 
-> **Document Status:** 🟡 Under Review / 🟢 Released / 🔴 Archived
+> **文档状态：** 🟡 评审中 / 🟢 已发布 / 🔴 已归档
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name/Role]
+> **撰写人：** [姓名/角色]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [CEO / 运营总监 / 一线运营 / 技术运维]
 >
-> **Dashboard ID:** DASH-2026-XXX
+> **看板编号：** DASH-2026-XXX
 >
-> **Dashboard Name:** [e.g., E-commerce Transaction Core Monitoring Dashboard]
+> **看板名称：** [如：电商交易核心监控看板]
 >
-> **Maintenance Team:** [Data Product / BI Team / Business Data Group]
+> **维护团队：** [数据产品 / BI团队 / 业务数据组]
 >
-> **Refresh Frequency:** [Real-time / 5min / 1h / Daily]
+> **刷新频率：** [实时 / 5min / 1h / 日]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose & Scope
+### 0.1 文档目的与适用范围
 
-[Describe the purpose, applicable scenarios, and non-applicable scenarios of this document]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Sections |
+| 文档类型 | 文件名              | 相关章节   |
 | -------- | ------------------- | ---------- |
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型]   | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format**: Related documents use the `filename line range` format (e.g., `【Template】Technical Requirements Document (TRD).md 3-17`). Line numbers may change as documents are updated; refer to the actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Author | Changes | Reviewer |
+| 版本   | 日期       | 修订人 | 变更内容                                                 | 审核人           |
 | :----- | :--------- | :----- | :------------------------------------------------------- | :--------------- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft: Metrics system + layout design | |
-| v0.2 | YYYY-MM-DD | [Name] | Added interaction design + data pipeline | |
-| v0.3 | YYYY-MM-DD | [Name] | Formal release | [Data Product Lead] |
-| v0.3.1 | 2026-06-20 | Xie Dong | Message middleware example Kafka/RocketMQ→Pulsar (unified event bus standard) | — |
+| v0.1   | YYYY-MM-DD | [姓名] | 初稿：指标体系 + 布局设计                                |                  |
+| v0.2   | YYYY-MM-DD | [姓名] | 补充交互设计 + 数据链路                                  |                  |
+| v0.3   | YYYY-MM-DD | [姓名] | 正式发布                                                 | [数据产品负责人] |
+| v0.3.1 | 2026-06-20 | 谢董   | 消息中间件示例 Kafka/RocketMQ→Pulsar（统一事件总线规范） | —                |
 
 ---
 
-## 1. Executive Summary
+## 1. 执行摘要（Executive Summary）
 
-> **Audience Guide:** What problem this dashboard solves, who it's for, and what the core metrics are.
+> **受众导读：** 本看板解决什么问题、给谁看、核心指标是什么。
 
-| Element | Content |
+| 要素           | 内容                                                 |
 | :------------- | :--------------------------------------------------- |
-| **Dashboard Purpose** | [One sentence, e.g.: Real-time monitoring of e-commerce transaction core path, supporting operations decisions] |
-| **Target Audience** | [e.g.: Operations Director + frontline operations, with technical ops in mind] |
-| **Core Scenarios** | [e.g.: Real-time monitoring during promotions / Daily business analysis / Rapid anomaly identification] |
-| **Key Metric Count** | [N] core metrics + [M] auxiliary metrics |
-| **Data Source** | [e.g.: Order DB Binlog → Pulsar → Flink → ClickHouse] |
-| **Refresh Strategy** | [e.g.: Core metrics 1min, trend charts 5min, detail 1h] |
+| **看板定位**   | [一句话，如：实时监控电商交易核心链路，支撑运营决策] |
+| **目标受众**   | [如：运营总监 + 一线运营，兼顾技术运维]              |
+| **核心场景**   | [如：大促期间实时监控 / 日常经营分析 / 异常快速定位] |
+| **关键指标数** | [N] 个核心指标 + [M] 个辅助指标                      |
+| **数据来源**   | [如：订单库 Binlog → Pulsar → Flink → ClickHouse]    |
+| **刷新策略**   | [如：核心指标 1min，趋势图 5min，明细 1h]            |
 
 ```mermaid
 
 
 mindmap
-  root((Dashboard Design Overview))
-    Metrics System
-      [North Star Metrics]
-      [Process Metrics]
-      [Outcome Metrics]
-    Visualization Design
-      [Layout Standards]
-      [Chart Selection]
-      [Color Scheme]
-    Interaction Design
-      [Filter Linkage]
-      [Drill-down Analysis]
-      [Anomaly Alerts]
-    Technical Implementation
-      [Data Pipeline]
-      [Refresh Strategy]
-      [Permission Control]
+  root((看板设计总览))
+    指标体系
+      [北极星指标]
+      [过程指标]
+      [结果指标]
+    可视化设计
+      [布局规范]
+      [图表选型]
+      [配色方案]
+    交互设计
+      [筛选联动]
+      [下钻分析]
+      [异常预警]
+    技术实现
+      [数据链路]
+      [刷新策略]
+      [权限控制]
 ```
 
 ---
 
-## 2. Metrics Design
+## 2. 指标体系设计（Metrics Design）
 
-### 2.1 Metrics Layered Architecture
+### 2.1 指标分层架构
 
-> Reference Alibaba data warehouse layering and industry metrics system practices; metrics are divided into three layers:
+> 参考阿里数仓分层及大厂指标体系实践，指标分为三层：
 
 ```mermaid
 
 
 flowchart TD
-    subgraph "Strategic Layer"
-        S1["North Star Metrics / GMV / DAU / Retention Rate"]
+    subgraph "战略层"
+        S1["北极星指标 / GMV / DAU / 留存率"]
     end
 
-    subgraph "Management Layer"
-        M1["Process Metrics / Conversion Rate / AOV / Repeat Purchase Rate"]
-        M2["Efficiency Metrics / Productivity / ROI / Cycle Time"]
+    subgraph "管理层"
+        M1["过程指标 / 转化率 / 客单价 / 复购率"]
+        M2["效率指标 / 人效 / 投产比 / 周期"]
     end
 
-    subgraph "Execution Layer"
-        E1["Detail Metrics / Channel Detail / Category Detail / User Tiering"]
-        E2["Alert Metrics / Anomalous Orders / Complaint Rate / Return Rate"]
+    subgraph "执行层"
+        E1["明细指标 / 渠道明细 / 品类明细 / 用户分层"]
+        E2["预警指标 / 异常订单 / 投诉率 / 退货率"]
     end
 
     S1 --> M1
@@ -121,37 +121,37 @@ flowchart TD
     style M2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
 ```
 
-### 2.2 Core Metric Definitions
+### 2.2 核心指标定义
 
-> **Reference**: For detailed metrics system, metric definitions, calculation methods, and target values, see **【Template】Operations Manual.md §2.2**. This document only references the core metrics the dashboard needs to display.
+> **引用说明**：详细的指标体系、指标定义、计算方式和目标值，请参阅 **【模板】运营手册.md §2.2**。本文档仅引用看板需要展示的核心指标。
 
-| Metric Layer | Metric Name | Metric Definition | Calculation | Target | Refresh Frequency | Reference |
+| 指标层级 | 指标名称 | 指标定义 | 计算方式 | 目标值 | 刷新频率 | 引用文档 |
 | :--- | :--- | :--- | :--- | :--- | :---: | :--- |
-| **North Star** | GMV | Total merchandise transaction value | Σ(Order paid amount) | 10% daily growth | 1min | Ref Operations Manual §2.2 |
-| **North Star** | DAU | Daily active users | Daily unique logged-in users | 1M | 5min | Ref Operations Manual §2.2 |
-| **L1** | Conversion Rate | Visitor to order ratio | Order UV / Visit UV | 3.5% | 5min | Ref Operations Manual §2.2 |
-| **L1** | AOV | Average order value | GMV / Order count | ¥150 | 5min | Ref Operations Manual §2.2 |
-| **L1** | 7-Day Retention | 7-day still active ratio | 7-day active / New users | 25% | Daily | Ref Operations Manual §2.2 |
-| **L2** | Payment Success Rate | Payment completion ratio | Successful payments / Initiated payments | 99.5% | 1min | Ref Operations Manual §2.2 |
-| **L2** | Refund Rate | Refunded order ratio | Refunded orders / Total orders | <2% | 1h | Ref Operations Manual §2.2 |
-| **L3** | Channel ROI | Channel return on investment | Channel GMV / Channel cost | ≥3 | Daily | Ref Operations Manual §2.2 |
+| **北极星** | GMV | 商品交易总额 | Σ(订单实付金额) | 日增10% | 1min | 引用运营手册§2.2 |
+| **北极星** | DAU | 日活跃用户 | 当日去重登录用户数 | 100万 | 5min | 引用运营手册§2.2 |
+| **一级** | 转化率 | 访客到下单比例 | 下单UV/访问UV | 3.5% | 5min | 引用运营手册§2.2 |
+| **一级** | 客单价 | 单笔订单金额 | GMV/订单数 | ¥150 | 5min | 引用运营手册§2.2 |
+| **一级** | 7日留存率 | 7日后仍活跃比例 | 7日活跃/当日新增 | 25% | 日 | 引用运营手册§2.2 |
+| **二级** | 支付成功率 | 支付完成比例 | 支付成功/发起支付 | 99.5% | 1min | 引用运营手册§2.2 |
+| **二级** | 退款率 | 退款订单比例 | 退款订单/总订单 | <2% | 1h | 引用运营手册§2.2 |
+| **三级** | 渠道ROI | 渠道投入产出比 | 渠道GMV/渠道成本 | ≥3 | 日 | 引用运营手册§2.2 |
 
-> **Complete Metrics System**: For metrics layered architecture, metric relationships, and data sources, see **【Template】Operations Manual.md §2.2**.
+> **完整指标体系**：指标分层架构、指标关联关系、数据来源详见 **【模板】运营手册.md §2.2**。
 
-### 2.3 Metric Relationships
+### 2.3 指标关联关系
 
 ```mermaid
 
 
 flowchart LR
-    A["Visit UV"] --> B["Click UV"]
-    B --> C["Add-to-Cart UV"]
-    C --> D["Order UV"]
-    D --> E["Payment UV"]
+    A["访问UV"] --> B["点击UV"]
+    B --> C["加购UV"]
+    C --> D["下单UV"]
+    D --> E["支付UV"]
     E --> F["GMV"]
 
-    G["AOV"] --> F
-    H["Marketing Cost"] --> I["ROI"]
+    G["客单价"] --> F
+    H["营销成本"] --> I["ROI"]
 
     style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px
     style I fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
@@ -159,42 +159,42 @@ flowchart LR
 
 ---
 
-## 3. Layout Design
+## 3. 看板布局设计（Layout Design）
 
-### 3.1 Page Structure
+### 3.1 页面结构
 
-> Follow the F-pattern reading path; key information placed in the upper left.
+> 遵循 F 型阅读路径，关键信息置于左上。
 
 ```mermaid
 
 
 graph TB
-    subgraph "Top Navigation Area"
-        T1["Dashboard Title & Time Range Selector"]
-        T2["Manual Refresh Button"]
-        T3["Export Report"]
+    subgraph "顶部导航区"
+        T1["看板标题与时间范围选择器"]
+        T2["手动刷新按钮"]
+        T3["导出报表"]
     end
 
-    subgraph "Core Metrics Area (First Screen)"
+    subgraph "核心指标区（第一屏）"
         K1[GMV / ¥1,234,567 / ↑ 12%]
         K2[DAU / 98,765 / ↑ 5%]
-        K3["Conversion Rate / 3.8% / ↑ 0.3pp"]
-        K4["AOV / ¥162 / ↑ 8%"]
+        K3["转化率 / 3.8% / ↑ 0.3pp"]
+        K4["客单价 / ¥162 / ↑ 8%"]
     end
 
-    subgraph "Trend Analysis Area (Second Screen)"
-        TR1["GMV Trend / Last 7/30 Days"]
-        TR2["Traffic Source Composition / Pie/Donut Chart"]
+    subgraph "趋势分析区（第二屏）"
+        TR1["GMV 趋势图 / 近7日/30日"]
+        TR2["流量来源构成 / 饼图/环形图"]
     end
 
-    subgraph "Detail Analysis Area (Third Screen)"
-        D1["Category Sales Ranking / Top 10"]
-        D2["Channel Conversion Funnel / Funnel Chart"]
+    subgraph "明细分析区（第三屏）"
+        D1["品类销售排行 / Top 10"]
+        D2["渠道转化漏斗 / 漏斗图"]
     end
 
-    subgraph "Anomaly Alert Area (Right/Bottom)"
-        A1["Anomaly Alert / P0: Payment Success Rate < 99%"]
-        A2["Real-time Alerts / 3 Pending"]
+    subgraph "异常预警区（右侧/底部）"
+        A1["异常预警 / P0: 支付成功率 < 99%"]
+        A2["实时告警 / 3条待处理"]
     end
 
     T1 & T2 & T3 --- K1 & K2 & K3 & K4
@@ -203,35 +203,35 @@ graph TB
     D1 & D2 --- A1 & A2
 ```
 
-### 3.2 Layout Standards
+### 3.2 布局规范
 
-| Area | Position | Content | Visual Weight |
+| 区域            | 位置           | 内容                        | 视觉权重   |
 | :-------------- | :------------- | :-------------------------- | :--------- |
-| **Core Metrics Area** | Top first row | 4-6 KPI indicator cards | ⭐⭐⭐⭐⭐ |
-| **Trend Chart Area** | Second row left | Line/area chart, show time trends | ⭐⭐⭐⭐ |
-| **Composition Chart Area** | Second row right | Pie/donut chart, show structure distribution | ⭐⭐⭐⭐ |
-| **Ranking/Detail Area** | Third row | Table/bar chart, Top N ranking | ⭐⭐⭐ |
-| **Alert/Alarm Area** | Right sidebar or bottom | Anomaly list, alert cards | ⭐⭐⭐⭐⭐ |
-| **Filter Area** | Top or left sidebar | Time, region, category dimension filters | ⭐⭐⭐ |
+| **核心指标区**  | 顶部第一行     | 4-6 个 KPI 指标卡           | ⭐⭐⭐⭐⭐ |
+| **趋势图区**    | 第二行左侧     | 折线图/面积图，展示时间趋势 | ⭐⭐⭐⭐   |
+| **构成图区**    | 第二行右侧     | 饼图/环形图，展示结构分布   | ⭐⭐⭐⭐   |
+| **排行/明细区** | 第三行         | 表格/条形图，Top N 排行     | ⭐⭐⭐     |
+| **预警/告警区** | 右侧边栏或底部 | 异常列表、告警卡片          | ⭐⭐⭐⭐⭐ |
+| **筛选器区**    | 顶部或左侧边栏 | 时间、地域、品类等维度筛选  | ⭐⭐⭐     |
 
-### 3.3 Responsive Layout
+### 3.3 响应式布局适配
 
 ```mermaid
 
 
 flowchart LR
-    subgraph "PC"
-        P1["1920×1080 / Full Layout"]
-        P2["1440×900 / Compact Layout"]
+    subgraph "PC端"
+        P1["1920×1080 / 完整布局"]
+        P2["1440×900 / 紧凑布局"]
     end
 
-    subgraph "Large Screen"
-        L1["4K/8K / Immersive Display"]
+    subgraph "大屏端"
+        L1["4K/8K / 沉浸式展示"]
     end
 
-    subgraph "Mobile"
-        M1["Phone Portrait / Single Column"]
-        M2["Tablet Landscape / Two Column"]
+    subgraph "移动端"
+        M1["手机竖屏 / 单列布局"]
+        M2["平板横屏 / 双列布局"]
     end
 
     P1 --> P2
@@ -242,46 +242,46 @@ flowchart LR
 
 ---
 
-## 4. Visualization Standards
+## 4. 可视化设计规范（Visualization Standards）
 
-### 4.1 Chart Selection Matrix
+### 4.1 图表选型矩阵
 
-> Select the correct chart type based on data relationships.
+> 根据数据关系选择正确的图表类型。
 
-| Data Relationship | Applicable Scenario | Recommended Chart | Prohibited Chart |
+| 数据关系 | 适用场景              | 推荐图表                 | 禁用图表     |
 | :------- | :-------------------- | :----------------------- | :----------- |
-| **Comparison** | Year-over-year/month-over-month, multi-dimension comparison | Bar, horizontal bar, radar | Pie, area |
-| **Trend** | Time series change, prediction | Line, area | Pie, scatter |
-| **Composition** | Part-to-whole ratio | Pie, donut, stacked bar | Line |
-| **Distribution** | Data distribution, concentration | Histogram, box plot, scatter | Pie |
-| **Correlation** | Correlation analysis, clustering | Scatter, bubble, heatmap | Bar |
-| **Flow** | Conversion funnel, user path | Funnel, Sankey | Pie, line |
+| **比较** | 同比/环比、多维度对比 | 柱状图、条形图、雷达图   | 饼图、面积图 |
+| **趋势** | 时间序列变化、预测    | 折线图、面积图           | 饼图、散点图 |
+| **构成** | 部分占整体比例        | 饼图、环形图、堆叠柱状图 | 折线图       |
+| **分布** | 数据分布、集中度      | 直方图、箱线图、散点图   | 饼图         |
+| **联系** | 相关性分析、聚类      | 散点图、气泡图、热力图   | 柱状图       |
+| **流程** | 转化漏斗、用户路径    | 漏斗图、桑基图           | 饼图、折线图 |
 
-### 4.2 Color Scheme
+### 4.2 配色方案
 
-> Primary colors no more than 3; accent colors used for anomaly alerts.
+> 主色不超过 3 种，强调色用于异常预警。
 
 ```mermaid
 
 
 flowchart LR
-    subgraph "Primary Colors"
-        C1["Brand Primary / #1890FF / For core data"]
-        C2["Success/Growth / #52C41A / For positive changes"]
-        C3["Anomaly/Alert / #F5222D / For negative changes"]
+    subgraph "主色调"
+        C1["品牌主色 / #1890FF / 用于核心数据"]
+        C2["成功/增长 / #52C41A / 用于正向变化"]
+        C3["异常/告警 / #F5222D / 用于负向变化"]
     end
 
-    subgraph "Secondary Colors"
-        A1["Background / #F0F2F5"]
-        A2["Text / #262626 / #595959"]
-        A3["Auxiliary / #FAAD14 / For warnings"]
+    subgraph "辅助色"
+        A1["背景色 / #F0F2F5"]
+        A2["文字色 / #262626 / #595959"]
+        A3["辅助色 / #FAAD14 / 用于警告"]
     end
 
-    subgraph "Semantic Standards"
-        S1["Normal: Green / Blue"]
-        S2["Warning: Yellow / Orange"]
-        S3["Anomaly: Red"]
-        S4["Neutral: Gray"]
+    subgraph "语义规范"
+        S1["正常: 绿色 / 蓝色"]
+        S2["警告: 黄色 / 橙色"]
+        S3["异常: 红色"]
+        S4["中性: 灰色"]
     end
 
     C1 --> S1
@@ -298,51 +298,51 @@ flowchart LR
     A3 --> S4
 ```
 
-**Color Usage Standards:**
+**配色使用规范：**
 
-| Scenario | Color | Hex Value | Usage Example |
+| 场景     | 颜色 | 色值      | 使用示例               |
 | :------- | :--- | :-------- | :--------------------- |
-| Brand Primary | Blue | `#1890FF` | Core metrics, main trend lines |
-| Positive Growth | Green | `#52C41A` | YoY↑, MoM↑, target achieved |
-| Negative Decline | Red | `#F5222D` | YoY↓, MoM↓, anomaly alert |
-| Warning | Orange | `#FAAD14` | Approaching threshold, needs attention |
-| Background | Light Gray | `#F0F2F5` | Dashboard overall background |
-| Card Background | White | `#FFFFFF` | Indicator cards, chart containers |
-| Primary Text | Dark Gray | `#262626` | Titles, core data |
-| Secondary Text | Medium Gray | `#595959` | Labels, description text |
+| 品牌主色 | 蓝色 | `#1890FF` | 核心指标、主趋势线条   |
+| 正向增长 | 绿色 | `#52C41A` | 同比↑、环比↑、目标达成 |
+| 负向下降 | 红色 | `#F5222D` | 同比↓、环比↓、异常告警 |
+| 警告提示 | 橙色 | `#FAAD14` | 接近阈值、需关注       |
+| 背景色   | 浅灰 | `#F0F2F5` | 看板整体背景           |
+| 卡片背景 | 白色 | `#FFFFFF` | 指标卡片、图表容器     |
+| 主文字   | 深灰 | `#262626` | 标题、核心数据         |
+| 辅助文字 | 中灰 | `#595959` | 标签、说明文字         |
 
-### 4.3 Typography & Layout
+### 4.3 字体与排版
 
-| Element | Font | Size | Weight | Color |
+| 元素       | 字体           | 字号 | 字重    | 颜色                  |
 | :--------- | :------------- | :--- | :------ | :-------------------- |
-| Dashboard Title | System default sans-serif | 24px | Bold | `#262626` |
-| Metric Value | DIN / Roboto | 32px | Bold | `#262626` |
-| Metric Label | System default | 14px | Regular | `#595959` |
-| Trend Change | System default | 16px | Medium | `#52C41A` / `#F5222D` |
-| Chart Title | System default | 16px | Medium | `#262626` |
-| Axis Label | System default | 12px | Regular | `#8C8C8C` |
+| 看板标题   | 系统默认无衬线 | 24px | Bold    | `#262626`             |
+| 指标数值   | DIN / Roboto   | 32px | Bold    | `#262626`             |
+| 指标标签   | 系统默认       | 14px | Regular | `#595959`             |
+| 趋势变化   | 系统默认       | 16px | Medium  | `#52C41A` / `#F5222D` |
+| 图表标题   | 系统默认       | 16px | Medium  | `#262626`             |
+| 坐标轴标签 | 系统默认       | 12px | Regular | `#8C8C8C`             |
 
 ---
 
-## 5. Interaction Design
+## 5. 交互设计（Interaction Design）
 
-### 5.1 Global Interaction
+### 5.1 全局交互
 
 ```mermaid
 
 
 flowchart LR
-    subgraph "Filters"
-        F1["Time Range / Today/Last 7/Last 30/Custom"]
-        F2["Region Filter / All/Region/Province/City"]
-        F3["Category Filter / All/Level 1/Level 2"]
-        F4["Channel Filter / All/App/Mini-program/Web"]
+    subgraph "筛选器"
+        F1["时间范围 / 今日/近7日/近30日/自定义"]
+        F2["地域筛选 / 全国/大区/省份/城市"]
+        F3["品类筛选 / 全品类/一级类目/二级类目"]
+        F4["渠道筛选 / 全渠道/App/小程序/Web"]
     end
 
-    subgraph "Linkage Effects"
-        L1["Global Filter / Affects all charts"]
-        L2["Chart Linkage / Click Chart A → Link Chart B"]
-        L3["Drill-down / Click summary → Expand detail"]
+    subgraph "联动效果"
+        L1["全局筛选 / 影响所有图表"]
+        L2["图表联动 / 点击A图表 → 联动B图表"]
+        L3["下钻分析 / 点击汇总 → 展开明细"]
     end
 
     F1 --> L1
@@ -352,30 +352,30 @@ flowchart LR
     L1 --> L2 --> L3
 ```
 
-### 5.2 Drill-down & Linkage Rules
+### 5.2 下钻与联动规则
 
-| Trigger | Source Chart | Target Chart | Linkage Effect |
+| 触发方式 | 源图表     | 目标图表   | 联动效果                   |
 | :------- | :--------- | :--------- | :------------------------- |
-| Click | Region Map | Trend Line Chart | Show selected region's GMV trend |
-| Click | Category Pie | Category Detail Table | Show selected category's SKU ranking |
-| Hover | Trend Line | Metric Card | Show specific value at that time point |
-| Filter | Time Selector | All Charts | All charts refresh by selected time range |
-| Drill-down | Region Bar | Province Bar | Drill from region to province dimension |
+| 点击     | 地域地图   | 趋势折线图 | 展示选中地域的 GMV 趋势    |
+| 点击     | 品类饼图   | 品类明细表 | 展示选中品类的 SKU 排行    |
+| 悬停     | 趋势折线图 | 指标卡     | 显示该时间点的具体数值     |
+| 筛选     | 时间选择器 | 全量图表   | 所有图表按选中时间范围刷新 |
+| 下钻     | 大区柱状图 | 省份柱状图 | 从大区下钻到省份维度       |
 
-### 5.3 Anomaly Alert Interaction
+### 5.3 异常预警交互
 
 ```mermaid
 
 
 flowchart TD
-    A[Metric Anomaly Detection] --> B{Anomaly Level?}
-    B -->|P0 Critical| C[🔴 Red Flash / Pop-up Alert / SMS/Phone Notification]
-    B -->|P1 Important| D[🟡 Orange Highlight / DingTalk Notification / Email Reminder]
-    B -->|P2 Normal| E[🟢 Green Marker / Dashboard Notification / No Notification Needed]
+    A[指标异常检测] --> B{异常等级?}
+    B -->|P0 紧急| C[🔴 红色闪烁 / 弹窗告警 / 短信/电话通知]
+    B -->|P1 重要| D[🟡 橙色高亮 / 钉钉通知 / 邮件提醒]
+    B -->|P2 一般| E[🟢 绿色标记 / 看板内提示 / 无需通知]
 
-    C --> F[One-Click Drill-down / View Anomaly Detail]
+    C --> F[一键下钻 / 查看异常明细]
     D --> F
-    E --> G[Mark for Follow-up / Include in Daily Report]
+    E --> G[标记待跟进 / 纳入日报]
 
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
@@ -383,40 +383,40 @@ flowchart TD
 
 ---
 
-No, the current dashboard design document does **not** include data tracking content.
+没有，当前这份数据看板设计文档中**没有包含数据埋点相关内容**。
 
-Data tracking typically belongs to the **data collection layer** as prerequisite work, completed before dashboard design. If you need to add it, you can insert at the following location:
+数据埋点通常属于**数据采集层**的前置工作，需要在看板设计之前完成。如果你需要补充，可以在以下位置添加：
 
 ---
 
-## Suggested Addition: Data Tracking Section
+## 建议补充：数据埋点章节
 
-You can insert a new section before Chapter 5 "Data Pipeline Design":
+可以在第 5 章「数据链路设计」之前插入一个新章节：
 
 ````markdown
-## 5. Data Tracking Design
+## 5. 数据埋点设计（Data Tracking Design）
 
-### 5.1 Tracking Architecture
+### 5.1 埋点体系架构
 
 ```mermaid
 
 
 flowchart LR
-    subgraph "Client-side Tracking"
-        C1["App SDK / Click/Browse/Dwell"]
-        C2["Web SDK / Page/Event/Conversion"]
-        C3["Mini-program SDK / Share/Pay/Authorize"]
+    subgraph "客户端埋点"
+        C1["App SDK / 点击/浏览/停留"]
+        C2["Web SDK / 页面/事件/转化"]
+        C3["小程序 SDK / 分享/支付/授权"]
     end
 
-    subgraph "Server-side Tracking"
-        S1["Server Logs / API Calls/Business Events"]
-        S2["Database Changes / Binlog/CDC"]
+    subgraph "服务端埋点"
+        S1["服务端日志 / 接口调用/业务事件"]
+        S2["数据库变更 / Binlog/CDC"]
     end
 
-    subgraph "Tracking Governance"
-        G1["Tracking Management Platform / Register/Approve/Decommission"]
-        G2["Tracking Validation / Real-time Validation/Offline Reconciliation"]
-        G3["Tracking Quality Dashboard / Coverage/Accuracy/Latency"]
+    subgraph "埋点治理"
+        G1["埋点管理平台 / 注册/审批/下线"]
+        G2["埋点校验 / 实时校验/离线对账"]
+        G3["埋点质量看板 / 覆盖率/准确率/延迟"]
     end
 
     C1 --> G1
@@ -428,69 +428,69 @@ flowchart LR
 ```
 ````
 
-### 6.2 Core Tracking List
+### 6.2 核心埋点清单
 
-| Tracking ID | Tracking Name | Trigger Timing | Report Method | Related Metrics | Priority |
+| 埋点ID        | 埋点名称     | 触发时机       | 上报方式 | 关联指标        | 优先级 |
 | :------------ | :----------- | :------------- | :------- | :-------------- | :----: |
-| **TRACK-001** | Homepage Browse | Enter homepage | Client | DAU, UV | P0 |
-| **TRACK-002** | Product Click | Click product card | Client | Click Rate, CTR | P0 |
-| **TRACK-003** | Add to Cart | Click add-to-cart button | Client | Add-to-Cart Rate | P0 |
-| **TRACK-004** | Order Submit | Click submit order | Server | Order Conversion Rate | P0 |
-| **TRACK-005** | Payment Success | Receive payment callback | Server | Payment Success Rate, GMV | P0 |
-| **TRACK-006** | Page Dwell Time | Calculate on page leave | Client | Average Dwell Time | P1 |
-| **TRACK-007** | Search Query | Initiate search request | Server | Search Conversion Rate | P1 |
+| **TRACK-001** | 首页浏览     | 进入首页       | 客户端   | DAU、UV         |   P0   |
+| **TRACK-002** | 商品点击     | 点击商品卡片   | 客户端   | 点击率、CTR     |   P0   |
+| **TRACK-003** | 加入购物车   | 点击加购按钮   | 客户端   | 加购率          |   P0   |
+| **TRACK-004** | 订单提交     | 点击提交订单   | 服务端   | 下单转化率      |   P0   |
+| **TRACK-005** | 支付成功     | 收到支付回调   | 服务端   | 支付成功率、GMV |   P0   |
+| **TRACK-006** | 页面停留时长 | 离开页面时计算 | 客户端   | 平均停留时长    |   P1   |
+| **TRACK-007** | 搜索查询     | 发起搜索请求   | 服务端   | 搜索转化率      |   P1   |
 
-### 6.3 Tracking Standards
+### 6.3 埋点规范
 
-| Standard Item | Requirement | Example |
+| 规范项       | 要求                           | 示例                                    |
 | :----------- | :----------------------------- | :-------------------------------------- |
-| **Event Naming** | business_domain*action*object | `trade_click_sku`, `trade_submit_order` |
-| **Parameter Standard** | Unified field names, no magic numbers | `sku_id`, `category_id`, `source_page` |
-| **User Identity** | Device ID + Login ID dual-ID system | `device_id`, `user_id` |
-| **Timestamp** | Client time + Server time dual-report | `client_time`, `server_time` |
-| **Version Management** | Tracking changes require approval, no arbitrary decommission | Tracking management platform approval flow |
+| **事件命名** | 业务域*动作*对象               | `trade_click_sku`、`trade_submit_order` |
+| **参数规范** | 统一字段名，禁止魔法数字       | `sku_id`、`category_id`、`source_page`  |
+| **用户标识** | 设备ID + 登录ID 双ID体系       | `device_id`、`user_id`                  |
+| **时间戳**   | 客户端时间 + 服务端时间双上报  | `client_time`、`server_time`            |
+| **版本管理** | 埋点变更需走审批，禁止随意下线 | 埋点管理平台审批流                      |
 
-### 6.4 Tracking Quality Monitoring
+### 6.4 埋点质量监控
 
-| Monitoring Item | Metric | Alert Threshold |
+| 监控项     | 指标                 | 告警阈值    |
 | :--------- | :------------------- | :---------- |
-| Tracking Coverage | Core path tracking coverage ratio | < 95% alert |
-| Tracking Loss Rate | Report success / Trigger count | > 1% alert |
-| Tracking Latency | Average time from trigger to storage | > 5min alert |
-| Tracking Accuracy | Sample validation correct ratio | < 99% alert |
+| 埋点覆盖率 | 核心链路埋点覆盖比例 | < 95% 告警  |
+| 埋点丢失率 | 上报成功 / 触发次数  | > 1% 告警   |
+| 埋点延迟   | 从触发到入库平均时间 | > 5min 告警 |
+| 埋点准确率 | 抽样校验正确比例     | < 99% 告警  |
 
 ---
 
-## 7. Data Pipeline
+## 7. 数据链路设计（Data Pipeline）
 
-### 7.1 Data Architecture
+### 7.1 数据架构
 
 ```mermaid
 
 
 flowchart LR
-    subgraph "Data Sources"
-        S1["Business Database / PostgreSQL"]
-        S2["Message Queue / Pulsar"]
-        S3["Tracking Logs / Log/ClickHouse"]
+    subgraph "数据源"
+        S1["业务数据库 / PostgreSQL"]
+        S2["消息队列 / Pulsar"]
+        S3["埋点日志 / Log/ClickHouse"]
     end
 
-    subgraph "Data Collection"
-        C1["Canal/Debezium / Binlog Collection"]
-        C2["Flink/Spark / Real-time Computing"]
-        C3["Logstash/Flume / Log Collection"]
+    subgraph "数据采集"
+        C1["Canal/Debezium / Binlog采集"]
+        C2["Flink/Spark / 实时计算"]
+        C3["Logstash/Flume / 日志采集"]
     end
 
-    subgraph "Data Storage"
-        D1["Real-time Warehouse / ClickHouse/Doris"]
-        D2["Offline Warehouse / Hive/MaxCompute"]
-        D3["Cache Layer / Redis"]
+    subgraph "数据存储"
+        D1["实时数仓 / ClickHouse/Doris"]
+        D2["离线数仓 / Hive/MaxCompute"]
+        D3["缓存层 / Redis"]
     end
 
-    subgraph "Data Service"
-        V1["Query Engine / Presto/StarRocks"]
-        V2["BI Platform / FineBI/Quick BI"]
-        V3["Custom Dashboard / React/ECharts"]
+    subgraph "数据服务"
+        V1["查询引擎 / Presto/StarRocks"]
+        V2["BI平台 / FineBI/Quick BI"]
+        V3["自研看板 / React/ECharts"]
     end
 
     S1 --> C1 --> D1
@@ -503,90 +503,90 @@ flowchart LR
     D3 --> V3
 ```
 
-### 7.2 Refresh Strategy
+### 7.2 刷新策略
 
-| Data Type | Refresh Frequency | Technical Implementation | Notes |
+| 数据类型      | 刷新频率     | 技术实现       | 说明                  |
 | :------------ | :----------- | :------------- | :-------------------- |
-| **Core KPI** | 1min | WebSocket push | GMV, order volume, etc. |
-| **Trend Charts** | 5min | Scheduled polling | Line charts, area charts |
-| **Ranking/Detail** | 15min | Scheduled polling | Top N tables, funnel charts |
-| **Offline Reports** | Daily/Weekly/Monthly | Offline scheduling | Retention, LTV, etc. |
-| **Anomaly Alerts** | Real-time | Flink CEP | Payment success rate, error rate |
+| **核心 KPI**  | 1min         | WebSocket 推送 | GMV、订单量等核心指标 |
+| **趋势图表**  | 5min         | 定时轮询       | 折线图、面积图        |
+| **排行/明细** | 15min        | 定时轮询       | Top N 表格、漏斗图    |
+| **离线报表**  | 日 / 周 / 月 | 离线调度       | 留存率、LTV 等        |
+| **异常告警**  | 实时         | Flink CEP      | 支付成功率、错误率    |
 
 ---
 
-## 8. Security & Permissions
+## 8. 权限与安全（Security & Permissions）
 
-### 8.1 Role Permission Matrix
+### 8.1 角色权限矩阵
 
-| Role | View Scope | Operation Permissions | Data Masking |
+| 角色           | 查看范围   | 操作权限             | 数据脱敏     |
 | :------------- | :--------- | :------------------- | :----------- |
-| **CEO / Executive** | Full data | View, export | Not applicable |
-| **Operations Director** | Full data | View, export, configure alerts | Not applicable |
-| **Frontline Operations** | Department data | View, filter | User ID masking |
-| **Technical Ops** | System metrics | View, configure monitoring | Not applicable |
-| **External Partners** | Authorized data | View only | Sensitive field masking |
+| **CEO / 高管** | 全量数据   | 查看、导出           | 不涉及       |
+| **运营总监**   | 全量数据   | 查看、导出、配置告警 | 不涉及       |
+| **一线运营**   | 本部门数据 | 查看、筛选           | 用户ID脱敏   |
+| **技术运维**   | 系统指标   | 查看、配置监控       | 不涉及       |
+| **外部合作方** | 授权数据   | 仅查看               | 敏感字段脱敏 |
 
-### 8.2 Data Security Standards
+### 8.2 数据安全规范
 
-| Security Level | Handling Method | Applicable Scenario |
+| 安全等级 | 处理方式               | 适用场景           |
 | :------- | :--------------------- | :----------------- |
-| 🔴 Confidential | Approval required for access, full-chain encryption | Financial data, user privacy |
-| 🟡 Sensitive | Role authorization, field-level masking | User behavior, transaction details |
-| 🟢 Public | No authorization required, publicly accessible | Public reports, industry data |
+| 🔴 机密  | 需审批访问，全链路加密 | 财务数据、用户隐私 |
+| 🟡 敏感  | 角色授权，字段级脱敏   | 用户行为、交易明细 |
+| 🟢 公开  | 无需授权，可公开访问   | 公开报表、行业数据 |
 
 ---
 
-## 9. Performance & UX
+## 9. 性能与体验（Performance & UX）
 
-### 9.1 Performance Metrics
+### 9.1 性能指标
 
-| Metric | Target | Optimization Method |
+| 指标         | 目标值  | 优化手段               |
 | :----------- | :------ | :--------------------- |
-| First screen load time | < 2s | CDN, lazy loading, skeleton screen |
-| Data query time | < 1s | Index optimization, pre-aggregation, caching |
-| Chart render time | < 500ms | Virtual scrolling, data sampling |
-| Concurrent users | > 500 | Load balancing, connection pooling |
+| 首屏加载时间 | < 2s    | CDN、懒加载、骨架屏    |
+| 数据查询时间 | < 1s    | 索引优化、预聚合、缓存 |
+| 图表渲染时间 | < 500ms | 虚拟滚动、数据采样     |
+| 并发用户数   | > 500   | 负载均衡、连接池       |
 
-### 9.2 UX Optimization
+### 9.2 体验优化
 
-| Optimization | Implementation |
+| 优化项       | 实现方式                             |
 | :----------- | :----------------------------------- |
-| **Skeleton Screen** | Gray placeholder during data loading, reduce white screen anxiety |
-| **Progressive Loading** | Core metrics load first, charts load on demand |
-| **Error Fallback** | Friendly message on data anomaly instead of blank |
-| **Empty State** | Guide illustration + action suggestions when no data |
-| **Dark Mode** | Support dark theme, adapt to night shift scenarios |
+| **骨架屏**   | 数据加载前展示灰色占位，减少白屏焦虑 |
+| **渐进加载** | 核心指标优先加载，图表按需加载       |
+| **错误兜底** | 数据异常时展示友好提示，而非空白     |
+| **空状态**   | 无数据时展示引导图 + 操作建议        |
+| **深色模式** | 支持暗黑主题，适配夜间值班场景       |
 
 ---
 
-## 10. Appendix
+## 10. 附录（Appendix）
 
-### 10.1 Glossary
+### 10.1 术语表
 
-| Term | Definition |
+| 术语          | 定义                                       |
 | :------------ | :----------------------------------------- |
-| **KPI** | Key Performance Indicator |
-| **Drill-down** | Expanding from summary data layer by layer to detail data |
-| **Linkage** | Interactive response between charts, one chart's action affects others |
-| **Flink CEP** | Complex Event Processing |
-| **pp** | Percentage point |
+| **KPI**       | Key Performance Indicator，关键绩效指标    |
+| **下钻**      | Drill-down，从汇总数据逐层展开到明细数据   |
+| **联动**      | 图表间的交互响应，一个图表操作影响其他图表 |
+| **Flink CEP** | Complex Event Processing，复杂事件处理     |
+| **pp**        | percentage point，百分点                   |
 
-### 10.2 Related Documents
+### 10.2 关联文档
 
-| Document | ID | Link |
+| 文档         | 编号            | 链接   |
 | :----------- | :-------------- | :----- |
-| Data Dictionary | DD-2026-XXX | [Link] |
-| Metrics System Document | METRIC-2026-XXX | [Link] |
-| API Documentation | API-2026-XXX | [Link] |
-| Operations Manual | OPS-2026-XXX | [Link] |
+| 数据字典     | DD-2026-XXX     | [链接] |
+| 指标体系文档 | METRIC-2026-XXX | [链接] |
+| 接口文档     | API-2026-XXX    | [链接] |
+| 运维手册     | OPS-2026-XXX    | [链接] |
 
-## 11. Design Review Sign-off
+## 11. 设计评审签核（Design Review Sign-off）
 
-| Role | Name | Signature | Date | Comments |
+| 角色               | 姓名 | 签字 | 日期 | 意见           |
 | :----------------- | :--- | :--: | :--: | :------------- |
-| **Data Product Lead** | | | | [Approved / Rejected] |
-| **Business Lead** | | | | [Metric definitions confirmed] |
-| **Tech Lead** | | | | [Data pipeline confirmed] |
-| **Design Lead** | | | | [Visual standards confirmed] |
-| **Security Lead** | | | | [Permission strategy confirmed] |
+| **数据产品负责人** |      |      |      | [批准 / 驳回]  |
+| **业务负责人**     |      |      |      | [指标定义确认] |
+| **技术负责人**     |      |      |      | [数据链路确认] |
+| **设计负责人**     |      |      |      | [视觉规范确认] |
+| **安全负责人**     |      |      |      | [权限策略确认] |

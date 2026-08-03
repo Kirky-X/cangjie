@@ -1,315 +1,315 @@
-# [Product/System Name (English Name)] - Business Requirements Document (BRD)
+# [产品/系统名称（英文名）] - 商业需求文档（BRD）
 
-> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 驳回
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name/Role]
+> **撰写人：** [姓名/角色]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role list]
+> **阅读对象：** [角色列表]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose & Scope
+### 0.1 文档目的与适用范围
 
-[Explain the purpose, applicable scenarios, and non-applicable scenarios of this document]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Section |
+| 文档类型 | 文件名 | 相关章节 |
 |---------|--------|---------|
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型] | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format:** Related documents use the `Filename Line Range` format (e.g., `【Template】Technical Requirements Document(TRD).md 3-17`). Line numbers may change with document updates; refer to actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Author | Changes | Reviewer |
+| 版本 | 日期 | 修订人 | 变更内容 | 审核人 |
 | :--- | :--- | :--- | :--- | :--- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft | [Reviewer] |
-| v0.2 | YYYY-MM-DD | [Name] | Added financial model and risk mitigation | [Reviewer] |
-| v0.3 | 2026-06-09 | Xie Dong | Fix: quadrantChart template changed to table format (Feishu incompatible) | — |
-| v0.3.1 | 2026-06-09 | Xie Dong | Fix xychart-beta chart to table for Feishu rendering compatibility | — |
-| v0.3.2 | 2026-06-09 | Xie Dong | Fix gantt chart to table for Feishu rendering compatibility | — |
+| v0.1 | YYYY-MM-DD | [姓名] | 初稿完成 | [审核人] |
+| v0.2 | YYYY-MM-DD | [姓名] | 补充财务模型与风险对策 | [审核人] |
+| v0.3 | 2026-06-09 | 谢董 | 修复：quadrantChart 模板改为表格格式（飞书不兼容） | — |
+| v0.3.1 | 2026-06-09 | 谢董 | 修复xychart-beta图为表格以兼容飞书渲染 | — |
+| v0.3.2 | 2026-06-09 | 谢董 | 修复gantt图为表格以兼容飞书渲染 | — |
 
 ---
 
-## 1. Executive Summary
+## 1. 执行摘要（Executive Summary）
 
-> **Elevator Pitch:** Explain what this project is, why it matters, and how much revenue it generates in 30 seconds.
+> **电梯演讲：** 在 30 秒内说清本项目"是什么、为什么、赚多少"。
 
-| Element | Content |
+| 要素           | 内容                                                            |
 | :------------- | :-------------------------------------------------------------- |
-| **Project in One Line** | [Describe product positioning in one sentence, e.g., "AI-driven personalized learning platform for Gen Z"] |
-| **Core Opportunity** | [Market pain point + opportunity window, with key data] |
-| **Investment Overview** | Total budget ¥[X] million, [Y]-month duration, core team of [Z] people |
-| **Return Forecast** | 3-year ROI [X]%, breakeven in month [N], LTV/CAC = [M] |
-| **Decision Recommendation** | 🟢 Launch immediately / 🟡 Launch after supplementary research / 🔴 Defer |
+| **项目一句话** | [用一句话描述产品定位，如："面向Z世代的AI驱动的个性化学习平台"] |
+| **核心机会**   | [市场痛点 + 机会窗口，带关键数据]                               |
+| **投入概览**   | 总预算 ¥[X]万，周期 [Y] 个月，需 [Z] 人核心团队                 |
+| **回报预测**   | 3 年 ROI [X]%，盈亏平衡点在第 [N] 个月，LTV/CAC = [M]           |
+| **决策建议**   | 🟢 立即启动 / 🟡 补充调研后启动 / 🔴 暂缓                       |
 
 ```mermaid
 mindmap
-  root((Core Project Logic))
-    Pain Points
-      [User Side: Low Efficiency / High Cost]
-      [Business Side: High Churn / Slow Growth]
-    Solution
-      [Core Capability A]
-      [Core Capability B]
-    Value
-      [User Value: Save Time / Save Money]
-      [Business Value: Revenue Growth / Cost Reduction]
-    Resources
-      [X People]
-      [Y Million Budget]
-      [Z Month Timeline]
+  root((项目核心逻辑))
+    痛点
+      [用户侧:效率低/成本高]
+      [商业侧:流失大/增长慢]
+    方案
+      [核心能力A]
+      [核心能力B]
+    价值
+      [用户价值:省时/省钱]
+      [商业价值:增收/降本]
+    资源
+      [人力X人]
+      [资金Y万]
+      [周期Z月]
 ```
 
 ---
 
-## 2. Solution Background
+## 2. 方案背景（Background）
 
-### 2.1 Needs Insight
+### 2.1 需求洞察
 
-| Dimension | Core Content | Key Data |
+| 维度         | 核心内容                                   | 关键数据                                  |
 | :----------- | :----------------------------------------- | :---------------------------------------- |
-| **Market Pain Point** | [One-sentence description of unmet user/customer pain point] | [e.g., Survey shows 73% of users want XX feature] |
-| **Opportunity Window** | [Why now is the best time? Policy/Technology/Competition changes] | [e.g., AI technology costs dropped 80%, policy bonus period 12 months] |
-| **Strategic Fit** | [Aligned with company annual OKR / strategic direction] | [e.g., Aligned with "AI First" strategy, supports Q3 growth target] |
+| **市场痛点** | [一句话描述用户/客户未被满足的痛点]        | [如：调研显示73%用户希望XX功能]           |
+| **机会窗口** | [为什么现在是最佳时机？政策/技术/竞争变化] | [如：AI技术成本下降80%，政策红利期12个月] |
+| **战略契合** | [对齐公司年度 OKR / 战略方向]              | [如：对齐"AI First"战略，支撑Q3增长目标]  |
 
-### 2.2 Data Support
+### 2.2 数据支撑
 
-- **User-side data:** [e.g., NPS only 32 vs industry benchmark 65; core scenario churn rate 35% vs industry average 15%]
-- **Business-side data:** [e.g., Current CAC ¥120 vs competitor ¥60; ARPU ¥2000, annual repurchase rate 8%]
-- **Competitor data:** [e.g., Competitor saw 20% DAU increase and 5pp conversion rate improvement after launching this feature]
+- **用户侧数据：** [如：NPS 仅 32，行业标杆 65；核心场景流失率 35%，行业平均 15%]
+- **业务侧数据：** [如：当前获客成本 ¥120，竞品 ¥60；客单价 ¥2000，年复购率 8%]
+- **竞品侧数据：** [如：竞品上线该功能后 DAU 提升 20%，付费转化率提升 5pp]
 
-### 2.3 Competitive Advantage Analysis
+### 2.3 竞争优势分析
 
-> **Note:** This quadrant chart template has been converted to table format.
+> **说明**：此象限图模板已转为表格描述。
 
 <!--
-Original quadrantChart reference:
-- title: Competitive Advantage Analysis (Execution Difficulty vs Business Value)
-- x-axis: Low Execution Difficulty --> High Execution Difficulty
-- y-axis: Low Business Value --> High Business Value
-- quadrant-1: Key Investment (High Value/Low Difficulty)
-- quadrant-2: Differentiation Advantage (High Value/High Difficulty)
-- quadrant-3: Cautious Investment (Low Value/Low Difficulty)
-- quadrant-4: Quick Harvest (Low Value/High Difficulty)
-- Data points: "Our Solution": [0.3, 0.85]; "Competitor A": [0.6, 0.55]; "Competitor B": [0.8, 0.45]; "Industry Average": [0.5, 0.5]
+原 quadrantChart 结构参考：
+- title: 竞争优势分析（执行难度 vs 商业价值）
+- x-axis: 低执行难度 --> 高执行难度
+- y-axis: 低商业价值 --> 高商业价值
+- quadrant-1: 重点投入（高价值/低难度）
+- quadrant-2: 差异化优势（高价值/高难度）
+- quadrant-3: 谨慎投入（低价值/低难度）
+- quadrant-4: 快速收割（低价值/高难度）
+- 数据点: "我们的方案": [0.3, 0.85]; "竞品A方案": [0.6, 0.55]; "竞品B方案": [0.8, 0.45]; "行业平均": [0.5, 0.5]
 -->
 
-| Quadrant | Area Characteristics | Strategy Recommendation |
+| 象限 | 区域特征 | 策略建议 |
 | :--- | :--- | :--- |
-| Quadrant 1 (Low Difficulty · High Value) | Key Investment (High Value/Low Difficulty) | Initiate immediately, fast-track |
-| Quadrant 2 (High Difficulty · High Value) | Differentiation Advantage (High Value/High Difficulty) | Phased approach, build barriers |
-| Quadrant 3 (Low Difficulty · Low Value) | Cautious Investment (Low Value/Low Difficulty) | Launch when resources permit, not a priority |
-| Quadrant 4 (High Difficulty · Low Value) | Quick Harvest (Low Value/High Difficulty) | Reassess necessity, avoid resource waste |
+| 象限1（低难度·高价值） | 重点投入（高价值/低难度） | 立即立项，快速推进 |
+| 象限2（高难度·高价值） | 差异化优势（高价值/高难度） | 分阶段攻坚，建立壁垒 |
+| 象限3（低难度·低价值） | 谨慎投入（低价值/低难度） | 资源充裕时启动，不优先 |
+| 象限4（高难度·低价值） | 快速收割（低价值/高难度） | 重新评估必要性，避免资源浪费 |
 
-| Name | X Value | Y Value | Quadrant |
+| 名称 | X值 | Y值 | 象限 |
 | :--- | :---: | :---: | :--- |
-| Our Solution | 0.3 | 0.85 | Quadrant 1 (Key Investment) |
-| Competitor A | 0.6 | 0.55 | Quadrant 2 (Differentiation Advantage) |
-| Competitor B | 0.8 | 0.45 | Quadrant 4 (Quick Harvest) |
-| Industry Average | 0.5 | 0.5 | Midpoint |
+| 我们的方案 | 0.3 | 0.85 | 象限1（重点投入） |
+| 竞品A方案 | 0.6 | 0.55 | 象限2（差异化优势） |
+| 竞品B方案 | 0.8 | 0.45 | 象限4（快速收割） |
+| 行业平均 | 0.5 | 0.5 | 中线位置 |
 
 ---
 
-## 3. Product Value (Value Proposition)
+## 3. 产品价值（Value Proposition）
 
-### 3.1 User Value
+### 3.1 用户价值
 
-- **Target Users:** [User persona, e.g., 25-35 year old white-collar workers in tier-1 cities, monthly income 15-30K, efficiency-focused]
-- **Use Scenario:** [Scenario-based description, e.g., When users need to complete a weekly report within 30 minutes, they can generate a framework with one click and auto-fill data]
-- **Value Quantification:** [Save X time / Reduce Y cost / Improve Z experience, e.g., Single task time reduced from 2h to 15min]
+- **核心用户：** [用户画像，如：25-35岁一线城市白领，月收入15-30K，注重效率]
+- **解决场景：** [场景化描述，如：当用户需要在 30 分钟内完成周报时，能够一键生成框架并自动填充数据]
+- **价值量化：** [节省 X 时间 / 降低 Y 成本 / 提升 Z 体验，如：单任务耗时从 2h 降至 15min]
 
-### 3.2 Business Value
+### 3.2 商业价值
 
-| Value Type | Specific Description | Quantified Metric | Calculation Basis |
+| 价值类型     | 具体描述                            | 量化指标                   | 测算依据     |
 | :----------- | :---------------------------------- | :------------------------- | :----------- |
-| **Revenue Growth** | [e.g., Open new paid scenarios / Increase ARPU] | GMV +X% / ARPU +¥Y | [Assumptions & Formulas] |
-| **Cost Reduction** | [e.g., Automation replacing manual work / Reduce CAC] | Labor cost -Y% / CAC -Z% | [Assumptions & Formulas] |
-| **Efficiency Improvement** | [e.g., Shorten delivery cycle / Improve productivity] | Cycle -Z% / Productivity +W% | [Assumptions & Formulas] |
-| **Strategic Positioning** | [e.g., Enter AI track / Build ecosystem barrier] | Market share +Npp / Ecosystem coverage | [Assumptions & Formulas] |
+| **收入增长** | [如：开辟新付费场景 / 提升客单价]   | GMV +X% / ARPU +¥Y         | [假设与公式] |
+| **成本降低** | [如：自动化替代人工 / 降低获客成本] | 人力成本 -Y% / CAC -Z%     | [假设与公式] |
+| **效率提升** | [如：缩短交付周期 / 提升人效]       | 周期 -Z% / 人效 +W%        | [假设与公式] |
+| **战略卡位** | [如：布局 AI 赛道 / 构建生态壁垒]   | 市场份额 +Npp / 生态覆盖率 | [假设与公式] |
 
 ```mermaid
-pie title Expected Value Distribution (Year 1)
-    "Direct Revenue Growth" : 45
-    "Cost Savings" : 25
-    "Efficiency Gains (Indirect)" : 20
-    "Strategic/Brand Premium" : 10
+pie title 预期价值贡献分布（Year 1）
+    "直接收入增长" : 45
+    "成本节约" : 25
+    "效率增益（间接）" : 20
+    "战略/品牌溢价" : 10
 ```
 
 ---
 
-## 4. Market Analysis
+## 4. 市场分析（Market Analysis）
 
-### 4.1 Market Size (TAM / SAM / SOM)
+### 4.1 市场规模（TAM / SAM / SOM）
 
-> **Reference:** Detailed market size data, growth trends, and forecast models can be found in **【Template】Market Research Report.md §4. Market Size & Trends**. This document only references key conclusions.
+> **引用说明**：详细的市场规模数据、增长趋势和预测模型，请参阅 **【模板】市场调研报告.md §4. 市场规模与趋势**。本文档仅引用关键结论。
 
-| Metric | Value | Data Source | Calculation Logic |
+| 指标                  |  数值  | 数据来源                 | 测算逻辑                   |
 | :-------------------- | :----: | :----------------------- | :------------------------- |
-| **TAM (Total Addressable Market)** | ¥[X]B | Refer to Market Research Report §4.1 | [Overall market size and growth rate] |
-| **SAM (Serviceable Available Market)** | ¥[Y]B | Refer to Market Research Report §4.3 | [Market coverable by our capabilities] |
-| **SOM (Serviceable Obtainable Market)** | ¥[Z]B | Refer to Market Research Report §4.5 | [Share obtainable with current resources] |
+| **TAM（潜在市场）**   | ¥[X]亿 | 引用市场调研报告§4.1     | [整体市场规模及增长率]     |
+| **SAM（可服务市场）** | ¥[Y]亿 | 引用市场调研报告§4.3     | [我司能力可覆盖的市场]     |
+| **SOM（可获得市场）** | ¥[Z]亿 | 引用市场调研报告§4.5     | [基于当前资源可获取的份额] |
 
-> **Full Data:** Market size historical data, forecast models (three scenarios), and sensitivity analysis can be found in **【Template】Market Research Report.md §4.4-4.6**.
+> **完整数据**：市场规模历史数据、预测模型（三情景）、敏感性分析详见 **【模板】市场调研报告.md §4.4-4.6**。
 
-### 4.2 Competitive Landscape
+### 4.2 竞争格局
 
-> **Reference:** Detailed competitive analysis, capability comparison, user feedback, and strategic insights can be found in **【Template】Competitive Analysis Report.md**. This document only references key conclusions.
+> **引用说明**：详细的竞品分析、能力对比、用户反馈和战略洞察，请参阅 **【模板】竞品分析报告.md**。本文档仅引用关键结论。
 
-**Competitive Landscape Summary:**
+**竞争态势概要**：
 
 ```mermaid
 flowchart LR
-    subgraph Competitive Landscape
-        A[Our Company / Differentiation Advantage] --> B[Competitor A / Brand/Channel]
-        A --> C[Competitor B / Features/Ecosystem]
-        A --> D[Substitutes / Low Cost]
+    subgraph 竞争态势
+        A[我司 / 差异化优势] --> B[竞品A / 品牌/渠道]
+        A --> C[竞品B / 功能/生态]
+        A --> D[替代品 / 低成本]
     end
     style A fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
 ```
 
-| Competitor Type | Representative | Core Strength | Main Weakness | Our Differentiation | Detailed Analysis |
+| 竞品类型 | 代表竞品 | 核心优势 | 主要劣势 | 我们的差异化 | 详细分析 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Direct Competitor** | [Name] | [Strength] | [Weakness] | [Differentiation] | Refer to Competitive Analysis Report §6.1 |
-| **Indirect Competitor** | [Name] | [Strength] | [Weakness] | [Differentiation] | Refer to Competitive Analysis Report §6.2 |
-| **Substitute** | [Name] | [Strength] | [Weakness] | [Differentiation] | Refer to Competitive Analysis Report §6.3 |
+| **直接竞品** | [名称] | [优势] | [劣势] | [差异化] | 引用竞品分析报告§6.1 |
+| **间接竞品** | [名称] | [优势] | [劣势] | [差异化] | 引用竞品分析报告§6.2 |
+| **替代品** | [名称] | [优势] | [劣势] | [差异化] | 引用竞品分析报告§6.3 |
 
-> **Full Analysis:** Competitor organizational profiles, $APPEALS analysis, feature matrix, user feedback can be found in **【Template】Competitive Analysis Report.md §4-8**.
+> **完整分析**：竞品组织画像、$APPEALS分析、功能矩阵、用户反馈详见 **【模板】竞品分析报告.md §4-8**。
 
 ---
 
-## 5. Product Solution Overview
+## 5. 产品解决方案（Solution Overview）
 
-### 5.1 Product Form & Business Loop
+### 5.1 产品形态与业务闭环
 
 ```mermaid
 graph LR
-    A[User Touchpoints / APP/Mini Program/API] --> B[Core Features / AI Generation/Smart Matching]
-    B --> C[Value-added Services / Membership/Premium Features]
-    C --> D[Monetization / Subscription/Commission/Advertising]
-    D --> E[User Retention / Community/Points/Perks]
+    A[用户触点 / APP/小程序/API] --> B[核心功能 / AI生成/智能匹配]
+    B --> C[增值服务 / 会员/高级功能]
+    C --> D[商业变现 / 订阅/佣金/广告]
+    D --> E[用户留存 / 社群/积分/权益]
     E --> A
     style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
 ```
 
-### 5.2 Business Model
+### 5.2 业务模式
 
-| Element | Description |
+| 要素         | 说明                                       |
 | :----------- | :----------------------------------------- |
-| **Target Users** | C-end / B-end / Platform / G-end |
-| **Participants** | [Users, merchants, platform, service providers, regulators, etc.] |
-| **Value Flow** | [Users get efficiency, merchants get orders, platform gets commission] |
-| **Profit Sharing** | [Platform takes X%, service providers take Y%, merchants keep Z%] |
+| **目标用户** | C端 / B端 / 平台 / G端                     |
+| **参与方**   | [用户、商家、平台、服务商、监管方等]       |
+| **价值流转** | [用户获得效率，商家获得订单，平台获得佣金] |
+| **利益分配** | [平台抽成 X%，服务商分成 Y%，商家自留 Z%]  |
 
-### 5.3 Revenue Model
+### 5.3 盈利模式
 
 ```mermaid
-pie title Revenue Structure Forecast (Year 1)
-    "Subscription Services" : 45
-    "Transaction Commission" : 30
-    "Advertising Revenue" : 20
-    "Value-added Services" : 5
+pie title 收入结构预测（Year 1）
+    "订阅服务" : 45
+    "交易佣金" : 30
+    "广告收入" : 20
+    "增值服务" : 5
 ```
 
-| Revenue Model | Pricing Logic | Expected Share | Notes |
+| 盈利模式     | 定价逻辑               | 预期占比 | 备注       |
 | :----------- | :--------------------- | :------: | :--------- |
-| **Subscription Services** | [e.g., ¥99/month, ¥899/year] | 45% | Core cash flow |
-| **Transaction Commission** | [e.g., 3-5% of GMV] | 30% | Scale-effect type |
-| **Advertising Revenue** | [e.g., CPC/CPM/Brand Zone] | 20% | Traffic monetization |
-| **Value-added Services** | [e.g., Customization/Training/Data] | 5% | High margin |
+| **订阅服务** | [如：¥99/月，¥899/年]  |   45%    | 核心现金流 |
+| **交易佣金** | [如：GMV 的 3-5%]      |   30%    | 规模效应型 |
+| **广告收入** | [如：CPC/CPM/品牌专区] |   20%    | 流量变现   |
+| **增值服务** | [如：定制/培训/数据]   |    5%    | 高毛利     |
 
 ---
 
-## 6. Execution Plan
+## 6. 执行计划（Execution Plan）
 
-### 6.1 Phase Milestones (Roadmap)
+### 6.1 阶段里程碑（Roadmap）
 
-> **Note:** Gantt chart is Feishu-incompatible, converted to table format.
+> **说明**：甘特图为飞书不兼容类型，改为表格描述。
 
-| Phase | Task | Start Date | Duration | Status |
+| 阶段 | 任务 | 开始日期 | 工期 | 状态 |
 |:---|:---|:---|:---:|:---:|
-| Validation | Requirements validation & MVP development | YYYY-MM | 2M | ⚪ |
-| Validation | Seed user testing | After MVP completion | 1M | ⚪ |
-| Growth | Feature completion & PMF achievement | After seed testing | 3M | ⚪ |
-| Growth | Scaled promotion | After PMF achievement | 3M | ⚪ |
-| Maturity | Commercial monetization | After promotion | 3M | ⚪ |
-| Maturity | Ecosystem building & second curve | After monetization | 3M | ⚪ |
+| 验证期 | 需求验证与MVP开发 | YYYY-MM | 2M | ⚪ |
+| 验证期 | 种子用户测试 | MVP完成后 | 1M | ⚪ |
+| 成长期 | 功能完善与PMF达成 | 种子测试完成后 | 3M | ⚪ |
+| 成长期 | 规模化推广 | PMF达成后 | 3M | ⚪ |
+| 成熟期 | 商业化变现 | 推广完成后 | 3M | ⚪ |
+| 成熟期 | 生态建设与第二曲线 | 变现完成后 | 3M | ⚪ |
 
-### 6.2 Key Milestones & Deliverables
+### 6.2 关键里程碑与交付物
 
-| Phase | Time | Core Objective | Key Deliverables | Go/No-Go Criteria |
+| 阶段       | 时间    | 核心目标         | 关键交付物           | Go/No-Go 标准 |
 | :--------- | :------ | :--------------- | :------------------- | :------------ |
-| **Validation** | M1-M3 | Validate demand authenticity | MVP, test report | Retention rate > X% |
-| **Growth** | M4-M6 | Find product-market fit | Full product, operations system | PMF metrics met |
-| **Scale** | M7-M9 | Rapidly expand user base | Promotion plan, channel system | CAC < LTV/3 |
-| **Monetize** | M10-M12 | Validate business model | Commercial product, financial model | Monthly breakeven |
+| **验证期** | M1-M3   | 验证需求真实性   | MVP、测试报告        | 留存率 > X%   |
+| **成长期** | M4-M6   | 找到产品市场契合 | 完整版产品、运营体系 | PMF 指标达标  |
+| **规模化** | M7-M9   | 快速扩张用户规模 | 推广方案、渠道体系   | CAC < LTV/3   |
+| **变现期** | M10-M12 | 验证商业模式     | 商业化产品、财务模型 | 单月盈亏平衡  |
 
-### 6.3 Resource Requirements & Budget
+### 6.3 资源需求与预算
 
 ```mermaid
 flowchart TD
-    subgraph Resource Overview
-        H[Total Budget: ¥X Million] --> I[Labor Cost: Y%]
-        H --> J[Operations Cost: Z%]
-        H --> K[Technology Cost: W%]
-        H --> L[Other: N%]
+    subgraph 资源总览
+        H[总预算: ¥X万] --> I[人力成本: Y%]
+        H --> J[运营成本: Z%]
+        H --> K[技术成本: W%]
+        H --> L[其他: N%]
     end
 ```
 
-| Resource Type | Requirements Detail | Budget (Million) | Notes |
+| 资源类型     | 需求明细                                           | 预算（万元） | 备注     |
 | :----------- | :------------------------------------------------- | :----------: | :------- |
-| **Labor Cost** | Product [X], R&D [Y], Design [Z], Operations [W] | [Amount] | Including outsourcing |
-| **Operations Cost** | Promotion, content, activities, channels | [Amount] | First year focus |
-| **Technology Cost** | Servers, cloud resources, third-party services, bandwidth | [Amount] | Usage-based estimate |
-| **Other** | Office, travel, compliance, legal | [Amount] | 10% reserve |
-| **Total** | | **[Total Amount]** | |
+| **人力成本** | 产品 [X] 人、研发 [Y] 人、设计 [Z] 人、运营 [W] 人 |    [金额]    | 含外包   |
+| **运营成本** | 推广、内容、活动、渠道                             |    [金额]    | 首年重点 |
+| **技术成本** | 服务器、云资源、第三方服务、带宽                   |    [金额]    | 按量预估 |
+| **其他**     | 办公、差旅、合规、法务                             |    [金额]    | 预留 10% |
+| **合计**     |                                                    | **[总金额]** |          |
 
-### 6.4 Stakeholders & Responsibilities (RACI Matrix)
+### 6.4 干系人与职责（RACI 矩阵）
 
 ```mermaid
 flowchart LR
-    subgraph RACI Matrix Example
-        T1[Task/Decision] --> R[Responsible]
-        T1 --> A[Accountable]
-        T1 --> C[Consulted]
-        T1 --> I[Informed]
+    subgraph RACI矩阵示例
+        T1[任务/决策] --> R[负责人 / Responsible]
+        T1 --> A[审批人 / Accountable]
+        T1 --> C[咨询方 / Consulted]
+        T1 --> I[知会方 / Informed]
     end
 ```
 
-| Item | Product Lead | R&D Lead | Operations Lead | Finance/Legal | CEO |
+| 事项     | 产品负责人 | 研发负责人 | 运营负责人 | 财务/法务 |  CEO  |
 | :------- | :--------: | :--------: | :--------: | :-------: | :---: |
-| BRD Approval | C | I | I | C | **A** |
-| Budget Allocation | C | C | C | **R** | **A** |
-| Product Solution | **R** | C | C | I | A |
-| Technical Architecture | C | **R** | I | I | A |
-| Launch Decision | C | C | **R** | I | **A** |
+| BRD 审批 |     C      |     I      |     I      |     C     | **A** |
+| 预算分配 |     C      |     C      |     C      |   **R**   | **A** |
+| 产品方案 |   **R**    |     C      |     C      |     I     |   A   |
+| 技术架构 |     C      |   **R**    |     I      |     I     |   A   |
+| 上线决策 |     C      |     C      |   **R**    |     I     | **A** |
 
 ---
 
-## 7. Financial Forecast
+## 7. 财务预估（Financial Forecast）
 
-### 7.1 Investment-Return Model (3 Years)
+### 7.1 投入产出模型（3 年）
 
-| Year | Investment (M) | Revenue (M) | Profit (M) | Cumulative Profit | ROI | Notes |
+|    年度    | 投入（万） | 收入（万） | 利润（万） | 累计利润 | ROI  | 备注   |
 | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Year 1** | 500 | 200 | -300 | -300 | -60% | Investment phase |
-| **Year 2** | 800 | 1,500 | 700 | 400 | 88% | Growth phase |
-| **Year 3** | 1,000 | 3,000 | 2,000 | 2,400 | 200% | Profit phase |
+| **Year 1** |    500     |    200     |    -300    |   -300   | -60% | 投入期 |
+| **Year 2** |    800     |   1,500    |    700     |   400    | 88%  | 增长期 |
+| **Year 3** |   1,000    |   3,000    |   2,000    |  2,400   | 200% | 盈利期 |
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" style="max-width:600px;height:auto">
 <rect width="600" height="420" fill="#fafafa" rx="8"/>
-<text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">3-Year Financial Trends (Millions)</text>
+<text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">3 年财务趋势（万元）</text>
 <line x1="60" y1="370.0" x2="580" y2="370.0" stroke="#eee" stroke-width="1"/>
 <text x="55" y="374.0" text-anchor="end" font-size="11" fill="#999">-500</text>
 <line x1="60" y1="304.0" x2="580" y2="304.0" stroke="#eee" stroke-width="1"/>
@@ -322,7 +322,7 @@ flowchart LR
 <text x="55" y="110.0" text-anchor="end" font-size="11" fill="#999">2300</text>
 <line x1="60" y1="40.0" x2="580" y2="40.0" stroke="#eee" stroke-width="1"/>
 <text x="55" y="44.0" text-anchor="end" font-size="11" fill="#999">3000</text>
-<text x="16" y="205" text-anchor="middle" font-size="12" fill="#666" transform="rotate(-90, 16, 205)">Amount</text>
+<text x="16" y="205" text-anchor="middle" font-size="12" fill="#666" transform="rotate(-90, 16, 205)">金额</text>
 <line x1="60" y1="370" x2="580" y2="370" stroke="#ccc" stroke-width="1"/>
 <polyline points="146.7,275.7 320.0,247.4 493.3,228.6" fill="none" stroke="#5470c6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="146.7" cy="275.7" r="4" fill="#5470c6" stroke="#fff" stroke-width="1.5"/>
@@ -350,150 +350,150 @@ flowchart LR
 <text x="493.3" y="390" text-anchor="middle" font-size="12" fill="#333">Year 3</text>
 <line x1="165.0" y1="414" x2="177.0" y2="414" stroke="#5470c6" stroke-width="2.5"/>
 <circle cx="171.0" cy="414" r="3" fill="#5470c6" stroke="#fff" stroke-width="1"/>
-<text x="181.0" y="418" font-size="12" fill="#333">Investment</text>
+<text x="181.0" y="418" font-size="12" fill="#333">投入</text>
 <line x1="255.0" y1="414" x2="267.0" y2="414" stroke="#91cc75" stroke-width="2.5"/>
 <circle cx="261.0" cy="414" r="3" fill="#91cc75" stroke="#fff" stroke-width="1"/>
-<text x="271.0" y="418" font-size="12" fill="#333">Revenue</text>
+<text x="271.0" y="418" font-size="12" fill="#333">收入</text>
 <line x1="345.0" y1="414" x2="357.0" y2="414" stroke="#fc8452" stroke-width="2.5"/>
 <circle cx="351.0" cy="414" r="3" fill="#fc8452" stroke="#fff" stroke-width="1"/>
-<text x="361.0" y="418" font-size="12" fill="#333">Profit</text>
+<text x="361.0" y="418" font-size="12" fill="#333">利润</text>
 </svg>
 
-### 7.2 Key Financial Assumptions
+### 7.2 关键财务假设
 
-| Metric | Assumed Value | Basis / Risk |
+| 指标                    | 假设值      | 依据 / 风险                       |
 | :---------------------- | :---------- | :-------------------------------- |
-| **Customer Acquisition Cost (CAC)** | ≤ ¥50 | [Channel test data / Strategy adjustment if exceeded] |
-| **Lifetime Value (LTV)** | ≥ ¥300 | [Payment rate × ARPU × Lifecycle] |
-| **LTV / CAC** | ≥ 6 | [Healthy SaaS benchmark > 3] |
-| **Monthly Churn Rate** | < 5% | [Industry benchmark / Product stickiness assumption] |
-| **Breakeven Period** | Month [N] | [Based on current cash flow model] |
+| **用户获取成本（CAC）** | ≤ ¥50       | [渠道测试数据 / 若超支需调整策略] |
+| **用户终身价值（LTV）** | ≥ ¥300      | [付费率 × ARPU × 生命周期]        |
+| **LTV / CAC**           | ≥ 6         | [健康 SaaS 标准 > 3]              |
+| **月度流失率**          | < 5%        | [行业基准 / 产品粘性假设]         |
+| **盈亏平衡周期**        | 第 [N] 个月 | [基于当前现金流模型]              |
 
-### 7.3 Sensitivity Analysis
+### 7.3 敏感性分析
 
-| Scenario | Key Variable Change | Year 3 Profit | Strategy Adjustment |
+| 情景     | 关键变量变化               | Year 3 利润 | 策略调整               |
 | :------- | :------------------------- | :---------: | :--------------------- |
-| **Optimistic** | CAC -30%, Payment rate +50% | +4,000 | Increase investment, rapid expansion |
-| **Baseline** | Execute per assumptions | +2,000 | Proceed as planned |
-| **Pessimistic** | CAC +50%, Payment rate -30% | +800 | Control scale, focus on core users |
+| **乐观** | 获客成本 -30%，付费率 +50% |   +4,000    | 加大投入，快速扩张     |
+| **基准** | 按假设执行                 |   +2,000    | 按计划推进             |
+| **悲观** | 获客成本 +50%，付费率 -30% |    +800     | 控制规模，聚焦核心用户 |
 
 ---
 
-## 8. Risks & Mitigation
+## 8. 风险与对策（Risk & Mitigation）
 
-### 8.1 Risk Register
+### 8.1 风险登记册
 
-> **Reference:** Full risk register (with trigger and exit conditions) can be found in **【Template】Project Charter.md §11.1**. This document only lists core business-level risks.
+> **引用说明**：完整的风险登记册（含触发条件和退出条件）请参阅 **【模板】项目任务书.md §11.1**。本文档仅列出商业层面的核心风险。
 
-| Risk ID | Risk Description | Likelihood | Impact | Risk Level | Mitigation Strategy | Owner | Exit Condition |
+| 风险 ID   | 风险描述           | 可能性 | 影响度 | 风险等级 | 应对策略                                   |   责任人   |  退出条件               |
 | :-------- | :----------------- | :----: | :----: | :------: | :----------------------------------------- | :--------: | :--------------------- |
-| **R-001** | Policy/regulation changes | Medium | High | 🔴 High | Proactive compliance communication, reserve policy buffer; multi-region filing | Legal | Pause if regulator halts |
-| **R-002** | Core personnel turnover | Medium | High | 🔴 High | Knowledge documentation, AB-role mechanism, equity incentives | HR | Reduce scope if key positions vacant >2 weeks |
-| **R-003** | Market acceptance below expectations | Medium | High | 🔴 High | Fast MVP validation, pivot if metrics don't meet targets | Product Lead | Terminate if MVP retention <<20% |
-| **R-004** | Competitor fast follow-up | High | Medium | 🟡 Medium | Build technology/data barriers, accelerate iteration | Strategy Lead | Adjust targets if market share <<5% |
+| **R-001** | 政策监管变化       |   中   |   高   |  🔴 高   | 提前与合规沟通，预留政策缓冲期；多区域备案 |    法务    | 监管叫停则暂停         |
+| **R-002** | 核心人员流失       |   中   |   高   |  🔴 高   | 知识文档化，AB角机制，股权激励             |     HR     | 关键岗位空缺>2周则缩减范围 |
+| **R-003** | 市场接受度不及预期 |   中   |   高   |  🔴 高   | MVP 快速验证，数据不达标即 Pivot           | 产品负责人 | MVP留存率<<20%则终止    |
+| **R-004** | 竞品快速跟进       |   高   |   中   |  🟡 中   | 建立技术/数据壁垒，加速迭代                | 战略负责人 | 市场份额<<5%则调整目标 |
 
-### 8.2 Risk Heat Map
+### 8.2 风险热力图
 
-> **Note:** This quadrant chart template has been converted to table format.
+> **说明**：此象限图模板已转为表格描述。
 
 <!--
-Original quadrantChart reference:
-- title: Risk Heat Map (Likelihood vs Impact)
-- x-axis: Low Likelihood --> High Likelihood
-- y-axis: Low Impact --> High Impact
-- quadrant-1: Key Focus (High/High)
-- quadrant-2: Close Monitoring (Low/High)
-- quadrant-3: General Attention (Low/Low)
-- quadrant-4: Periodic Review (High/Low)
-- Data points: "R-001 Policy": [0.5, 0.9]; "R-002 Personnel": [0.5, 0.9]; "R-003 Technical": [0.8, 0.6]; "R-004 Market": [0.5, 0.9]; "R-005 Competitor": [0.8, 0.6]
+原 quadrantChart 结构参考：
+- title: 风险热力图（可能性 vs 影响度）
+- x-axis: 低可能性 --> 高可能性
+- y-axis: 低影响度 --> 高影响度
+- quadrant-1: 重点关注（高/高）
+- quadrant-2: 密切监控（低/高）
+- quadrant-3: 一般关注（低/低）
+- quadrant-4: 定期回顾（高/低）
+- 数据点: "R-001 政策": [0.5, 0.9]; "R-002 人员": [0.5, 0.9]; "R-003 技术": [0.8, 0.6]; "R-004 市场": [0.5, 0.9]; "R-005 竞品": [0.8, 0.6]
 -->
 
-| Quadrant | Area Characteristics | Strategy Recommendation |
+| 象限 | 区域特征 | 策略建议 |
 | :--- | :--- | :--- |
-| Quadrant 1 (High Likelihood · High Impact) | Key Focus (High/High) | Develop emergency plans, regular drills |
-| Quadrant 2 (Low Likelihood · High Impact) | Close Monitoring (Low/High) | Set alert thresholds, continuous tracking |
-| Quadrant 3 (Low Likelihood · Low Impact) | General Attention (Low/Low) | Routine management, no excessive attention needed |
-| Quadrant 4 (High Likelihood · Low Impact) | Periodic Review (High/Low) | Establish process-based management, control frequency |
+| 象限1（高可能性·高影响度） | 重点关注（高/高） | 制定应急预案，定期演练 |
+| 象限2（低可能性·高影响度） | 密切监控（低/高） | 设定预警阈值，持续跟踪 |
+| 象限3（低可能性·低影响度） | 一般关注（低/低） | 常规管理，不必过度关注 |
+| 象限4（高可能性·低影响度） | 定期回顾（高/低） | 建立流程化管理，控制发生频次 |
 
-| Name | X Value | Y Value | Quadrant |
+| 名称 | X值 | Y值 | 象限 |
 | :--- | :---: | :---: | :--- |
-| R-001 Policy | 0.5 | 0.9 | Quadrant 2 (Close Monitoring) |
-| R-002 Personnel | 0.5 | 0.9 | Quadrant 2 (Close Monitoring) |
-| R-003 Technical | 0.8 | 0.6 | Quadrant 1 (Key Focus) |
-| R-004 Market | 0.5 | 0.9 | Quadrant 2 (Close Monitoring) |
-| R-005 Competitor | 0.8 | 0.6 | Quadrant 1 (Key Focus) |
+| R-001 政策 | 0.5 | 0.9 | 象限2（密切监控） |
+| R-002 人员 | 0.5 | 0.9 | 象限2（密切监控） |
+| R-003 技术 | 0.8 | 0.6 | 象限1（重点关注） |
+| R-004 市场 | 0.5 | 0.9 | 象限2（密切监控） |
+| R-005 竞品 | 0.8 | 0.6 | 象限1（重点关注） |
 
 ---
 
-## 9. Recommendation
+## 9. 决策建议（Recommendation）
 
-> **Recommendation:** 🟢 Launch immediately / 🟡 Launch after supplementary research / 🔴 Defer
+> **建议决策：** 🟢 立即启动 / 🟡 补充调研后启动 / 🔴 暂缓
 
-### 9.1 Key Reasons (3-Sentence Summary)
+### 9.1 关键理由（3 句话总结）
 
-1. **[Market Opportunity]** [One sentence explaining the market is large enough and timing is right]
-2. **[Resource Fit]** [One sentence explaining required resources are within acceptable range]
-3. **[Return Expectation]** [One sentence explaining expected returns align with company strategy and financial requirements]
+1. **[市场机会]** [一句话说明市场足够大且时机正确]
+2. **[资源匹配]** [一句话说明所需资源在可承受范围内]
+3. **[回报预期]** [一句话说明预期回报符合公司战略与财务要求]
 
-### 9.2 Next Steps
+### 9.2 下一步动作
 
 ```mermaid
 flowchart LR
-    A[BRD Review Passed] --> B[Hold Project Initiation Review]
-    B --> C[Assemble PDT Team]
-    C --> D[Sign Project Charter]
-    D --> E[Start MVP Development]
-    E --> F[First Review in 30 Days]
+    A[BRD评审通过] --> B[召开立项评审会]
+    B --> C[组建PDT团队]
+    C --> D[签署项目Charter]
+    D --> E[启动MVP开发]
+    E --> F[30天后首次Review]
     style A fill:#e1f5e1,stroke:#2e7d32
     style F fill:#fff3e0,stroke:#ef6c00
 ```
 
-| # | Next Step | Owner | Deadline | Deliverable |
+| 序号 | 下一步动作              | 负责人 | 截止时间 | 交付物              |
 | :---: | :--- | :--- | :--- | :--- |
-| 1 | Hold BRD project initiation review | [Name] | [Date] | Meeting minutes + Decision conclusions |
-| 2 | Determine PDT core members | [Name] | [Date] | Team roster |
-| 3 | Sign project Charter | [Name] | [Date] | Signed Charter |
-| 4 | Start requirements refinement & MVP design | [Name] | [Date] | PRD initial draft |
+|  1   | 召开 BRD 立项评审会     | [姓名] | [日期]   | 会议纪要 + 决策结论 |
+|  2   | 确定 PDT 核心成员       | [姓名] | [日期]   | 团队名单            |
+|  3   | 签署项目 Charter        | [姓名] | [日期]   | 签字版 Charter      |
+|  4   | 启动需求细化与 MVP 设计 | [姓名] | [日期]   | PRD 初稿            |
 
 ---
 
-## 10. Appendix
+## 10. 附录（Appendix）
 
-### 10.1 Glossary
+### 10.1 术语表（Glossary）
 
-| Term | Definition |
+| 术语    | 定义                                    |
 | :------ | :-------------------------------------- |
-| **LTV** | Life Time Value |
-| **CAC** | Customer Acquisition Cost |
-| **PMF** | Product Market Fit |
-| **PDT** | Product Development Team |
-| **MVP** | Minimum Viable Product |
+| **LTV** | Life Time Value，用户终身价值           |
+| **CAC** | Customer Acquisition Cost，用户获取成本 |
+| **PMF** | Product Market Fit，产品市场契合        |
+| **PDT** | Product Development Team，产品开发团队  |
+| **MVP** | Minimum Viable Product，最小可行产品    |
 
-### 10.2 References
+### 10.2 参考资料
 
-- [Industry report name and link]
-- [Competitive analysis document link]
-- [User research report link]
-- [Financial calculation spreadsheet link]
+- [行业报告名称及链接]
+- [竞品分析文档链接]
+- [用户调研报告链接]
+- [财务测算底表链接]
 
-### 10.3 Requirements Traceability Matrix (Optional)
+### 10.3 需求追溯矩阵（可选）
 
 ```mermaid
 flowchart LR
-    B1[Business Goal: Increase Revenue] --> M1[Market Opportunity: 30% Annual Track Growth]
-    M1 --> S1[Solution: Launch Paid Membership]
-    S1 --> F1[Feature Requirement: Membership Tier System]
-    F1 --> K1[KPI: Membership Revenue Reaches 20%]
+    B1[商业目标:提升营收] --> M1[市场机会:赛道年增长30%]
+    M1 --> S1[解决方案:推出付费会员]
+    S1 --> F1[功能需求:会员等级体系]
+    F1 --> K1[KPI:会员收入占比达20%]
 ```
 
 ---
 
-> **Document Approval & Sign-off**
+> **文档审批签核**
 >
-> | Role | Signature | Date | Comments |
+> | 角色         | 签字 | 日期 | 意见 |
 > | :----------- | :--- | :--- | :--- |
-> | Product Lead | | | |
-> | Technical Lead | | | |
-> | Operations Lead | | | |
-> | Finance Lead | | | |
-> | CEO / Decision Maker | | | |
+> | 产品负责人   |      |      |      |
+> | 技术负责人   |      |      |      |
+> | 运营负责人   |      |      |      |
+> | 财务负责人   |      |      |      |
+> | CEO / 决策人 |      |      |      |

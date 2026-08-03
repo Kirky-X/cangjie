@@ -1,50 +1,50 @@
-## Product Full Lifecycle Documentation Map
+## 产品全生命周期文档地图
 
 ```mermaid
 flowchart TB
-    subgraph strategic["🔴 Strategic Layer (Why)"]
-        A1[BRD / Business Requirements Document]
-        A2[MRD / Market Requirements Document]
-        A3[Charter / Project Charter]
+    subgraph 战略层["🔴 战略层（Why）"]
+        A1[BRD / 商业需求文档]
+        A2[MRD / 市场需求文档]
+        A3[Charter / 项目任务书]
     end
 
-    subgraph product["🟡 Product Layer (What)"]
-        B1[PRD / Product Requirements Document]
-        B2[FRD / Functional Requirements Document]
-        B3[UX Spec / Interaction/Visual Specification]
+    subgraph 产品层["🟡 产品层（What）"]
+        B1[PRD / 产品需求文档]
+        B2[FRD / 功能需求文档]
+        B3[UX Spec / 交互/视觉规范]
     end
 
-    subgraph technical["🟢 Technical Layer (How)"]
-        C1[TRD / Technical Requirements Document]
-        C2[Architecture Design]
-        C3[API Documentation / Interface Specification]
-        C4[DB Design / Data Model]
+    subgraph 技术层["🟢 技术层（How）"]
+        C1[TRD / 技术需求文档]
+        C2[架构设计 / Architecture Design]
+        C3[API文档 / 接口规范]
+        C4[DB设计 / 数据模型]
     end
 
-    subgraph delivery["🔵 Delivery Layer (When/Where)"]
-        D1[Release Plan]
-        D2[Test Report]
-        D3[Canary Strategy]
+    subgraph 交付层["🔵 交付层（When/Where）"]
+        D1[发布计划 / Release Plan]
+        D2[测试报告 / Test Report]
+        D3[灰度方案 / Canary Strategy]
     end
 
-    subgraph operations["🟣 Operations Layer (Run)"]
-        E1[Operation Guide]
-        E2[Dashboard]
-        E3[User Guide]
-        E4[Weekly/Monthly Report]
+    subgraph 运营层["🟣 运营层（Run）"]
+        E1[运营手册 / Operation Guide]
+        E2[数据看板 / Dashboard]
+        E3[用户手册 / User Guide]
+        E4[周报月报 / Weekly-Monthly Report]
     end
 
-    subgraph retirement["⚫ Retirement Layer (End)"]
-        F1[EOL Plan / End of Life]
-        F2[Retrospective]
-        F3[Knowledge Base]
+    subgraph 退役层["⚫ 退役层（End）"]
+        F1[EOL计划 / 生命周期结束]
+        F2[复盘报告 / Retrospective]
+        F3[知识沉淀 / Knowledge Base]
     end
 
-    subgraph common["⚪ Common Documentation"]
-        G1[README / Project Entry]
-        G2[CHANGELOG / Changelog]
-        G3[FAQ / Frequently Asked Questions]
-        G4[CONTRIBUTING / Contribution Guide]
+    subgraph 通用["⚪ 通用文档（Common）"]
+        G1[README / 项目入口]
+        G2[CHANGELOG / 变更日志]
+        G3[FAQ / 常见问题]
+        G4[CONTRIBUTING / 贡献指南]
     end
 
     A1 --> A3
@@ -84,381 +84,381 @@ flowchart TB
 
 ---
 
-## I. Strategic Layer: Answering "Why Build It"
+## 一、战略层：回答"为什么要做"
 
-### 1. BRD (Business Requirements Document)
+### 1. BRD（Business Requirements Document）商业需求文档
 
-> **Position:** Starting point of the product lifecycle, answers "why it's worth investing resources"
+> **定位：** 产品生命周期的起点，回答"为什么值得投入资源"
 
-| Element | Description | Key Questions |
+| 要素           | 说明                  | 关键问题                       |
 | :------------- | :-------------------- | :----------------------------- |
-| **Business Goal** | What business problem to solve | How much business loss if we don't build this? |
-| **Investment & Return** | ROI calculation, cost-benefit analysis | Investment X, expected return Y? |
-| **Success Metrics** | Quantifiable business outcomes | How to prove this project succeeded? |
-| **Risks & Constraints** | Policy, resource, timeline constraints | What's the biggest risk? What's Plan B? |
-| **Stakeholders** | Decision makers and interested parties | Who has the final say? Who benefits? Who objects? |
+| **商业目标**   | 要解决什么业务问题    | 不做这个，业务损失多少？       |
+| **投入产出**   | ROI测算，成本收益分析 | 投入X，预期回报Y？             |
+| **成功指标**   | 可量化的业务结果      | 怎么证明这个项目成功了？       |
+| **风险与约束** | 政策、资源、时间限制  | 最大风险是什么？Plan B是什么？ |
+| **干系人**     | 决策者与利益相关方    | 谁说了算？谁受益？谁反对？     |
 
-**Typical Scenarios:** Requesting budget from management, competing for resources, project initiation review.
+**典型场景：** 向管理层申请预算、争取资源、立项评审。
 
 ---
 
-### 2. MRD (Market Requirements Document)
+### 2. MRD（Market Requirements Document）市场需求文档
 
-> **Position:** Bridge between market and product, answers "where is the market opportunity"
+> **定位：** 连接市场与产品的桥梁，回答"市场机会在哪里"
 
-| Element | Description |
+| 要素           | 说明                         |
 | :------------- | :--------------------------- |
-| **Target Market** | TAM/SAM/SOM market sizing |
-| **User Personas** | Core users, marginal users, rejecting users |
-| **Competitive Analysis** | Competitor feature matrix, differentiation opportunities |
-| **User Pain Points** | Scenario-based pain point descriptions (with data) |
-| **Requirement Priority** | MoSCoW ranking from market perspective |
+| **目标市场**   | TAM/SAM/SOM 市场规模测算     |
+| **用户画像**   | 核心用户、边缘用户、拒绝用户 |
+| **竞品分析**   | 竞品功能矩阵、差异化机会点   |
+| **用户痛点**   | 场景化的痛点描述（带数据）   |
+| **需求优先级** | 市场视角的MoSCoW排序         |
 
-**Typical Scenarios:** Product direction exploration, new track entry decisions, annual planning.
+**典型场景：** 产品方向探索、新赛道进入决策、年度规划。
 
 ---
 
-### 3. Charter (Project Charter)
+### 3. Charter（项目任务书）
 
-> **Core document of IPD system**, widely used at Huawei/Alibaba, the "birth certificate" for formal project initiation
+> **IPD体系核心文档**，在华为/阿里广泛使用，是正式立项的"准生证"
 
-| Element | Description |
+| 要素         | 说明                       |
 | :----------- | :------------------------- |
-| **Project Background** | Condensed conclusions from BRD/MRD |
-| **Project Objectives** | Business goals + user goals + capability goals |
-| **Scope Boundaries** | In Scope / Out Scope |
-| **Milestones** | Key Decision Checkpoints (DCP) |
-| **Core Team** | PDT (Product Development Team) members |
-| **Resource Budget** | Manpower, funding, timeline budget |
+| **项目背景** | 基于BRD/MRD的浓缩结论      |
+| **项目目标** | 商业目标+用户目标+能力目标 |
+| **范围边界** | In Scope / Out Scope       |
+| **里程碑**   | 关键决策评审点（DCP）      |
+| **核心团队** | PDT（产品开发团队）成员    |
+| **资源预算** | 人力、资金、时间预算       |
 
-**Typical Scenarios:** Formal kickoff meeting, obtaining IPMT (Investment Portfolio Management Team) approval.
-
----
-
-## II. Product Layer: Answering "What to Build"
-
-### 4. PRD (Product Requirements Document)
-
-> **Position:** The **most critical execution document** in the full lifecycle; a complete template has already been provided.
-
-**Key Characteristics:**
-
-- User-perspective feature descriptions
-- Includes business flows, page transitions, inputs/outputs, acceptance criteria
-- **Single Source of Truth (SSoT)** for R&D, design, testing, and operations
+**典型场景：** 正式立项会议（Kick-off），获得IPMT（投资评审委员会）批准。
 
 ---
 
-### 5. FRD (Functional Requirements Document)
+## 二、产品层：回答"做什么"
 
-> **Position:** System-perspective functional behavior description, often merged with or supplementary to PRD
+### 4. PRD（Product Requirements Document）产品需求文档
 
-| Difference from PRD | PRD | FRD |
+> **定位：** 全生命周期中**最核心的执行文档**，前面已提供完整模板。
+
+**关键特性：**
+
+- 用户视角的功能描述
+- 包含业务流程、页面流转、输入输出、验收标准
+- 研发、设计、测试、运营的**单一事实源（SSoT）**
+
+---
+
+### 5. FRD（Functional Requirements Document）功能需求文档
+
+> **定位：** 系统视角的功能行为描述，常与PRD合并或作为PRD的技术补充
+
+| 与PRD的区别 | PRD                 | FRD                                                      |
 | :---------- | :------------------ | :------------------------------------------------------- |
-| **Perspective** | User perspective | System perspective |
-| **Audience** | Everyone (including non-technical) | R&D, Testing |
-| **Content** | User stories, interaction flows | System logic, state transitions, data flows |
-| **Example** | "Users can export Excel" | "After clicking export button, system asynchronously generates file and notifies user via message queue" |
+| **视角**    | 用户视角            | 系统视角                                                 |
+| **读者**    | 全员（含非技术）    | 研发、测试                                               |
+| **内容**    | 用户故事、交互流程  | 系统逻辑、状态转换、数据流                               |
+| **示例**    | "用户可以导出Excel" | "点击导出按钮后，系统异步生成文件，通过消息队列通知用户" |
 
-**Typical Scenarios:** When complex systems need separate technical implementation logic breakdown.
+**典型场景：** 复杂系统需要单独拆解技术实现逻辑时使用。
 
 ---
 
-### 6. UX Spec (Interaction/Visual Specification)
+### 6. UX Spec（交互/视觉规范文档）
 
-| Sub-document | Content | Responsible Role |
+| 子文档       | 内容                         |    负责角色    |
 | :----------- | :--------------------------- | :------------: |
-| **Interaction Prototype** | Page flows, click hotspots, interaction animations | Interaction Designer |
-| **Visual Specification** | Colors, fonts, spacing, component library | Visual Designer |
-| **Copywriting Spec** | Button copy, error messages, empty states | Product/UX Writer |
+| **交互原型** | 页面流程、点击热区、交互动效 |   交互设计师   |
+| **视觉规范** | 色彩、字体、间距、组件库     |   视觉设计师   |
+| **文案规范** | 按钮文案、错误提示、空状态   | 产品/UX Writer |
 
 ---
 
-## III. Technical Layer: Answering "How to Build"
+## 三、技术层：回答"怎么做"
 
-### 7. TRD (Technical Requirements Document)
+### 7. TRD（Technical Requirements Document）技术需求文档
 
-> **Position:** "Translator" for technical implementation, converting PRD into technical language
+> **定位：** 技术实现的"翻译器"，将PRD转化为技术语言
 
-| Core Sections | Description |
+| 核心章节       | 说明                                 |
 | :------------- | :----------------------------------- |
-| **Technical Architecture** | System topology, service decomposition, deployment architecture |
-| **Data Model** | ER diagrams, data dictionary, storage solutions |
-| **Interface Definition** | API contracts (OpenAPI/Swagger), field descriptions |
-| **Non-functional Design** | Performance, security, scalability, disaster recovery |
-| **Technology Selection** | Frameworks, middleware, third-party services and selection rationale |
-| **Risk Assessment** | Technical debt, performance bottlenecks, dependency risks |
+| **技术架构**   | 系统拓扑、服务拆分、部署架构         |
+| **数据模型**   | ER图、数据字典、存储方案             |
+| **接口定义**   | API契约（OpenAPI/Swagger）、字段说明 |
+| **非功能设计** | 性能、安全、扩展性、容灾方案         |
+| **技术选型**   | 框架、中间件、第三方服务及选型理由   |
+| **风险评估**   | 技术债务、性能瓶颈、依赖风险         |
 
-**Typical Scenarios:** Tech review, architect decision basis.
+**典型场景：** 技术评审（Tech Review）、架构师决策依据。
 
 ---
 
-### 8. Architecture Design Document (ADD)
+### 8. 架构设计文档（Architecture Design Document）
 
 ```mermaid
 flowchart LR
-    A[Architecture Design] --> B[Business Architecture / Feature Module Relationships]
-    A --> C[Application Architecture / Service Decomposition & Calls]
-    A --> D[Data Architecture / Data Flow & Storage]
-    A --> E[Technical Architecture / Middleware & Infrastructure]
+    A[架构设计] --> B[业务架构 / 功能模块关系]
+    A --> C[应用架构 / 服务拆分调用]
+    A --> D[数据架构 / 数据流转存储]
+    A --> E[技术架构 / 中间件基础设施]
 ```
 
 ---
 
-### 9. API Documentation
+### 9. API文档（API Documentation）
 
-> **Position:** Contract layer between frontend/backend, third-party integrators, and SDK maintainers, aligned with OpenAPI 3.x, serving as the single source of truth for gateway/mock/contract testing
+> **定位：** 前后端、第三方接入方与 SDK 维护者的契约层，对齐 OpenAPI 3.x，是网关 / Mock / 契约测试的单一事实源
 
-| Element | Description |
+| 要素           | 说明                                                            |
 | :------------- | :-------------------------------------------------------------- |
-| **Core Sections** | Endpoint list / Request-Response schema / Auth / Error codes / Versioning / Rate limiting |
-| **Toolchain** | Swagger / YApi / Postman / Stoplight auto-sync |
-| **Contract Testing** | Pact / Dredd validates implementation-documentation consistency |
-| **Complete Template** | [Template-API-Doc.md](./Technology/Template-API-Doc.md) |
+| **核心章节**   | 端点列表 / 请求响应 schema / 认证授权 / 错误码 / 版本管理 / 限流 |
+| **工具链**     | Swagger / YApi / Postman / Stoplight 自动同步                   |
+| **契约测试**   | Pact / Dredd 校验实现与文档一致                                 |
+| **完整模板**   | [【模板】API文档.md](./技术层/【模板】API文档.md)               |
 
-**Relationship with TRD / Architecture Doc:** TRD defines "what technology to achieve what metrics", architecture doc defines "how the system is designed", API doc defines "what endpoints look like and how to call them".
+**与 TRD / 架构文档的关系：** TRD 定义"用什么技术达到什么指标"，架构文档定义"系统怎么设计"，API 文档定义"端点长什么样、怎么调"。
 
 ---
 
-### 10. Database Design Document (DDD)
+### 10. 数据库设计文档（Database Design）
 
-| Element | Description |
+| 要素         | 说明                                                |
 | :----------- | :-------------------------------------------------- |
-| **Core Sections** | Table structure / Index design / Sharding strategy / Data archiving plan |
-| **ER Tools** | dbdiagram.io / DBeaver / PowerDesigner |
-| **Complete Template** | [Template-DB-Design.md](./Technology/Template-DB-Design.md) |
+| **核心章节** | 表结构 / 索引设计 / 分库分表策略 / 数据归档方案     |
+| **ER 工具**  | dbdiagram.io / DBeaver / PowerDesigner              |
+| **完整模板** | [【模板】数据库设计文档规范.md](./技术层/【模板】数据库设计文档规范.md) |
 
 ---
 
-## IV. Delivery Layer: Answering "When to Launch"
+## 四、交付层：回答"何时上线"
 
-### 10. Release Plan
+### 10. 发布计划（Release Plan）
 
-| Element | Description |
+| 要素         | 说明                               |
 | :----------- | :--------------------------------- |
-| **Version Planning** | Version number rules, release cadence (e.g., bi-weekly releases) |
-| **Environment Plan** | Development → Testing → Staging → Production deployment order |
-| **Rollback Plan** | Rollback trigger conditions, operation steps, data repair |
-| **Monitoring & Alerts** | Core metric monitoring, alert thresholds, on-call schedule |
+| **版本规划** | 版本号规则、发版节奏（如双周发版） |
+| **环境计划** | 开发→测试→预发→生产 环境部署顺序   |
+| **回滚方案** | 回滚触发条件、操作步骤、数据修复   |
+| **监控告警** | 核心指标监控、告警阈值、值班安排   |
 
 ---
 
-### 11. Testing Documents
+### 11. 测试相关文档
 
-| Document | Content | Responsible |
+| 文档         | 内容                                |    负责    |
 | :----------- | :---------------------------------- | :--------: |
-| **Test Plan** | Test scope, strategy, resources, schedule | Test Lead |
-| **Test Cases** | Executable cases written based on PRD acceptance criteria | Test Engineer |
-| **Test Report** | Coverage, bug statistics, remaining risks, release recommendations | Test Lead |
+| **测试计划** | 测试范围、策略、资源、排期          | 测试负责人 |
+| **测试用例** | 基于PRD验收标准编写的可执行用例     | 测试工程师 |
+| **测试报告** | 覆盖率、Bug统计、遗留风险、发布建议 | 测试负责人 |
 
 ---
 
-### 13. Canary Release Plan
+### 13. 灰度/发布方案（Canary Release Plan）
 
-- Canary ratio and time cadence (e.g., 5%→30%→100%)
-- Observation metrics and rollback thresholds
-- Emergency plan (one-click rollback, rate limiting degradation)
+- 灰度比例与时间节奏（如 5%→30%→100%）
+- 观察指标与回滚阈值
+- 应急预案（一键回滚、限流降级）
 
 ---
 
-## V. Operations Layer: Answering "How to Run"
+## 五、运营层：回答"如何运转"
 
-### 14. Operation Guide / SOP
+### 14. 运营手册（Operation Guide / SOP）
 
-| Module | Content |
+| 模块         | 内容                               |
 | :----------- | :--------------------------------- |
-| **Feature Guide** | Operation guide for operations staff |
-| **FAQ** | FAQ, troubleshooting manual |
-| **Data Interpretation** | Core metric definitions, anomaly judgment criteria |
-| **Activity Configuration** | Marketing tool configuration steps, review checklist |
+| **功能说明** | 面向运营人员的功能操作指南         |
+| **常见问题** | FAQ、故障排查手册                  |
+| **数据解读** | 核心指标定义、异常判断标准         |
+| **活动配置** | 营销工具的配置步骤、审核 checklist |
 
 ---
 
-### 15. Dashboard & Event Tracking Documents
+### 15. 数据看板与埋点文档
 
-- **Event Tracking Specification:** Event definitions, attribute dictionary, reporting timing
-- **Dashboard:** Real-time/offline dashboard configuration for core metrics
-- **Data Calibration:** Metric calculation logic, attribution rules
-
----
-
-### 16. User Help Documents (User Guide / Help Center)
-
-- Self-service help content for end users
-- New feature onboarding copy, video tutorials
+- **埋点规范：** 事件定义、属性字典、上报时机
+- **数据看板：** 核心指标实时/离线看板配置
+- **数据口径：** 指标计算逻辑、归因规则
 
 ---
 
-### 17. Weekly / Monthly Report
+### 16. 用户帮助文档（User Guide / Help Center）
 
-> **Position:** Periodic synchronization tool for teams and individuals, results-oriented + data-driven + risk-visibility
+- 面向终端用户的自助帮助内容
+- 新功能引导文案、视频教程
 
-| Element | Description |
+---
+
+### 17. 周报月报（Weekly / Monthly Report）
+
+> **定位：** 团队与个人的定期同步工具，结果导向 + 数据驱动 + 风险显性
+
+| 要素           | 说明                                                            |
 | :------------- | :-------------------------------------------------------------- |
-| **Report Cycle** | Weekly / Monthly / Quarterly |
-| **Core Sections** | Summary / Completed / In Progress / Blockers / Next Period Plan / Metrics |
-| **Complete Template** | [Template-Weekly-Monthly-Report.md](./Operations/Template-Weekly-Monthly-Report.md) |
+| **报告周期**   | 周报 / 月报 / 季度报告                                          |
+| **核心章节**   | 摘要 / 已完成 / 进行中 / 阻塞 / 下期计划 / 数据指标             |
+| **完整模板**   | [【模板】周报月报.md](./运营层/【模板】周报月报.md)             |
 
-**Typical Scenarios:** Individual/team weekly reports, monthly presentations, cross-team progress synchronization.
+**典型场景：** 个人/团队周报、月度汇报、跨团队进展同步。
 
-> **Alignment Note:** This template's section structure is aligned with `cangjie/references/registry.yaml` `business/weekly-monthly-report` definition:
-> - Required: `Report Info` / `Summary` / `Completed Work` / `In Progress` / `Blockers` / `Next Period Plan`
-> - Optional: `Metrics` / `Asks` / `Reflections`
+> **对齐说明：** 本模板章节结构对齐 `cangjie/references/registry.yaml` 中 `business/weekly-monthly-report` 定义：
+> - 必填：`report_info` / `summary` / `completed_work` / `in_progress` / `blockers` / `next_period_plan`
+> - 可选：`metrics` / `asks` / `reflections`
 
 ---
 
-## VI. Retirement Layer: Answering "How to End Well"
+## 六、退役层：回答"如何善终"
 
-### 18. EOL Plan (End of Life)
+### 18. EOL计划（End of Life）
 
-> **Big tech practice:** Product decommissioning requires more documentation than launching, involving data migration, user notification, and legal compliance.
+> **大厂实践：** 产品下线比上线更需要文档，涉及数据迁移、用户告知、法律合规。
 
-| Element | Description |
+| 要素         | 说明                         |
 | :----------- | :--------------------------- |
-| **Decommission Reason** | Business adjustment, technical debt, user churn |
-| **User Migration** | Data export plan, alternative product guidance |
-| **Data Archiving** | Historical data retention policy, destruction plan |
-| **Legal Compliance** | User agreement changes, refund/compensation plan |
-| **Communication Plan** | How far in advance to notify? Through what channels? |
+| **下线原因** | 业务调整、技术债务、用户流失 |
+| **用户迁移** | 数据导出方案、替代产品引导   |
+| **数据归档** | 历史数据保留策略、销毁计划   |
+| **法律合规** | 用户协议变更、退款/补偿方案  |
+| **沟通计划** | 提前多久通知？通过什么渠道？ |
 
 ---
 
-### 19. Retrospective / Post-Mortem
+### 19. 复盘报告（Retrospective / Post-Mortem）
 
-> **Position:** Learning consolidation after project delivery, using the four-step retrospective method (Review goals → Evaluate results → Analyze causes → Consolidate patterns) to convert one-time experience into reusable assets
+> **定位：** 项目交付后的学习沉淀，用复盘四步法（回顾目标→评估结果→分析原因→沉淀规律）把一次性经验固化为可复用资产
 
-| Dimension | Content |
+| 维度         | 内容                                                     |
 | :----------- | :------------------------------------------------------- |
-| **Goal Review** | Originally set goals vs actual results, including hypothesis validation |
-| **Result Evaluation** | Quantified achievement rate + timeline + above/below expectations |
-| **Cause Analysis** | Keep / Problem / 5-Whys root cause / Hypothesis validation |
-| **Pattern Consolidation** | Reusable experience + pitfall records + SOP + checklists |
-| **Improvement Actions** | SMART checklist + responsible person + deadline + tracking mechanism |
-| **Asset Archiving** | Documentation, code, data archiving locations |
-| **Complete Template** | [Template-Retrospective.md](./Retirement/Template-Retrospective.md) |
+| **目标回顾** | 当初设定的目标 vs 实际结果，含假设验证                   |
+| **结果评估** | 量化达成率 + 时间线 + 超预期 / 低于预期                  |
+| **原因分析** | Keep / Problem / 5-Whys 根因 / 假设验证                  |
+| **规律沉淀** | 可复用经验 + 踩坑记录 + SOP + 检查清单                   |
+| **改进动作** | SMART 清单 + 责任人 + 截止时间 + 追踪机制                |
+| **资产归档** | 文档、代码、数据归档位置                                 |
+| **完整模板** | [【模板】复盘报告.md](./退役层/【模板】复盘报告.md)       |
 
 ---
 
-### 20. Knowledge Base
+### 20. 知识沉淀（Knowledge Base）
 
-> **Position:** Living document throughout the project lifecycle, converting individual/team tacit knowledge into organizational assets
+> **定位：** 项目全周期的活文档（Living Document），把个人 / 团队的隐性知识转化为组织资产
 
-| Dimension | Content |
+| 维度             | 内容                                                            |
 | :--------------- | :-------------------------------------------------------------- |
-| **Core Experience** | Architecture / Performance / Data / Collaboration experience categories, each with quantified outcomes |
-| **Pitfall Records** | Symptoms / Root cause (5-Whys) / Solutions / Avoidance methods |
-| **Best Practices** | General + Backend + Frontend + DB, with anti-pattern comparisons |
-| **SOP Extraction** | From experience to executable processes, with steps + responsible person + acceptance |
-| **Anti-patterns** | "Don't do this" checklist, with counter-examples and correct approaches |
-| **Knowledge Asset Inventory** | Complete inventory of documentation / code / data / training |
-| **Complete Template** | [Template-Knowledge-Base.md](./Retirement/Template-Knowledge-Base.md) |
+| **核心经验**     | 架构 / 性能 / 数据 / 协作四类经验，每条含量化效果                |
+| **踩坑记录**     | 现象 / 根因（5-Whys） / 解决方案 / 避坑方法                     |
+| **最佳实践**     | 通用 + 后端 + 前端 + DB，含反模式对照                           |
+| **SOP 提炼**     | 从经验固化为可执行流程，含步骤 + 责任人 + 验收                  |
+| **反模式**       | "不应该这样做"清单，附反面案例与正确做法                        |
+| **知识资产清单** | 文档 / 代码 / 数据 / 培训完整盘点                               |
+| **完整模板**     | [【模板】知识沉淀.md](./退役层/【模板】知识沉淀.md)             |
 
-**Difference from Retrospective:** Retrospective is a learning summary of a single event, while Knowledge Base is a living document maintained continuously throughout the lifecycle. They complement each other.
+**与复盘报告的区别：** 复盘是单次事件的学习总结，知识沉淀是全周期持续维护的活文档，二者互补。
 
 ---
 
-## VII. Common Documentation: Answering "Cross-Lifecycle Common"
+## 七、通用文档：回答"跨生命周期通用"
 
-> **Position:** General engineering documentation not tied to a specific lifecycle stage but needed by every project, located in the `templates/common/` directory.
+> **定位：** 不属于产品生命周期某个特定阶段，但每个项目都需要的通用工程文档，位于 `templates/通用/` 目录。
 
-### 21. README (Project Entry Document)
+### 21. README（项目入口文档）
 
-> **Position:** Project facade, determines users' first impression and onboarding cost
+> **定位：** 项目门面，决定用户的第一印象与上手成本
 
-| Element | Description |
+| 要素           | 说明                                                            |
 | :------------- | :-------------------------------------------------------------- |
-| **Core Sections** | Introduction / Installation / Quick Start / Usage Examples / Configuration / Capabilities Overview / Contributing / License |
-| **Style Reference** | Concise and direct, with badges and copy-paste command examples |
-| **Complete Template** | [Template-README.md](../Common/Template-README.md) |
+| **核心章节**   | 简介 / 安装 / 快速开始 / 使用示例 / 配置 / 能力概览 / 贡献 / 许可证 |
+| **风格参考**   | 简洁直接，含 badges 与可复制粘贴的命令示例                      |
+| **完整模板**   | [【模板】README.md](../通用/【模板】README.md)                  |
 
-**Typical Scenarios:** New project initialization, open source repository entry, internal tool documentation.
+**典型场景：** 新项目初始化、开源仓库入口、内部工具文档。
 
 ---
 
-### 22. CHANGELOG
+### 22. CHANGELOG（变更日志）
 
-> **Position:** Authoritative record of version changes, follows Keep a Changelog specification
+> **定位：** 版本变更的权威记录，遵循 Keep a Changelog 规范
 
-| Element | Description |
+| 要素           | 说明                                                            |
 | :------------- | :-------------------------------------------------------------- |
-| **Core Sections** | Unreleased + each version, each version split into Added/Changed/Deprecated/Removed/Fixed/Security |
-| **Specification** | [Keep a Changelog 1.1.0](https://keepachangelog.com/zh-CN/1.1.0/) + [SemVer 2.0.0](https://semver.org/lang/zh-CN/) |
-| **Complete Template** | [Template-CHANGELOG.md](../Common/Template-CHANGELOG.md) |
+| **核心章节**   | Unreleased + 各版本，每版本分 Added/Changed/Deprecated/Removed/Fixed/Security |
+| **规范遵循**   | [Keep a Changelog 1.1.0](https://keepachangelog.com/zh-CN/1.1.0/) + [SemVer 2.0.0](https://semver.org/lang/zh-CN/) |
+| **完整模板**   | [【模板】CHANGELOG.md](../通用/【模板】CHANGELOG.md)            |
 
-**Typical Scenarios:** Version releases, change tracking, user notification.
+**典型场景：** 版本发布、变更追溯、用户告知。
 
 ---
 
-### 23. FAQ (Frequently Asked Questions)
+### 23. FAQ（常见问题解答）
 
-> **Position:** Self-service troubleshooting document for high-frequency issues, categorized by topic
+> **定位：** 高频问题的自助排查文档，按主题分类
 
-| Element | Description |
+| 要素           | 说明                                                            |
 | :------------- | :-------------------------------------------------------------- |
-| **Core Sections** | General / Installation / Usage / Configuration / Troubleshooting / Performance / Integration & Extensions |
-| **Writing Principle** | Each Q includes symptoms / cause / solution / command example |
-| **Complete Template** | [Template-FAQ.md](../Common/Template-FAQ.md) |
+| **核心章节**   | 通用 / 安装 / 使用 / 配置 / 错误排查 / 性能 / 集成扩展          |
+| **撰写原则**   | 每个 Q 含现象 / 原因 / 解决方案 / 命令示例                      |
+| **完整模板**   | [【模板】FAQ.md](../通用/【模板】FAQ.md)                        |
 
-**Typical Scenarios:** User self-service support, new member onboarding, reducing repetitive Q&A costs.
+**典型场景：** 用户自助支持、新成员上手、减少重复答疑成本。
 
 ---
 
-### 24. CONTRIBUTING (Contribution Guide)
+### 24. CONTRIBUTING（贡献指南）
 
-> **Position:** Standardizing collaboration processes for external and internal contributors
+> **定位：** 规范外部与内部贡献者的协作流程
 
-| Element | Description |
+| 要素             | 说明                                                            |
 | :--------------- | :-------------------------------------------------------------- |
-| **Core Sections** | Code of Conduct / Contribution Process / Development Environment / Code Standards / Commit Standards / PR Process / Testing Requirements / Review Criteria |
-| **Specification** | [Conventional Commits 1.0.0](https://www.conventionalcommits.org/zh-hans/v1.0.0/) + [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) |
-| **Complete Template** | [Template-CONTRIBUTING.md](../Common/Template-CONTRIBUTING.md) |
+| **核心章节**     | 行为准则 / 贡献流程 / 开发环境 / 代码规范 / 提交规范 / PR 流程 / 测试要求 / 评审标准 |
+| **规范遵循**     | [Conventional Commits 1.0.0](https://www.conventionalcommits.org/zh-hans/v1.0.0/) + [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) |
+| **完整模板**     | [【模板】CONTRIBUTING.md](../通用/【模板】CONTRIBUTING.md)      |
 
-**Typical Scenarios:** Open source projects, internal cross-team collaboration, new member onboarding.
+**典型场景：** 开源项目、内部跨团队协作、新人 Onboarding。
 
 ---
 
-## Documentation Trimming Guide: Which Documents for Which Scenarios?
+## 文档裁剪指南：不同场景用哪些？
 
-Not all projects need all documents. Trim based on project complexity:
+不是所有项目都需要全部文档，根据项目复杂度裁剪：
 
 ```mermaid
 flowchart TD
-    A{Project Type} --> B[Small Iteration / e.g., Button Optimization]
-    A --> C[Medium Project / e.g., New Feature Module]
-    A --> D[Large Project / e.g., New Product Line]
+    A{项目类型} --> B[小型迭代 / 如按钮优化]
+    A --> C[中型项目 / 如新功能模块]
+    A --> D[大型项目 / 如新产品线]
 
-    B --> B1[Simplified PRD / Test Cases / Release Plan / README]
+    B --> B1[PRD精简版 /与测试用例 /与发布计划 /与README]
 
-    C --> C1[BRD/Charter / Full PRD / TRD / Test Report / Operation Guide / README+CHANGELOG+FAQ]
+    C --> C1[BRD/Charter /与PRD完整版 /与TRD /与测试报告 /与运营手册 /与README+CHANGELOG+FAQ]
 
-    D --> D1[BRD+MRD / Charter / PRD+FRD / TRD+Architecture Design / Full Testing / Canary Plan / Operations System / EOL Plan / Retrospective+Knowledge Base / Full Common Documentation]
+    D --> D1[BRD与MRD /与Charter /与PRD与FRD /与TRD与架构设计 /与全套测试 /与灰度方案 /与运营体系 /与EOL计划 /与复盘+知识沉淀 /与全套通用文档]
 
     style B fill:#c8e6c9
     style C fill:#fff9c4
     style D fill:#ffcdd2
 ```
 
-| Project Scale | Required Documents | Optional Documents | Merging Suggestions |
+| 项目规模              | 必写文档                                                       | 可选文档                              | 合并建议                 |
 | :-------------------- | :------------------------------------------------------------- | :------------------------------------ | :----------------------- |
-| **Small Iteration** (<1 week) | PRD (1-page), test cases, README | — | BRD can be verbal, TRD can be omitted |
-| **Medium Project** (1-4 weeks) | Charter, PRD, TRD, test report, README, CHANGELOG | MRD, FRD, FAQ | BRD can be merged into Charter |
-| **Large Project** (>1 month) | Full documentation set (including common 4-piece set + retirement retrospective + knowledge base + weekly/monthly reports) | — | Each document stands alone, ensuring traceability |
-| **Open Source Project** | README, CHANGELOG, CONTRIBUTING, LICENSE, FAQ | Code of conduct, Issue/PR templates, CODEOWNERS | Common documentation is the baseline for open source |
+| **小型迭代**（<<1周） | PRD（1页纸）、测试用例、README                                 | —                                     | BRD可口述，TRD可省略     |
+| **中型项目**（1-4周） | Charter、PRD、TRD、测试报告、README、CHANGELOG                 | MRD、FRD、FAQ                         | BRD可并入Charter         |
+| **大型项目**（>1月）  | 全套文档（含通用 4 件套 + 退役层复盘 + 知识沉淀 + 周报月报）   | —                                     | 每个文档独立，确保可追溯 |
+| **开源项目**          | README、CHANGELOG、CONTRIBUTING、LICENSE、FAQ                  | 行为准则、Issue/PR 模板、CODEOWNERS   | 通用文档是开源的底线     |
 
 ---
 
-## Documentation Traceability
+## 文档之间的追溯关系（Traceability）
 
 ```mermaid
 flowchart LR
-    A[BRD Business Goal / "Improve Retention"] --> B[MRD Market Opportunity / "High Next-Day User Churn"]
-    B --> C[Charter Project Goal / "Q3 Retention at 10%"]
-    C --> D[PRD Feature Requirement / "Onboarding Flow Optimization"]
-    D --> E[FRD System Logic / "Onboarding Step State Machine"]
-    E --> F[TRD Technical Solution / "Step-by-Step API & Event Tracking"]
-    F --> G[Test Cases / "Verify Onboarding Completion Rate"]
-    G --> H[Dashboard / "Retention Metric Monitoring"]
-    H --> I[Retrospective Report / "Retention Improvement Results"]
+    A[BRD商业目标 / "提升留存"] --> B[MRD市场机会 / "新用户次日流失高"]
+    B --> C[Charter项目目标 / "Q3留存与10%"]
+    C --> D[PRD功能需求 / "新手引导流程优化"]
+    D --> E[FRD系统逻辑 / "引导步骤状态机"]
+    E --> F[TRD技术方案 / "分步接口与埋点"]
+    F --> G[测试用例 / "验证引导完成率"]
+    G --> H[数据看板 / "留存指标监控"]
+    H --> I[复盘报告 / "留存提升结果"]
 
     style A fill:#ffcdd2
     style D fill:#fff9c4
@@ -466,16 +466,16 @@ flowchart LR
     style H fill:#e1bee7
 ```
 
-**Traceability Value:** When post-launch data falls short of expectations, you can trace back from the retrospective report all the way to the BRD to determine whether it was a wrong business assumption (BRD), incorrect market judgment (MRD), flawed feature design (PRD), or technical implementation deviation (TRD).
+**追溯价值：** 当上线后数据不达预期时，可以从复盘报告一路回溯到BRD，检查是商业假设错误（BRD）、市场判断失误（MRD）、功能设计问题（PRD）、还是技术实现偏差（TRD）。
 
 ---
 
-## Summary: Core Principles of the Documentation System
+## 总结：文档体系的核心原则
 
-| Principle | Description |
+| 原则                   | 说明                                        |
 | :--------------------- | :------------------------------------------ |
-| **1. Layered Decoupling** | Strategic layer doesn't intervene in technical details, technical layer doesn't deviate from business goals |
-| **2. Single Source of Truth** | Same information defined in only one document, other documents reference it |
-| **3. Living Document** | Documentation updates in real-time with project evolution, not a one-time deliverable |
-| **4. Audience Awareness** | Each document explicitly defines who it's written for, controlling information density |
-| **5. Traceability** | Requirements → Design → Development → Testing → Operations → Retirement, fully traceable chain |
+| **1. 分层解耦**        | 战略层不干预技术细节，技术层不偏离商业目标  |
+| **2. 单一事实源**      | 同一信息只在一个文档中定义，其他文档引用    |
+| **3. living document** | 文档随项目演进实时更新，而非一次性交付物    |
+| **4. 读者意识**        | 每份文档明确写给谁看，控制信息密度          |
+| **5. 可追溯性**        | 需求→设计→开发→测试→运营→退役，全链路可回溯 |

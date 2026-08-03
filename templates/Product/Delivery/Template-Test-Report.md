@@ -1,132 +1,132 @@
-# [Product/System Name (English)] - Test Report
+# [产品/系统名称（英文名）] - 测试报告（Test Report）
 
-> **Document Status:** 🟡 Under Review / 🟢 Passed / 🔴 Failed / ⚪ Archived
+> **文档状态：** 🟡 评审中 / 🟢 已通过 / 🔴 不通过 / ⚪ 已归档
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X
+> **版本：** vX.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Author:** [Name]
+> **撰写人：** [姓名]
 >
-> **Reviewer:** [Name/Role]
+> **评审人：** [姓名/角色]
 >
-> **Audience:** [Role List]
+> **阅读对象：** [角色列表]
 >
-> **Report ID:** TEST-2026-XXX
+> **报告编号：** TEST-2026-XXX
 >
-> **Related Requirements:** [PRD ID] / [BRD ID]
+> **关联需求：** [PRD编号] / [BRD编号]
 >
-> **Related Release Plan:** [Release Plan ID]
+> **关联发布计划：** [Release Plan编号]
 >
-> **Test Type:** 🟢 Functional Acceptance / 🟡 Regression / 🔴 Performance / 🔵 Security Penetration
+> **测试类型：** 🟢 功能验收测试 / 🟡 回归测试 / 🔴 性能压测 / 🔵 安全渗透测试
 >
-> **Test Cycle:** YYYY-MM-DD ~ YYYY-MM-DD ([N] working days)
+> **测试周期：** YYYY-MM-DD ~ YYYY-MM-DD（共 [N] 个工作日）
 >
-> **Test Team:** [Member List]
+> **测试团队：** [成员列表]
 
 ---
 
-## 0. Document Guide
+## 0. 文档导读
 
-### 0.1 Document Purpose & Scope
+### 0.1 文档目的与适用范围
 
-[Describe the purpose, applicable scenarios, and non-applicable scenarios of this document]
+[说明本文档的目的、适用场景和不适用场景]
 
-### 0.2 Related Documents
+### 0.2 相关文档
 
-| Document Type | Filename | Related Sections |
+| 文档类型 | 文件名              | 相关章节   |
 | -------- | ------------------- | ---------- |
-| [Type] | [Filename] [Line Range] | [Section Description] |
+| [类型]   | [文件名] [行号范围] | [章节描述] |
 
-> **Reference Format**: Related documents use the `filename line range` format (e.g., `【Template】Technical Requirements Document (TRD).md 3-17`). Line numbers may change as documents are updated; refer to the actual content.
+> **引用格式说明**：关联文档使用 `文件名 行号范围` 格式（如 `【模板】技术需求文档(TRD).md 3-17`），行号随文档更新可能变化，请以实际内容为准。
 
-### 0.3 Change Log
+### 0.3 变更记录
 
-| Version | Date | Author | Changes | Reviewer |
+| 版本   | 日期       | 修订人 | 变更内容                                           | 审核人       |
 | :----- | :--------- | :----- | :------------------------------------------------- | :----------- |
-| v0.1 | YYYY-MM-DD | [Name] | Initial draft | |
-| v0.2 | YYYY-MM-DD | [Name] | Added performance/security test results | |
-| v0.3 | YYYY-MM-DD | [Name] | Added defect root cause analysis | |
-| v0.4 | YYYY-MM-DD | [Name] | Formal release | [Test Lead] |
-| v0.5 | 2026-06-09 | Xie Dong | Fix: quadrantChart template changed to table format (Feishu incompatible) | — |
-| v0.6 | 2026-06-09 | Xie Dong | Fix gantt chart to table for Feishu rendering compatibility | — |
-| v0.7 | 2026-06-09 | Xie Dong | Fix §3.2 test execution timeline gantt chart to table for Feishu compatibility | — |
-| v0.5.1 | 2026-06-09 | Xie Dong | Fix xychart-beta chart to table for Feishu rendering compatibility | — |
-| v0.7.1 | 2026-06-20 | Xie Dong | Message middleware example Kafka→Pulsar (unified event bus standard) | — |
+| v0.1   | YYYY-MM-DD | [姓名] | 初稿                                               |              |
+| v0.2   | YYYY-MM-DD | [姓名] | 补充性能/安全测试结果                              |              |
+| v0.3   | YYYY-MM-DD | [姓名] | 补充缺陷根因分析                                   |              |
+| v0.4   | YYYY-MM-DD | [姓名] | 正式发布                                           | [测试负责人] |
+| v0.5   | 2026-06-09 | 谢董   | 修复：quadrantChart 模板改为表格格式（飞书不兼容） | —            |
+| v0.6   | 2026-06-09 | 谢董   | 修复gantt图为表格以兼容飞书渲染                    | —            |
+| v0.7   | 2026-06-09 | 谢董   | 修复§3.2测试执行时间线gantt图为表格以兼容飞书渲染  | —            |
+| v0.5.1 | 2026-06-09 | 谢董   | 修复xychart-beta图为表格以兼容飞书渲染             | —            |
+| v0.7.1 | 2026-06-20 | 谢董   | 消息中间件示例 Kafka→Pulsar（统一事件总线规范）    | —            |
 
 ---
 
-## 1. Executive Summary
+## 1. 执行摘要（Executive Summary）
 
-> **Management/Release Manager 30-Second Guide:** What was tested, results, and whether it's ready to ship.
+> **管理层/发布经理 30 秒导读：** 测了什么、结果如何、能不能发。
 
-| Element | Content |
+| 要素         | 内容                                                         |
 | :----------- | :----------------------------------------------------------- |
-| **Test Objective** | [One sentence, e.g.: Verify Order System V2.1 core functionality and performance meet go-live standards] |
-| **Test Scope** | [e.g.: X functional modules, Y APIs, Z performance scenarios] |
-| **Test Case Execution** | Total [N] cases, [M] passed, [P] failed, pass rate [Q]% |
-| **Defect Summary** | Critical [A] / Severe [B] / Normal [C] / Minor [D], fix rate [R]% |
-| **Core Conclusion** | [e.g.: Core functionality passed, P0 defects fixed, recommend go-live approval] |
-| **Residual Risks** | [e.g.: 1 P2 defect pending fix, does not affect core flow, recommend post-launch follow-up] |
+| **测试目标** | [一句话，如：验证订单系统V2.1核心功能及性能是否达到上线标准] |
+| **测试范围** | [如：功能模块X个、接口Y个、性能场景Z个]                      |
+| **用例执行** | 总计 [N] 条，通过 [M] 条，失败 [P] 条，通过率 [Q]%           |
+| **缺陷统计** | 致命 [A] / 严重 [B] / 一般 [C] / 轻微 [D]，修复率 [R]%       |
+| **核心结论** | [如：核心功能通过，P0缺陷已修复，建议批准上线]               |
+| **遗留风险** | [如：1个P2缺陷待修复，不影响核心流程，建议上线后跟进]        |
 
 ```mermaid
 mindmap
-  root((Test Report Overview))
-    Test Execution
-      [Functional Testing]
-      [Performance Testing]
-      [Security Testing]
-      [Compatibility Testing]
-    Defect Analysis
-      [Defect Distribution]
-      [Defect Trends]
-      [Root Cause Analysis]
-    Quality Assessment
-      [Test Coverage]
-      [Defect Density]
-      [Risk Rating]
-    Acceptance Conclusion
-      [Pass/Fail]
-      [Residual Issues]
-      [Improvement Recommendations]
+  root((测试报告总览))
+    测试执行
+      [功能测试]
+      [性能测试]
+      [安全测试]
+      [兼容性测试]
+    缺陷分析
+      [缺陷分布]
+      [缺陷趋势]
+      [根因分析]
+    质量评估
+      [测试覆盖率]
+      [缺陷密度]
+      [风险评级]
+    验收结论
+      [通过/不通过]
+      [遗留问题]
+      [改进建议]
 ```
 
 ---
 
-## 2. Test Overview
+## 2. 测试概述（Test Overview）
 
-### 2.1 Test Background
+### 2.1 测试背景
 
-> **Reference**: For functional acceptance criteria, non-functional requirements, and performance requirements, see **【Template】Functional Requirements Document (FRD).md §8** and **【Template】Technical Requirements Document (TRD).md §3-4**. This document only references key test basis.
+> **引用说明**：功能验收标准、非功能需求指标、性能要求请参阅 **【模板】功能需求文档(FRD).md §8** 和 **【模板】技术需求文档(TRD).md §3-4**。本文档仅引用关键测试依据。
 
-| Item | Content | Reference Document |
+| 项目         | 内容                                                      | 引用文档 |
 | :----------- | :-------------------------------------------------------- | :--- |
-| **Test Purpose** | [e.g.: Verify new version functional completeness, fix effectiveness, performance compliance] | — |
-| **Test Basis** | Functional requirements, acceptance criteria, performance metrics in PRD/FRD/TRD | Ref FRD §8, TRD §3-4 |
-| **Test Strategy** | [e.g.: Primarily black-box functional testing, supplemented by automated regression, performance load testing for capacity verification] | — |
-| **Entry Criteria** | [e.g.: Developer self-testing passed, smoke test passed, test environment ready] | — |
-| **Exit Criteria** | P0/P1 defect fix rate 100%, test case pass rate ≥95%, performance metrics met | Ref FRD §8.1 |
+| **测试目的** | [如：验证新版本功能完整性、修复有效性、性能达标情况]      | — |
+| **测试依据** | PRD/FRD/TRD中的功能需求、验收标准、性能指标 | 引用FRD§8、TRD§3-4 |
+| **测试策略** | [如：黑盒功能测试为主，自动化回归为辅，性能压测验证容量]  | — |
+| **准入条件** | [如：开发自测通过、冒烟测试通过、测试环境就绪]            | — |
+| **准出条件** | P0/P1缺陷修复率100%、用例通过率≥95%、性能指标达标 | 引用FRD§8.1 |
 
-> **Acceptance Criteria**: For detailed acceptance criteria (Given-When-Then format) and performance acceptance metrics, see **【Template】Functional Requirements Document (FRD).md §8.1-8.2**.
+> **验收标准**：详细的验收标准（Given-When-Then格式）、性能验收指标详见 **【模板】功能需求文档(FRD).md §8.1-8.2**。
 
-### 2.2 Test Environment
+### 2.2 测试环境
 
 ```mermaid
 flowchart LR
-    subgraph Test Environment Topology
-        A1[🖥️ Application Server / 4-core 8GB × 3]
-        A2[🗄️ Database Server / 8-core 16GB × 2 / Primary-Replica]
-        A3[⚡ Cache Server / Redis Cluster / 3 Primary 3 Replica]
+    subgraph 测试环境拓扑
+        A1[🖥️ 应用服务器 / 4核8G × 3台]
+        A2[🗄️ 数据库服务器 / 8核16G × 2台 / 主从架构]
+        A3[⚡ 缓存服务器 / Redis Cluster / 3主3从]
     end
 
-    subgraph Network Configuration
-        N1[Intranet Bandwidth / 1Gbps]
-        N2[Public Bandwidth / 100Mbps]
+    subgraph 网络配置
+        N1[内网带宽 / 1Gbps]
+        N2[公网带宽 / 100Mbps]
     end
 
-    subgraph Clients
+    subgraph 客户端
         C1[Chrome 120 / Windows 11]
         C2[Safari 17 / macOS 14]
         C3[iOS 17 / iPhone 15]
@@ -141,121 +141,121 @@ flowchart LR
     A1 --> A3
 ```
 
-| Environment Item | Configuration |
+| 环境项       | 配置                                                |
 | :----------- | :-------------------------------------------------- |
-| **Operating System** | CentOS 7.9 / Windows Server 2022 |
-| **Database** | PostgreSQL 16.0 (Primary-Replica) / Redis 7.0 |
-| **Middleware** | Nginx 1.24 / Pulsar 3.x / Elasticsearch 8.11 |
-| **Application Container** | Docker 24.0 / K8s 1.28 |
-| **Browser** | Chrome 120 / Firefox 121 / Safari 17 / Edge 120 |
-| **Mobile** | iOS 17 (iPhone 15) / Android 14 (Pixel 8 / Xiaomi 14) |
+| **操作系统** | CentOS 7.9 / Windows Server 2022                    |
+| **数据库**   | PostgreSQL 16.0（主从）/ Redis 7.0                  |
+| **中间件**   | Nginx 1.24 / Pulsar 3.x / Elasticsearch 8.11        |
+| **应用容器** | Docker 24.0 / K8s 1.28                              |
+| **浏览器**   | Chrome 120 / Firefox 121 / Safari 17 / Edge 120     |
+| **移动端**   | iOS 17（iPhone 15）/ Android 14（Pixel 8 / 小米14） |
 
-### 2.3 Test Tools
+### 2.3 测试工具
 
-| Test Type | Tool | Version | Purpose |
+| 测试类型 | 工具                                 | 版本 | 用途                     |
 | :------- | :----------------------------------- | :--- | :----------------------- |
-| Test Case Management | TestRail / Zentao / JIRA | vX.X | Test case design, execution, defect tracking |
-| API Testing | Postman / Apifox / JMeter | vX.X | API functional/performance testing |
-| UI Automation | Selenium / Playwright / Cypress | vX.X | Web regression testing |
-| Performance Load Testing | JMeter / Locust / Gatling | vX.X | Load/stress/stability testing |
-| Security Scanning | Burp Suite / OWASP ZAP | vX.X | Penetration testing/vulnerability scanning |
-| Code Coverage | JaCoCo / Istanbul / Coverage.py | vX.X | Unit test coverage statistics |
-| CI/CD | Jenkins / GitLab CI / GitHub Actions | vX.X | Automated pipeline |
+| 用例管理 | TestRail / 禅道 / JIRA               | vX.X | 用例设计、执行、缺陷跟踪 |
+| 接口测试 | Postman / Apifox / JMeter            | vX.X | API功能/性能测试         |
+| UI自动化 | Selenium / Playwright / Cypress      | vX.X | Web端回归测试            |
+| 性能压测 | JMeter / Locust / Gatling            | vX.X | 负载/压力/稳定性测试     |
+| 安全扫描 | Burp Suite / OWASP ZAP               | vX.X | 渗透测试/漏洞扫描        |
+| 代码覆盖 | JaCoCo / Istanbul / Coverage.py      | vX.X | 单元测试覆盖率统计       |
+| 持续集成 | Jenkins / GitLab CI / GitHub Actions | vX.X | 自动化流水线             |
 
 ---
 
-## 3. Test Execution
+## 3. 测试执行情况（Test Execution）
 
-### 3.1 Test Case Execution Statistics
+### 3.1 测试用例执行统计
 
-> **Note**: xychart-beta is a Feishu-incompatible Mermaid type; replaced with table description (template sample data).
+> **说明**：xychart-beta为飞书不兼容Mermaid类型，改为表格描述（模板示例数据）。
 
-**Test Case Execution Distribution**
+**测试用例执行分布**
 
-| Test Type | Case Count |
+| 测试类型   | 用例数 |
 | :--------- | :----: |
-| Functional Testing | 150 |
-| API Testing | 80 |
-| Performance Testing | 20 |
-| Compatibility Testing | 40 |
-| Security Testing | 15 |
-| Automated Regression | 120 |
+| 功能测试   |  150   |
+| 接口测试   |   80   |
+| 性能测试   |   20   |
+| 兼容性     |   40   |
+| 安全测试   |   15   |
+| 自动化回归 |  120   |
 
-| Test Type | Total Cases | Executed | Passed | Failed | Blocked | Skipped | Pass Rate |
+| 测试类型       | 用例总数 | 已执行  |  通过   |  失败  | 阻塞  | 跳过  |  通过率   |
 | :------------- | :------: | :-----: | :-----: | :----: | :---: | :---: | :-------: |
-| **Functional Testing** | 150 | 150 | 142 | 6 | 2 | 0 | 94.7% |
-| **API Testing** | 80 | 80 | 78 | 2 | 0 | 0 | 97.5% |
-| **Performance Testing** | 20 | 20 | 18 | 2 | 0 | 0 | 90.0% |
-| **Compatibility Testing** | 40 | 40 | 40 | 0 | 0 | 0 | 100% |
-| **Security Testing** | 15 | 15 | 14 | 1 | 0 | 0 | 93.3% |
-| **Automated Regression** | 120 | 120 | 118 | 2 | 0 | 0 | 98.3% |
-| **Total** | **425** | **425** | **410** | **13** | **2** | **0** | **96.5%** |
+| **功能测试**   |   150    |   150   |   142   |   6    |   2   |   0   |   94.7%   |
+| **接口测试**   |    80    |   80    |   78    |   2    |   0   |   0   |   97.5%   |
+| **性能测试**   |    20    |   20    |   18    |   2    |   0   |   0   |   90.0%   |
+| **兼容性测试** |    40    |   40    |   40    |   0    |   0   |   0   |   100%    |
+| **安全测试**   |    15    |   15    |   14    |   1    |   0   |   0   |   93.3%   |
+| **自动化回归** |   120    |   120   |   118   |   2    |   0   |   0   |   98.3%   |
+| **合计**       | **425**  | **425** | **410** | **13** | **2** | **0** | **96.5%** |
 
-### 3.2 Test Execution Timeline
+### 3.2 测试执行时间线
 
-> **Note**: Gantt chart is incompatible with Feishu; replaced with table description.
+> **说明**：甘特图为飞书不兼容类型，改为表格描述。
 
-| Phase | Task | Start Date | End Date | Duration | Status |
+| 阶段     | 任务               | 开始日期   | 结束日期   | 工期 | 状态 |
 | :------- | :----------------- | :--------- | :--------- | :--: | :--: |
-| Preparation | Environment setup & smoke testing | YYYY-MM-DD | YYYY-MM-DD | 2d | ⚪ |
-| Execution | Functional test execution | YYYY-MM-DD | YYYY-MM-DD | 5d | ⚪ |
-| Execution | API test execution | YYYY-MM-DD | YYYY-MM-DD | 4d | ⚪ |
-| Execution | Performance load test execution | YYYY-MM-DD | YYYY-MM-DD | 2d | ⚪ |
-| Execution | Compatibility testing | YYYY-MM-DD | YYYY-MM-DD | 2d | ⚪ |
-| Execution | Security penetration testing | YYYY-MM-DD | YYYY-MM-DD | 2d | ⚪ |
-| Execution | Automated regression execution | YYYY-MM-DD | YYYY-MM-DD | 1d | ⚪ |
-| Wrap-up | Defect verification & regression | YYYY-MM-DD | YYYY-MM-DD | 2d | ⚪ |
-| Wrap-up | Report writing & review | YYYY-MM-DD | YYYY-MM-DD | 1d | ⚪ |
+| 准备阶段 | 环境搭建与冒烟测试 | YYYY-MM-DD | YYYY-MM-DD |  2d  |  ⚪  |
+| 执行阶段 | 功能测试执行       | YYYY-MM-DD | YYYY-MM-DD |  5d  |  ⚪  |
+| 执行阶段 | 接口测试执行       | YYYY-MM-DD | YYYY-MM-DD |  4d  |  ⚪  |
+| 执行阶段 | 性能压测执行       | YYYY-MM-DD | YYYY-MM-DD |  2d  |  ⚪  |
+| 执行阶段 | 兼容性测试         | YYYY-MM-DD | YYYY-MM-DD |  2d  |  ⚪  |
+| 执行阶段 | 安全渗透测试       | YYYY-MM-DD | YYYY-MM-DD |  2d  |  ⚪  |
+| 执行阶段 | 自动化回归执行     | YYYY-MM-DD | YYYY-MM-DD |  1d  |  ⚪  |
+| 收尾阶段 | 缺陷验证与回归     | YYYY-MM-DD | YYYY-MM-DD |  2d  |  ⚪  |
+| 收尾阶段 | 报告编写与评审     | YYYY-MM-DD | YYYY-MM-DD |  1d  |  ⚪  |
 
 ---
 
-## 4. Defect Analysis
+## 4. 缺陷统计与分析（Defect Analysis）
 
-### 4.1 Defect Severity Distribution
+### 4.1 缺陷严重程度分布
 
 ```mermaid
-pie title Defect Severity Distribution
-    "Critical (P0)" : 2
-    "Severe (P1)" : 5
-    "Normal (P2)" : 15
-    "Minor (P3)" : 8
+pie title 缺陷严重程度分布
+    "致命(P0)" : 2
+    "严重(P1)" : 5
+    "一般(P2)" : 15
+    "轻微(P3)" : 8
 ```
 
-| Severity | Definition | Count | Fixed | Pending Fix | Fix Rate |
+| 严重程度    | 定义                           |  数量  | 已修复 | 待修复 |  修复率   |
 | :---------- | :----------------------------- | :----: | :----: | :----: | :-------: |
-| **P0 Critical** | System crash/data loss/core flow blocked | 2 | 2 | 0 | 100% |
-| **P1 Severe** | Major function abnormal/severe performance degradation | 5 | 5 | 0 | 100% |
-| **P2 Normal** | Minor function defect/experience issue | 15 | 12 | 3 | 80% |
-| **P3 Minor** | UI imperfection/copy error/optimization suggestion | 8 | 6 | 2 | 75% |
-| **Total** | | **30** | **25** | **5** | **83.3%** |
+| **P0 致命** | 系统崩溃/数据丢失/核心流程阻断 |   2    |   2    |   0    |   100%    |
+| **P1 严重** | 主要功能异常/性能严重下降      |   5    |   5    |   0    |   100%    |
+| **P2 一般** | 次要功能缺陷/体验问题          |   15   |   12   |   3    |    80%    |
+| **P3 轻微** | UI瑕疵/文案错误/建议优化       |   8    |   6    |   2    |    75%    |
+| **合计**    |                                | **30** | **25** | **5**  | **83.3%** |
 
-### 4.2 Defect Module Distribution
+### 4.2 缺陷模块分布
 
-> **Note**: xychart-beta is a Feishu-incompatible Mermaid type; replaced with table description (template sample data).
+> **说明**：xychart-beta为飞书不兼容Mermaid类型，改为表格描述（模板示例数据）。
 
-**Defect Module Distribution (Top 5)**
+**缺陷模块分布（Top 5）**
 
-| Module | Defect Count |
+| 模块     | 缺陷数 |
 | :------- | :----: |
-| Order Module | 10 |
-| Payment Module | 8 |
-| User Center | 5 |
-| Product Module | 4 |
-| Message Notification | 3 |
+| 订单模块 |   10   |
+| 支付模块 |   8    |
+| 用户中心 |   5    |
+| 商品模块 |   4    |
+| 消息通知 |   3    |
 
-| Module | Defect Count | Percentage | Main Issue Types |
+| 模块         | 缺陷数 | 占比  | 主要问题类型         |
 | :----------- | :----: | :---: | :------------------- |
-| **Order Module** | 10 | 33.3% | State machine anomaly, concurrency issues |
-| **Payment Module** | 8 | 26.7% | Callback handling, amount precision |
-| **User Center** | 5 | 16.7% | Permission verification, data synchronization |
-| **Product Module** | 4 | 13.3% | Stock deduction, price calculation |
-| **Message Notification** | 3 | 10.0% | Push delay, template rendering |
+| **订单模块** |   10   | 33.3% | 状态机异常、并发问题 |
+| **支付模块** |   8    | 26.7% | 回调处理、金额精度   |
+| **用户中心** |   5    | 16.7% | 权限校验、数据同步   |
+| **商品模块** |   4    | 13.3% | 库存扣减、价格计算   |
+| **消息通知** |   3    | 10.0% | 推送延迟、模板渲染   |
 
-### 4.3 Defect Trend Analysis
+### 4.3 缺陷趋势分析
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" style="max-width:600px;height:auto">
 <rect width="600" height="420" fill="#fafafa" rx="8"/>
-<text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Defect Discovery & Fix Trend (Daily)</text>
+<text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">缺陷发现与修复趋势（按日）</text>
 <line x1="60" y1="370.0" x2="580" y2="370.0" stroke="#eee" stroke-width="1"/>
 <text x="55" y="374.0" text-anchor="end" font-size="11" fill="#999">0</text>
 <line x1="60" y1="304.0" x2="580" y2="304.0" stroke="#eee" stroke-width="1"/>
@@ -268,7 +268,7 @@ pie title Defect Severity Distribution
 <text x="55" y="110.0" text-anchor="end" font-size="11" fill="#999">17</text>
 <line x1="60" y1="40.0" x2="580" y2="40.0" stroke="#eee" stroke-width="1"/>
 <text x="55" y="44.0" text-anchor="end" font-size="11" fill="#999">22</text>
-<text x="16" y="205" text-anchor="middle" font-size="12" fill="#666" transform="rotate(-90, 16, 205)">Defect Count</text>
+<text x="16" y="205" text-anchor="middle" font-size="12" fill="#666" transform="rotate(-90, 16, 205)">缺陷数</text>
 <line x1="60" y1="370" x2="580" y2="370" stroke="#ccc" stroke-width="1"/>
 <polyline points="97.1,190.0 171.4,250.0 245.7,295.0 320.0,325.0 394.3,340.0 468.6,355.0 542.9,370.0" fill="none" stroke="#ee6666" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="97.1" cy="190.0" r="4" fill="#ee6666" stroke="#fff" stroke-width="1.5"/>
@@ -309,232 +309,233 @@ pie title Defect Severity Distribution
 <text x="542.9" y="390" text-anchor="middle" font-size="12" fill="#333">Day7</text>
 <line x1="210.0" y1="414" x2="222.0" y2="414" stroke="#ee6666" stroke-width="2.5"/>
 <circle cx="216.0" cy="414" r="3" fill="#ee6666" stroke="#fff" stroke-width="1"/>
-<text x="226.0" y="418" font-size="12" fill="#333">New Defects</text>
+<text x="226.0" y="418" font-size="12" fill="#333">新增缺陷</text>
 <line x1="300.0" y1="414" x2="312.0" y2="414" stroke="#3ba272" stroke-width="2.5"/>
 <circle cx="306.0" cy="414" r="3" fill="#3ba272" stroke="#fff" stroke-width="1"/>
-<text x="316.0" y="418" font-size="12" fill="#333">Cumulative Fixes</text>
+<text x="316.0" y="418" font-size="12" fill="#333">累计修复</text>
 </svg>
 
-**Trend Analysis Conclusion:**
+**趋势分析结论：**
 
-- Days 1-3 were the peak defect discovery period, as expected
-- New defects significantly decreased after Day 4, converging
-- Cumulative fix curve continuously rising, fix pace keeps up with discovery
-- Day 7 had zero new defects, reaching convergence criteria
+- 测试第1-3天为缺陷发现高峰期，符合预期
+- 第4天后新增缺陷显著下降，趋于收敛
+- 累计修复曲线持续上升，修复速度跟得上发现速度
+- 第7天新增缺陷为0，达到缺陷收敛标准
 
-### 4.4 Defect Root Cause Analysis
+### 4.4 缺陷根因分析
 
-| Root Cause Category | Count | Percentage | Typical Case | Prevention Measure |
+| 根因分类       | 数量 | 占比  | 典型案例        | 预防措施             |
 | :------------- | :--: | :---: | :-------------- | :------------------- |
-| **Requirement Omission** | 5 | 16.7% | Boundary conditions undefined | Include testers in requirement reviews |
-| **Design Defect** | 3 | 10.0% | Missing concurrency control | Add technical solution in design review |
-| **Coding Error** | 15 | 50.0% | Null pointer/array out of bounds | Strengthen Code Review |
-| **Configuration Error** | 4 | 13.3% | Inconsistent environment configuration | Centralized configuration management |
-| **Compatibility Issue** | 3 | 10.0% | Browser differences | Front-load compatibility testing |
+| **需求遗漏**   |  5   | 16.7% | 边界条件未定义  | 需求评审引入测试人员 |
+| **设计缺陷**   |  3   | 10.0% | 并发控制缺失    | 设计评审增加技术方案 |
+| **编码错误**   |  15  | 50.0% | 空指针/数组越界 | 加强Code Review      |
+| **配置错误**   |  4   | 13.3% | 环境配置不一致  | 配置中心化管理       |
+| **兼容性问题** |  3   | 10.0% | 浏览器差异      | 兼容性测试前置       |
 
 ---
 
-## 5. Specialized Testing
+## 5. 专项测试结果（Specialized Testing）
 
-### 5.1 Performance Testing Results
+### 5.1 性能测试结果
 
-**Test Objective:** Verify system response time and throughput under target concurrency
+**测试目标：** 验证系统在目标并发下的响应时间和吞吐量
 
-| Test Scenario | Concurrent Users | Avg Response Time | P99 Response Time | Throughput (TPS) | Error Rate | Result |
+| 测试场景       |  并发用户数   | 平均响应时间 | P95响应时间 | 吞吐量(TPS) | 错误率 |  结果   |
 | :------------- | :-----------: | :----------: | :---------: | :---------: | :----: | :-----: |
-| **Baseline** | 100 | 120ms | 200ms | 850 | 0% | ✅ Pass |
-| **Load Test** | 500 | 180ms | 350ms | 2,400 | 0.01% | ✅ Pass |
-| **Stress Test** | 1,000 | 320ms | 580ms | 3,800 | 0.05% | ✅ Pass |
-| **Capacity Test** | 2,000 | 650ms | 1,200ms | 4,500 | 0.8% | ⚠️ Warning |
-| **Stability Test** | 500 (8h sustained) | 200ms | 380ms | 2,350 | 0.02% | ✅ Pass |
+| **基准测试**   |      100      |    120ms     |    200ms    |     850     |   0%   | ✅ 通过 |
+| **负载测试**   |      500      |    180ms     |    350ms    |    2,400    | 0.01%  | ✅ 通过 |
+| **压力测试**   |     1,000     |    320ms     |    580ms    |    3,800    | 0.05%  | ✅ 通过 |
+| **容量测试**   |     2,000     |    650ms     |   1,200ms   |    4,500    |  0.8%  | ⚠️ 警告 |
+| **稳定性测试** | 500（持续8h） |    200ms     |    380ms    |    2,350    | 0.02%  | ✅ 通过 |
 
-> **Note**: xychart-beta is a Feishu-incompatible Mermaid type; replaced with table description (template sample data).
+> **说明**：xychart-beta为飞书不兼容Mermaid类型，改为表格描述（模板示例数据）。
 
-**Performance Load Test Results (Response Time vs Concurrency)**
+**性能压测结果（响应时间 vs 并发数）**
 
-| Concurrency | Response Time (ms) |
+| 并发数 | 响应时间(ms) |
 | :----: | :----------: |
-| 100 | 120 |
-| 500 | 180 |
-| 1,000 | 320 |
-| 2,000 | 650 |
+|  100   |     120      |
+|  500   |     180      |
+| 1,000  |     320      |
+| 2,000  |     650      |
 
-**Performance Conclusion:** System performs well at 1,000 concurrency. At 2,000 concurrency, P99 response time exceeds 1s; recommend optimization before capacity expansion.
+**性能结论：** 系统在 1,000 并发下表现良好，2,000 并发时 P95 响应时间超过 1s，建议优化后再进行容量扩展。
 
-### 5.2 Security Testing Results
+### 5.2 安全测试结果
 
-| Test Item | Test Method | Result | Risk Level |
+| 检测项               | 检测方法              | 结果              | 风险等级 |
 | :------------------- | :-------------------- | :---------------- | :------: |
-| **SQL Injection** | Automated scan + manual verification | Not found | 🟢 Low |
-| **XSS Cross-Site Scripting** | Automated scan + manual verification | 1 stored XSS found | 🟡 Medium |
-| **CSRF Cross-Site Request Forgery** | Manual verification | Not found | 🟢 Low |
-| **Sensitive Info Leak** | Code audit + packet capture analysis | Password printed in logs | 🔴 High |
-| **Unauthorized Access** | Manual verification | Not found | 🟢 Low |
-| **API Authentication** | Automated scan | 1 unauthenticated API found | 🟡 Medium |
+| **SQL注入**          | 自动化扫描 + 手工验证 | 未发现            |  🟢 低   |
+| **XSS跨站脚本**      | 自动化扫描 + 手工验证 | 发现1处存储型XSS  |  🟡 中   |
+| **CSRF跨站请求伪造** | 手工验证              | 未发现            |  🟢 低   |
+| **敏感信息泄露**     | 代码审计 + 抓包分析   | 发现日志打印密码  |  🔴 高   |
+| **越权访问**         | 手工验证              | 未发现            |  🟢 低   |
+| **接口鉴权**         | 自动化扫描            | 发现1处未鉴权接口 |  🟡 中   |
 
-**Security Conclusion:** 2 medium-risk and 1 high-risk issues must be fixed before go-live. High-risk issue (password printed in logs) has been pushed for fix and verified.
+**安全结论：** 2个中等风险、1个高风险问题需修复后方可上线。高风险问题（日志打印密码）已推动修复并验证。
 
-### 5.3 Compatibility Testing Results
+### 5.3 兼容性测试结果
 
-| Platform | Browser/Version | Test Result | Notes |
+| 平台    | 浏览器/版本 | 测试结果 | 备注         |
 | :------ | :---------- | :------: | :----------- |
-| Windows | Chrome 120 | ✅ Pass | |
-| Windows | Firefox 121 | ✅ Pass | |
-| Windows | Edge 120 | ✅ Pass | |
-| macOS | Safari 17 | ✅ Pass | |
-| macOS | Chrome 120 | ✅ Pass | |
-| iOS | Safari 17 | ✅ Pass | |
-| iOS | Chrome 120 | ✅ Pass | |
-| Android | Chrome 120 | ✅ Pass | |
-| Android | WebView | ⚠️ Pass | Some animation stuttering |
+| Windows | Chrome 120  | ✅ 通过  |              |
+| Windows | Firefox 121 | ✅ 通过  |              |
+| Windows | Edge 120    | ✅ 通过  |              |
+| macOS   | Safari 17   | ✅ 通过  |              |
+| macOS   | Chrome 120  | ✅ 通过  |              |
+| iOS     | Safari 17   | ✅ 通过  |              |
+| iOS     | Chrome 120  | ✅ 通过  |              |
+| Android | Chrome 120  | ✅ 通过  |              |
+| Android | WebView     | ⚠️ 通过  | 部分动画卡顿 |
 
-### 5.4 Automated Test Coverage
+### 5.4 自动化测试覆盖率
 
-| Module | Statement Coverage | Branch Coverage | Function Coverage | Target Achieved |
+| 模块     | 语句覆盖率 | 分支覆盖率 | 函数覆盖率 |  目标达成   |
 | :------- | :--------: | :--------: | :--------: | :---------: |
-| Order Module | 87% | 82% | 91% | ✅ Achieved |
-| Payment Module | 92% | 88% | 95% | ✅ Achieved |
-| User Center | 78% | 71% | 85% | ⚠️ Not Achieved |
-| Product Module | 85% | 80% | 89% | ✅ Achieved |
-| **Overall** | **85.5%** | **80.3%** | **90.0%** | **✅ Achieved** |
+| 订单模块 |    87%     |    82%     |    91%     |   ✅ 达成   |
+| 支付模块 |    92%     |    88%     |    95%     |   ✅ 达成   |
+| 用户中心 |    78%     |    71%     |    85%     |  ⚠️ 未达成  |
+| 商品模块 |    85%     |    80%     |    89%     |   ✅ 达成   |
+| **整体** | **85.5%**  | **80.3%**  | **90.0%**  | **✅ 达成** |
 
 ---
 
-## 6. Risk Assessment & Recommendations
+## 6. 风险评估与建议（Risk Assessment）
 
-### 6.1 Residual Defect Risk
+### 6.1 遗留缺陷风险
 
-| Defect ID | Description | Severity | Impact Scope | Mitigation | Recommendation |
+| 缺陷ID  | 描述                      | 严重程度 | 影响范围 | 规避措施            | 建议       |
 | :------ | :------------------------ | :------: | :------- | :------------------ | :--------- |
-| BUG-028 | Order export Excel large file timeout | P2 | Operations backend | Limit single export ≤5000 records | Optimize post-launch |
-| BUG-029 | Message push occasional delay (>5min) | P2 | Some users | Add retry mechanism | Optimize post-launch |
-| BUG-030 | iOS WebView animation stutter | P3 | iOS users | Degrade to static effect | Fix in next version |
+| BUG-028 | 订单导出Excel大文件超时   |    P2    | 运营后台 | 限制单次导出≤5000条 | 上线后优化 |
+| BUG-029 | 消息推送偶发延迟（>5min） |    P2    | 部分用户 | 增加重试机制        | 上线后优化 |
+| BUG-030 | iOS WebView动画卡顿       |    P3    | iOS用户  | 降级为静态效果      | 下版本修复 |
 
-### 6.2 Go-Live Risk Assessment
+### 6.2 上线风险评估
 
-> **Note**: This quadrant chart template has been converted to a table description.
+> **说明**：此象限图模板已转为表格描述。
 
 <!--
-Original quadrantChart structure reference:
-- title: Go-Live Risk Matrix (Impact vs Probability)
-- x-axis: "Low Probability" --> "High Probability"
-- y-axis: "Low Impact" --> "High Impact"
-- quadrant-1: High Risk (High Impact/High Probability)
-- quadrant-2: Key Watch (High Impact/Low Probability)
-- quadrant-3: Low Risk (Low Impact/Low Probability)
-- quadrant-4: General Attention (Low Impact/High Probability)
-- Data points: "Residual P2 Defect": [0.3, 0.5]; "Performance Capacity Bottleneck": [0.5, 0.7]; "Security Vulnerability": [0.2, 0.8]; "Compatibility Issue": [0.4, 0.3]
--->
+原 quadrantChart 结构参考：
+- title: 上线风险矩阵（影响程度 vs 发生概率）
+- x-axis: "低概率" --> "高概率"
 
-| Quadrant | Region Characteristics | Recommended Strategy |
+- y-axis: "低影响" --> "高影响"
+- quadrant-1: 高风险（高影响/高概率）
+- quadrant-2: 重点观察（高影响/低概率）
+- quadrant-3: 低风险（低影响/低概率）
+- quadrant-4: 一般关注（低影响/高概率）
+- 数据点: "遗留P2缺陷": [0.3, 0.5]; "性能容量瓶颈": [0.5, 0.7]; "安全漏洞": [0.2, 0.8]; "兼容性问题": [0.4, 0.3]
+  -->
+
+| 象限                   | 区域特征                  | 策略建议                     |
 | :--------------------- | :------------------------ | :--------------------------- |
-| Quadrant 1 (High Probability · High Impact) | High Risk (High Impact/High Probability) | Must close loop before go-live, otherwise block release |
-| Quadrant 2 (Low Probability · High Impact) | Key Watch (High Impact/Low Probability) | Key monitoring post-launch, prepare contingency plan |
-| Quadrant 3 (Low Probability · Low Impact) | Low Risk (Low Impact/Low Probability) | Routine attention, can release with known risks |
-| Quadrant 4 (High Probability · Low Impact) | General Attention (Low Impact/High Probability) | Schedule fix in subsequent versions |
+| 象限1（高概率·高影响） | 高风险（高影响/高概率）   | 上线前必须闭环，否则阻断发布 |
+| 象限2（低概率·高影响） | 重点观察（高影响/低概率） | 上线后重点监控，准备应急预案 |
+| 象限3（低概率·低影响） | 低风险（低影响/低概率）   | 常规关注，可带风险上线       |
+| 象限4（高概率·低影响） | 一般关注（低影响/高概率） | 排入后续版本修复             |
 
-| Name | X Value | Y Value | Quadrant |
+| 名称         | X值 | Y值 | 象限              |
 | :----------- | :-: | :-: | :---------------- |
-| Residual P2 Defect | 0.3 | 0.5 | Quadrant 2 (Key Watch) |
-| Performance Capacity Bottleneck | 0.5 | 0.7 | Quadrant 1 (High Risk) |
-| Security Vulnerability | 0.2 | 0.8 | Quadrant 2 (Key Watch) |
-| Compatibility Issue | 0.4 | 0.3 | Quadrant 3 (Low Risk) |
+| 遗留P2缺陷   | 0.3 | 0.5 | 象限2（重点观察） |
+| 性能容量瓶颈 | 0.5 | 0.7 | 象限1（高风险）   |
+| 安全漏洞     | 0.2 | 0.8 | 象限2（重点观察） |
+| 兼容性问题   | 0.4 | 0.3 | 象限3（低风险）   |
 
-| Risk Item | Level | Notes |
+| 风险项         | 等级  | 说明                                    |
 | :------------- | :---: | :-------------------------------------- |
-| **Functional Risk** | 🟢 Low | All P0/P1 defects fixed, core flow validation passed |
-| **Performance Risk** | 🟡 Medium | Stable within 1,000 concurrency, peak needs rate limiting |
-| **Security Risk** | 🟡 Medium | High-risk vulnerabilities fixed, medium-risk needs post-launch follow-up |
-| **Compatibility Risk** | 🟢 Low | All major platforms passed, only iOS WebView minor stutter |
+| **功能风险**   | 🟢 低 | P0/P1缺陷全部修复，核心流程验证通过     |
+| **性能风险**   | 🟡 中 | 1,000并发内稳定，峰值需限流保护         |
+| **安全风险**   | 🟡 中 | 高风险漏洞已修复，中风险需上线后跟进    |
+| **兼容性风险** | 🟢 低 | 主流平台全部通过，仅iOS WebView轻微卡顿 |
 
 ---
 
-## 7. Test Conclusion & Acceptance Recommendation
+## 7. 测试结论与验收建议（Conclusion & Recommendation）
 
-### 7.1 Overall Quality Assessment
+### 7.1 综合质量评估
 
-| Dimension | Rating | Notes |
+| 维度           |    评分    | 说明                        |
 | :------------- | :--------: | :-------------------------- |
-| **Functional Completeness** | ⭐⭐⭐⭐⭐ | All core functionality verified |
-| **Performance Stability** | ⭐⭐⭐⭐ | Stable within target capacity, peak needs optimization |
-| **Security Compliance** | ⭐⭐⭐⭐ | High-risk fixed, medium-risk pending follow-up |
-| **Compatibility** | ⭐⭐⭐⭐⭐ | Full coverage of major platforms |
-| **Code Quality** | ⭐⭐⭐⭐ | Coverage 85.5%, some modules need improvement |
+| **功能完整性** | ⭐⭐⭐⭐⭐ | 核心功能全部验证通过        |
+| **性能稳定性** |  ⭐⭐⭐⭐  | 目标容量内稳定，峰值需优化  |
+| **安全合规性** |  ⭐⭐⭐⭐  | 高风险已修复，中风险待跟进  |
+| **兼容性**     | ⭐⭐⭐⭐⭐ | 主流平台全覆盖              |
+| **代码质量**   |  ⭐⭐⭐⭐  | 覆盖率85.5%，部分模块待提升 |
 
-### 7.2 Acceptance Conclusion
+### 7.2 验收结论
 
 ```mermaid
 flowchart TD
-    A[Test Conclusion] --> B{Exit Criteria Met?}
-    B -->|Yes| C[✅ Recommend Pass / Approve Go-Live]
-    B -->|No| D[❌ Recommend Fail / Fix & Retest]
+    A[测试结论] --> B{是否满足 / 准出条件?}
+    B -->|是| C[✅ 建议通过 / 批准上线]
+    B -->|否| D[❌ 建议不通过 / 修复后复测]
 
-    C --> E{Residual Risks?}
-    E -->|Yes| F[⚠️ Release with Risk / Need Monitoring Plan]
-    E -->|No| G[🟢 Normal Go-Live]
+    C --> E{是否存在 / 遗留风险?}
+    E -->|是| F[⚠️ 带风险上线 / 需制定监控预案]
+    E -->|否| G[🟢 正常上线]
 
-    D --> H[🔴 Blocking Items List]
-    H --> I[Fix → Regression → Retest]
+    D --> H[🔴 阻塞项清单]
+    H --> I[修复 → 回归 → 复测]
 
     style C fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
     style D fill:#ffebee,stroke:#c62828,stroke-width:2px
     style F fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
 ```
 
-**Final Conclusion:** 🟢 **Recommend Pass, Approve Go-Live**
+**最终结论：** 🟢 **建议通过，批准上线**
 
-**Reasons:**
+**理由：**
 
-1. All P0/P1 critical/severe defects fixed and verified
-2. Core functional test case pass rate 96.5%, meeting exit criteria (≥95%)
-3. Performance tests all passed within target capacity (1,000 concurrency)
-4. High-risk security vulnerabilities fixed; remaining medium-risk issues don't affect core flow
-5. 3 residual P2/P3 defects have mitigation plans; recommend iterative fix post-launch
+1. P0/P1 致命/严重缺陷全部修复并验证通过
+2. 核心功能测试用例通过率 96.5%，达到准出标准（≥95%）
+3. 性能测试在目标容量（1,000并发）内全部达标
+4. 高风险安全漏洞已修复，剩余中风险问题不影响核心流程
+5. 遗留 3 个 P2/P3 缺陷已制定规避措施，建议上线后迭代修复
 
-### 7.3 Follow-up Recommendations
+### 7.3 后续建议
 
-| Priority | Recommendation | Owner | Timeline |
+| 优先级 | 建议项                               | 负责人   | 计划时间    |
 | :----: | :----------------------------------- | :------- | :---------- |
-| P1 | Optimize order export large file performance, support async export | Backend Dev | Within 1 week post-launch |
-| P1 | Improve User Center unit test coverage to 80% | Test Team | Next version iteration |
-| P2 | Establish performance baseline monitoring, auto-trigger capacity alerts | SRE Team | Within 2 weeks post-launch |
-| P2 | Introduce security scanning into CI pipeline, shift-left security testing | Security Team | Next version iteration |
+|   P1   | 优化订单导出大文件性能，支持异步导出 | 后端开发 | 上线后1周内 |
+|   P1   | 完善用户中心单元测试覆盖率至80%      | 测试团队 | 下版本迭代  |
+|   P2   | 建立性能基线监控，自动触发容量告警   | SRE团队  | 上线后2周内 |
+|   P2   | 引入安全扫描到CI流水线，左移安全测试 | 安全团队 | 下版本迭代  |
 
 ---
 
-## 8. Appendix
+## 8. 附录（Appendix）
 
-### 8.1 Glossary
+### 8.1 术语表（Glossary）
 
-| Term | Definition |
+| 术语                | 定义                                     |
 | :------------------ | :--------------------------------------- |
-| **P0/P1/P2/P3** | Defect severity levels: Critical/Severe/Normal/Minor |
-| **TPS** | Transactions Per Second |
-| **P95** | 95th percentile response time, 95% of requests are below this value |
-| **Code Coverage** | Code coverage, measures the extent to which test cases cover code |
-| **Smoke Test** | Quick test to verify core functionality is usable |
-| **Regression Test** | Regression test, verifies modifications haven't introduced new defects |
+| **P0/P1/P2/P3**     | 缺陷严重程度分级：致命/严重/一般/轻微    |
+| **TPS**             | Transactions Per Second，每秒事务数      |
+| **P95**             | 95%分位响应时间，即95%请求低于该值       |
+| **Code Coverage**   | 代码覆盖率，衡量测试用例覆盖代码的程度   |
+| **Smoke Test**      | 冒烟测试，验证核心功能是否可用的快速测试 |
+| **Regression Test** | 回归测试，验证修改是否引入新缺陷         |
 
-### 8.2 Related Documents
+### 8.2 关联文档
 
-| Document | ID | Link |
+| 文档                | 编号               | 链接   |
 | :------------------ | :----------------- | :----- |
-| Product Requirements Document (PRD) | PRD-2026-XXX | [Link] |
-| Test Plan | TEST-PLAN-2026-XXX | [Link] |
-| Test Cases | TEST-CASE-2026-XXX | [Link] |
-| Defect Tracking | BUG-TRACK-2026-XXX | [Link] |
-| Performance Test Report | PERF-2026-XXX | [Link] |
-| Security Test Report | SEC-2026-XXX | [Link] |
+| 产品需求文档（PRD） | PRD-2026-XXX       | [链接] |
+| 测试计划            | TEST-PLAN-2026-XXX | [链接] |
+| 测试用例            | TEST-CASE-2026-XXX | [链接] |
+| 缺陷跟踪表          | BUG-TRACK-2026-XXX | [链接] |
+| 性能测试报告        | PERF-2026-XXX      | [链接] |
+| 安全测试报告        | SEC-2026-XXX       | [链接] |
 
-## 9. Test Review Sign-off
+## 9. 测试评审签核（Test Review Sign-off）
 
-> The test report must be reviewed and signed by the following roles before it can serve as the basis for go-live.
+> 测试报告需经以下角色评审并签字后方可作为上线依据。
 
-| Role | Name | Signature | Date | Review Comments |
+| 角色           | 姓名 | 签字 | 日期 | 评审意见                 |
 | :------------- | :--- | :--: | :--: | :----------------------- |
-| **Test Lead** | | | | [Test conclusion confirmed] |
-| **Development Lead** | | | | [Defect fix confirmed] |
-| **Product Lead** | | | | [Functional acceptance confirmed] |
-| **Tech Lead** | | | | [Technical risk confirmed] |
-| **Release Manager** | | | | [Go-live decision confirmed] |
-| **Security Lead** | | | | [Security compliance confirmed] (if applicable) |
+| **测试负责人** |      |      |      | [测试结论确认]           |
+| **开发负责人** |      |      |      | [缺陷修复确认]           |
+| **产品负责人** |      |      |      | [功能验收确认]           |
+| **技术负责人** |      |      |      | [技术风险确认]           |
+| **发布经理**   |      |      |      | [上线决策确认]           |
+| **安全负责人** |      |      |      | [安全合规确认]（如涉及） |

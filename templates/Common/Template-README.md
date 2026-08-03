@@ -1,46 +1,46 @@
-# {Project Name} ({English Name})
+# {项目名}（{英文名}）
 
-> **Document Type:** Project Entry Document (README)
+> **文档类型：** 项目入口文档（README）
 >
-> **Document Status:** 🟢 Active / 🟡 Under Review / 🔴 Archived
+> **文档状态：** 🟢 活跃 / 🟡 评审中 / 🔴 已归档
 >
-> **Confidentiality Level:** Confidential / Internal / Public
+> **保密级别：** 机密 / 内部公开 / 公开
 >
-> **Version:** vX.X.X
+> **版本：** vX.X.X
 >
-> **Date:** YYYY-MM-DD
+> **日期：** YYYY-MM-DD
 >
-> **Maintainer:** [Project Owner / Team]
+> **维护人：** [项目 Owner / 团队]
 >
-> **Related Documents:** [CHANGELOG.md](./CHANGELOG.md) / [CONTRIBUTING.md](./CONTRIBUTING.md) / [LICENSE](./LICENSE)
+> **关联文档：** [CHANGELOG.md](./CHANGELOG.md) / [CONTRIBUTING.md](./CONTRIBUTING.md) / [LICENSE](./LICENSE)
 
 [![GitHub Release](https://img.shields.io/github/v/release/{org}/{repo}?style=flat-square)](https://github.com/{org}/{repo}/releases)
 [![GitHub License](https://img.shields.io/github/license/{org}/{repo}?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/{org}/{repo}/ci.yml?branch=main&style=flat-square)](https://github.com/{org}/{repo}/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/{org}/{repo}?style=flat-square)](https://codecov.io/gh/{org}/{repo})
 
-{One-liner project positioning, e.g., "An industrial-grade project initialization skill for AI agents, turning an empty directory into a production-grade project with complete quality guardrails."}
+{一句话项目定位，如：「面向 AI agent 的工业级项目初始化 skill，把一个空目录变成带完整质量护栏的生产级项目。」}
 
-## Features
+## 功能特性
 
-- **Feature 1**: [One-liner description, e.g., One-click initialization for 9 languages]
-- **Feature 2**: [One-liner description, e.g., CI quality gates + tag-triggered Release workflow]
-- **Feature 3**: [One-liner description, e.g., Local pre-commit/lefthook dual industrial-grade checks]
-- **Feature 4**: [One-liner description, e.g., Coverage gate minimum threshold 80%]
+- **特性 1**：[一句话说明，如：覆盖 9 种语言一键初始化]
+- **特性 2**：[一句话说明，如：CI 质量门禁 + tag 触发 Release 工作流]
+- **特性 3**：[一句话说明，如：本地 pre-commit/lefthook 双重工业级检查]
+- **特性 4**：[一句话说明，如：覆盖率门禁行业底线 80%]
 
-> See [§ Capabilities Overview](#capabilities-overview) for the complete capability matrix.
+> 完整能力矩阵见 [§ 能力概览](#能力概览)。
 
-## Installation
+## 安装
 
-### Prerequisites
+### 前置依赖
 
-| Dependency       | Minimum Version | Description                         |
+| 依赖       | 最低版本 | 说明                         |
 | :--------- | :------- | :--------------------------- |
-| {Node.js}  | 18+      | Runtime environment                     |
-| {git}      | 2.30+    | Version control                     |
-| {Other}     | {Version}   | {Description}                       |
+| {Node.js}  | 18+      | 运行环境                     |
+| {git}      | 2.30+    | 版本控制                     |
+| {其他}     | {版本}   | {说明}                       |
 
-### Option 1: Install via Package Manager (Recommended)
+### 方式一：通过包管理器安装（推荐）
 
 ```bash
 # npm
@@ -56,7 +56,7 @@ uv add {package-name}
 cargo add {crate-name}
 ```
 
-### Option 2: Build from Source
+### 方式二：从源码构建
 
 ```bash
 git clone https://github.com/{org}/{repo}.git
@@ -64,172 +64,172 @@ cd {repo}
 {build-command}
 ```
 
-### Option 3: Download Binary Directly
+### 方式三：直接下载二进制
 
 ```bash
-# Download platform-specific binary from GitHub Releases
+# 从 GitHub Releases 下载对应平台二进制
 curl -L https://github.com/{org}/{repo}/releases/latest/download/{binary}-{os}-{arch}.tar.gz | tar xz
 ```
 
-## Quick Start
+## 快速开始
 
 ```bash
-# 1. Navigate to target directory
+# 1. 进入目标目录
 cd /path/to/project
 
-# 2. Initialize
+# 2. 初始化
 {init-command}
 
-# 3. Verify
+# 3. 验证
 {verify-command}
 ```
 
-**Expected Output:**
+**预期输出：**
 
 ```
-{Expected output example}
+{预期输出示例}
 ```
 
-## Usage Examples
+## 使用示例
 
 ```bash
-# Example 1: Basic usage
+# 示例 1：基础用法
 {command-1}
 
-# Example 2: With options
+# 示例 2：带参数
 {command-2} --option value
 
-# Example 3: Advanced usage
+# 示例 3：进阶用法
 {command-3}
 ```
 
-More examples in [`docs/examples/`](./docs/examples/).
+更多示例见 [`docs/examples/`](./docs/examples/)。
 
-## Configuration
+## 配置
 
-### Configuration File
+### 配置文件
 
-Main configuration file is located at `{config-path}`, key fields:
+主配置文件位于 `{config-path}`，关键字段：
 
-| Field             | Type    | Default    | Description                          |
+| 字段             | 类型    | 默认值    | 说明                          |
 | :--------------- | :------ | :-------- | :---------------------------- |
-| `{field_1}`      | string  | `default` | {Description}                        |
-| `{field_2}`      | integer | `80`      | {Description}                        |
-| `{field_3}`      | boolean | `false`   | {Description}                        |
-| `{field_env}`    | string  | —         | Prioritized from environment variable `{ENV_VAR}` |
+| `{field_1}`      | string  | `default` | {说明}                        |
+| `{field_2}`      | integer | `80`      | {说明}                        |
+| `{field_3}`      | boolean | `false`   | {说明}                        |
+| `{field_env}`    | string  | —         | 优先从环境变量 `{ENV_VAR}` 读取 |
 
-### Environment Variables
+### 环境变量
 
-| Variable Name           | Required | Default | Description                          |
+| 变量名           | 必填 | 默认值 | 说明                          |
 | :--------------- | :--: | :----- | :---------------------------- |
-| `{ENV_API_KEY}`  |  ✅  | —      | API key                       |
-| `{ENV_LOG_LEVEL}`|  —   | `info` | Log level                       |
-| `{ENV_TIMEOUT}`  |  —   | `30`   | Request timeout (seconds)                 |
+| `{ENV_API_KEY}`  |  ✅  | —      | API 密钥                       |
+| `{ENV_LOG_LEVEL}`|  —   | `info` | 日志级别                       |
+| `{ENV_TIMEOUT}`  |  —   | `30`   | 请求超时（秒）                 |
 
-> **Security Reminder**: Sensitive information such as keys and tokens must NOT be hardcoded in configuration files. They must be injected via environment variables or KMS.
+> **安全提醒**：密钥、Token 等敏感信息禁止硬编码到配置文件，必须通过环境变量或 KMS 注入。
 
-## Capabilities Overview
+## 能力概览
 
-### `references/` — Reference Documentation
+### `references/` —— 参考文档
 
-| File | Content | When to Read |
+| 文件 | 内容 | 何时读 |
 | ---- | ---- | ------ |
-| [`references/{file}.md`](references/{file}.md) | {Description} | {Timing} |
+| [`references/{file}.md`](references/{file}.md) | {说明} | {时机} |
 
-### `scripts/` — Utility Scripts
+### `scripts/` —— 工具脚本
 
-| Script | Purpose |
+| 脚本 | 用途 |
 | ---- | ---- |
-| `scripts/{script-1}.sh` | {Description} |
-| `scripts/{script-2}.sh` | {Description} |
+| `scripts/{script-1}.sh` | {说明} |
+| `scripts/{script-2}.sh` | {说明} |
 
-### `templates/` — Templates
+### `templates/` —— 模板
 
 ```
 templates/
-├── {category-1}/   # {Description}
-└── {category-2}/   # {Description}
+├── {category-1}/   # {说明}
+└── {category-2}/   # {说明}
 ```
 
-## Full Workflow Pipeline
+## 完整流程链路
 
 ```mermaid
 flowchart LR
-    A["Intent Confirmation"] --> B["Initialization"]
-    B --> C["Configuration"]
-    C --> D["Local Verification"]
-    D --> E["CI Gate"]
+    A["意图确认"] --> B["初始化"]
+    B --> C["配置"]
+    C --> D["本地验证"]
+    D --> E["CI 门禁"]
 ```
 
-1. **Phase 0 · Intent Confirmation**: {Description}
-2. **Phase 1 · Initialization**: {Description}
-3. **Phase 2 · Configuration**: {Description}
-4. **Phase 3 · CI Gate**: {Description}
-5. **🛑 Phase 4 · Verification (STOP)**: {Description}
+1. **阶段 0 · 意图确认**：{说明}
+2. **阶段 1 · 初始化**：{说明}
+3. **阶段 2 · 配置**：{说明}
+4. **阶段 3 · CI 门禁**：{说明}
+5. **🛑 阶段 4 · 验证（STOP）**：{说明}
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on:
+欢迎贡献！请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解：
 
-- Fork / Branch / PR conventions
-- Code style and testing requirements
-- Commit message conventions
-- Code of Conduct
+- Fork / Branch / PR 规范
+- 代码风格与测试要求
+- Commit message 规范
+- 行为准则
 
-### Contributors
+### 贡献者
 
-Thanks to all contributors:
+感谢所有贡献者：
 
 [![Contributors](https://img.shields.io/github/contributors/{org}/{repo}?style=flat-square)](https://github.com/{org}/{repo}/graphs/contributors)
 
-## Roadmap
+## 路线图
 
-- [x] {Completed Feature 1}
-- [x] {Completed Feature 2}
-- [ ] {Planned Feature 1}
-- [ ] {Planned Feature 2}
+- [x] {已完成特性 1}
+- [x] {已完成特性 2}
+- [ ] {计划特性 1}
+- [ ] {计划特性 2}
 
-See [Roadmap](./docs/ROADMAP.md) for details.
+详见 [Roadmap](./docs/ROADMAP.md)。
 
-## FAQ
+## 常见问题
 
-See [FAQ.md](./FAQ.md). If you can't find the answer, please [submit an Issue](https://github.com/{org}/{repo}/issues/new).
+常见问题请见 [FAQ.md](./FAQ.md)。如未找到答案，请 [提交 Issue](https://github.com/{org}/{repo}/issues/new)。
 
-## Changelog
+## 变更日志
 
-See [CHANGELOG.md](./CHANGELOG.md).
+详见 [CHANGELOG.md](./CHANGELOG.md)。
 
-## License
+## 许可证
 
-[MIT](./LICENSE) © {Year} {Author/Organization}
+[MIT](./LICENSE) © {年份} {作者/组织}
 
-## Acknowledgements
+## 致谢
 
-- {Dependency Project 1} — {Description}
-- {Dependency Project 2} — {Description}
-- {Inspiration Source}
+- {依赖项目 1} —— {说明}
+- {依赖项目 2} —— {说明}
+- {灵感来源}
 
-## Contact
+## 联系方式
 
-- **Issues**: [Submit Issue](https://github.com/{org}/{repo}/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/{org}/{repo}/discussions)
-- **Email**: {email}
-- **Slack/Discord**: {Invite Link}
+- **Issue**：[提交 Issue](https://github.com/{org}/{repo}/issues)
+- **讨论**：[GitHub Discussions](https://github.com/{org}/{repo}/discussions)
+- **邮件**：{email}
+- **Slack/Discord**：{邀请链接}
 
 ---
 
-## 📌 README Writing Checklist
+## 📌 README 撰写 Checklist
 
-- [ ] Title + one-liner positioning
-- [ ] Badges (Release / License / Build / Coverage)
-- [ ] Features (≥ 4 items)
-- [ ] Installation (≥ 2 methods, including prerequisites)
-- [ ] Quick Start (with expected output)
-- [ ] Usage examples (≥ 3, covering basic to advanced)
-- [ ] Configuration (config file + environment variable table)
-- [ ] Capabilities overview (directory structure description)
-- [ ] Full workflow pipeline (with verification STOP points)
-- [ ] Contributing link + contributor badges
-- [ ] Roadmap
-- [ ] FAQ / CHANGELOG / LICENSE links complete
-- [ ] License + Acknowledgements + Contact
+- [ ] 标题 + 一句话定位
+- [ ] 徽章（Release / License / Build / Coverage）
+- [ ] 功能特性（≥ 4 条）
+- [ ] 安装（≥ 2 种方式，含前置依赖）
+- [ ] 快速开始（含预期输出）
+- [ ] 使用示例（≥ 3 个，覆盖基础到进阶）
+- [ ] 配置（配置文件 + 环境变量表）
+- [ ] 能力概览（目录结构说明）
+- [ ] 完整流程链路（含验证 STOP 点）
+- [ ] 贡献链接 + 贡献者徽章
+- [ ] 路线图
+- [ ] FAQ / CHANGELOG / LICENSE 链接完整
+- [ ] 许可证 + 致谢 + 联系方式
