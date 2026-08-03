@@ -1,11 +1,16 @@
-# Cangjie (仓颉) — Content Structuring & Summarization Skill
+# Cangjie (仓颉) — Content Transformation & Refinement Skill
 
 [![GitHub Release](https://img.shields.io/github/v/release/Kirky-X/cangjie?style=flat-square)](https://github.com/Kirky-X/cangjie/releases)
 [![GitHub License](https://img.shields.io/github/license/Kirky-X/cangjie?style=flat-square)](LICENSE)
 
-Cangjie is an AI agent skill for content structuring and summarization that organizes **text, audio, video, transcripts, and papers** into archivable structured documents: learning notes, book summaries, podcast recaps, meeting minutes, project reports, research analyses, paper reading notes, as well as product documents like PRD / TRD / BP / competitive analysis / literature review.
+Cangjie is an AI agent skill with **four content transformation modes**, selected by user intent:
 
-Core principle: **Identify user intent first, then select a template, then extract high-density information**. User-specified templates always take priority; when no "brief/ultra-short" version is requested, the default output is a `standard-detailed` version rather than just an outline. See [SKILL.md](SKILL.md) for the full routing table and workflow documentation.
+1. **Summarization (default)** — Organizes **text, audio, video, transcripts, and papers** into archivable structured documents: learning notes, book summaries, podcast recaps, meeting minutes, project reports, research analyses, paper reading notes, and product documents like PRD / TRD / BP / competitive analysis / literature review.
+2. **Video Script** — Transforms articles/news/blogs/policy docs or a one-line idea into a ready-to-use shot-by-shot storyboard for text-to-video models (LTX-2 prompt spec).
+3. **Humanization** — Removes AI writing traces from text, making it sound natural and human.
+4. **Diagram** — Creates `.excalidraw` JSON diagrams that argue visually (workflows, architectures, concepts), rendered to PNG.
+
+Core principle (Mode 1): **Identify user intent first, then select a template, then extract high-density information**. User-specified templates always take priority; when no "brief/ultra-short" version is requested, the default output is a `standard-detailed` version rather than just an outline. See [SKILL.md](SKILL.md) for the full routing table, mode selection, and workflow documentation.
 
 ## Features
 
@@ -71,7 +76,12 @@ git clone https://github.com/Kirky-X/cangjie.git
 
 ## Usage Examples
 
-Cangjie is loaded as a skill by the agent and triggered via natural language intent, no explicit commands needed. Trigger words include "summarize", "content summary", "meeting minutes", "report summary", "learning notes", "podcast summary", "video summary", "paper summary", "transcription", "PRD", "BP", "TRD", "competitive analysis", "market research", "literature review", etc.
+Cangjie is loaded as a skill by the agent and triggered via natural language intent, no explicit commands needed. Trigger words by mode:
+
+- **Mode 1 (Summarization)**: "summarize", "content summary", "meeting minutes", "report summary", "learning notes", "podcast summary", "paper summary", "transcription", "PRD", "BP", "TRD", "competitive analysis", "market research", "literature review"
+- **Mode 2 (Video Script)**: "视频脚本", "分镜", "分镜头", "拍成短片", "video prompt", "text-to-video", "AI视频生成"
+- **Mode 3 (Humanization)**: "humanize", "人性化", "去AI痕迹", "去AI味", "去除AI写作痕迹"
+- **Mode 4 (Diagram)**: "画图", "流程图", "架构图", "示意图", "图解", "diagram", "visualize", "excalidraw"
 
 ### Course Video → Learning Notes
 
