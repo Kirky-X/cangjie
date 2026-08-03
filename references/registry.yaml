@@ -641,7 +641,7 @@ templates:
       - 立项
       - 预算
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/【模板】商业需求文档.md
+    template_path: ../templates/Product/Strategy/Template-BRD.md
 
   product/mrd:
     family: product
@@ -661,7 +661,7 @@ templates:
       - SAM
       - SOM
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/【模板】市场需求文档.md
+    template_path: ../templates/Product/Strategy/Template-MRD.md
 
   product/market-research:
     family: product
@@ -677,7 +677,7 @@ templates:
       - 行业分析
       - 调研报告
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/【模板】市场调研报告.md
+    template_path: ../templates/Product/Strategy/Template-Market-Research.md
 
   product/competitive-analysis:
     family: product
@@ -693,7 +693,7 @@ templates:
       - 竞争格局
       - 差异化
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/【模板】竞品分析报告.md
+    template_path: ../templates/Product/Strategy/Template-Competitive-Analysis.md
 
   product/charter:
     family: product
@@ -712,7 +712,7 @@ templates:
       - 立项
       - 准生证
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/【模板】项目任务书.md
+    template_path: ../templates/Product/Strategy/Template-Project-Charter.md
 
   product/prd:
     family: product
@@ -730,7 +730,7 @@ templates:
       - PRD
       - 产品需求
     fallback: product/prd
-    template_path: ../templates/Product/Product/【模板】产品需求文档.md
+    template_path: ../templates/Product/Product/Template-PRD.md
 
   product/frd:
     family: product
@@ -745,7 +745,7 @@ templates:
       - 功能需求
       - 系统视角
     fallback: product/prd
-    template_path: ../templates/Product/Product/【模板】功能需求文档.md
+    template_path: ../templates/Product/Product/Template-FRD.md
 
   product/uiux-spec:
     family: product
@@ -763,7 +763,7 @@ templates:
       - 配色
       - 规范
     fallback: product/prd
-    template_path: ../templates/Product/Product/【模板】产品配色与UIUX规范文档.md
+    template_path: ../templates/Product/Product/Template-UIUX-Spec.md
 
   product/trd:
     family: product
@@ -781,7 +781,7 @@ templates:
       - 技术需求
       - 技术方案
     fallback: product/prd
-    template_path: ../templates/Product/Technical/【模板】技术需求文档(TRD).md
+    template_path: ../templates/Product/Technology/Template-TRD.md
 
   product/architecture:
     family: product
@@ -797,7 +797,7 @@ templates:
       - 系统设计
       - Architecture
     fallback: product/prd
-    template_path: ../templates/Product/Technical/【模板】架构设计文档.md
+    template_path: ../templates/Product/Technology/Template-Architecture.md
 
   product/api-doc:
     family: product
@@ -816,7 +816,7 @@ templates:
       - OpenAPI
       - Swagger
     fallback: product/prd
-    template_path: ../templates/Product/Technical/【模板】API文档.md
+    template_path: ../templates/Product/Technology/Template-API-Doc.md
 
   product/db-design:
     family: product
@@ -832,7 +832,7 @@ templates:
       - 表结构
       - ER图
     fallback: product/prd
-    template_path: ../templates/Product/Technical/【模板】数据库设计文档规范.md
+    template_path: ../templates/Product/Technology/Template-DB-Design.md
 
   product/algorithm-doc:
     family: product
@@ -848,7 +848,7 @@ templates:
       - 算法
       - 核心算法
     fallback: product/prd
-    template_path: ../templates/Product/Technical/【模板】核心算法文档.md
+    template_path: ../templates/Product/Technology/Template-Algorithm.md
 
   product/release-plan:
     family: product
@@ -864,7 +864,7 @@ templates:
       - 上线排期
       - release
     fallback: product/prd
-    template_path: ../templates/Product/Delivery/【模板】发布计划文档.md
+    template_path: ../templates/Product/Delivery/Template-Release-Plan.md
 
   product/test-report:
     family: product
@@ -881,7 +881,7 @@ templates:
       - 测试报告
       - 质量报告
     fallback: product/prd
-    template_path: ../templates/Product/Delivery/【模板】测试报告.md
+    template_path: ../templates/Product/Delivery/Template-Test-Report.md
 
   product/canary-plan:
     family: product
@@ -897,7 +897,7 @@ templates:
       - canary
       - 分批上线
     fallback: product/prd
-    template_path: ../templates/Product/Delivery/【模板】灰度方案.md
+    template_path: ../templates/Product/Delivery/Template-Canary-Plan.md
 
   product/operation-guide:
     family: product
@@ -913,7 +913,7 @@ templates:
       - SOP
       - 运营流程
     fallback: product/prd
-    template_path: ../templates/Product/Operations/【模板】运营手册.md
+    template_path: ../templates/Product/Operations/Template-Operations-Manual.md
 
   product/dashboard:
     family: product
@@ -928,7 +928,7 @@ templates:
       - 埋点
       - 指标体系
     fallback: product/prd
-    template_path: ../templates/Product/Operations/【模板】数据看板.md
+    template_path: ../templates/Product/Operations/Template-Dashboard.md
 
   product/user-guide:
     family: product
@@ -943,7 +943,7 @@ templates:
       - 使用说明
       - help center
     fallback: product/prd
-    template_path: ../templates/Product/Operations/【模板】用户手册.md
+    template_path: ../templates/Product/Operations/Template-User-Guide.md
 
   product/weekly-monthly-report:
     family: product
@@ -963,7 +963,7 @@ templates:
       - 周报
       - 月报
     fallback: product/prd
-    template_path: ../templates/Product/Operations/【模板】周报月报.md
+    template_path: ../templates/Product/Operations/Template-Weekly-Monthly-Report.md
     notes: Distinct from business/weekly-monthly-report — this is the product family's formal archival version with registry-aligned section fields
 
   product/retrospective:
@@ -982,7 +982,7 @@ templates:
       - post-mortem
       - retrospective
     fallback: product/prd
-    template_path: ../templates/Product/Sunset/【模板】复盘报告.md
+    template_path: ../templates/Product/Retirement/Template-Retrospective.md
 
   product/knowledge-base:
     family: product
@@ -1000,7 +1000,7 @@ templates:
       - knowledge base
       - 经验沉淀
     fallback: product/prd
-    template_path: ../templates/Product/Sunset/【模板】知识沉淀.md
+    template_path: ../templates/Product/Retirement/Template-Knowledge-Base.md
 
   product/business-plan:
     family: product
@@ -1020,7 +1020,7 @@ templates:
       - 融资
       - 路演
     fallback: product/prd
-    template_path: ../templates/【模板】商业计划书.md
+    template_path: ../templates/Template-Business-Plan.md
 
   product/business-model:
     family: product
@@ -1040,7 +1040,7 @@ templates:
       - business model
       - 价值主张
     fallback: product/prd
-    template_path: ../templates/【模板】商业模式文档.md
+    template_path: ../templates/Template-Business-Model.md
 
   product/meeting-minutes-detailed:
     family: product
@@ -1059,7 +1059,7 @@ templates:
       - 归档纪要
       - FAR原则
     fallback: product/prd
-    template_path: ../templates/【模板】会议纪要.md
+    template_path: ../templates/Template-Meeting-Minutes.md
     notes: Follows the FAR principle (Focus/Action/Result); distinct from meeting/decision-minutes — this is the formal archival version
 
   product/literature-review:
@@ -1079,4 +1079,4 @@ templates:
       - PRISMA
       - 评判框架
     fallback: product/prd
-    template_path: ../templates/【模板】论文研究报告.md
+    template_path: ../templates/Template-Literature-Review.md

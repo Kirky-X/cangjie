@@ -1,0 +1,196 @@
+# [Product/System Name (English Name)] - Minutes of Meeting (MoM)
+
+> **Document Status:** 🟡 Under Review / 🟢 Approved / 🔴 Rejected
+>
+> **Confidentiality Level:** Confidential / Internal / Public
+>
+> **Version:** vX.X
+>
+> **Date:** YYYY-MM-DD
+>
+> **Author:** [Name/Role]
+>
+> **Reviewer:** [Name/Role]
+>
+> **Audience:** [Role List]
+>
+> **Meeting Summary**: {Summarize the core decisions and key actions of this meeting in 2-3 sentences. Non-attendees reading this paragraph should understand "why this meeting was held" and "what was ultimately decided" within 30 seconds.}
+>
+> Example: This meeting reached consensus on the Q3 product pricing strategy, decided to adjust the starter plan from ¥29 to ¥39, and clarified the user communication plan and A/B testing plan before the new price goes live.
+
+---
+
+## 0. Document Guide
+
+### 0.1 Document Purpose and Scope
+
+Record core decisions and action items from meetings, ensuring attendees are aligned on understanding and non-attendees can quickly grasp conclusions.
+
+### 0.2 Related Documents
+
+| Document Type | Filename | Related Section |
+|---------|--------|---------|
+| [Type] | [Filename] [Line Range] | [Section Description] |
+
+### 0.3 Change Log
+
+| Version | Date | Reviser | Changes | Reviewer |
+| :--- | :--- | :--- | :--- | :--- |
+| v0.1 | YYYY-MM-DD | [Name] | Initial draft | [Reviewer] |
+
+---
+
+## 1. Meeting Information
+
+| Item            | Content                                                                  |
+| --------------- | ----------------------------------------------------------------------- |
+| 🆔 Meeting ID       | `{MEETING-YYYY-MM-DD-NN}` <!-- Unique number, e.g., MEETING-2026-05-22-01 --> |
+| 📋 Meeting Topic     | {Topic Name}                                                            |
+| 📅 Meeting Time     | {YYYY-MM-DD HH:MM - HH:MM}                                          |
+| ⏱️ Meeting Duration     | {X hours X minutes}                                                          |
+| 📍 Meeting Location     | {In-person location / Feishu Meeting / Tencent Meeting (Meeting ID: XXX)}                       |
+| 🎤 Facilitator       | {Name}                                                                |
+| ✍️ Note-taker       | {Name}                                                                |
+| 👥 Attendees     | {Name A, Name B, Name C}                                                 |
+| 🚫 Absentees    | {Name (Reason)} <!-- Write "None" if applicable -->                                    |
+| 🔄 Version Status     | `v1.0-draft` → `v1.1-approved` <!-- Draft/Under Review/Published -->            |
+| ⚠️ Conflict of Interest Declaration | {If any attendee has a conflict of interest on an agenda item, state here; otherwise write "None"}                |
+
+---
+
+## 2. Agenda and Discussion
+
+<!--
+Writing Principles:
+1. Record outcomes, not conversations. Don't write "who said what," only write "what was agreed upon after discussion."
+2. Each agenda item must include: context (1-2 sentences) → decision (bolded) → action items (numbered) → disagreements (if any).
+3. Decisions and action items are physically bound to ensure "every decision has an action."
+4. Use 🟢Decision / 🟡Information / 🔴Action Item / ⚪Background prefixes for scannability.
+-->
+
+### 🟢 Agenda Item 1: {Topic Name} [Estimated XX min / Actual XX min]
+
+**⚪ Context**: {1-2 sentences explaining why this topic was discussed, helping future readers understand the background.}
+
+**🟢 Decision**: {**Summarize the conclusion in one sentence using neutral language**. Don't write "after discussion it was decided," just state the conclusion.}
+
+**🔴 Action Items**:
+| ID | Task Description | Owner | Deadline | Success Criteria (Acceptance Indicator) | Status |
+|------|----------|--------|----------|---------------------|------|
+| `ACTION-{YYYY-MM-DD}-01` | {Specific, actionable task description} | {Name} | {YYYY-MM-DD} | {How to verify completion, e.g., "Forecast variance < 2%" or "Passed legal review"} | Not Started |
+| `ACTION-{YYYY-MM-DD}-02` | {Specific task} | {Name} | {YYYY-MM-DD} | {Acceptance indicator} | Not Started |
+
+**🟡 Disagreement (if any)**: {Briefly describe the points not agreed upon, reasons, and prerequisites for next discussion. Delete this line if none.}
+
+---
+
+### 🟢 Agenda Item 2: {Topic Name} [Estimated XX min / Actual XX min]
+
+**⚪ Context**: {Background explanation}
+
+**🟢 Decision**: {**Conclusion**}
+
+**🔴 Action Items**:
+| ID | Task Description | Owner | Deadline | Success Criteria | Status |
+|------|----------|--------|----------|----------|------|
+| `ACTION-{YYYY-MM-DD}-03` | {Task} | {Name} | {Date} | {Acceptance indicator} | Not Started |
+
+**🟡 Disagreement (if any)**: {Points not agreed upon}
+
+---
+
+<!-- Copy the above "Agenda Item" block as needed. For purely informational items without decisions, remove the "Decision" line and keep "⚪ Context" and "🟡 Key Information Points." -->
+
+---
+
+## 3. Risks and Open Issues
+
+<!-- Risks and issues identified during the meeting but unresolved, along with escalation paths. -->
+
+| 🆔 ID                | Risk/Issue Description | Impact Scope   | Follow-up Owner | Expected Resolution Time | Escalation Path (if not resolved by deadline) |
+| ---------------------- | ------------- | ---------- | ------ | ------------ | ------------------------ |
+| `RISK-{YYYY-MM-DD}-01` | {Problem Description}    | {Impact Scope} | {Name} | {YYYY-MM-DD} | {Escalate to whom / How to handle}    |
+| `RISK-{YYYY-MM-DD}-02` | {Problem Description}    | {Impact Scope} | {Name} | {YYYY-MM-DD} | {Escalation Path}               |
+
+---
+
+## 4. Parking Lot
+
+<!-- Topics mentioned during the meeting that are valuable but didn't have time for discussion, preventing them from being lost in chat records. Prioritize these for the next meeting. -->
+
+| No. | Topic       | Raised By | Suggested Discussion Timing        | Related Agenda Item       |
+| ---- | ---------- | ------ | ------------------- | -------------- |
+| 1    | {Topic Description} | {Name} | {Next regular meeting / Special meeting} | {Related agenda item} |
+| 2    | {Topic Description} | {Name} | {Suggested timing}          | {Related agenda item}     |
+
+---
+
+## 5. Next Meeting Plan
+
+| Item                  | Content                                                                                                      |
+| --------------------- | --------------------------------------------------------------------------------------------------------- |
+| 📅 Planned Time           | {YYYY-MM-DD HH:MM}                                                                                      |
+| 📋 Suggested Agenda           | 1. {Agenda Item 1} 2. {Agenda Item 2} 3. **Review completion status of this meeting's action items (ACTION-{YYYY-MM-DD}-01 to ACTION-{YYYY-MM-DD}-NN)** |
+| 📎 Pre-meeting Preparation           | {Materials or work attendees need to prepare in advance}                                                                          |
+| 🎯 Key Items to Review from This Meeting | {List 2-3 critical decisions or actions that must be closed out}                                                                   |
+
+---
+
+## 6. Attachments
+
+<!-- Include only links, not full files, to keep minutes lightweight. -->
+
+- [{Attachment 1 Name}]({Link or Storage Path})
+- [{Attachment 2 Name}]({Link or Storage Path})
+- [Meeting Recording/Screen Capture]({Link}) <!-- If available and with attendee consent -->
+
+---
+
+## Usage Guidelines (Do not include in final meeting minutes)
+
+### File Management
+
+- **Naming Convention**: `【Meeting Minutes】{Topic}-{YYYY-MM-DD}-v{Version}.md`
+- **Storage Path**: `lark/Meeting Minutes/{YYYY-MM}/`
+- **Version Status**:
+  - `v1.0-draft`: Initial draft sent within 1 hour after meeting ends
+  - `v1.1-approved`: Final version after facilitator/core decision-maker review
+  - `v1.2-final`: Archived final version after all action items are completed
+
+### Timeliness Requirements
+
+| Phase       | Time Limit                    | Responsible        |
+| ---------- | ----------------------- | ------------- |
+| Draft Completion   | **Within 1 hour** after meeting ends  | Note-taker        |
+| Attendee Confirmation | **Within 4 hours** after draft is sent  | All attendees    |
+| Final Publication   | **Within 24 hours** after meeting ends | Facilitator/Note-taker |
+| Action Item Review | **10 minutes** at next meeting opening | Facilitator        |
+
+### Writing Principles (FAR Principle)
+
+1. **F - Focused**: Record decisions and actions, not conversation. Don't write "Zhang San argued... Li Si countered..."—only write "the conclusion was..."
+2. **A - Actionable**: Every action item must have four elements: "what to do, who does it, when it's due, and how completion is measured."
+3. **R - Referencable**: Meeting IDs, action item IDs, and risk IDs are globally unique and can be directly located when referenced across meetings.
+4. **Closed-loop tracking**: The next meeting must review the completion rate of previous action items, with a target completion rate ≥ 80%. Incomplete items require explanation of reasons and a new deadline.
+
+### Trimming Guide (By Meeting Type)
+
+| Meeting Type          | Required Sections                                                                | Optional Sections              | Can Be Deleted/Simplified                          |
+| ----------------- | ----------------------------------------------------------------------- | --------------------- | ------------------------------------ |
+| **Project Kickoff**    | Summary, Meeting Info, Agenda & Discussion (with decisions + actions), Risks, Next Meeting               | Parking Lot           | —                                    |
+| **Regular Meetings**      | Summary, Meeting Info, Agenda & Discussion (action items + risks only), Next Meeting                   | Parking Lot, Attachments     | Detailed decision context (simplify to 1 sentence)        |
+| **Competitive/Research Analysis** | Summary, Meeting Info, Agenda & Discussion (information points + actions), Attachments                       | Parking Lot           | Risks, Detailed decisions                       |
+| **Product Planning**    | Summary, Meeting Info, Agenda & Discussion (with decisions + actions + disagreements), Risks, Parking Lot       | Attachments                  | —                                    |
+| **Brainstorming**      | Meeting Info, Agenda & Discussion (only record idea topics, not decisions), Parking Lot, Next Meeting | —                     | Decisions, Risks, Attachments (unless decisions are made on the spot) |
+| **Decision Review**    | Summary, Meeting Info, Agenda & Discussion (decisions + disagreements + actions), Risks                      | Parking Lot, Next Meeting | —                                    |
+
+### Quality Checklist (Pre-publish Self-Check)
+
+- [ ] Meeting summary allows non-attendees to understand core conclusions within 30 seconds
+- [ ] Every decision has at least one numbered action item below it
+- [ ] Every action item has clear "success criteria/acceptance indicator"
+- [ ] All action item IDs are sequential with no gaps
+- [ ] No vague time expressions like "ASAP" or "when appropriate"—all replaced with specific dates
+- [ ] All subjective evaluations from the note-taker have been removed (e.g., "discussion was heated," "everyone agreed")
+- [ ] No important topics are missing from the Parking Lot
+- [ ] File naming follows convention, version number is correct

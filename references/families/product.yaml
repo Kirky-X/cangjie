@@ -83,37 +83,37 @@ layers:
 
   General:
     description: "Cross-lifecycle general engineering documentation"
-    location: ../templates/General/
+    location: ../templates/Common/
     templates:
       - id: product/readme
         name: README
-        template_path: ../templates/General/【模板】README.md
+        template_path: ../templates/Common/Template-README.md
       - id: product/changelog
         name: CHANGELOG
-        template_path: ../templates/General/【模板】CHANGELOG.md
+        template_path: ../templates/Common/Template-CHANGELOG.md
       - id: product/faq
         name: FAQ
-        template_path: ../templates/General/【模板】FAQ.md
+        template_path: ../templates/Common/Template-FAQ.md
       - id: product/contributing
         name: CONTRIBUTING
-        template_path: ../templates/General/【模板】CONTRIBUTING.md
+        template_path: ../templates/Common/Template-CONTRIBUTING.md
 
   Standalone:
     description: "Not part of product lifecycle but belongs to the product family"
     templates:
       - id: product/business-plan
         name: Business Plan (BP)
-        template_path: ../templates/【模板】商业计划书.md
+        template_path: ../templates/Template-Business-Plan.md
       - id: product/business-model
         name: Business Model Document
-        template_path: ../templates/【模板】商业模式文档.md
+        template_path: ../templates/Template-Business-Model.md
       - id: product/meeting-minutes-detailed
         name: Formal Meeting Minutes
-        template_path: ../templates/【模板】会议纪要.md
+        template_path: ../templates/Template-Meeting-Minutes.md
         notes: Follows the FAR principle; distinct from meeting/decision-minutes
       - id: product/literature-review
         name: Literature Review Report
-        template_path: ../templates/【模板】论文研究报告.md
+        template_path: ../templates/Template-Literature-Review.md
 
 selection_rules:
   - condition: "Business plan/fundraising roadshow"

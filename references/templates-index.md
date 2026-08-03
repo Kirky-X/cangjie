@@ -57,71 +57,71 @@ flowchart TD
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/brd` | Business Requirements Document (BRD) | [../templates/Product/Strategy/【模板】商业需求文档.md](../templates/Product/Strategy/【模板】商业需求文档.md) |
-| `product/mrd` | Market Requirements Document (MRD) | [../templates/Product/Strategy/【模板】市场需求文档.md](../templates/Product/Strategy/【模板】市场需求文档.md) |
-| `product/market-research` | Market Research Report | [../templates/Product/Strategy/【模板】市场调研报告.md](../templates/Product/Strategy/【模板】市场调研报告.md) |
-| `product/competitive-analysis` | Competitive Analysis Report | [../templates/Product/Strategy/【模板】竞品分析报告.md](../templates/Product/Strategy/【模板】竞品分析报告.md) |
-| `product/charter` | Project Charter | [../templates/Product/Strategy/【模板】项目任务书.md](../templates/Product/Strategy/【模板】项目任务书.md) |
+| `product/brd` | Business Requirements Document (BRD) | [../templates/Product/Strategy/Template-BRD.md](../templates/Product/Strategy/Template-BRD.md) |
+| `product/mrd` | Market Requirements Document (MRD) | [../templates/Product/Strategy/Template-MRD.md](../templates/Product/Strategy/Template-MRD.md) |
+| `product/market-research` | Market Research Report | [../templates/Product/Strategy/Template-Market-Research.md](../templates/Product/Strategy/Template-Market-Research.md) |
+| `product/competitive-analysis` | Competitive Analysis Report | [../templates/Product/Strategy/Template-Competitive-Analysis.md](../templates/Product/Strategy/Template-Competitive-Analysis.md) |
+| `product/charter` | Project Charter | [../templates/Product/Strategy/Template-Project-Charter.md](../templates/Product/Strategy/Template-Project-Charter.md) |
 
 ## Product Layer
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/prd` | Product Requirements Document (PRD) | [../templates/Product/Product/【模板】产品需求文档.md](../templates/Product/Product/【模板】产品需求文档.md) |
-| `product/frd` | Functional Requirements Document (FRD) | [../templates/Product/Product/【模板】功能需求文档.md](../templates/Product/Product/【模板】功能需求文档.md) |
-| `product/uiux-spec` | Product Color and UI/UX Specification | [../templates/Product/Product/【模板】产品配色与UIUX规范文档.md](../templates/Product/Product/【模板】产品配色与UIUX规范文档.md) |
+| `product/prd` | Product Requirements Document (PRD) | [../templates/Product/Product/Template-PRD.md](../templates/Product/Product/Template-PRD.md) |
+| `product/frd` | Functional Requirements Document (FRD) | [../templates/Product/Product/Template-FRD.md](../templates/Product/Product/Template-FRD.md) |
+| `product/uiux-spec` | Product Color and UI/UX Specification | [../templates/Product/Product/Template-UIUX-Spec.md](../templates/Product/Product/Template-UIUX-Spec.md) |
 
 ## Technical Layer
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/trd` | Technical Requirements Document (TRD) | [../templates/Product/Technical/【模板】技术需求文档(TRD).md](../templates/Product/Technical/【模板】技术需求文档(TRD).md) |
-| `product/architecture` | Architecture Design Document | [../templates/Product/Technical/【模板】架构设计文档.md](../templates/Product/Technical/【模板】架构设计文档.md) |
-| `product/api-doc` | API Documentation | [../templates/Product/Technical/【模板】API文档.md](../templates/Product/Technical/【模板】API文档.md) |
-| `product/db-design` | Database Design Document | [../templates/Product/Technical/【模板】数据库设计文档规范.md](../templates/Product/Technical/【模板】数据库设计文档规范.md) |
-| `product/algorithm-doc` | Core Algorithm Document | [../templates/Product/Technical/【模板】核心算法文档.md](../templates/Product/Technical/【模板】核心算法文档.md) |
+| `product/trd` | Technical Requirements Document (TRD) | [../templates/Product/Technology/Template-TRD.md](../templates/Product/Technology/Template-TRD.md) |
+| `product/architecture` | Architecture Design Document | [../templates/Product/Technology/Template-Architecture.md](../templates/Product/Technology/Template-Architecture.md) |
+| `product/api-doc` | API Documentation | [../templates/Product/Technology/Template-API-Doc.md](../templates/Product/Technology/Template-API-Doc.md) |
+| `product/db-design` | Database Design Document | [../templates/Product/Technology/Template-DB-Design.md](../templates/Product/Technology/Template-DB-Design.md) |
+| `product/algorithm-doc` | Core Algorithm Document | [../templates/Product/Technology/Template-Algorithm.md](../templates/Product/Technology/Template-Algorithm.md) |
 
 ## Delivery Layer
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/release-plan` | Release Plan Document | [../templates/Product/Delivery/【模板】发布计划文档.md](../templates/Product/Delivery/【模板】发布计划文档.md) |
-| `product/test-report` | Test Report | [../templates/Product/Delivery/【模板】测试报告.md](../templates/Product/Delivery/【模板】测试报告.md) |
-| `product/canary-plan` | Canary Deployment Plan | [../templates/Product/Delivery/【模板】灰度方案.md](../templates/Product/Delivery/【模板】灰度方案.md) |
+| `product/release-plan` | Release Plan Document | [../templates/Product/Delivery/Template-Release-Plan.md](../templates/Product/Delivery/Template-Release-Plan.md) |
+| `product/test-report` | Test Report | [../templates/Product/Delivery/Template-Test-Report.md](../templates/Product/Delivery/Template-Test-Report.md) |
+| `product/canary-plan` | Canary Deployment Plan | [../templates/Product/Delivery/Template-Canary-Plan.md](../templates/Product/Delivery/Template-Canary-Plan.md) |
 
 ## Operations Layer
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/operation-guide` | Operations Guide | [../templates/Product/Operations/【模板】运营手册.md](../templates/Product/Operations/【模板】运营手册.md) |
-| `product/dashboard` | Data Dashboard | [../templates/Product/Operations/【模板】数据看板.md](../templates/Product/Operations/【模板】数据看板.md) |
-| `product/user-guide` | User Guide | [../templates/Product/Operations/【模板】用户手册.md](../templates/Product/Operations/【模板】用户手册.md) |
-| `product/weekly-monthly-report` | Weekly/Monthly Report | [../templates/Product/Operations/【模板】周报月报.md](../templates/Product/Operations/【模板】周报月报.md) |
+| `product/operation-guide` | Operations Guide | [../templates/Product/Operations/Template-Operations-Manual.md](../templates/Product/Operations/Template-Operations-Manual.md) |
+| `product/dashboard` | Data Dashboard | [../templates/Product/Operations/Template-Dashboard.md](../templates/Product/Operations/Template-Dashboard.md) |
+| `product/user-guide` | User Guide | [../templates/Product/Operations/Template-User-Guide.md](../templates/Product/Operations/Template-User-Guide.md) |
+| `product/weekly-monthly-report` | Weekly/Monthly Report | [../templates/Product/Operations/Template-Weekly-Monthly-Report.md](../templates/Product/Operations/Template-Weekly-Monthly-Report.md) |
 
 ## Sunset Layer
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/retrospective` | Retrospective Report | [../templates/Product/Sunset/【模板】复盘报告.md](../templates/Product/Sunset/【模板】复盘报告.md) |
-| `product/knowledge-base` | Knowledge Base | [../templates/Product/Sunset/【模板】知识沉淀.md](../templates/Product/Sunset/【模板】知识沉淀.md) |
+| `product/retrospective` | Retrospective Report | [../templates/Product/Retirement/Template-Retrospective.md](../templates/Product/Retirement/Template-Retrospective.md) |
+| `product/knowledge-base` | Knowledge Base | [../templates/Product/Retirement/Template-Knowledge-Base.md](../templates/Product/Retirement/Template-Knowledge-Base.md) |
 
 ## General Documentation
 
 | Document | Path |
 | --- | --- |
-| README | [../templates/General/【模板】README.md](../templates/General/【模板】README.md) |
-| CHANGELOG | [../templates/General/【模板】CHANGELOG.md](../templates/General/【模板】CHANGELOG.md) |
-| FAQ | [../templates/General/【模板】FAQ.md](../templates/General/【模板】FAQ.md) |
-| CONTRIBUTING | [../templates/General/【模板】CONTRIBUTING.md](../templates/General/【模板】CONTRIBUTING.md) |
+| README | [../templates/Common/Template-README.md](../templates/Common/Template-README.md) |
+| CHANGELOG | [../templates/Common/Template-CHANGELOG.md](../templates/Common/Template-CHANGELOG.md) |
+| FAQ | [../templates/Common/Template-FAQ.md](../templates/Common/Template-FAQ.md) |
+| CONTRIBUTING | [../templates/Common/Template-CONTRIBUTING.md](../templates/Common/Template-CONTRIBUTING.md) |
 
 ## Standalone Templates (Non-Product Lifecycle)
 
 | Template ID | Document | Path |
 | --- | --- | --- |
-| `product/business-plan` | Business Plan (BP) | [../templates/【模板】商业计划书.md](../templates/【模板】商业计划书.md) |
-| `product/business-model` | Business Model Document | [../templates/【模板】商业模式文档.md](../templates/【模板】商业模式文档.md) |
-| `product/meeting-minutes-detailed` | Formal Meeting Minutes | [../templates/【模板】会议纪要.md](../templates/【模板】会议纪要.md) |
-| `product/literature-review` | Literature Review Report | [../templates/【模板】论文研究报告.md](../templates/【模板】论文研究报告.md) |
+| `product/business-plan` | Business Plan (BP) | [../templates/Template-Business-Plan.md](../templates/Template-Business-Plan.md) |
+| `product/business-model` | Business Model Document | [../templates/Template-Business-Model.md](../templates/Template-Business-Model.md) |
+| `product/meeting-minutes-detailed` | Formal Meeting Minutes | [../templates/Template-Meeting-Minutes.md](../templates/Template-Meeting-Minutes.md) |
+| `product/literature-review` | Literature Review Report | [../templates/Template-Literature-Review.md](../templates/Template-Literature-Review.md) |
 
 ## Product Documentation System Overview
 
