@@ -1,10 +1,10 @@
-# Meeting Family -- Minutes, interviews, co-creation records
-# Covers: decision minutes, discussion minutes, interview records, 1:1 communication, workshop summaries
+# Meeting family — Minutes, interviews, co-creation records
+# Covers: Decision minutes, discussion minutes, interview records, 1:1 communication, workshop summaries
 # Output skeleton: guides/skeletons-meeting.md
 # Note: For formal archiving (with ACTION numbers/Parking Lot/FAR principle), use product/meeting-minutes-detailed
 
 family: meeting
-description: Discussion records, responsibility tracking
+description: Discussion records, accountability tracking
 default_template: meeting/decision-minutes
 skeleton_file: guides/skeletons-meeting.md
 
@@ -16,7 +16,7 @@ templates:
   - id: meeting/interview-record
     name: Interview Record
   - id: meeting/one-on-one-note
-    name: 1:1 Communication Record
+    name: 1:1 Communication Notes
   - id: meeting/workshop-summary
     name: Workshop Summary
 
@@ -29,8 +29,8 @@ selection_rules:
     template: meeting/one-on-one-note
   - condition: "Focus is workshop co-creation"
     template: meeting/workshop-summary
-  - condition: "Needs formal archiving (with ACTION numbers/Parking Lot)"
+  - condition: "Requires formal archiving (with ACTION numbers/Parking Lot)"
     template: product/meeting-minutes-detailed
     cross_family: true
-  - condition: "Uncertain sub-type"
+  - condition: "Uncertain subtype"
     template: meeting/decision-minutes

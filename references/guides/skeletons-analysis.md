@@ -35,16 +35,16 @@
 - Authors:
 - Publication venue:
 - Paper type:
-- Research domain:
+- Research field:
 
 ## Research Topic
 
-## Core Research Question
+## Core Research Questions
 
 ## Method Overview
 - Overall approach
 - Key modules/steps
-- Major differences from existing methods
+- Main differences from existing methods
 
 ## Key Contributions
 - Claimed contributions
@@ -59,9 +59,9 @@
 ## Experiments & Evidence
 - Datasets/tasks
 - Metrics
-- Baselines or comparison targets
+- Baselines or comparisons
 - Main results
-- Ablation or additional validation
+- Ablations or additional validation
 
 ## Limitations
 
@@ -75,7 +75,7 @@
 
 ## Basic Information
 
-## Research Topic & Question
+## Research Topic & Questions
 
 ## Method & Proof Approach
 - Theoretical framework
@@ -92,11 +92,11 @@
 - Conditions for validity
 - Significance
 
-## Validity Conditions & Assumptions
+## Conditions & Assumptions
 
 ## Limitations
 
-## Questions for Further Exploration
+## Questions for Further Investigation
 ```
 
 ### `analysis/experimental-paper-summary`
@@ -106,7 +106,7 @@
 
 ## Basic Information
 
-## Research Topic & Question
+## Research Topic & Questions
 
 ## Method
 
@@ -119,13 +119,13 @@
 ## Main Results
 
 ## Ablation/Comparison
-- What variables were changed
+- Which variables were changed
 - Impact on results
-- Author's interpretation
+- Authors' interpretation based on these
 
 ## Limitations
 
-## Conditions to Note for Reproduction
+## Reproducibility Considerations
 ```
 
 ### `analysis/systems-paper-summary`
@@ -135,11 +135,11 @@
 
 ## Basic Information
 
-## Problem Setting
+## Problem Formulation
 
 ## System Design
 
-## Core Mechanism
+## Core Mechanisms
 
 ## Evaluation Configuration
 
@@ -161,7 +161,7 @@
 
 ## Classification Framework / Taxonomy
 
-## Major Research Threads
+## Main Research Threads
 
 ## Key Comparisons
 
@@ -183,7 +183,7 @@
 
 ## Decision Question
 - Problem to solve
-- Decision boundary
+- Decision boundaries
 
 ## Options
 ### Option 1
@@ -193,14 +193,14 @@
 ### Option 2
 
 ## Trade-offs
-- Option 1: Pros / Cons / Costs
+- Option 1: Pros / Cons / Cost
 - Option 2
 
-## Recommended Conclusion
+## Recommendation
 - Recommended option
 - Rationale
 
-## Follow-up Actions
+## Next Steps
 - Step 1: Owner / Deadline
 - Step 2
 
@@ -208,7 +208,7 @@
 
 ## Risks
 
-## Dissenting Opinions
+## Dissenting Views
 ```
 
 ### `analysis/theme-synthesis`
@@ -225,19 +225,19 @@
 ## Synthesis Scope
 - Materials covered
 - Time span
-- Topic boundaries
+- Thematic boundaries
 
 ## Recurring Themes
 ### Theme 1
 - Theme description
-- Frequency of appearance
+- Frequency of occurrence
 
 ## Supporting Examples
 - Theme 1: Specific examples from Material A / Material B
 - Theme 2
 
 ## Contradictions
-- Contradiction 1: Conflicting signals from different materials
+- Contradiction 1: Conflicting signals across materials
 - Contradiction 2
 
 ## Implications

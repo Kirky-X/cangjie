@@ -11,7 +11,7 @@ Parameters:
     audio_output_path: Output audio path (optional, defaults to .wav file in same directory as video)
 
 Options:
-    --keep-audio: Keep extracted .wav file (default: deleted to avoid disk buildup, 1h audio approx 150MB)
+    --keep-audio: Keep extracted .wav file (default: deleted to avoid disk buildup, 1h audio ≈ 150MB)
 """
 
 import argparse

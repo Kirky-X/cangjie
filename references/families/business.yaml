@@ -1,9 +1,9 @@
-# Business Family -- Reporting, risks, action tracking
-# Covers: project status, weekly/monthly reports, executive briefs, risk/issue reports, action tracking
+# Business family — Reporting, risk, action tracking
+# Covers: Project status, weekly/monthly reports, executive briefs, risk/issue reports, action tracking
 # Output skeleton: guides/skeletons-business.md
 
 family: business
-description: Status reporting, progress tracking
+description: Periodic reporting, progress tracking
 default_template: business/project-status-report
 skeleton_file: guides/skeletons-business.md
 
@@ -20,15 +20,15 @@ templates:
     name: Action Tracker
 
 selection_rules:
-  - condition: "Focus is milestone progress and metrics"
+  - condition: "Focus is phase progress and metrics"
     template: business/project-status-report
-  - condition: "Focus is weekly/monthly regular sync"
+  - condition: "Focus is weekly/monthly periodic sync"
     template: business/weekly-monthly-report
   - condition: "Focus is upward reporting"
     template: business/executive-brief
-  - condition: "Focus is incident/issues"
+  - condition: "Focus is incidents/issues"
     template: business/risk-issue-report
   - condition: "Focus is action tracking"
     template: business/action-tracker
-  - condition: "Uncertain sub-type"
+  - condition: "Uncertain subtype"
     template: business/project-status-report

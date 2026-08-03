@@ -1,11 +1,11 @@
-# Product Family -- Product documentation, business plans, technical design, delivery and operations
-# Covers: full product lifecycle (strategy/product/technical/delivery/operations/retirement) + general docs + standalone templates
-# Output templates: ../templates/Product/<layer>/<template>.md
+# Product family — Product documentation, business plans, technical design, delivery & operations
+# Covers: Full product lifecycle (Strategy/Product/Technical/Delivery/Operations/Sunset) + General docs + Standalone templates
+# Templates: ../templates/Product/<layer>/<template>.md
 # Index: templates-index.md
-# Note: Product family does not use skeletons-*.md; uses full output templates from templates/ directly
+# Note: Product family does not use skeletons-*.md; it directly uses the complete artifact templates under templates/
 
 family: product
-description: Product documentation, business plans, technical design, delivery and operations
+description: Product documentation, business plans, technical design, delivery & operations
 default_template: product/prd
 templates_index: templates-index.md
 templates_dir: ../templates/
@@ -13,7 +13,7 @@ templates_dir: ../templates/
 # Organized by lifecycle layers
 layers:
   Strategy:
-    description: "Why -- answers why we should do this"
+    description: "Why — answers why we're doing this"
     templates:
       - id: product/brd
         name: Business Requirements Document (BRD)
@@ -27,17 +27,17 @@ layers:
         name: Project Charter
 
   Product:
-    description: "What -- answers what we should build"
+    description: "What — answers what we're building"
     templates:
       - id: product/prd
         name: Product Requirements Document (PRD)
       - id: product/frd
         name: Functional Requirements Document (FRD)
       - id: product/uiux-spec
-        name: Product Color and UIUX Specification
+        name: Product Color and UI/UX Specification
 
   Technical:
-    description: "How -- answers how to implement"
+    description: "How — answers how we'll build it"
     templates:
       - id: product/trd
         name: Technical Requirements Document (TRD)
@@ -51,72 +51,72 @@ layers:
         name: Core Algorithm Document
 
   Delivery:
-    description: "When -- answers when to launch"
+    description: "When — answers when we ship"
     templates:
       - id: product/release-plan
         name: Release Plan Document
       - id: product/test-report
         name: Test Report
       - id: product/canary-plan
-        name: Canary Plan
+        name: Canary Deployment Plan
 
   Operations:
-    description: "Run -- answers how to operate"
+    description: "Run — answers how we operate"
     templates:
       - id: product/operation-guide
-        name: Operations Manual
+        name: Operations Guide
       - id: product/dashboard
         name: Data Dashboard
       - id: product/user-guide
-        name: User Manual
+        name: User Guide
       - id: product/weekly-monthly-report
         name: Weekly/Monthly Report (Product Family Formal Archival Version)
-        notes: Distinguish from business/weekly-monthly-report -- this template is the product family's archival version
+        notes: Distinct from business/weekly-monthly-report — this is the product family's archival version
 
-  Retirement:
-    description: "End -- answers how to wrap up"
+  Sunset:
+    description: "End — answers how we wind down"
     templates:
       - id: product/retrospective
         name: Retrospective Report
       - id: product/knowledge-base
         name: Knowledge Base
 
-  General Docs:
-    description: "Cross-lifecycle general engineering documents"
-    location: ../templates/General/
+  General:
+    description: "Cross-lifecycle general engineering documentation"
+    location: ../templates/Common/
     templates:
       - id: product/readme
         name: README
-        template_path: ../templates/General/[Template] README.md
+        template_path: ../templates/Common/Template-README.md
       - id: product/changelog
         name: CHANGELOG
-        template_path: ../templates/General/[Template] CHANGELOG.md
+        template_path: ../templates/Common/Template-CHANGELOG.md
       - id: product/faq
         name: FAQ
-        template_path: ../templates/General/[Template] FAQ.md
+        template_path: ../templates/Common/Template-FAQ.md
       - id: product/contributing
         name: CONTRIBUTING
-        template_path: ../templates/General/[Template] CONTRIBUTING.md
+        template_path: ../templates/Common/Template-CONTRIBUTING.md
 
-  Standalone Templates:
-    description: "Not part of product lifecycle but categorized under product family"
+  Standalone:
+    description: "Not part of product lifecycle but belongs to the product family"
     templates:
       - id: product/business-plan
         name: Business Plan (BP)
-        template_path: ../templates/[Template] Business Plan.md
+        template_path: ../templates/Template-Business-Plan.md
       - id: product/business-model
         name: Business Model Document
-        template_path: ../templates/[Template] Business Model Document.md
+        template_path: ../templates/Template-Business-Model.md
       - id: product/meeting-minutes-detailed
         name: Formal Meeting Minutes
-        template_path: ../templates/[Template] Meeting Minutes.md
-        notes: Follows FAR principle; distinguish from meeting/decision-minutes
+        template_path: ../templates/Template-Meeting-Minutes.md
+        notes: Follows the FAR principle; distinct from meeting/decision-minutes
       - id: product/literature-review
         name: Literature Review Report
-        template_path: ../templates/[Template] Research Report.md
+        template_path: ../templates/Template-Literature-Review.md
 
 selection_rules:
-  - condition: "Business plan/fundraising pitch"
+  - condition: "Business plan/fundraising roadshow"
     template: product/business-plan
   - condition: "Business model/value proposition"
     template: product/business-model
@@ -132,9 +132,9 @@ selection_rules:
     template: product/charter
   - condition: "Product layer - product requirements"
     template: product/prd
-  - condition: "Product layer - functional requirements detail"
+  - condition: "Product layer - functional requirements refinement"
     template: product/frd
-  - condition: "Product layer - UIUX/color"
+  - condition: "Product layer - UI/UX/color specification"
     template: product/uiux-spec
   - condition: "Technical layer - technical solution"
     template: product/trd
@@ -150,19 +150,19 @@ selection_rules:
     template: product/release-plan
   - condition: "Delivery layer - test report"
     template: product/test-report
-  - condition: "Delivery layer - canary plan"
+  - condition: "Delivery layer - canary deployment plan"
     template: product/canary-plan
-  - condition: "Operations layer - operations manual"
+  - condition: "Operations layer - operations guide"
     template: product/operation-guide
   - condition: "Operations layer - data dashboard"
     template: product/dashboard
-  - condition: "Operations layer - user manual"
+  - condition: "Operations layer - user guide"
     template: product/user-guide
   - condition: "Operations layer - weekly/monthly report (formal archival version)"
     template: product/weekly-monthly-report
-  - condition: "Retirement layer - retrospective"
+  - condition: "Sunset layer - retrospective"
     template: product/retrospective
-  - condition: "Retirement layer - knowledge base"
+  - condition: "Sunset layer - knowledge base"
     template: product/knowledge-base
   - condition: "Formal archival minutes (with ACTION numbers)"
     template: product/meeting-minutes-detailed

@@ -1,6 +1,6 @@
 # Output Skeletons — Business Family
 
-> This file was split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
+> This file is split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
 
 ## Business
 
@@ -13,14 +13,14 @@
 
 - Period:
 - Author:
-- Recipient:
+- Reporting to:
 
 ## Executive Summary
 
 - Current overall status
 - Most important progress
 - Biggest risk
-- Key focus for the next week/phase
+- Focus for the next week/phase
 
 ## Key Progress
 
@@ -30,9 +30,9 @@
 
 ## Metrics
 
-- Metric value
+- Metric values
 - Trend
-- Explanation
+- Explanation of causes
 
 ## Risks & Blockers
 
@@ -50,17 +50,17 @@
 
 - Period:
 - Author:
-- Recipient:
+- Reporting to:
 
 ## Summary
 
-- Overall status for this period
+- Overall status this period
 - Most important progress
 - Biggest risk
 
 ## Completed Work
 
-- Item 1: Outcome + impact
+- Item 1: Result + impact
 - Item 2
 
 ## Work in Progress
@@ -73,7 +73,7 @@
 - Blocker 1: Cause + impact
 - Blocker 2
 
-## Next Period Plan
+## Next Period Plans
 
 - Plan 1
 - Plan 2
@@ -94,7 +94,7 @@
 
 - Period:
 - Author:
-- Recipient:
+- Reporting to:
 
 ## Executive Summary
 
@@ -104,7 +104,7 @@
 
 ## Strategic Updates
 
-- Update 1 related to strategic goals
+- Update 1 related to strategic objectives
 - Impact
 
 ## Pending Decisions
@@ -133,7 +133,7 @@
 
 - Period:
 - Author:
-- Recipient:
+- Reporting to:
 
 ## Issue Overview
 
@@ -156,7 +156,7 @@
 - Short-term measures
 - Long-term measures
 
-## Responsible Persons
+## Responsible Parties
 
 | Issue | Owner | Deadline |
 | ---- | ------ | -------- |
@@ -177,9 +177,9 @@
 
 - Period:
 - Author:
-- Recipient:
+- Reporting to:
 
-## Priorities
+## Priority
 
 - P0 items
 - P1 items
@@ -191,11 +191,11 @@
 
 ## Deadlines
 
-- Key deadline milestones
+- Key milestone dates
 
 ## Dependencies
 
-- Dependency 1: Collaborator / External conditions
+- Dependency 1: Collaborator / External condition
 - Dependency 2
 
 ## Status Notes

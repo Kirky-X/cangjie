@@ -1,9 +1,9 @@
-# Learning Family -- Learning, review, knowledge distillation
-# Covers: course notes, tutorial playbook, book summaries (nonfiction/fiction), lecture summaries, concept explainers
+# Learning family — Learning, review, knowledge distillation
+# Covers: Course notes, tutorial playbook, book summaries (non-fiction/fiction), lecture summaries, concept explainers
 # Output skeleton: guides/skeletons-learning.md
 
 family: learning
-description: Learn, review, knowledge distillation
+description: Learning, review, knowledge distillation
 default_template: learning/course-notes
 skeleton_file: guides/skeletons-learning.md
 
@@ -13,11 +13,11 @@ templates:
   - id: learning/tutorial-playbook
     name: Tutorial Playbook
   - id: learning/nonfiction-book-summary
-    name: Nonfiction Book Summary
-    notes: Default output is 1 full book overview + N chapter files
+    name: Non-Fiction Book Summary
+    notes: By default produces 1 book overview + N individual chapter files
   - id: learning/fiction-book-summary
     name: Narrative/Fiction Book Summary
-    notes: Default output is 1 full book overview + N chapter files
+    notes: By default produces 1 book overview + N individual chapter files
   - id: learning/lecture-summary
     name: Lecture Summary
   - id: learning/concept-explainer
@@ -26,15 +26,15 @@ templates:
 selection_rules:
   - condition: "Focus is courses/lectures/bootcamps"
     template: learning/course-notes
-  - condition: "Focus is hands-on steps"
+  - condition: "Focus is following hands-on steps"
     template: learning/tutorial-playbook
-  - condition: "Focus is a full nonfiction book"
+  - condition: "Focus is a complete non-fiction book"
     template: learning/nonfiction-book-summary
   - condition: "Focus is a novel/narrative work"
     template: learning/fiction-book-summary
   - condition: "Single lecture/talk"
     template: learning/lecture-summary
-  - condition: "Explain a concept"
+  - condition: "Explaining a concept"
     template: learning/concept-explainer
-  - condition: "Uncertain sub-type"
+  - condition: "Uncertain subtype"
     template: learning/course-notes

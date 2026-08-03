@@ -1,6 +1,6 @@
 # Output Skeletons — Media Family
 
-> This file was split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
+> This file is split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
 
 ## Media
 
@@ -31,7 +31,7 @@
 - Key viewpoints from guests/host
 - Supporting examples or data
 - Disagreements or rebuttals
-- Most important takeaways for the audience
+- Most important takeaways for listeners
 
 ## Highlights
 
@@ -39,7 +39,7 @@
 
 > {Quote}
 
-## Audience Takeaways
+## Key Takeaways for Audience
 ```
 
 ### `media/video-program-summary`
@@ -63,11 +63,11 @@
 
 - Topic
 - Key content
-- Guest viewpoints
+- Guest perspectives
 
-## Core Viewpoints
+## Core Arguments
 
-- Viewpoint 1
+- Argument 1
 - Supporting material
 - Implications for viewers
 
@@ -101,22 +101,22 @@
 
 1. Segment 1
 2. Segment 2
-3. Each segment: purpose, key content, time spent
+3. Each segment: purpose, key content, duration
 
 ## Audience Questions
 
-- Question 1: Questioner / Question / Key points of answer
+- Question 1: Questioner / Question / Answer highlights
 - Question 2
 
 ## Key Updates
 
 - Products/features/announcements released
-- Impact scope
+- Scope of impact
 
 ## Follow-up Actions
 
-- Items to follow up
-- Owner/Deadline
+- Items to follow up on
+- Owner/deadline
 
 ## Timeline
 
@@ -135,11 +135,11 @@
 - Source:
 - Original duration:
 - Platform:
-- Purpose of extraction:
+- Purpose of distillation:
 
 ## One-Line Highlights
 
-## Highlight Segments
+## Notable Segments
 
 - Segment 1: Time range / Topic / Highlight
 - Segment 2
@@ -152,10 +152,10 @@
 
 ## Repurposing Angles
 
-- Angle 1: What format it suits (article / short video / social post)
+- Angle 1: Suitable format (article / short video / social media post)
 - Angle 2
 
 ## Timeline
 
-## Audience Takeaways
+## Key Takeaways for Audience
 ```

@@ -1,18 +1,18 @@
 # Cangjie Template Registry
 # Defines metadata for all templates: family / required_sections / optional_sections / detection_signals / fallback
-# Used in SKILL.md workflow Step 4 (auto template matching) and Step 6 (pre-generation confirmation of required_sections)
-# Template ID naming convention: <family>/<template-name>, unique across families
-# required_sections: sections that must be filled during generation; when materials are insufficient, mark "materials not provided/cannot confirm", do not force-fill
-# optional_sections: selectively filled based on material richness
-# detection_signals: keyword signals for auto-matching; works in conjunction with taxonomy.yaml's signal_words
-# fallback: fallback template ID when this template cannot fill required_sections
+# Used by SKILL.md workflow Step 4 (auto template matching) and Step 6 (pre-generation confirmation of required_sections)
+# Template ID naming convention: <family>/<template-name>, globally unique across families
+# required_sections: sections that must be populated during generation; when materials are insufficient, mark as "Materials not provided/Unable to confirm"; do not fabricate
+# optional_sections: selectively populated based on material richness
+# detection_signals: keyword signals for auto-matching; works in conjunction with taxonomy.yaml signal_words
+# fallback: fallback template ID when this template's required_sections cannot be filled
 
 version: 1
 
 templates:
 
   # ============================================================
-  # Learning Family (default fallback: learning/course-notes)
+  # Learning family (default fallback: learning/course-notes)
   # ============================================================
 
   learning/course-notes:
@@ -39,7 +39,7 @@ templates:
     family: learning
     name: Tutorial Playbook
     required_sections:
-      - Goals
+      - Objective
       - Prerequisites
       - Steps
       - Common Pitfalls
@@ -56,16 +56,16 @@ templates:
 
   learning/nonfiction-book-summary:
     family: learning
-    name: Nonfiction Book Summary
+    name: Non-Fiction Book Summary
     required_sections:
       - Basic Information
       - Output Files
-      - Full Book Overview
+      - Book Overview
       - Core Arguments
       - Section Structure Overview
       - Section/Chapter Navigation
       - Key Concepts/Models
-      - Full Book Structure and Argumentation Path
+      - Book Structure and Argumentation Path
       - Actionable Insights
       - Limitations and Questionable Points
     optional_sections: []
@@ -79,7 +79,7 @@ templates:
       - full book summary
       - chapter by chapter
     fallback: learning/course-notes
-    notes: Chapter files additionally use learning/nonfiction-book-summary#chapter skeleton
+    notes: Chapter files additionally use the learning/nonfiction-book-summary#chapter skeleton
 
   learning/fiction-book-summary:
     family: learning
@@ -87,7 +87,7 @@ templates:
     required_sections:
       - Basic Information
       - Output Files
-      - Full Book Overview
+      - Book Overview
       - Section Structure Overview
       - Section/Chapter Navigation
       - Main Characters and Relationships
@@ -104,7 +104,7 @@ templates:
       - characters
       - plot
     fallback: learning/course-notes
-    notes: Chapter files additionally use learning/fiction-book-summary#chapter skeleton
+    notes: Chapter files additionally use the learning/fiction-book-summary#chapter skeleton
 
   learning/lecture-summary:
     family: learning
@@ -147,7 +147,7 @@ templates:
     fallback: learning/course-notes
 
   # ============================================================
-  # Media Family (default fallback: media/podcast-summary)
+  # Media family (default fallback: media/podcast-summary)
   # ============================================================
 
   media/podcast-summary:
@@ -160,7 +160,7 @@ templates:
       - Topic Flow
       - Highlights
       - Notable Quotes
-      - Audience Takeaways
+      - Key Takeaways for Listeners
     optional_sections: []
     detection_signals:
       - podcast
@@ -176,7 +176,7 @@ templates:
       - Basic Information
       - Content Overview
       - Program Segments
-      - Key Insights
+      - Core Viewpoints
       - Highlights
       - Timeline
       - Notable Quotes
@@ -195,7 +195,7 @@ templates:
     required_sections:
       - Basic Information
       - Content Overview
-      - Flow Overview
+      - Session Flow Overview
       - Audience Questions
       - Key Updates
       - Follow-up Actions
@@ -211,15 +211,15 @@ templates:
 
   media/content-highlights:
     family: media
-    name: Content Highlights
+    name: Content Highlights Extraction
     required_sections:
       - Basic Information
       - One-line Highlights
-      - Notable Clips
-      - Quotable Quotes
-      - Reuse Angles
+      - Highlight Clips
+      - Quotable Sentences
+      - Repurposing Angles
       - Timeline
-      - Audience Takeaways
+      - Key Takeaways for Listeners
     optional_sections: []
     detection_signals:
       - highlights
@@ -229,14 +229,14 @@ templates:
     fallback: media/podcast-summary
 
   # ============================================================
-  # Meeting Family (default fallback: meeting/decision-minutes)
+  # Meeting family (default fallback: meeting/decision-minutes)
   # ============================================================
 
   meeting/decision-minutes:
     family: meeting
     name: Decision Minutes
     required_sections:
-      - Meeting Information
+      - Meeting Info
       - Discussion Summary
       - Decisions
       - Action Items
@@ -255,14 +255,14 @@ templates:
     family: meeting
     name: Discussion Minutes
     required_sections:
-      - Meeting Information
-      - Goals
+      - Meeting Info
+      - Objective
       - Discussion Summary
       - Key Observations
       - Open Issues
       - Next Steps
     optional_sections:
-      - Speaker Viewpoints
+      - Speaker Perspectives
       - Timeline
     detection_signals:
       - discussion
@@ -274,10 +274,10 @@ templates:
     family: meeting
     name: Interview Record
     required_sections:
-      - Meeting Information
+      - Meeting Info
       - Interviewee Background
       - Interview Topics
-      - Answers and Insights
+      - Responses and Insights
       - Key Quotes
       - Follow-up Actions
     optional_sections:
@@ -291,9 +291,9 @@ templates:
 
   meeting/one-on-one-note:
     family: meeting
-    name: 1:1 Communication Record
+    name: 1:1 Communication Notes
     required_sections:
-      - Meeting Information
+      - Meeting Info
       - Current Status
       - Recent Progress
       - Blockers
@@ -313,8 +313,8 @@ templates:
     family: meeting
     name: Workshop Summary
     required_sections:
-      - Meeting Information
-      - Goals
+      - Meeting Info
+      - Objective
       - Activity Flow
       - Deliverables
       - Decisions
@@ -329,14 +329,14 @@ templates:
     fallback: meeting/decision-minutes
 
   # ============================================================
-  # Business Family (default fallback: business/project-status-report)
+  # Business family (default fallback: business/project-status-report)
   # ============================================================
 
   business/project-status-report:
     family: business
     name: Project Status Report
     required_sections:
-      - Report Information
+      - Report Info
       - Executive Summary
       - Key Progress
       - Metrics
@@ -355,7 +355,7 @@ templates:
     family: business
     name: Weekly/Monthly Report
     required_sections:
-      - Report Information
+      - Report Info
       - Summary
       - Completed Work
       - In-Progress Work
@@ -376,10 +376,10 @@ templates:
     family: business
     name: Executive Brief
     required_sections:
-      - Report Information
+      - Report Info
       - Executive Summary
       - Strategic Updates
-      - Pending Decisions
+      - Decisions Needed
       - Key Risks
     optional_sections:
       - Metrics
@@ -396,7 +396,7 @@ templates:
     family: business
     name: Risk/Issue Report
     required_sections:
-      - Report Information
+      - Report Info
       - Issue Overview
       - Impact Scope
       - Root Cause Analysis
@@ -417,7 +417,7 @@ templates:
     family: business
     name: Action Tracker
     required_sections:
-      - Report Information
+      - Report Info
       - Priority
       - Action List
       - Deadline
@@ -434,7 +434,7 @@ templates:
     fallback: business/project-status-report
 
   # ============================================================
-  # Analysis Family (default fallback: analysis/research-brief)
+  # Analysis family (default fallback: analysis/research-brief)
   # ============================================================
 
   analysis/research-brief:
@@ -461,7 +461,7 @@ templates:
     required_sections:
       - Basic Information
       - Research Topic
-      - Core Research Question
+      - Core Research Questions
       - Method Overview
       - Main Results
       - Key Formulas or Models
@@ -473,20 +473,20 @@ templates:
       - paper
       - paper
     fallback: analysis/research-brief
-    notes: When a paper sub-type is identified, prioritize the corresponding sub-type template
+    notes: When a paper subtype is identified, prefer the corresponding subtype template
 
   analysis/theoretical-paper-summary:
     family: analysis
     name: Theoretical Paper Summary
     required_sections:
       - Basic Information
-      - Research Topic and Question
-      - Method and Proof Approach
+      - Research Topic and Questions
+      - Methods and Proof Approach
       - Key Formulas
       - Core Theorems/Propositions
       - Conditions and Assumptions
       - Limitations
-      - Further Questions Worth Exploring
+      - Questions for Further Exploration
     optional_sections: []
     detection_signals:
       - theorem
@@ -501,13 +501,13 @@ templates:
     name: Experimental Paper Summary
     required_sections:
       - Basic Information
-      - Research Topic and Question
+      - Research Topic and Questions
       - Method
       - Experimental Setup
       - Main Results
       - Ablation/Comparison
       - Limitations
-      - Conditions to Note When Reproducing
+      - Reproduction Considerations
     optional_sections: []
     detection_signals:
       - dataset
@@ -522,7 +522,7 @@ templates:
     name: Systems Paper Summary
     required_sections:
       - Basic Information
-      - Problem Setting
+      - Problem Statement
       - System Design
       - Core Mechanisms
       - Evaluation Configuration
@@ -545,7 +545,7 @@ templates:
       - Basic Information
       - Research Scope
       - Classification Framework/Taxonomy
-      - Major Research Threads
+      - Main Research Threads
       - Key Comparisons
       - Research Gaps
       - Future Directions
@@ -563,14 +563,14 @@ templates:
     required_sections:
       - Basic Information
       - Decision Question
-      - Options
+      - Alternatives
       - Trade-offs
       - Recommended Conclusion
       - Next Steps
     optional_sections:
       - Evidence
       - Risks
-      - Dissenting Opinions
+      - Dissenting Views
     detection_signals:
       - decision
       - memo
@@ -620,8 +620,8 @@ templates:
     notes: For product-decision-oriented full competitive analysis, use product/competitive-analysis
 
   # ============================================================
-  # Product Family (default fallback: product/prd)
-  # Output template path: ../templates/Product/<layer>/<template>.md
+  # Product family (default fallback: product/prd)
+  # Template paths: ../templates/Product/<layer>/<template>.md
   # Index: templates-index.md
   # ============================================================
 
@@ -629,8 +629,8 @@ templates:
     family: product
     name: Business Requirements Document (BRD)
     required_sections:
-      - Business Goals
-      - Investment and Returns
+      - Business Objectives
+      - ROI
       - Success Metrics
       - Risks and Constraints
       - Stakeholders
@@ -641,14 +641,14 @@ templates:
       - project initiation
       - budget
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/[Template] Business Requirements Document.md
+    template_path: ../templates/Product/Strategy/Template-BRD.md
 
   product/mrd:
     family: product
     name: Market Requirements Document (MRD)
     required_sections:
       - Target Market
-      - User Profiles
+      - User Personas
       - Competitive Analysis
       - User Pain Points
       - Requirement Priorities
@@ -661,7 +661,7 @@ templates:
       - SAM
       - SOM
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/[Template] Market Requirements Document.md
+    template_path: ../templates/Product/Strategy/Template-MRD.md
 
   product/market-research:
     family: product
@@ -677,13 +677,13 @@ templates:
       - industry analysis
       - research report
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/[Template] Market Research Report.md
+    template_path: ../templates/Product/Strategy/Template-Market-Research.md
 
   product/competitive-analysis:
     family: product
     name: Competitive Analysis Report
     required_sections:
-      - Competitor Matrix
+      - Competitive Matrix
       - Differentiation Opportunities
       - Moat Analysis
       - Response Strategy
@@ -693,14 +693,14 @@ templates:
       - competitive landscape
       - differentiation
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/[Template] Competitive Analysis Report.md
+    template_path: ../templates/Product/Strategy/Template-Competitive-Analysis.md
 
   product/charter:
     family: product
     name: Project Charter
     required_sections:
       - Project Background
-      - Project Goals
+      - Project Objectives
       - Scope Boundaries
       - Milestones
       - Core Team
@@ -712,7 +712,7 @@ templates:
       - project initiation
       - approval document
     fallback: product/prd
-    template_path: ../templates/Product/Strategy/[Template] Project Charter.md
+    template_path: ../templates/Product/Strategy/Template-Project-Charter.md
 
   product/prd:
     family: product
@@ -722,7 +722,7 @@ templates:
       - User Journey
       - Feature Details
       - Acceptance Criteria
-      - Non-functional Requirements
+      - Non-Functional Requirements
     optional_sections:
       - Event Tracking
       - Dependencies
@@ -730,7 +730,7 @@ templates:
       - PRD
       - product requirements
     fallback: product/prd
-    template_path: ../templates/Product/Product/[Template] Product Requirements Document.md
+    template_path: ../templates/Product/Product/Template-PRD.md
 
   product/frd:
     family: product
@@ -745,11 +745,11 @@ templates:
       - functional requirements
       - system perspective
     fallback: product/prd
-    template_path: ../templates/Product/Product/[Template] Functional Requirements Document.md
+    template_path: ../templates/Product/Product/Template-FRD.md
 
   product/uiux-spec:
     family: product
-    name: Product Color and UIUX Specification
+    name: Product Color and UI/UX Specification
     required_sections:
       - Color Specification
       - Typography Specification
@@ -757,13 +757,13 @@ templates:
       - Component Library
     optional_sections:
       - Interaction Prototype
-      - Copywriting Specification
+      - Copywriting Guidelines
     detection_signals:
       - UIUX
       - color
       - specification
     fallback: product/prd
-    template_path: ../templates/Product/Product/[Template] Product Color and UIUX Specification.md
+    template_path: ../templates/Product/Product/Template-UIUX-Spec.md
 
   product/trd:
     family: product
@@ -771,8 +771,8 @@ templates:
     required_sections:
       - Technical Architecture
       - Data Model
-      - Interface Definition
-      - Non-functional Design
+      - Interface Definitions
+      - Non-Functional Design
       - Technology Selection
       - Risk Assessment
     optional_sections: []
@@ -781,7 +781,7 @@ templates:
       - technical requirements
       - technical solution
     fallback: product/prd
-    template_path: ../templates/Product/Technical/[Template] Technical Requirements Document (TRD).md
+    template_path: ../templates/Product/Technology/Template-TRD.md
 
   product/architecture:
     family: product
@@ -797,7 +797,7 @@ templates:
       - system design
       - Architecture
     fallback: product/prd
-    template_path: ../templates/Product/Technical/[Template] Architecture Design Document.md
+    template_path: ../templates/Product/Technology/Template-Architecture.md
 
   product/api-doc:
     family: product
@@ -816,7 +816,7 @@ templates:
       - OpenAPI
       - Swagger
     fallback: product/prd
-    template_path: ../templates/Product/Technical/[Template] API Documentation.md
+    template_path: ../templates/Product/Technology/Template-API-Doc.md
 
   product/db-design:
     family: product
@@ -825,14 +825,14 @@ templates:
       - Table Structure
       - Index Design
       - Sharding Strategy
-      - Data Archiving Plan
+      - Data Archival Plan
     optional_sections: []
     detection_signals:
       - database design
       - table structure
       - ER diagram
     fallback: product/prd
-    template_path: ../templates/Product/Technical/[Template] Database Design Document.md
+    template_path: ../templates/Product/Technology/Template-DB-Design.md
 
   product/algorithm-doc:
     family: product
@@ -842,13 +842,13 @@ templates:
       - Input/Output
       - Algorithm Flow
       - Complexity Analysis
-      - Boundary Conditions
+      - Edge Cases
     optional_sections: []
     detection_signals:
       - algorithm
       - core algorithm
     fallback: product/prd
-    template_path: ../templates/Product/Technical/[Template] Core Algorithm Document.md
+    template_path: ../templates/Product/Technology/Template-Algorithm.md
 
   product/release-plan:
     family: product
@@ -857,14 +857,14 @@ templates:
       - Version Planning
       - Environment Plan
       - Rollback Plan
-      - Monitoring and Alerts
+      - Monitoring and Alerting
     optional_sections: []
     detection_signals:
       - release plan
       - launch schedule
       - release
     fallback: product/prd
-    template_path: ../templates/Product/Delivery/[Template] Release Plan Document.md
+    template_path: ../templates/Product/Delivery/Template-Release-Plan.md
 
   product/test-report:
     family: product
@@ -881,13 +881,13 @@ templates:
       - test report
       - quality report
     fallback: product/prd
-    template_path: ../templates/Product/Delivery/[Template] Test Report.md
+    template_path: ../templates/Product/Delivery/Template-Test-Report.md
 
   product/canary-plan:
     family: product
-    name: Canary Plan
+    name: Canary Deployment Plan
     required_sections:
-      - Canary Ratio and Timeline
+      - Canary Ratio and Timing
       - Observation Metrics
       - Rollback Threshold
       - Emergency Plan
@@ -897,11 +897,11 @@ templates:
       - canary
       - phased rollout
     fallback: product/prd
-    template_path: ../templates/Product/Delivery/[Template] Canary Plan.md
+    template_path: ../templates/Product/Delivery/Template-Canary-Plan.md
 
   product/operation-guide:
     family: product
-    name: Operations Manual
+    name: Operations Guide
     required_sections:
       - Feature Description
       - Common Issues
@@ -913,7 +913,7 @@ templates:
       - SOP
       - operations process
     fallback: product/prd
-    template_path: ../templates/Product/Operations/[Template] Operations Manual.md
+    template_path: ../templates/Product/Operations/Template-Operations-Manual.md
 
   product/dashboard:
     family: product
@@ -921,78 +921,78 @@ templates:
     required_sections:
       - Event Tracking Specification
       - Data Dashboard
-      - Data Definition
+      - Data Definitions
     optional_sections: []
     detection_signals:
       - data dashboard
       - event tracking
       - metrics framework
     fallback: product/prd
-    template_path: ../templates/Product/Operations/[Template] Data Dashboard.md
+    template_path: ../templates/Product/Operations/Template-Dashboard.md
 
   product/user-guide:
     family: product
-    name: User Manual
+    name: User Guide
     required_sections:
       - Help Content
-      - New Feature Guide
+      - New Feature Guidance
     optional_sections:
-      - Video Tutorial
+      - Video Tutorials
     detection_signals:
       - user manual
       - usage instructions
       - help center
     fallback: product/prd
-    template_path: ../templates/Product/Operations/[Template] User Manual.md
+    template_path: ../templates/Product/Operations/Template-User-Guide.md
 
   product/weekly-monthly-report:
     family: product
     name: Weekly/Monthly Report (Product Family)
     required_sections:
-      - report_info
-      - summary
-      - completed_work
-      - in_progress
-      - blockers
-      - next_period_plan
+      - Report Info
+      - Summary
+      - Completed Work
+      - In Progress
+      - Blockers
+      - Next Period Plan
     optional_sections:
-      - metrics
-      - asks
-      - reflections
+      - Metrics
+      - Asks
+      - Reflections
     detection_signals:
       - weekly report
       - monthly report
     fallback: product/prd
-    template_path: ../templates/Product/Operations/[Template] Weekly Monthly Report.md
-    notes: Distinguish from business/weekly-monthly-report -- this template is the product family's formal archival version, section fields aligned with registry
+    template_path: ../templates/Product/Operations/Template-Weekly-Monthly-Report.md
+    notes: Distinct from business/weekly-monthly-report — this is the product family's formal archival version with registry-aligned section fields
 
   product/retrospective:
     family: product
     name: Retrospective Report
     required_sections:
-      - Goal Review
+      - Objective Review
       - Result Assessment
       - Root Cause Analysis
-      - Pattern Distillation
+      - Lessons Codified
       - Improvement Actions
-      - Asset Archiving
+      - Asset Archival
     optional_sections: []
     detection_signals:
       - retrospective
       - post-mortem
       - retrospective
     fallback: product/prd
-    template_path: ../templates/Product/Retirement/[Template] Retrospective Report.md
+    template_path: ../templates/Product/Retirement/Template-Retrospective.md
 
   product/knowledge-base:
     family: product
     name: Knowledge Base
     required_sections:
-      - Core Lessons
+      - Core Experience
       - Pitfall Records
       - Best Practices
-      - SOP Distillation
-      - Anti-patterns
+      - SOP Extraction
+      - Anti-Patterns
       - Knowledge Asset Inventory
     optional_sections: []
     detection_signals:
@@ -1000,7 +1000,7 @@ templates:
       - knowledge base
       - lessons learned
     fallback: product/prd
-    template_path: ../templates/Product/Retirement/[Template] Knowledge Base.md
+    template_path: ../templates/Product/Retirement/Template-Knowledge-Base.md
 
   product/business-plan:
     family: product
@@ -1008,11 +1008,11 @@ templates:
     required_sections:
       - Project Overview
       - Market Opportunity
-      - Product Solution
+      - Product Plan
       - Business Model
       - Team
       - Financial Projections
-      - Fundraising Plan
+      - Funding Plan
     optional_sections: []
     detection_signals:
       - BP
@@ -1020,7 +1020,7 @@ templates:
       - fundraising
       - pitch
     fallback: product/prd
-    template_path: ../templates/[Template] Business Plan.md
+    template_path: ../templates/Template-Business-Plan.md
 
   product/business-model:
     family: product
@@ -1040,13 +1040,13 @@ templates:
       - business model
       - value proposition
     fallback: product/prd
-    template_path: ../templates/[Template] Business Model Document.md
+    template_path: ../templates/Template-Business-Model.md
 
   product/meeting-minutes-detailed:
     family: product
     name: Formal Meeting Minutes
     required_sections:
-      - Meeting Information
+      - Meeting Info
       - Agenda
       - Discussion
       - Decisions (with ACTION numbers)
@@ -1059,8 +1059,8 @@ templates:
       - archival minutes
       - FAR principle
     fallback: product/prd
-    template_path: ../templates/[Template] Meeting Minutes.md
-    notes: Follows FAR principle (Focus/Action/Result); distinguish from meeting/decision-minutes -- this template is the formal archival version
+    template_path: ../templates/Template-Meeting-Minutes.md
+    notes: Follows the FAR principle (Focus/Action/Result); distinct from meeting/decision-minutes — this is the formal archival version
 
   product/literature-review:
     family: product
@@ -1069,8 +1069,8 @@ templates:
       - Review Background
       - Search Strategy (PRISMA)
       - Evaluation Framework
-      - Theme Distillation
-      - Scenario-based Recommendations
+      - Theme Synthesis
+      - Scenario-Based Recommendations
       - Research Gaps
       - References
     optional_sections: []
@@ -1079,4 +1079,4 @@ templates:
       - PRISMA
       - evaluation framework
     fallback: product/prd
-    template_path: ../templates/[Template] Research Report.md
+    template_path: ../templates/Template-Literature-Review.md

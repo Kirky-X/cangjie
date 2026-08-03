@@ -1,6 +1,6 @@
 # Output Skeletons — Meeting Family
 
-> This file was split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
+> This file is split from output-skeletons.md. Full index at [output-skeletons.md](output-skeletons.md).
 
 ## Meeting
 
@@ -11,20 +11,20 @@
 
 ## Meeting Information
 
-- Time:
+- Date:
 - Participants:
 - Objective:
 
 ## Discussion Summary
 
-- Topic 1: Who raised it, core viewpoint, discussion direction
-- Topic 2: Points of disagreement, convergence approach, current status
+- Agenda item 1: Who raised it, core viewpoints, discussion direction
+- Agenda item 2: Points of disagreement, convergence method, current status
 
 ## Decisions
 
 1. What was decided
 2. Why this decision was made
-3. Impact scope or prerequisites
+3. Scope of impact or preconditions
 
 ## Action Items
 
@@ -43,7 +43,7 @@
 
 ## Meeting Information
 
-- Time:
+- Date:
 - Location:
 - Participants:
 - Source materials:
@@ -52,8 +52,8 @@
 
 ## Discussion Summary
 
-- Topic 1: Who raised it, core viewpoint, discussion direction
-- Topic 2: Points of disagreement, convergence approach, current status
+- Agenda item 1: Who raised it, core viewpoints, discussion direction
+- Agenda item 2: Points of disagreement, convergence method, current status
 
 ## Key Observations
 
@@ -70,7 +70,7 @@
 - Step 1: Owner / Deadline
 - Step 2
 
-## Speaker Viewpoints
+## Speaker Perspectives
 
 ## Timeline
 ```
@@ -82,7 +82,7 @@
 
 ## Meeting Information
 
-- Time:
+- Date:
 - Location:
 - Interviewer/Interviewee:
 - Source materials:
@@ -103,14 +103,14 @@
 ### Topic 1
 
 - Question
-- Key points of response
+- Key response points
 - Insights
 
 ## Key Quotes
 
 > {Quote}
 
-## Follow-up
+## Follow-up Actions
 
 - Follow-up item 1: Owner / Deadline
 - Follow-up item 2
@@ -127,9 +127,9 @@
 
 ## Meeting Information
 
-- Time:
+- Date:
 - Manager/Member:
-- Cycle:
+- Cadence:
 
 ## Current Status
 
@@ -138,7 +138,7 @@
 
 ## Recent Progress
 
-- Progress 1
+- Progress item 1
 - Highlight 1
 
 ## Blockers
@@ -148,8 +148,8 @@
 
 ## Support Needed
 
-- Support 1
-- Preferred resolution approach
+- Support item 1
+- Desired resolution
 
 ## Agreed Actions
 
@@ -168,7 +168,7 @@
 
 ## Meeting Information
 
-- Time:
+- Date:
 - Location:
 - Facilitator/Participants:
 - Source materials:
@@ -189,7 +189,7 @@
 ## Decisions
 
 1. What was decided
-2. Impact scope
+2. Scope of impact
 
 ## Next Steps
 

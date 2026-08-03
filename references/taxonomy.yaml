@@ -1,7 +1,7 @@
 # Cangjie Template Taxonomy
-# Defines output goal classifications, used in SKILL.md workflow Step 2 (goal identification)
-# Matching rules: scan user input and materials; if signal_words are hit, assign to the corresponding goal;
-# When multiple goals are hit, follow SKILL.md "Common Faults - Signal Conflicts" handling (list candidates and ask user)
+# Defines output goal classifications for SKILL.md workflow Step 2 (goal identification)
+# Matching rules: scan user input and materials; match signal_words to classify into the corresponding goal;
+# When multiple goals match, follow SKILL.md "Common Faults - Signal Conflict" handling (list candidates and ask user)
 # When no clear match, fall back to the closest goal.default_family based on context
 
 version: 1
@@ -9,7 +9,7 @@ version: 1
 goals:
 
   learning:
-    description: Learn, review, knowledge distillation
+    description: Learning, review, knowledge distillation
     signal_words:
       - learning
       - review
@@ -31,16 +31,16 @@ goals:
       - playbook
     default_family: learning
     selection_hints:
-      - "Goal is learning and review -> learning/*"
-      - "Focus is courses/lectures/bootcamps -> learning/course-notes"
-      - "Focus is hands-on steps -> learning/tutorial-playbook"
-      - "Focus is a full nonfiction book -> learning/nonfiction-book-summary"
-      - "Focus is a novel/narrative work -> learning/fiction-book-summary"
-      - "Single lecture/talk -> learning/lecture-summary"
-      - "Explain a concept -> learning/concept-explainer"
+      - "Goal is learning and review → learning/*"
+      - "Focus is courses/lectures/bootcamps → learning/course-notes"
+      - "Focus is following hands-on steps → learning/tutorial-playbook"
+      - "Focus is a complete non-fiction book → learning/nonfiction-book-summary"
+      - "Focus is a novel/narrative work → learning/fiction-book-summary"
+      - "Single lecture/talk → learning/lecture-summary"
+      - "Explaining a concept → learning/concept-explainer"
 
   recap:
-    description: Show recap, highlight distribution
+    description: Program review, highlight distribution
     signal_words:
       - recap
       - show
@@ -56,14 +56,14 @@ goals:
       - host
     default_family: media
     selection_hints:
-      - "Goal is content recap and highlight distribution -> media/*"
-      - "Podcast/interview audio -> media/podcast-summary"
-      - "Video show -> media/video-program-summary"
-      - "Livestream recap -> media/livestream-recap"
-      - "Distill highlights -> media/content-highlights"
+      - "Goal is reviewing content and sharing highlights → media/*"
+      - "Podcast/interview audio → media/podcast-summary"
+      - "Video program → media/video-program-summary"
+      - "Livestream review → media/livestream-recap"
+      - "Extracting highlight clips → media/content-highlights"
 
   discussion_record:
-    description: Discussion record, responsibility tracking
+    description: Discussion records, accountability tracking
     signal_words:
       - meeting
       - discussion
@@ -80,14 +80,14 @@ goals:
       - owner
     default_family: meeting
     selection_hints:
-      - "Focus is discussion process and decisions -> meeting/decision-minutes"
-      - "Focus is research input and Q&A -> meeting/interview-record"
-      - "Focus is 1:1 communication -> meeting/one-on-one-note"
-      - "Focus is workshop co-creation -> meeting/workshop-summary"
-      - "Needs formal archiving (with ACTION numbers/Parking Lot) -> product/meeting-minutes-detailed"
+      - "Focus is discussion process and decisions → meeting/decision-minutes"
+      - "Focus is research input and Q&A → meeting/interview-record"
+      - "Focus is 1:1 communication → meeting/one-on-one-note"
+      - "Focus is workshop co-creation → meeting/workshop-summary"
+      - "Requires formal archiving (with ACTION numbers/Parking Lot) → product/meeting-minutes-detailed"
 
   status_reporting:
-    description: Status reporting, progress tracking
+    description: Periodic reporting, progress tracking
     signal_words:
       - weekly report
       - monthly report
@@ -103,11 +103,11 @@ goals:
       - executive briefing
     default_family: business
     selection_hints:
-      - "Focus is milestone progress and metrics -> business/project-status-report"
-      - "Focus is weekly/monthly regular sync -> business/weekly-monthly-report"
-      - "Focus is upward reporting -> business/executive-brief"
-      - "Focus is incident/issues -> business/risk-issue-report"
-      - "Focus is action tracking -> business/action-tracker"
+      - "Focus is phase progress and metrics → business/project-status-report"
+      - "Focus is weekly/monthly periodic sync → business/weekly-monthly-report"
+      - "Focus is upward reporting → business/executive-brief"
+      - "Focus is incidents/issues → business/risk-issue-report"
+      - "Focus is action tracking → business/action-tracker"
 
   synthesis:
     description: Multi-source synthesis, decision support
@@ -124,14 +124,14 @@ goals:
       - briefing
     default_family: analysis
     selection_hints:
-      - "Focus is common themes -> analysis/theme-synthesis"
-      - "Focus is making a choice -> analysis/decision-memo"
-      - "Focus is industry and fact scan -> analysis/research-brief"
-      - "Lightweight peer comparison -> analysis/competitive-scan"
-      - "Product-decision-oriented competitive analysis -> product/competitive-analysis"
+      - "Focus is common themes → analysis/theme-synthesis"
+      - "Focus is making a choice → analysis/decision-memo"
+      - "Focus is industry and fact scanning → analysis/research-brief"
+      - "Lightweight peer comparison → analysis/competitive-scan"
+      - "Product-decision-oriented competitive analysis → product/competitive-analysis"
 
   paper_review:
-    description: Paper reading, research distillation
+    description: Paper reading, research synthesis
     signal_words:
       - paper
       - paper
@@ -149,15 +149,15 @@ goals:
       - ablation
     default_family: analysis
     selection_hints:
-      - "Goal is reading a single paper -> analysis/paper-summary"
-      - "Theorem/proof/formula derivation -> analysis/theoretical-paper-summary"
-      - "Dataset/metric/experiment comparison -> analysis/experimental-paper-summary"
-      - "System architecture/throughput latency -> analysis/systems-paper-summary"
-      - "Literature survey/taxonomy -> analysis/survey-paper-summary"
-      - "Literature review building an evaluation framework -> product/literature-review"
+      - "Goal is understanding a single paper → analysis/paper-summary"
+      - "Theorems/proofs/formula derivations → analysis/theoretical-paper-summary"
+      - "Datasets/metrics/experimental comparisons → analysis/experimental-paper-summary"
+      - "System architecture/throughput/latency → analysis/systems-paper-summary"
+      - "Literature survey/taxonomy → analysis/survey-paper-summary"
+      - "Literature review report for establishing an evaluation framework → product/literature-review"
 
   product_documentation:
-    description: Product documentation, business plan, technical design
+    description: Product documentation, business plans, technical design
     signal_words:
       - PRD
       - BP
@@ -196,13 +196,13 @@ goals:
       - color specification
     default_family: product
     selection_hints:
-      - "Business plan/fundraising pitch -> product/business-plan"
-      - "Business model/value proposition -> product/business-model"
-      - "Strategy layer (Why) -> product/brd, product/mrd, product/charter, product/market-research, product/competitive-analysis"
-      - "Product layer (What) -> product/prd, product/frd, product/uiux-spec"
-      - "Technical layer (How) -> product/trd, product/architecture, product/api-doc, product/db-design, product/algorithm-doc"
-      - "Delivery layer (When) -> product/release-plan, product/test-report, product/canary-plan"
-      - "Operations layer (Run) -> product/operation-guide, product/dashboard, product/user-guide, product/weekly-monthly-report"
-      - "Retirement layer (End) -> product/retrospective, product/knowledge-base"
-      - "General documentation -> README / CHANGELOG / FAQ / CONTRIBUTING"
-      - "Uncertain sub-layer -> product/prd"
+      - "Business plan/fundraising roadshow → product/business-plan"
+      - "Business model/value proposition → product/business-model"
+      - "Strategy layer (Why) → product/brd, product/mrd, product/charter, product/market-research, product/competitive-analysis"
+      - "Product layer (What) → product/prd, product/frd, product/uiux-spec"
+      - "Technical layer (How) → product/trd, product/architecture, product/api-doc, product/db-design, product/algorithm-doc"
+      - "Delivery layer (When) → product/release-plan, product/test-report, product/canary-plan"
+      - "Operations layer (Run) → product/operation-guide, product/dashboard, product/user-guide, product/weekly-monthly-report"
+      - "Sunset layer (End) → product/retrospective, product/knowledge-base"
+      - "General documentation → README / CHANGELOG / FAQ / CONTRIBUTING"
+      - "Uncertain sub-layer → product/prd"

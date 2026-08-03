@@ -1,9 +1,9 @@
-# Media Family -- Show recap, highlight distribution
-# Covers: podcast/interview, video shows, livestream recaps, content highlights
+# Media family — Program review, highlight distribution
+# Covers: Podcasts/interviews, video programs, livestream recaps, content highlights extraction
 # Output skeleton: guides/skeletons-media.md
 
 family: media
-description: Show recap, highlight distribution
+description: Program review, highlight distribution
 default_template: media/podcast-summary
 skeleton_file: guides/skeletons-media.md
 
@@ -15,16 +15,16 @@ templates:
   - id: media/livestream-recap
     name: Livestream Recap
   - id: media/content-highlights
-    name: Content Highlights
+    name: Content Highlights Extraction
 
 selection_rules:
   - condition: "Podcast/interview audio"
     template: media/podcast-summary
-  - condition: "Video show"
+  - condition: "Video program"
     template: media/video-program-summary
   - condition: "Livestream recap"
     template: media/livestream-recap
-  - condition: "Distill highlights"
+  - condition: "Extracting highlight clips"
     template: media/content-highlights
-  - condition: "Uncertain sub-type"
+  - condition: "Uncertain subtype"
     template: media/podcast-summary

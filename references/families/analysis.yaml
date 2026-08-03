@@ -1,5 +1,5 @@
-# Analysis Family -- Research distillation, decision support, paper reading
-# Covers: research brief, paper summaries (with 5 sub-types), decision memos, theme synthesis, competitive scan
+# Analysis family — Research synthesis, decision support, paper reading
+# Covers: Research briefs, paper summaries (with 5 subtypes), decision memos, theme synthesis, competitive scans
 # Output skeleton: guides/skeletons-analysis.md
 
 family: analysis
@@ -12,7 +12,7 @@ templates:
     name: Research Brief
   - id: analysis/paper-summary
     name: Paper Summary (General)
-    notes: When a paper sub-type is identified, prioritize the corresponding sub-type template
+    notes: When a paper subtype is identified, prefer the corresponding subtype template
   - id: analysis/theoretical-paper-summary
     name: Theoretical Paper Summary
   - id: analysis/experimental-paper-summary
@@ -30,13 +30,13 @@ templates:
     notes: For product-decision-oriented full competitive analysis, use product/competitive-analysis
 
 selection_rules:
-  - condition: "Goal is reading a single paper"
+  - condition: "Goal is understanding a single paper"
     template: analysis/paper-summary
-  - condition: "Theorem/proof/formula derivation"
+  - condition: "Theorems/proofs/formula derivations"
     template: analysis/theoretical-paper-summary
-  - condition: "Dataset/metric/experiment comparison"
+  - condition: "Datasets/metrics/experimental comparisons"
     template: analysis/experimental-paper-summary
-  - condition: "System architecture/throughput latency"
+  - condition: "System architecture/throughput/latency"
     template: analysis/systems-paper-summary
   - condition: "Literature survey/taxonomy"
     template: analysis/survey-paper-summary
@@ -46,7 +46,7 @@ selection_rules:
     template: analysis/theme-synthesis
   - condition: "Lightweight peer comparison"
     template: analysis/competitive-scan
-  - condition: "Focus is industry and fact scan"
+  - condition: "Focus is industry and fact scanning"
     template: analysis/research-brief
-  - condition: "Uncertain sub-type"
+  - condition: "Uncertain subtype"
     template: analysis/research-brief

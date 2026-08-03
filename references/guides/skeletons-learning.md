@@ -13,7 +13,7 @@
 - Source:
 - Instructor:
 - Duration/Scope:
-- Learning objectives:
+- Learning Objectives:
 
 ## Content Overview
 
@@ -23,17 +23,17 @@
 - Core concepts
 - Key explanations or causal chains
 - Examples/demonstrations
-- Commonly confused points
+- Common points of confusion
 
-## Key Takeaways
-- Takeaway 1: What it is
+## Key Knowledge Points
+- Knowledge point 1: What it is
 - Why it matters
 - Applicable conditions or boundaries
 
 ## Review Questions
-1. Conceptual understanding
-2. Application
-3. Comparison
+1. Conceptual understanding question
+2. Application question
+3. Comparison question
 
 ## Actionable Exercises
 
@@ -45,14 +45,14 @@
 ```markdown
 # {Title}
 
-## Objectives
+## Objective
 
 ## Prerequisites
 
 ## Steps
 1. Step 1
 2. Step 2
-3. Each step includes: purpose, action, expected result, notes
+3. Each step supplemented with: purpose, action, expected result, precautions
 
 ## Common Pitfalls
 
@@ -64,56 +64,56 @@
 ### `learning/nonfiction-book-summary`
 
 ```markdown
-# {Book Title} - Whole Book Summary
+# {Book Title} - Full Summary
 
 ## Basic Information
 - Author:
-- Type:
+- Genre:
 - Coverage: Full book / Selected chapters / Excerpts
-- Version/Source:
+- Edition/Source:
 
 ## Output Files
-- Whole-book file: `{BookTitle}-whole-book-summary.md`
-- Chapter directory: `Chapter-Summaries/`
+- Full-book file: `{BookTitle}-FullSummary.md`
+- Chapter directory: `ChapterSummaries/`
 - Chapter file naming: `NN_{ChapterName}-Summary.md`
 
-## Whole Book Overview
-- What problem does this book address
+## Full Book Overview
+- What problem the book addresses
 - Author's core conclusions
 - Who should read this
-- Overarching thesis and structure
+- Main structural thread of the book
 
 ## Core Arguments
 - Argument 1: Claim
 - Evidence or case study
 - Implications for readers
 
-## Section Structure Overview
+## Part Structure Overview
 ### Part 1: {Part Name}
-- What question does this part answer
-- Its role in the whole-book argument
+- What question this part answers
+- Its role in the book's overall argument
 - How it connects to the next part
 
-## Section / Chapter Navigation
+## Part / Chapter Navigation
 - Part 1:
 - Key chapters:
-- Chapter summaries at: `Chapter-Summaries/NN_{ChapterName}-Summary.md`
+- Chapter summaries at: `ChapterSummaries/NN_{ChapterName}-Summary.md`
 
 ## Key Concepts / Models
-- Concept/Model
+- Concept/model
 - Definition
 - Use cases or boundaries
 
-## Book Structure & Argument Path
-- How the author progresses from premise to conclusion
+## Book Structure & Argumentative Path
+- How the author progresses from premises to conclusions
 - Which chapters serve as turning points or convergence
 
 ## Actionable Insights
 - Methods that can be directly applied
 - Applicable scenarios
-- Possible limitations
+- Potential limitations
 
-## Limitations & Skeptical Points
+## Limitations & Questionable Points
 ```
 
 ### `learning/nonfiction-book-summary` Chapter File
@@ -121,16 +121,16 @@
 ```markdown
 # Chapter N {Chapter Name}
 
-## Chapter Positioning
-- Part it belongs to / Role in the whole book / Relationship to adjacent chapters:
+## Chapter Position
+- Part: / Role in book: / Relationship to adjacent chapters:
 
 ## Core Question
 
-## Detailed Digest
+## Detailed Summary
 - Key argument 1 / 2
-- Case studies / data / evidence
+- Case studies / Data / Evidence
 - How the author advances the argument
-- This chapter's contribution to the whole-book thesis
+- This chapter's contribution to the book's main thread
 
 ## Key Concepts / Terminology
 
@@ -142,46 +142,46 @@
 ### `learning/fiction-book-summary`
 
 ```markdown
-# {Book Title} - Whole Book Summary
+# {Book Title} - Full Summary
 
 ## Basic Information
 - Author:
-- Type:
+- Genre:
 - Coverage: Full book / Selected chapters / Excerpts
-- Version/Source:
+- Edition/Source:
 
 ## Output Files
-- Whole-book file: `{BookTitle}-whole-book-summary.md`
-- Chapter directory: `Chapter-Summaries/`
+- Full-book file: `{BookTitle}-FullSummary.md`
+- Chapter directory: `ChapterSummaries/`
 - Chapter file naming: `NN_{ChapterName}-Summary.md`
 
-## Whole Book Overview
+## Full Book Overview
 - Story setting
 - Central conflict
-- Overall arc
-- Whole-book themes
+- Overall trajectory
+- Book themes
 
-## Section Structure Overview
+## Part Structure Overview
 ### Part 1: {Part Name}
-- Plot task of this part
+- Narrative task of this part
 - Main character states
-- Connection to subsequent turning points
+- Relationship to subsequent turns
 
-## Section / Chapter Navigation
+## Part / Chapter Navigation
 - Part 1:
 - Key chapters:
-- Chapter summaries at: `Chapter-Summaries/NN_{ChapterName}-Summary.md`
+- Chapter summaries at: `ChapterSummaries/NN_{ChapterName}-Summary.md`
 
 ## Main Characters & Relationships
 - Character
-- Motivation/goal
-- Relationship to other characters
+- Motivation/goals
+- Relationships with other characters
 - Key changes
 
 ## Plot Progression & Turning Points
 - Setup
 - Conflict escalation
-- Turning point
+- Turning points
 - Resolution or open ending
 
 ## Themes & Motifs
@@ -202,21 +202,21 @@
 ```markdown
 # Chapter N {Chapter Name}
 
-## Chapter Positioning
-- Part it belongs to / Plot function / Relationship to adjacent chapters:
+## Chapter Position
+- Part: / Narrative function: / Relationship to adjacent chapters:
 
-## Detailed Digest
-- Main events
+## Detailed Summary
+- Major events
 - Character changes
 - Conflict escalation or resolution
 - Important imagery / foreshadowing
-- Contribution to whole-book theme or ending
+- Role in book themes or ending
 
 ## Character Focus
 
 ## Themes / Symbolism
 
-## Key Reading Points
+## Key Reading Points for This Chapter
 ```
 
 ### `learning/lecture-summary`
@@ -226,7 +226,7 @@
 
 ## Basic Information
 - Source:
-- Speaker:
+- Lecturer:
 - Date:
 - Duration:
 - Topic:
@@ -236,19 +236,19 @@
 ## Topic Flow
 ### Topic 1
 - Topic background
-- Key viewpoints from speaker
+- Lecturer's key viewpoints
 - Supporting examples or data
-- Connection to the next topic
+- Connection to next topic
 
-## Key Takeaways
-- Takeaway 1: What it is
+## Key Knowledge Points
+- Knowledge point 1: What it is
 - Why it matters
 - Applicable boundaries
 
 ## Notable Quotes
 > {Quote}
 
-## Speaker Background
+## Lecturer Background
 
 ## Actionable Exercises
 
@@ -270,16 +270,16 @@
 
 ## Core Mechanism
 - Causal chain or how it works
-- Key steps or components
+- Key steps or elements
 - Applicable conditions
 
 ## Examples
 - Example 1: Scenario + how the concept applies
-- Example 2: Comparison across different scenarios
+- Example 2: Comparing behavior across different scenarios
 
 ## Common Misconceptions
 - Misconception 1: What's wrong
-- Misconception 2: Correct understanding
+- Misconception 2: What the correct understanding is
 
 ## Comparison
 - Differences from similar concepts

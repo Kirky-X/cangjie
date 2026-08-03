@@ -6,31 +6,41 @@ Transcription using qwen-asr with simple speaker diarization
 import os
 import sys
 import json
-from datetime import timedelta
+import argparse
+import logging
 from pathlib import Path
 
 # Set environment variable to avoid CUDA version check issues
 os.environ["TORCHAUDIO_DISABLE_VERSION_CHECK"] = "1"
 
-from qwen_asr import Qwen3ASRModel
-import torch
+from utils import format_timestamp, validate_audio_file, ensure_output_dir
 
-
-def format_timestamp(seconds: float) -> str:
-    """Format timestamp as HH:MM:SS"""
-    td = timedelta(seconds=seconds)
-    return str(td).split(".")[0]
+logger = logging.getLogger(__name__)
 
 
 def transcribe_audio(audio_path: str, output_path: str):
     """Transcribe audio using qwen-asr"""
+    audio_path = str(validate_audio_file(audio_path))
+    output_path = str(ensure_output_dir(output_path))
+
     print(f"Loading model...")
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    model = Qwen3ASRModel.from_pretrained("Qwen/Qwen3-ASR-1.7B")
-    model.model = model.model.to(device)
+    import torch
+    from qwen_asr import Qwen3ASRModel
+
+    try:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        model = Qwen3ASRModel.from_pretrained("Qwen/Qwen3-ASR-1.7B")
+        model.model = model.model.to(device)
+    except Exception as e:
+        print(f"Error: Failed to load model: {e}", file=sys.stderr)
+        sys.exit(1)
 
     print(f"Transcribing {audio_path}...")
-    result = model.transcribe(audio_path, return_time_stamps=False, language="Chinese")
+    try:
+        result = model.transcribe(audio_path, return_time_stamps=False, language="Chinese")
+    except Exception as e:
+        print(f"Error: Transcription failed: {e}", file=sys.stderr)
+        sys.exit(1)
 
     print(f"Saving results to {output_path}...")
     with open(output_path, "w", encoding="utf-8") as f:
@@ -55,16 +65,23 @@ def transcribe_audio(audio_path: str, output_path: str):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python transcribe_with_diarization.py <audio_file> [output_file]")
-        sys.exit(1)
-
-    audio_path = sys.argv[1]
-    output_path = (
-        sys.argv[2]
-        if len(sys.argv) > 2
-        else audio_path.replace(".wav", "_transcript.txt")
+    parser = argparse.ArgumentParser(
+        description="Transcribe audio using qwen-asr (Chinese-optimized)",
     )
+    parser.add_argument("audio_path", help="Audio file path")
+    parser.add_argument(
+        "output_path",
+        nargs="?",
+        default=None,
+        help="Output transcript path (default: <audio>_transcript.txt)",
+    )
+
+    args = parser.parse_args()
+
+    audio_path = args.audio_path
+    output_path = args.output_path or str(
+        Path(audio_path).with_suffix("")
+    ) + "_transcript.txt"
 
     transcribe_audio(audio_path, output_path)
 
