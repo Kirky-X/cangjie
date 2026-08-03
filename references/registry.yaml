@@ -949,16 +949,16 @@ templates:
     family: product
     name: Weekly/Monthly Report (Product Family)
     required_sections:
-      - report_info
-      - summary
-      - completed_work
-      - in_progress
-      - blockers
-      - next_period_plan
+      - Report Info
+      - Summary
+      - Completed Work
+      - In Progress
+      - Blockers
+      - Next Period Plan
     optional_sections:
-      - metrics
-      - asks
-      - reflections
+      - Metrics
+      - Asks
+      - Reflections
     detection_signals:
       - 周报
       - 月报
