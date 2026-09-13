@@ -40,7 +40,7 @@ flowchart TD
 - **Step 1 - Input Modality Recognition**: Extension determines → `video`/`audio`/`paper`/`text`/`mixed`; unrecognized → ask user, guessing is prohibited
 - **Step 2 - Output Intent Recognition**: Match signal words from `references/taxonomy.yaml` `goals` → `learning`/`recap`/`discussion_record`/`status_reporting`/`synthesis`/`paper_review`/`product_documentation`; multiple goal hits → list candidates and ask
 - **Step 3 - User Specification Check**: Scan template IDs/chapter names/filenames/format keywords; `true` → skip to Step 6; `false` → proceed to Step 4
-- **Step 4 - Auto Template Matching**: Match using `references/registry.yaml` `detection_signals` + `taxonomy.yaml` `selection_hints`; multiple hits decided by `fallback_order`; no match → fall back to `goals[].default_family`
+- **Step 4 - Auto Template Matching**: Match using `references/registry.yaml` `detection_signals` + `taxonomy.yaml` `selection_hints`; multiple hits → list candidates ranked by `detection_signals` hit count and ask user to choose; no match → fall back to `goals[].default_family` (per-template `fallback` applies only when `required_sections` cannot be filled after generation)
 - **Step 5 - Output Density Determination**: "quick/one-liner/brief/TL;DR" → `brief`; "detailed/complete/comprehensive/keep formulas" → `deep-dive`; otherwise → `standard-detailed` (default)
 - **Step 6 - 🔴 CHECKPOINT Pre-generation Confirmation**: Show user: ① Template ID + core sections (from `registry.yaml` `required_sections`) ② Output density + file naming + save path (default `{input_filename}-summary.md`, same directory as input) ③ Rationale for choosing over adjacent templates. 🔴 STOP: generation is prohibited until user confirms; user modifications → roll back to corresponding Step and re-run, no patching
 - **Step 7 - Generate Final Output**: Fill per `required_sections`, control density per output rules and density strategy; mandatory `.md` file output (books default to 1 full-book file + N independent chapter files); insufficient chapters → mark "material not provided / cannot confirm", no force-filling
@@ -75,7 +75,7 @@ See [`references/guides/output-skeletons.md`](references/guides/output-skeletons
 ## Input Processing
 
 - **Text**: Directly identify intent structure; multiple texts confirm combined vs separate output; books determine full/partial/excerpt, long books determine "part/volume" hierarchy
-- **Audio**: Prioritize single/multi speaker detection; meetings/interviews use diarization transcription; lectures/courses/podcasts use single track
+- **Audio**: Prioritize single/multi speaker detection; meetings/interviews use diarization transcription; lectures/courses/podcasts use single track. `transcribe-diarize` 产物的 `SpeakerN` 标签是**基于能量变化的近似分段**（输出文件头部含免责声明），转述时写"近似归属/同一发言段"，不得把 Speaker 归属写成确定事实；无法确认说话人时用中性表述（如"一方表示"）
 - **Video**: Extract audio first then transcribe; add visual chapters for screen/PPT/step-dependent content
 - **Paper**: PDF/full-text/notes prefer paper templates; identify type first then select subtype
 
@@ -83,7 +83,7 @@ See [`references/guides/output-skeletons.md`](references/guides/output-skeletons
 
 ```bash
 python3 scripts/cangjie.py pipeline input.mp4 --engine faster-whisper   # One-shot video → transcript
-python3 scripts/cangjie.py extract-audio input.mp4 --keep-audio         # Extract audio from video
+python3 scripts/cangjie.py extract-audio input.mp4                 # Extract audio from video (wav kept by default; --cleanup to delete)
 python3 scripts/cangjie.py transcribe-diarize input.wav output.txt      # Multi-speaker transcription
 python3 scripts/cangjie.py transcribe-qwen input.wav output.txt         # Single-speaker transcription
 ```

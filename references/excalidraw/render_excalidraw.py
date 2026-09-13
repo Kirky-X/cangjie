@@ -1,11 +1,12 @@
 """Render Excalidraw JSON to PNG using Playwright + headless Chromium.
 
-Usage:
-    cd .claude/skills/cangjie/references/excalidraw
+Usage (run from the directory containing this script; the skill root is located
+at runtime via __file__ — never hardcode an install path):
+    cd <skill-dir>/references/excalidraw        # i.e. the directory holding this file
     uv run python render_excalidraw.py <path-to-file.excalidraw> [--output path.png] [--scale 2] [--width 1920]
 
 First-time setup:
-    cd .claude/skills/cangjie/references/excalidraw
+    cd <skill-dir>/references/excalidraw
     uv sync
     uv run playwright install chromium
 """
@@ -16,6 +17,10 @@ import argparse
 import json
 import sys
 from pathlib import Path
+
+# Locate paths relative to this script so the skill works from any install location
+SCRIPT_DIR = Path(__file__).resolve().parent
+SKILL_ROOT = Path(__file__).resolve().parents[2]
 
 
 def validate_excalidraw(data: dict) -> list[str]:
@@ -81,7 +86,7 @@ def render(
         from playwright.sync_api import sync_playwright
     except ImportError:
         print("ERROR: playwright not installed.", file=sys.stderr)
-        print("Run: cd .claude/skills/cangjie/references/excalidraw && uv sync && uv run playwright install chromium", file=sys.stderr)
+        print(f"Run: cd {SCRIPT_DIR} && uv sync && uv run playwright install chromium", file=sys.stderr)
         sys.exit(1)
 
     # Read and validate
@@ -115,23 +120,15 @@ def render(
         output_path = excalidraw_path.with_suffix(".png")
 
     # Template path (same directory as this script)
-    template_path = Path(__file__).parent / "render_template.html"
+    template_path = SCRIPT_DIR / "render_template.html"
     if not template_path.exists():
         print(f"ERROR: Template not found at {template_path}", file=sys.stderr)
         sys.exit(1)
 
-    # Try HTTP server first (for ESM support), fall back to file://
-    template_url = None
-    for port in (8765, 8766, 8767, 8768, 8769):
-        import urllib.request
-        try:
-            urllib.request.urlopen(f"http://127.0.0.1:{port}/render_template.html", timeout=1)
-            template_url = f"http://127.0.0.1:{port}/render_template.html"
-            break
-        except Exception:
-            continue
-    if template_url is None:
-        template_url = template_path.as_uri()
+    # Load the local template directly via file:// URI.
+    # No local HTTP server probing: anything listening on those ports would be
+    # untrusted and could serve arbitrary content into the render page.
+    template_url = template_path.as_uri()
 
     with sync_playwright() as p:
         try:
@@ -139,7 +136,7 @@ def render(
         except Exception as e:
             if "Executable doesn't exist" in str(e) or "browserType.launch" in str(e):
                 print("ERROR: Chromium not installed for Playwright.", file=sys.stderr)
-                print("Run: cd .claude/skills/cangjie/references/excalidraw && uv run playwright install chromium", file=sys.stderr)
+                print(f"Run: cd {SCRIPT_DIR} && uv run playwright install chromium", file=sys.stderr)
                 sys.exit(1)
             raise
 

@@ -1,10 +1,10 @@
 ---
 name: cangjie
-description: "内容转化与精炼技能，四种模式：(1) 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档；(2) 将文章/想法转化为文生视频分镜脚本；(3) 去除文本的 AI 写作痕迹；(4) 创建 Excalidraw 可视化图表。触发：总结/会议纪要/论文总结/PRD/BP/TRD/文献综述/视频脚本/分镜/去AI痕迹/画图/流程图/架构图/diagram/visualize"
+description: "内容转化与精炼技能，四种模式：(1) 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档；(2) 将文章/想法转化为文生视频分镜脚本；(3) 去除文本的 AI 写作痕迹；(4) 创建 Excalidraw 可视化图表。触发：总结/会议纪要/论文总结/PRD/BP/TRD/文献综述/视频脚本/分镜/去AI痕迹/画图(excalidraw)/流程图(excalidraw)/架构图(excalidraw)/diagram/visualize。注意：AI 画图/插画生成用 wudaozi；产品 UI 设计用 maliang"
 version: 0.3.1
 source: local-skill
 triggers:
-  # 模式 1：内容总结
+  # 模式 1：内容总结（不含工具名——转录/ASR 属实现细节，经 description 路由即可）
   - 总结
   - 内容总结
   - 会议纪要
@@ -14,22 +14,16 @@ triggers:
   - 播客总结
   - 视频总结
   - 论文总结
-  - 转录
   - 转录稿
-  - qwen-asr
-  - faster-whisper
-  - ffmpeg
   - PRD
   - 产品需求文档
   - 商业计划书
-  - BP
   - 技术需求文档
   - TRD
   - 架构设计
   - 竞品分析报告
   - 市场调研
   - 文献综述
-  - chub
   # 模式 2：视频脚本生成
   - 视频脚本
   - 分镜
@@ -46,16 +40,16 @@ triggers:
   - 去除AI写作痕迹
   - 去除AI味
   - humanize
-  # 模式 4：画图
-  - 画图
-  - 流程图
-  - 架构图
-  - 示意图
-  - 图解
-  - 绘图
+  # 模式 4：Excalidraw 图表（带限定词，避免与 wudaozi 的 AI 画图、interface-design 的 UI 设计冲突）
+  - excalidraw
+  - 画图(excalidraw)
+  - 流程图(excalidraw)
+  - 架构图(excalidraw)
+  - 示意图(excalidraw)
+  - 图解(excalidraw)
+  - 绘图(excalidraw)
   - diagram
   - visualize
-  - excalidraw
 requires:
   python: ">=3.8"
   pip: [faster-whisper, qwen-asr, librosa, numpy, torch]
@@ -70,7 +64,7 @@ requires:
 | **模式 1：内容总结**（默认） | 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档 | 总结 / 会议纪要 / 论文总结 / PRD / BP / TRD | [modes/summarization.md](modes/summarization.md) |
 | **模式 2：视频脚本** | 将文章/想法转化为逐镜头分镜脚本，用于文生视频模型 | 视频脚本 / 分镜 / video prompt / text-to-video | [modes/video-script.md](modes/video-script.md) |
 | **模式 3：去 AI 痕迹** | 去除文本的 AI 写作痕迹 | 去AI痕迹 / 去AI味 / humanize | [modes/humanization.md](modes/humanization.md) |
-| **模式 4：画图** | 创建 `.excalidraw` JSON 可视化图表，用图形论证 | 画图 / 流程图 / 架构图 / diagram / visualize | [modes/diagram.md](modes/diagram.md) |
+| **模式 4：画图** | 创建 `.excalidraw` JSON 可视化图表，用图形论证 | excalidraw / 画图(excalidraw) / 流程图(excalidraw) / 架构图(excalidraw) / diagram / visualize | [modes/diagram.md](modes/diagram.md) |
 
 **模式路由**：扫描上方触发信号。当用户想要*整理/总结*内容为结构化文档时，走模式 1；想*把内容变成视频*时，走模式 2；想*润色/去 AI 味*已有文本时，走模式 3；想*将概念可视化为图表*时，走模式 4。意图不明确时，列出候选模式让用户选择——不要猜测。
 
@@ -98,8 +92,8 @@ requires:
 # 一键流水线：视频 → 提取音频 → 转录 → 输出
 python3 scripts/cangjie.py pipeline input.mp4 --engine faster-whisper
 
-# 单步执行
-python3 scripts/cangjie.py extract-audio input.mp4 --keep-audio
+# 单步执行（音频文件默认保留，--cleanup 显式清理）
+python3 scripts/cangjie.py extract-audio input.mp4
 python3 scripts/cangjie.py transcribe-diarize input.wav output.txt --num-speakers 3 --language zh
 python3 scripts/cangjie.py transcribe-qwen input.wav output.txt
 ```

@@ -86,10 +86,11 @@
 JSON 单看无法判断图的好坏。生成/编辑后**必须**渲染成 PNG 并用 Read 工具实际查看，在循环中修复直到通过：
 
 ```bash
+# {SKILL_DIR} 为本 skill 的安装目录（如 ~/.zcode/skills/cangjie 或 .claude/skills/cangjie，以实际环境为准），渲染脚本自身用 __file__ 定位，无硬编码路径
 # 首次设置（仅一次）
-cd .claude/skills/cangjie/references/excalidraw && uv sync && uv run playwright install chromium
+cd {SKILL_DIR}/references/excalidraw && uv sync && uv run playwright install chromium
 # 渲染
-cd .claude/skills/cangjie/references/excalidraw && uv run python render_excalidraw.py <path-to-file.excalidraw>
+cd {SKILL_DIR}/references/excalidraw && uv run python render_excalidraw.py <path-to-file.excalidraw>
 # 输出 PNG 在 .excalidraw 同目录，然后用 Read 工具查看
 ```
 
@@ -123,6 +124,7 @@ cd .claude/skills/cangjie/references/excalidraw && uv run python render_excalidr
 | `render_excalidraw.py` 崩溃 | Playwright/Chromium 未装 → `uv sync && uv run playwright install chromium` 后重试 |
 | 渲染超时(>30s) | 元素过多/复杂 SVG → 减到核心元素重试 |
 | 渲染出空白 PNG | JSON 结构无效 → 先 `jq . file.excalidraw` 校验，修复结构错误重渲染 |
+| 渲染空白/报 CDN 错（esm.sh 导入失败） | 检查网络与 esm.sh 可达性；离线环境无法完成渲染验证，显性告知用户而非假装成功 |
 | 渲染 3 次重试仍失败 | 直接交付 `.excalidraw` JSON，告诉用户去 [excalidraw.com](https://excalidraw.com) 打开 |
 | JSON 截断（输出上限） | 文件不以 `}` 结尾 → 立即切分段模式，从最后完整区域续 |
 | 元素引用无效 | `boundElements` ID 在 elements 中找不到 → 移除悬空引用，生成目标元素后重新绑定 |

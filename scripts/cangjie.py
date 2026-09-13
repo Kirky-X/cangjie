@@ -10,10 +10,12 @@ Subcommands:
     pipeline             One-shot: extract audio from video → transcribe → output transcript
 
 Typical usage:
-    python3 cangjie.py extract-audio input.mp4 --keep-audio
+    python3 cangjie.py extract-audio input.mp4
     python3 cangjie.py transcribe-diarize input.wav output.txt --num-speakers 3
     python3 cangjie.py transcribe-qwen input.wav output.txt
     python3 cangjie.py pipeline input.mp4 --engine faster-whisper --num-speakers 3
+
+Audio files are kept by default; pass --cleanup to explicitly opt in to deletion.
 """
 
 import argparse
@@ -55,11 +57,11 @@ def cmd_extract_audio(args) -> int:
 
     _validate_video(args.video_path)
     output = _extract_audio.extract_audio(args.video_path, args.audio_output)
-    if args.keep_audio:
-        print(output)
-    else:
-        print(f"{output} (temp wav cleaned up; use --keep-audio to retain)")
+    if args.cleanup:
+        print(f"{output} (wav cleaned up via --cleanup)")
         Path(output).unlink(missing_ok=True)
+    else:
+        print(output)
     return 0
 
 
@@ -115,10 +117,10 @@ def cmd_pipeline(args) -> int:
             print(f"Error: Unknown engine '{args.engine}'", file=sys.stderr)
             return 1
     finally:
-        # Clean up wav unless --keep-audio
-        if not args.keep_audio:
+        # Keep the intermediate wav by default; delete only on explicit --cleanup
+        if args.cleanup:
             Path(extracted).unlink(missing_ok=True)
-            print(f"Cleaned up temporary wav: {extracted}")
+            print(f"Cleaned up intermediate wav: {extracted}")
 
     return 0
 
@@ -130,10 +132,11 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "Subcommand examples:\n"
-            "  cangjie.py extract-audio input.mp4 --keep-audio\n"
+            "  cangjie.py extract-audio input.mp4\n"
             "  cangjie.py transcribe-diarize input.wav out.txt --num-speakers 3\n"
             "  cangjie.py transcribe-qwen input.wav out.txt\n"
             "  cangjie.py pipeline input.mp4 --engine faster-whisper\n"
+            "Audio files are kept by default; pass --cleanup to delete them.\n"
         ),
     )
     sub = parser.add_subparsers(dest="command", required=True, metavar="<command>")
@@ -147,9 +150,9 @@ def build_parser() -> argparse.ArgumentParser:
         "audio_output", nargs="?", default=None, help="Output wav path (optional)"
     )
     p_extract.add_argument(
-        "--keep-audio",
+        "--cleanup",
         action="store_true",
-        help="Keep extracted wav (default: cleaned up before exit to avoid disk buildup)",
+        help="Delete the extracted wav before exit (default: keep the file; deletion is explicit opt-in)",
     )
     p_extract.set_defaults(func=cmd_extract_audio)
 
@@ -199,9 +202,9 @@ def build_parser() -> argparse.ArgumentParser:
         help='Language code for faster-whisper (default: zh). Use "auto" for auto-detection.',
     )
     p_pipe.add_argument(
-        "--keep-audio",
+        "--cleanup",
         action="store_true",
-        help="Keep intermediate wav file (default: cleaned up after transcription)",
+        help="Delete the intermediate wav after transcription (default: keep the file)",
     )
     p_pipe.set_defaults(func=cmd_pipeline)
 

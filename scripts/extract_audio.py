@@ -4,14 +4,14 @@ Video-to-audio extraction script
 Uses ffmpeg to extract audio track from video files
 
 Usage:
-    python3 extract_audio.py <video_path> [audio_output_path] [--keep-audio]
+    python3 extract_audio.py <video_path> [audio_output_path] [--cleanup]
 
 Parameters:
     video_path: Video file path (supports mp4, mkv, avi, mov, webm, etc.)
     audio_output_path: Output audio path (optional, defaults to .wav file in same directory as video)
 
 Options:
-    --keep-audio: Keep extracted .wav file (default: deleted to avoid disk buildup, 1h audio ≈ 150MB)
+    --cleanup: Delete the extracted .wav before exit (default: keep the file; deletion is explicit opt-in)
 """
 
 import argparse
@@ -79,7 +79,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Extract 16kHz mono wav from video (ffmpeg)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="Default: cleans up generated .wav before exit to avoid disk buildup; use --keep-audio to retain.",
+        epilog="Default: keeps the extracted .wav; pass --cleanup to delete it before exit (explicit opt-in).",
     )
     parser.add_argument("video_path", help="Video file path")
     parser.add_argument(
@@ -89,19 +89,19 @@ def main():
         help="Output audio path (optional, defaults to .wav in same directory as video)",
     )
     parser.add_argument(
-        "--keep-audio",
+        "--cleanup",
         action="store_true",
-        help="Keep extracted .wav file (default: deleted before exit to save disk space)",
+        help="Delete the extracted .wav before exit (default: keep the file)",
     )
     args = parser.parse_args()
 
     try:
         output = extract_audio(args.video_path, args.audio_output)
-        if args.keep_audio:
-            print(output)
-        else:
-            print(f"{output} (temp wav cleaned up; use --keep-audio to retain)")
+        if args.cleanup:
+            print(f"{output} (wav cleaned up via --cleanup)")
             Path(output).unlink(missing_ok=True)
+        else:
+            print(output)
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)

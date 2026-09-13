@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """
-Transcription using faster-whisper with simple speaker diarization based on audio energy and speaker change detection
+Transcription using faster-whisper with approximate speaker segmentation based on
+audio energy change points.
+
+IMPORTANT: This is NOT true speaker diarization. "SpeakerN" labels are derived from
+energy-change heuristics and may misattribute utterances. Output files carry an
+explicit disclaimer; downstream summaries must not present speaker attribution as fact.
 """
 
 import os
@@ -83,9 +88,13 @@ def transcribe_with_diarization(
     print(f"Loading faster-whisper model...")
     import torch
 
+    # Pre-initialize before try so the except branch never hits an undefined `device`
+    device = "cpu"
+    compute_type = "int8"
     try:
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        compute_type = "float16" if device == "cuda" else "int8"
+        if torch.cuda.is_available():
+            device = "cuda"
+            compute_type = "float16"
         print(f"Using device={device}, compute_type={compute_type}")
         model = WhisperModel("large-v3", device=device, compute_type=compute_type)
     except Exception as e:
@@ -117,7 +126,9 @@ def transcribe_with_diarization(
     print(f"Analyzing audio energy changes...")
     change_points = detect_speaker_changes(audio_path)
 
-    # Assign speakers based on time and energy changes
+    # Assign speakers based on time and energy changes.
+    # If no energy change points were detected, keep a single speaker label —
+    # never rotate Speaker1/2/3 for what is likely a single-speaker recording.
     current_speaker = 1
     last_change_time = 0
     speaker_segments = []
@@ -129,11 +140,12 @@ def transcribe_with_diarization(
         text = segment.text.strip()
 
         # Check for energy change points before this segment starts
-        for cp in change_points:
-            if cp > last_change_time and cp < start:
-                current_speaker = (current_speaker % num_speakers) + 1
-                last_change_time = cp
-                break
+        if change_points:
+            for cp in change_points:
+                if cp > last_change_time and cp < start:
+                    current_speaker = (current_speaker % num_speakers) + 1
+                    last_change_time = cp
+                    break
 
         speaker_segments.append(
             {
@@ -156,12 +168,22 @@ def transcribe_with_diarization(
 
     print()  # newline after progress
 
+    # Mandatory disclaimer: labels come from energy-based segmentation, not voiceprint ID
+    disclaimer = (
+        "说话人标签为基于能量变化的近似分段，非真实声纹识别，仅供对话轮次参考"
+        "（检测到 " + str(len(change_points)) + " 个能量突变点），"
+        "不应作为说话人归属的确定性结论。"
+    )
+    if not change_points:
+        print("No energy change points detected: keeping a single speaker label (no rotation).")
+
     # Save results
     print(f"Saving results to {output_path}...")
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(f"Audio file: {audio_path}\n")
         f.write(f"Language: {detected_lang}\n")
         f.write(f"Total duration: {format_timestamp(info.duration)}\n")
+        f.write(f"Disclaimer: {disclaimer}\n")
         f.write("=" * 50 + "\n\n")
 
         for seg in speaker_segments:
@@ -170,10 +192,23 @@ def transcribe_with_diarization(
             )
             f.write(f"{seg['text']}\n\n")
 
-    # Save JSON format — use Path.with_suffix for robust path derivation
+    # Save JSON format — use Path.with_suffix for robust path derivation.
+    # Wrapped in an object so the disclaimer travels with the data (was a bare array).
     json_path = str(Path(output_path).with_suffix(".json"))
     with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(speaker_segments, f, ensure_ascii=False, indent=2)
+        json.dump(
+            {
+                "disclaimer": disclaimer,
+                "speaker_labels_are_approximate": True,
+                "audio_file": audio_path,
+                "language": detected_lang,
+                "total_duration": format_timestamp(info.duration),
+                "segments": speaker_segments,
+            },
+            f,
+            ensure_ascii=False,
+            indent=2,
+        )
 
     print(f"Transcription complete! {len(speaker_segments)} segments total")
     return speaker_segments

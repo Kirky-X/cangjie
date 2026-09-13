@@ -46,7 +46,7 @@ references/
 | ---------- | ---------------------------------------- | -------------------------------- |
 | `learning` | 课程、讲座、书籍学习、教程整理           | `learning/course-notes`          |
 | `media`    | 播客、节目、直播、公开视频回顾           | `media/podcast-summary`          |
-| `meeting`  | 会议、讨论、访谈、1:1、工作坊            | `meeting/discussion-minutes`     |
+| `meeting`  | 会议、讨论、访谈、1:1、工作坊            | `meeting/decision-minutes`       |
 | `business` | 周报、月报、项目状态、管理汇报           | `business/project-status-report` |
 | `analysis` | 研究型归纳、论文阅读、主题综合、决策支持 | `analysis/research-brief`        |
 | `product`  | 产品文档、商业计划、技术设计、交付运营   | `product/prd`                    |

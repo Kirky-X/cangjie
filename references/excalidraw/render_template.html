@@ -13,7 +13,9 @@
   <div id="root"></div>
 
   <script type="module">
-    import { exportToSvg } from "https://esm.sh/@excalidraw/excalidraw?bundle";
+    // Pinned version: unpinned imports resolve to whatever esm.sh serves that day,
+    // which can break rendering silently. Requires network access to esm.sh.
+    import { exportToSvg } from "https://esm.sh/@excalidraw/excalidraw@0.17.6?bundle";
 
     window.renderDiagram = async function(jsonData) {
       try {

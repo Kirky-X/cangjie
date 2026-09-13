@@ -7,6 +7,6 @@ torch>=2.0.0
 faster-whisper>=1.0.0
 librosa>=0.10.0
 numpy>=1.24.0
-
-# qwen-asr (SenseVoice/Paraformer): install per official repo instructions, PyPI availability unconfirmed
-# See SKILL.md frontmatter requires.pip for details
+# qwen-asr (SenseVoice/Paraformer): published on PyPI, latest 0.0.6 (verified 2026-09)
+# Used by the transcribe-qwen subcommand as the single-speaker ASR alternative
+qwen-asr>=0.0.6
