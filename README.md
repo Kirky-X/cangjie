@@ -1,187 +1,112 @@
-# Cangjie (仓颉) — Content Transformation & Refinement Skill
+# Cangjie · 仓颉 — 内容转化与精炼技能
+
+> 四种内容转化模式：总结成结构化笔记/产品文档、生成文生视频分镜脚本、去除 AI 写作痕迹、创建 Excalidraw 图表。按用户意图路由，意图不明时列出候选模式让用户选择，不猜测。
 
 [![GitHub Release](https://img.shields.io/github/v/release/Kirky-X/cangjie?style=flat-square)](https://github.com/Kirky-X/cangjie/releases)
-[![GitHub License](https://img.shields.io/github/license/Kirky-X/cangjie?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/github/license/Kirky-X/cangjie?style=flat-square)](LICENSE)
 
-Cangjie is an AI agent skill with **four content transformation modes**, selected by user intent:
+中文 | [English](README_EN.md)
 
-1. **Summarization (default)** — Organizes **text, audio, video, transcripts, and papers** into archivable structured documents: learning notes, book summaries, podcast recaps, meeting minutes, project reports, research analyses, paper reading notes, and product documents like PRD / TRD / BP / competitive analysis / literature review.
-2. **Video Script** — Transforms articles/news/blogs/policy docs or a one-line idea into a ready-to-use shot-by-shot storyboard for text-to-video models (LTX-2 prompt spec).
-3. **Humanization** — Removes AI writing traces from text, making it sound natural and human.
-4. **Diagram** — Creates `.excalidraw` JSON diagrams that argue visually (workflows, architectures, concepts), rendered to PNG.
+## ✨ 功能特性
 
-Core principle (Mode 1): **Identify user intent first, then select a template, then extract high-density information**. User-specified templates always take priority; when no "brief/ultra-short" version is requested, the default output is a `standard-detailed` version rather than just an outline. See [SKILL.md](SKILL.md) for the full routing table, mode selection, and workflow documentation.
+**四模式路由**（触发信号见 [SKILL.md](SKILL.md)）：
 
-## Features
+| 模式 | 功能 | 模式文件 |
+| ---- | ---- | -------- |
+| 1 · 内容总结（默认） | 文本/音频/视频/转录稿/论文 → 结构化笔记或 PRD/TRD/BP/竞品分析/文献综述等产品文档 | [modes/summarization.md](modes/summarization.md) |
+| 2 · 视频脚本 | 文章/想法 → 逐镜头分镜脚本（LTX-2 文生视频提示词规范） | [modes/video-script.md](modes/video-script.md) |
+| 3 · 去 AI 痕迹 | 去除文本 AI 写作痕迹 | [modes/humanization.md](modes/humanization.md) |
+| 4 · 画图 | `.excalidraw` JSON 图表（流程/架构/概念），渲染为 PNG | [modes/diagram.md](modes/diagram.md) |
 
-### 6 Template Families
+**55 个模板注册表**（`references/registry.yaml`，6 族）：product 26 / analysis 9 / learning 6 / meeting 5 / business 5 / media 4。每个模板定义 required_sections / optional_sections / detection_signals / fallback（生成后 required_sections 无法填充时的回落模板）。自动匹配多命中时按信号命中数列出候选让用户选；无命中回落默认族。
 
-| Family     | Representative Templates                                                                          | Purpose                         |
-| ---------- | ------------------------------------------------------------------------------------------------- | ------------------------------- |
-| `learning` | `course-notes` / `nonfiction-book-summary` / `fiction-book-summary`                              | Learning, review, knowledge distillation |
-| `media`    | `podcast-summary` / `video-program-summary`                                                       | Program recaps, highlight distribution |
-| `meeting`  | `decision-minutes` / `interview-record`                                                           | Minutes, interviews, co-creation records |
-| `business` | `project-status-report` / `executive-brief`                                                       | Reporting, risk, action tracking |
-| `analysis` | `research-brief` / `decision-memo` / `paper-summary` (with theoretical/experimental/systems/survey subtypes) | Research synthesis, decision support, paper reading |
-| `product`  | `prd` / `trd` / `business-plan` / `competitive-analysis` / `literature-review`                    | Product docs, business plans, technical design |
+**质量护栏**：所有总结必须落盘 `.md` 文件，禁止仅对话展示；书籍默认 1 个全书综述 + N 个独立章节文件（全书文件须有全书级提炼，不是章节拼接）；缺材料明确标注"材料未提供/无法确认"，禁止硬凑；章节 >12 自动启用分层压缩。
 
-### Multi-Modal Input Processing
+**详略三级**：`brief`（结论为主）/ `standard-detailed`（默认，章节齐全+事实证据充分）/ `deep-dive`（加深层级与证据密度）。
 
-- **Text**: Directly identify intent and structure; long books auto-detect "full book / section / chapter" hierarchy
-- **Audio**: Auto-detect single/multi speaker; meetings and interviews use diarization transcription with speaker identification
-- **Video**: Extract audio first then transcribe; visual chapters added for screen/PPT/demo-dependent content
-- **Paper**: Auto-detect type (theoretical / experimental / systems / survey) and match sub-template
+**转写免责**：`transcribe-diarize` 的 `SpeakerN` 标签是**基于能量变化的近似分段**（非声纹识别），输出文件头部自带免责声明；下游纪要须写"近似归属/同一发言段"，不得把说话人归属当作事实。
 
-### Output Quality Guardrails
-
-- **Mandatory file output**: All summary outputs must be written to `.md` files; display-only in conversation is prohibited
-- **Books default to multi-file**: 1 full-book overview + N independent chapter files; full-book file must have book-level distillation (not chapter summary concatenation)
-- **Controllable density**: `brief` / `standard-detailed` (default) / `deep-dive` three levels
-- **No fabrication**: Missing information explicitly marked as "material not provided / cannot confirm"; no assumptions
-- **Hierarchical compression**: Chapters >12 auto-enable `hierarchical-compression`; >20 weighted by core chapters
-
-## Installation
-
-### Option 1: Install via `skills` package (recommended)
-
-Requires [Node.js](https://nodejs.org/) 18+ and the `skills` npm package (v1.5.12+).
+## 📦 安装
 
 ```bash
-# Install to Claude Code
-npx skills add https://github.com/Kirky-X/cangjie.git --agent claude-code -y
+# 方式一：从本仓库同步到 agent 技能目录（~/.zcode/skills 与 ~/.claude/skills）
+bash scripts/sync-skills.sh cangjie
 
-# Equivalent shorthand (owner/repo)
-npx skills add Kirky-X/cangjie --agent claude-code -y
-
-# Install to Trae
-npx skills add Kirky-X/cangjie --agent trae -y
-
-# List all discoverable skills in the repo (without installing)
-npx skills add https://github.com/Kirky-X/cangjie.git --list
+# 方式二：手动复制
+cp -r cangjie ~/.zcode/skills/cangjie
 ```
 
-After installation, skill files are located in the corresponding agent's skills directory (e.g., `.claude/skills/cangjie/`).
-
-### Option 2: Traditional git clone
+依赖 `Python >= 3.8`。使用音频转写前需安装依赖（首跑一次）：
 
 ```bash
-git clone https://github.com/Kirky-X/cangjie.git
-# Symlink or copy SKILL.md + references/ + scripts/ to agent skills directory
-# Example skills directory paths for various runtimes (pick one):
-#   Claude Code:  ~/.claude/skills/cangjie/
-#   Trae:         ~/.trae-cn/skills/cangjie/
-#   Cursor:       ~/.cursor/skills/cangjie/
-#   Codex:        ~/.codex/skills/cangjie/
+pip install -r requirements.txt   # torch / faster-whisper / librosa / numpy / qwen-asr
+apt install ffmpeg                # 视频提取音频
 ```
 
-## Usage Examples
+图表渲染（模式 4）另需 Playwright：`cd references/excalidraw && uv sync && uv run playwright install chromium`。GPU 检查：`python -c "import torch; print('CUDA:', torch.cuda.is_available())"`；无 GPU 时 faster-whisper 自动回落 cpu + int8。
 
-Cangjie is loaded as a skill by the agent and triggered via natural language intent, no explicit commands needed. Trigger words by mode:
-
-- **Mode 1 (Summarization)**: "summarize", "content summary", "meeting minutes", "report summary", "learning notes", "podcast summary", "paper summary", "transcription", "PRD", "BP", "TRD", "competitive analysis", "market research", "literature review"
-- **Mode 2 (Video Script)**: "视频脚本", "分镜", "分镜头", "拍成短片", "video prompt", "text-to-video", "AI视频生成"
-- **Mode 3 (Humanization)**: "humanize", "人性化", "去AI痕迹", "去AI味", "去除AI写作痕迹"
-- **Mode 4 (Diagram)**: "画图", "流程图", "架构图", "示意图", "图解", "diagram", "visualize", "excalidraw"
-
-### Course Video → Learning Notes
-
-```text
-Summarize this Python beginner course video into learning notes
-```
-
-Recommended template: `learning/course-notes` (for hands-on content, add `learning/tutorial-playbook`)
-
-### Non-Fiction Book → Full Book + Chapter Files
-
-```text
-Summarize this business book, give me a chapter-by-chapter summary plus a full-book core argument summary
-```
-
-Recommended template: `learning/nonfiction-book-summary` (default output: 1 full-book overview + N independent chapter files)
-
-### Project Meeting → Decision Minutes
-
-```text
-Generate minutes from this project meeting recording, including decisions and action items
-```
-
-Recommended template: `meeting/decision-minutes`
-
-### Paper Reading → Auto-Subtype Matching
-
-```text
-Summarize this paper, tell me the research topic, main contributions, key formulas, and limitations
-```
-
-Recommended template: `analysis/paper-summary`, auto-subdivides based on content signals:
-- Theorems/proofs/formula derivations → `analysis/theoretical-paper-summary`
-- Datasets/metrics/experimental comparisons → `analysis/experimental-paper-summary`
-- System architecture/throughput/latency → `analysis/systems-paper-summary`
-- Literature survey/taxonomy → `analysis/survey-paper-summary`
-
-### Product Requirements Document
-
-```text
-Help me write a PRD including user journey, feature details, acceptance criteria, and non-functional requirements
-```
-
-Recommended template: `product/prd`
-
-## Toolchain
-
-| Tool             | Install Command                                      | Purpose                |
-| ---------------- | ---------------------------------------------------- | ---------------------- |
-| `ffmpeg`         | `apt install ffmpeg`                                 | Extract audio from video |
-| `faster-whisper` | `pip install faster-whisper librosa torch`           | ASR transcription (primary) |
-| `qwen-asr`       | `pip install qwen-asr torch`                         | ASR transcription (alternative) |
-| `chub`           | See [`references/guides/api-docs.md`](references/guides/api-docs.md) | Fetch latest third-party API docs |
-
-GPU check:
+## 🚀 快速开始
 
 ```bash
-python -c "import torch; print('CUDA:', torch.cuda.is_available())"
+# 一键流水线：视频 → 提取音频 → 转录 → 输出
+python3 scripts/cangjie.py pipeline input.mp4 --engine faster-whisper
+
+# 单步执行；音频默认保留，--cleanup 显式清理（反向开关）
+python3 scripts/cangjie.py extract-audio input.mp4
+python3 scripts/cangjie.py transcribe-diarize input.wav output.txt --num-speakers 3 --language zh
+python3 scripts/cangjie.py transcribe-qwen input.wav output.txt
+
+# 渲染 Excalidraw JSON 为 PNG（默认 2x 缩放）
+python3 references/excalidraw/render_excalidraw.py diagram.excalidraw
 ```
 
-### Scripts
+自然语言触发示例：`把这篇论文总结成阅读笔记`、`把这段会议录音生成决策纪要`、`把这篇文章改成视频分镜`、`去掉这段文字的 AI 味`、`画一张(excalidraw)架构图`。
 
-| Script                              | Purpose                          |
-| ----------------------------------- | -------------------------------- |
-| `scripts/extract_audio.py`        | Extract audio from video         |
-| `scripts/transcribe_with_diarization.py`  | Single-speaker course/lecture transcription |
-| `scripts/transcribe_diarize_fw.py`        | Multi-speaker meeting/interview transcription (with speaker diarization) |
+```mermaid
+flowchart LR
+    A[视频/音频输入] --> B[extract-audio<br>ffmpeg 16kHz mono wav]
+    B --> C{转录引擎}
+    C -->|多说话人| D[transcribe-diarize<br>faster-whisper + 能量近似分段]
+    C -->|中文单轨| E[transcribe-qwen<br>qwen-asr]
+    D --> F[转录稿 .txt<br>头部含免责声明]
+    E --> F
+    F --> G[模式 1 总结<br>55 模板注册表匹配]
+```
 
-## Directory Structure
+## ✅ 测试与验证
+
+本 skill 无自动化测试套件，验证以真实命令实跑为准：
+
+- `python3 scripts/cangjie.py --help`：确认 4 个子命令（extract-audio / transcribe-diarize / transcribe-qwen / pipeline）及 `--cleanup` 反向开关说明正常输出
+- `python3 references/excalidraw/render_excalidraw.py --help`：渲染器参数（--output/--scale/--width）正常
+- 模板数实测：解析 `references/registry.yaml` 得 55 个模板（product 26 / analysis 9 / learning 6 / meeting 5 / business 5 / media 4）
+- 渲染链路依赖 esm.sh 钉版 `@excalidraw/excalidraw@0.17.6`（见 `references/excalidraw/render_template.html`），避免未钉版漂移导致静默渲染失败；需网络可达 esm.sh
+- 转写/渲染全流程需 ffmpeg + ASR 模型 + Chromium，本机未装时上述命令按依赖缺失报错即符合预期
+
+## 📁 目录结构
 
 ```
 cangjie/
-├── SKILL.md                  # Main entry: routing table / workflow / output rules
+├── SKILL.md                      # 入口：模式路由表 + 共享资源索引
+├── requirements.txt              # ASR 依赖（torch/faster-whisper/librosa/qwen-asr）
+├── modes/                        # 4 个模式工作流（summarization/video-script/humanization/diagram）
 ├── references/
-│   ├── registry.yaml         # Template registry
-│   ├── taxonomy.yaml         # Template taxonomy
-│   ├── families/*.yaml       # 6 template family definitions
-│   ├── guides/               # Template selection / authoring / output skeleton guides
-│   └── templates-index.md    # Template index (points to ../templates/)
-├── templates/                # All document templates (Product / Strategy / Delivery / Operations / Technology / General)
-└── scripts/                  # ASR / audio extraction scripts
+│   ├── registry.yaml             # 55 模板注册表（含 fallback）
+│   ├── taxonomy.yaml             # 模板分类体系
+│   ├── families/*.yaml           # 6 模板族定义
+│   ├── guides/                   # 模板选择/输出骨架/详略策略/视频提示词规范等
+│   └── excalidraw/               # 渲染脚本 + 调色板 + JSON 结构（esm.sh 钉 0.17.6）
+├── templates/                    # 31 个文档模板
+└── scripts/                      # cangjie.py 统一 CLI + 转录脚本
 ```
 
-## Output Density Strategy
+## 🔮 边界
 
-| Mode                | Use Case                         | Content Coverage                             |
-| ------------------- | -------------------------------- | -------------------------------------------- |
-| `brief`             | User explicitly requests quick-read version | Conclusions only + few key points + minimal action items |
-| `standard-detailed` | **Default**                      | All required sections + sufficient facts and evidence |
-| `deep-dive`         | User requests "detailed breakdown / complete notes / comprehensive" | Increased section-level hierarchy and evidence density (including formulas/experiments) |
+- AI 画图/插画生成用 **wudaozi**，产品 UI 设计用 **maliang**——本 skill 的画图仅指 Excalidraw 图表
+- 转写说话人标签为能量近似分段，不承诺声纹级身份识别
+- 不做无材料硬凑：required_sections 缺料时标注而非虚构；不把章节拼接当全书综述、不把讨论纪要伪装成决策纪要
+- 不凭训练记忆写第三方 API 调用代码，须先用 `chub` 获取最新文档
 
-## Anti-Patterns (Do Not Do)
+## 📄 License 与归属
 
-- Do not treat "section header + one sentence" as a "standard detailed summary"
-- Do not treat "chapter-by-chapter summary concatenation" as a "full book summary" (full book file must have book-level distillation)
-- Do not write third-party API call code from training memory (must use `chub get` first)
-- Do not disguise "discussion minutes" as "decision minutes" (do not fabricate responsible persons when ACTION items are missing)
-- Do not disguise excerpted input as complete full-book reading results
-- Do not force-fill content for short chapters (should mark "material not provided / cannot confirm")
-
-## License
-
-MIT
+[MIT](LICENSE) © Kirky-X。安装/同步与退役治理由仓库根目录 `scripts/sync-skills.sh` 统一管理。
