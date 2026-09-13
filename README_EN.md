@@ -34,6 +34,8 @@ bash scripts/sync-skills.sh cangjie
 
 # 方式二：手动复制
 cp -r cangjie ~/.zcode/skills/cangjie
+# Option 3: Remote install (GitHub repo)
+npx skills add Kirky-X/cangjie --agent claude-code -y
 ```
 
 Requires `Python >= 3.8`. Install the dependencies before using audio transcription (once, on the first run):
