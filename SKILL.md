@@ -53,6 +53,12 @@ triggers:
 requires:
   python: ">=3.8"
   pip: [faster-whisper, qwen-asr, librosa, numpy, torch]
+license: MIT
+metadata:
+  version: "0.1.0"
+  author: "Kirky-X"
+  repo: "https://github.com/Kirky-X/cangjie"
+  tags: "总结, 会议纪要, 论文总结, PRD, BP, TRD"
 ---
 
 # 内容转化与精炼技能 · 仓颉 (Cangjie)
@@ -78,10 +84,12 @@ requires:
 | 模板分类体系 | `references/taxonomy.yaml` |
 | 模板族定义 | `references/families/*.yaml` |
 | 模板选择指南 | `references/guides/template-selection.md` |
+| 模板编写指南 | `references/guides/template-authoring.md` |
 | 输出骨架 | `references/guides/output-skeletons.md` |
 | 详略策略 | `references/guides/detail-policy.md` |
 | 示例集 | `references/guides/examples.md` |
 | 影视化提示词规范 | `references/guides/video-prompt-guidelines.md` |
+| AI 味模式清单（模式 3 用） | `references/guides/ai-tells-checklist.md` |
 | Excalidraw 调色板 | `references/excalidraw/color-palette.md` |
 | Excalidraw 元素模板 | `references/excalidraw/element-templates.md` |
 | Excalidraw JSON 结构 | `references/excalidraw/json-schema.md` |
