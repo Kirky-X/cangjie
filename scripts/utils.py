@@ -11,7 +11,14 @@ import sys
 def format_timestamp(seconds: float) -> str:
     """Format timestamp as HH:MM:SS"""
     td = timedelta(seconds=seconds)
-    return str(td).split(".")[0]
+    text = str(td).split(".")[0]
+    # str(timedelta) 对 ≥24h 会写成 "1 day, H:MM:SS"，违反 HH:MM:SS 契约；
+    # 折算回总小时数。负数（不应出现）保持原样，不做折算。
+    if "day" in text and not text.startswith("-"):
+        days, _, rest = text.partition(", ")
+        hours = int(days.split(" ", 1)[0]) * 24 + int(rest.partition(":")[0])
+        text = f"{hours}:{rest.partition(':')[2]}"
+    return text
 
 
 def validate_audio_file(audio_path: str) -> Path:
