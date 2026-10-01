@@ -77,8 +77,9 @@ flowchart LR
 
 ## ✅ 测试与验证
 
-本 skill 无自动化测试套件，验证以真实命令实跑为准：
+确定性校验脚本与 CLI 附 pytest 单测（`tests/`）；转写/渲染链路验证以真实命令实跑为准：
 
+- `python3 -m pytest tests/ -q`：脚本层单测（CLI 参数处理 / 转录参数 / 视频脚本校验 / 总结审计 / Excalidraw 校验）
 - `python3 scripts/cangjie.py --help`：确认 4 个子命令（extract-audio / transcribe-diarize / transcribe-qwen / pipeline）及 `--cleanup` 反向开关说明正常输出
 - `python3 references/excalidraw/render_excalidraw.py --help`：渲染器参数（--output/--scale/--width）正常
 - 模板数实测：解析 `references/registry.yaml` 得 55 个模板（product 26 / analysis 9 / learning 6 / meeting 5 / business 5 / media 4）
@@ -99,7 +100,8 @@ cangjie/
 │   ├── guides/                   # 模板选择/输出骨架/详略策略/视频提示词规范等
 │   └── excalidraw/               # 渲染脚本 + 调色板 + JSON 结构（esm.sh 钉 0.17.6）
 ├── templates/                    # 31 个文档模板
-└── scripts/                      # cangjie.py 统一 CLI + 转录脚本
+├── tests/                        # pytest 单测（CLI/转录参数/视频脚本/总结审计/Excalidraw 校验）
+└── scripts/                      # cangjie.py 统一 CLI + 转录脚本 + 模式校验脚本
 ```
 
 ## 🔮 边界

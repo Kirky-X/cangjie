@@ -77,8 +77,9 @@ flowchart LR
 
 ## ✅ Tests & Verification
 
-This skill has no automated test suite; verification relies on actually running real commands:
+The deterministic validators and the CLI ship with pytest unit tests (`tests/`); the transcription/rendering chain is verified by actually running real commands:
 
+- `python3 -m pytest tests/ -q`: script-level unit tests (CLI argument handling / transcription arguments / video-script validation / summary audit / Excalidraw validation)
 - `python3 scripts/cangjie.py --help`: confirm that the 4 subcommands (extract-audio / transcribe-diarize / transcribe-qwen / pipeline) and the `--cleanup` reverse-switch description print correctly
 - `python3 references/excalidraw/render_excalidraw.py --help`: renderer flags (--output/--scale/--width) work correctly
 - Template count measured: parsing `references/registry.yaml` yields 55 templates (product 26 / analysis 9 / learning 6 / meeting 5 / business 5 / media 4)
@@ -99,7 +100,8 @@ cangjie/
 │   ├── guides/                   # 模板选择/输出骨架/详略策略/视频提示词规范等
 │   └── excalidraw/               # 渲染脚本 + 调色板 + JSON 结构（esm.sh 钉 0.17.6）
 ├── templates/                    # 31 个文档模板
-└── scripts/                      # cangjie.py 统一 CLI + 转录脚本
+├── tests/                        # pytest 单测（CLI/转录参数/视频脚本/总结审计/Excalidraw 校验）
+└── scripts/                      # cangjie.py 统一 CLI + 转录脚本 + 模式校验脚本
 ```
 
 ## 🔮 Boundaries

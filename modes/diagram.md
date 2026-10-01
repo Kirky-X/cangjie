@@ -21,8 +21,11 @@
 
 ## 深度评估（先做这个）
 
-- **简单/概念图**：抽象形状 + 标签，适合心智模型、哲学概念（概念本身就是抽象）。
-- **综合/技术图**：具体例子 + 代码片段 + 真实数据，适合真实系统、协议、架构、教学。
+| 维度 | 简单/概念图 | 综合/技术图 |
+| ---- | ---------- | ---------- |
+| 视觉语言 | 抽象形状 + 标签 | 真实数据格式 + 代码片段 + 具体例子 |
+| 适合场景 | 心智模型、哲学概念（概念本身就是抽象） | 真实系统、协议、架构、教学 |
+| 讲解量 | 30 秒能讲完 | 2-3 分钟教学量，值得逐层展开 |
 
 **技术图必须先做 Research Mandate**：查阅真实规范、JSON 格式、事件名/方法名/API 端点，用真实术语而非占位符。差："Protocol" → "Frontend"；好："AG-UI streams events (RUN_STARTED, STATE_DELTA)" → "CopilotKit renders via createA2UIMessageRenderer()"。
 
@@ -36,7 +39,7 @@
 | Step 3 | 确保多样性：每个主要概念用不同视觉模式 | 无两个主要概念共用同一模式 |
 | Step 4 | 构思视觉流动（眼睛怎么扫过图） | **CP2** 用户确认视觉计划 |
 | Step 5 | 生成 JSON（大图分段，见下） | 合法 JSON（能 `jq .`） |
-| Step 6 | 渲染验证（render-view-fix 循环） | 渲染 PNG 通过缺陷检查，**CP4** 用户接受 |
+| Step 6 | 静态校验 → 渲染验证（render-view-fix 循环） | 静态校验零 FAIL，渲染 PNG 通过终检清单，**CP4** 用户接受 |
 
 ## 用户检查点（强制暂停）
 
@@ -47,7 +50,7 @@
 | **CP3 分段交付** | 每个区域（仅大图） | 当前区域渲染的 PNG |
 | **CP4 最终交付** | Step 6 | 最终渲染 PNG |
 
-跳过规则：请求明显简单 → 跳过 CP1；≤3 元素且模式选择明显 → 跳过 CP2；**CP4 始终执行**。
+跳过规则：请求明显简单 → 跳过 CP1；≤3 元素且模式选择明显 → 跳过 CP2；**CP4 始终执行**——图是视觉产物，只有用户看过渲染效果才算交付。
 
 ## 视觉模式库
 
@@ -71,6 +74,20 @@
 - **颜色即信息**：每个语义用途有特定填充/描边对，所有颜色选择来自 [`references/excalidraw/color-palette.md`](references/excalidraw/color-palette.md)——这是颜色唯一真相源，不要凭空造色。
 - **现代美学**：`roughness: 0`（现代/技术，默认）/ `1`（手绘感）；`opacity: 100`（不用透明度做层次）；字号/字重/颜色做层次而非靠盒子。
 
+## 尺寸与留白
+
+**层级靠尺寸锚点表达**：同级元素保持同一尺寸，不同层级用尺寸区分——视觉重量必须与重要性一致：
+
+| 层级 | 尺寸锚点 | 用途 |
+| ---- | ------- | ---- |
+| Hero | 300×150 | 全图最重要的一个元素，视觉锚点 |
+| Primary | 180×90 | 主要概念 |
+| Secondary | 120×60 | 次要概念、支撑细节 |
+| Small | 60×40 | 标记、点缀、小节点 |
+
+- **留白即重要性**：最重要的元素周围留白最多（200px+）——用空间而非颜色或加粗强调核心，留白是层级最安静的信号。
+- **有关系必须有箭头**：位置邻近不表达关系——读者无法从摆放距离区分"相关"和"碰巧挨着"，A 与 B 相关就连箭头。
+
 ## 大图策略（强制分段）
 
 **综合/技术图必须逐区域生成 JSON，禁止一次性输出完整 JSON。** 单次响应有 ~32000 token 输出上限，大图极易超限；即使不超，分段质量也更好。
@@ -81,9 +98,22 @@
 4. 全部区域就位后通读检查跨区域绑定、间距、ID 引用。
 5. 然后进入渲染验证循环。
 
+## 静态校验（强制）
+
+`jq .` 只保证语法合法，管不了结构缺陷。生成/编辑 JSON 后、渲染之前，先跑静态校验脚本（纯标准库，无需 uv 环境）：
+
+```bash
+# {SKILL_DIR} 含义同渲染命令；脚本用 __file__ 定位调色板，任意工作目录可跑
+python3 {SKILL_DIR}/references/excalidraw/validate_excalidraw.py <path-to-file.excalidraw>
+```
+
+- **FAIL 必须修复后才能渲染**：顶层结构非法（type 非 excalidraw、elements 缺失或为空）、重复 id、悬空引用（boundElements / startBinding / endBinding / containerId / frameId）、绑定文字溢出容器、frame 子元素溢出——这些在渲染图上必然可见，脚本拦截比人眼在 PNG 里找可靠。
+- **WARN 结合设计意图判断**：元素重叠（Cloud 模式的重叠椭圆属有意设计，忽略对应告警）、非调色板色值、字号超过 4 种、绑定关系单向缺失（只改了一侧 boundElements / containerId 回指）——可能是有意为之，拿不准就交给渲染视检确认。
+- 大图每追加一个区域就跑一次：悬空引用在边写边绑定时当场暴露，不要攒到最后一起修。
+
 ## 渲染验证（强制）
 
-JSON 单看无法判断图的好坏。生成/编辑后**必须**渲染成 PNG 并用 Read 工具实际查看，在循环中修复直到通过：
+静态校验通过后，渲染成 PNG 并用 Read 工具实际查看——脚本只认结构，图好不好只能看渲染结果。渲染循环是**最终确认**，不是发现结构问题的手段：
 
 ```bash
 # {SKILL_DIR} 为本 skill 的安装目录（如 ~/.zcode/skills/cangjie 或 .claude/skills/cangjie，以实际环境为准），渲染脚本自身用 __file__ 定位，无硬编码路径
@@ -94,7 +124,18 @@ cd {SKILL_DIR}/references/excalidraw && uv run python render_excalidraw.py <path
 # 输出 PNG 在 .excalidraw 同目录，然后用 Read 工具查看
 ```
 
-**循环**：渲染并查看 → 对照原始设计审计（结构是否匹配概念、模式是否如计划、眼睛流动是否正确）→ 检查视觉缺陷（文字被裁切/溢出、元素重叠、箭头穿过元素或落空、标签歧义、间距不均、文字太小、构图失衡）→ 修复 JSON → 重新渲染 → 重复，通常 2-4 轮。不要因为没严重 bug 就停——构图能更好就改。
+**循环**：渲染并查看 → 对照原始设计审计（结构是否匹配概念、模式是否如计划、眼睛流动是否正确）→ 对照下方终检清单逐项核对 → 修复 JSON → 重新渲染 → 重复，通常 2-4 轮。不要因为没严重 bug 就停——构图能更好就改。
+
+**终检清单**（交付前逐项过，全部通过才进 CP4）：
+
+1. 文字无裁切、无溢出
+2. 无意外元素重叠（Cloud 重叠椭圆、徽标压框等有意分层除外）
+3. 箭头不穿过元素、不落空，起落点明确
+4. 标签无歧义
+5. 文字大小可读
+6. 间距均匀，同层元素对齐
+7. 无密度失衡——警惕"一框一图标"的稀疏布局
+8. 构图不空洞也不过挤，最重要的元素周围留白最多
 
 ## 证据构件（技术图）
 
@@ -127,7 +168,7 @@ cd {SKILL_DIR}/references/excalidraw && uv run python render_excalidraw.py <path
 | 渲染空白/报 CDN 错（esm.sh 导入失败） | 检查网络与 esm.sh 可达性；离线环境无法完成渲染验证，显性告知用户而非假装成功 |
 | 渲染 3 次重试仍失败 | 直接交付 `.excalidraw` JSON，告诉用户去 [excalidraw.com](https://excalidraw.com) 打开 |
 | JSON 截断（输出上限） | 文件不以 `}` 结尾 → 立即切分段模式，从最后完整区域续 |
-| 元素引用无效 | `boundElements` ID 在 elements 中找不到 → 移除悬空引用，生成目标元素后重新绑定 |
+| 元素引用无效 | 跑静态校验脚本定位全部悬空引用 → 逐条修复（移除引用或补建目标元素后重新绑定）→ 重跑确认零 FAIL，再继续渲染 |
 | 文件保存 | 默认当前目录 `{topic}-diagram.excalidraw`；用户指定路径则跟随；总是同时保存 `.excalidraw`（源）和 `.png`（预览） |
 
 ## 参考文件
@@ -135,4 +176,5 @@ cd {SKILL_DIR}/references/excalidraw && uv run python render_excalidraw.py <path
 - [`references/excalidraw/color-palette.md`](references/excalidraw/color-palette.md) — 颜色唯一真相源（语义形状色、文字层次色、证据构件色），生成任何图前先读
 - [`references/excalidraw/element-templates.md`](references/excalidraw/element-templates.md) — 每种元素类型（text/line/dot/rectangle/arrow）的可复制 JSON 模板
 - [`references/excalidraw/json-schema.md`](references/excalidraw/json-schema.md) — Excalidraw JSON 结构规范
+- [`references/excalidraw/validate_excalidraw.py`](references/excalidraw/validate_excalidraw.py) — 静态校验脚本（渲染前拦截重复 id/悬空引用/溢出，附美学告警）
 - [`references/excalidraw/render_excalidraw.py`](references/excalidraw/render_excalidraw.py) — PNG 渲染脚本（playwright + chromium）

@@ -1,0 +1,27 @@
+{
+  "skill": "cangjie",
+  "queries": [
+    {"q": "把这份调研访谈记录总结成笔记", "expect": "trigger", "signal": "总结笔记", "mirror": "kueiku"},
+    {"q": "帮我总结这次 code review 会议的纪要", "expect": "trigger", "signal": "会议纪要", "mirror": "diting"},
+    {"q": "把这份会议录音整理成结构化纪要", "expect": "trigger", "signal": "会议纪要", "mirror": "lark"},
+    {"q": "总结一下这篇飞书文档讲了什么", "expect": "trigger", "signal": "文档总结", "mirror": "lark"},
+    {"q": "画一张注册流程的流程图", "expect": "trigger", "signal": "Excalidraw 流程图", "mirror": "maliang"},
+    {"q": "总结这次站会的纪要", "expect": "trigger", "signal": "会议纪要", "mirror": "pua"},
+    {"q": "帮我把这篇论文整理成一份结构化的学习笔记", "expect": "trigger", "signal": "论文总结"},
+    {"q": "这份 PRD 太长了，帮我提炼成一页决策要点", "expect": "trigger", "signal": "PRD 提炼（不点名总结）"},
+    {"q": "把这份 BP 的核心逻辑整理成投资备忘录", "expect": "trigger", "signal": "BP 整理"},
+    {"q": "把这篇文章改编成一个文生视频分镜脚本", "expect": "trigger", "signal": "视频脚本"},
+    {"q": "我想把这段创业经历拍成短视频，帮我写个分镜", "expect": "trigger", "signal": "分镜脚本（口语化）"},
+    {"q": "帮我去除这篇文章的 AI 写作痕迹，让它读起来更自然", "expect": "trigger", "signal": "去AI痕迹"},
+    {"q": "这段文字一股 AI 味，帮我改得像人写的", "expect": "trigger", "signal": "去AI痕迹（不点名）"},
+    {"q": "用 Excalidraw 画一张微服务调用关系的架构图", "expect": "trigger", "signal": "Excalidraw 架构图"},
+    {"q": "帮我把这个审批流程可视化成一张图，评审的时候讲", "expect": "trigger", "signal": "流程可视化（不点名）"},
+    {"q": "AI 画一张赛博朋克风格的插画", "expect": "no", "owner": "wudaozi"},
+    {"q": "生成一张产品宣传图", "expect": "no", "owner": "wudaozi"},
+    {"q": "给这个页面做 UI 设计，出几版风格稿", "expect": "no", "owner": "maliang"},
+    {"q": "帮我 review 这个 PR 的代码质量", "expect": "no", "owner": "diting"},
+    {"q": "手头三个方案该怎么选，帮我分析一下这个决策", "expect": "no", "owner": "kueiku"},
+    {"q": "搜几篇对比学习方向的最新论文下载下来", "expect": "no", "owner": "liuxiang"},
+    {"q": "帮我写个 Shell 脚本批量清理过期日志", "expect": "no", "owner": "none"}
+  ]
+}

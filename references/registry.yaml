@@ -4,6 +4,7 @@
 # 模板 ID 命名规则：<family>/<template-name>，跨族唯一
 # required_sections：生成时必须填充的章节；材料不足时标注"材料未提供/无法确认"，禁止硬凑
 # optional_sections：视材料丰富度选择性填充
+# section_checklists：可选字段；按章节列可判定核对项（章节名须取自 required_sections），生成后逐项核对，论文族已配置
 # detection_signals：自动匹配时的关键词信号；与 taxonomy.yaml 的 signal_words 协同
 # fallback：当本模板无法填充 required_sections 时的回落模板 ID
 
@@ -473,6 +474,13 @@ templates:
       - 论文
       - paper
     fallback: analysis/research-brief
+    section_checklists:
+      主要成果:
+        - 声称的贡献与成立的证据是否分开陈述
+        - 每条关键结论是否标注原文位置（§/表/图号）+ 获取日期
+      实验与证据:
+        - 数据集/任务与规模是否写明
+        - 主要结果是否保留精确数值而非"显著提升"式近似
     notes: 当识别出论文子类型时，优先使用对应的子类型模板
 
   analysis/theoretical-paper-summary:
@@ -495,6 +503,13 @@ templates:
       - 收敛性
       - 上下界
     fallback: analysis/paper-summary
+    section_checklists:
+      关键公式:
+        - 公式是否标注原文编号
+        - 每个符号是否有一句话解释
+      核心定理/命题:
+        - 定理内容与成立条件是否齐全
+        - 条件原文未给出处是否标"原文未提供"
 
   analysis/experimental-paper-summary:
     family: analysis
@@ -516,6 +531,13 @@ templates:
       - ablation
       - 消融
     fallback: analysis/paper-summary
+    section_checklists:
+      实验设置:
+        - 数据集与样本量/规模是否写明
+        - 训练/评测协议是否可复现，缺失处标"原文未提供"
+      主要结果:
+        - 结果是否保留精确数值与指标名，而非"显著提升"式近似
+        - 与 baseline 的对比是否标注原文位置（§/表/图号）
 
   analysis/systems-paper-summary:
     family: analysis
@@ -537,6 +559,13 @@ templates:
       - 扩展性
       - 部署
     fallback: analysis/paper-summary
+    section_checklists:
+      核心机制:
+        - 伪代码/机制描述是否注明改写自论文哪一节
+        - 代码独有而论文未写的 trick 是否单独标注
+      性能结果:
+        - 指标/负载/硬件环境是否写明
+        - 数值是否保留精确值而非近似
 
   analysis/survey-paper-summary:
     family: analysis
@@ -556,6 +585,12 @@ templates:
       - 文献梳理
       - 研究脉络
     fallback: analysis/paper-summary
+    section_checklists:
+      分类框架/Taxonomy:
+        - 分类维度是否可判定（每篇文献能唯一归入一类）
+      关键对比:
+        - 每条对比是否标注出处（各文献的 §/表/图号）
+        - 结论冲突处是否写明而非抹平
 
   analysis/decision-memo:
     family: analysis
