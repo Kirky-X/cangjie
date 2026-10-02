@@ -1,0 +1,105 @@
+{
+  "skill_name": "cangjie",
+  "evals": [
+    {
+      "id": 1,
+      "scenario": "正例：视频分镜脚本（validator 可断言）",
+      "prompt": "把这段 40 分钟课程转录稿整理成文生视频分镜脚本",
+      "expected_output": "agent 应走视频脚本模式 → 从转录稿提炼叙事结构与分镜 → 产出 shots.json（镜头序号/时长/画面描述/转场）→ 交付前跑 scripts/validate_video_script.py 硬门，FAIL 阻断渲染类 WARN 只提示",
+      "assertions": [
+        "The run produces a shots.json file",
+        "The run executes scripts/validate_video_script.py against the shots.json before delivery"
+      ]
+    },
+    {
+      "id": 2,
+      "scenario": "正例：会议纪要结构化",
+      "prompt": "帮我总结这次 code review 会议的纪要",
+      "expected_output": "agent 应走总结模式 → 产出结构化纪要（背景/讨论要点/决议/行动项含负责人与期限）→ 不虚构未在转录中出现的决议；如无原始材料先索取而非编造",
+      "assertions": [
+        "The summary contains distinct sections for decisions and action items"
+      ]
+    },
+    {
+      "id": 3,
+      "scenario": "正例：humanize 去 AI 痕迹",
+      "prompt": "这篇产品发布稿一股 AI 味，帮我改得像人写的",
+      "expected_output": "agent 应走 humanize 模式 → 按 AI-tells 模式清单逐类排查（套话开场/排比堆砌/空洞总结/AI 高频词）→ 改写保留全部事实与数字，不新增主张 → 输出可对照的改动理由",
+      "assertions": [
+        "The rewritten text preserves all factual claims and numbers from the original"
+      ]
+    },
+    {
+      "id": 4,
+      "scenario": "正例：excalidraw 流程图",
+      "prompt": "把我们这次的部署流程画成一张流程图",
+      "expected_output": "agent 应走 excalidraw 模式 → 产出合法 .excalidraw JSON（type=excalidraw，elements 数组含矩形/箭头元素且坐标不重叠）→ 中文标签不乱码 → 给出可导入 excalidraw.com 的文件",
+      "assertions": [
+        "The run produces a valid .excalidraw JSON file whose elements array is non-empty"
+      ]
+    },
+    {
+      "id": 5,
+      "scenario": "边界负例双写：AI 画图让渡 wudaozi",
+      "prompt": "AI 画一张赛博朋克风格的插画",
+      "expected_output": "cangjie 不应产出任何图像。正确行为：识别为图像生成任务 → 指引用户使用 wudaozi（文生图）→ 不走分镜/总结模式硬做",
+      "assertions": [
+        "The response recommends the wudaozi skill and produces no image or shots.json"
+      ]
+    },
+    {
+      "id": 6,
+      "scenario": "边界负例双写：产品图让渡 wudaozi",
+      "prompt": "生成一张产品宣传图",
+      "expected_output": "同上：识别为图像生成 → 让渡 wudaozi → cangjie 不产出图像类产物",
+      "assertions": [
+        "The response recommends the wudaozi skill and produces no image"
+      ]
+    },
+    {
+      "id": 7,
+      "scenario": "边界负例双写：UI 设计让渡 maliang",
+      "prompt": "给这个页面做 UI 设计，出几版风格稿",
+      "expected_output": "cangjie 不应产出风格稿。正确行为：识别为 UI/UX 设计任务 → 让渡 maliang → 如用户意在「文字方案」则澄清后走结构化笔记，不虚构视觉稿",
+      "assertions": [
+        "The response recommends the maliang skill and produces no visual mockup"
+      ]
+    },
+    {
+      "id": 8,
+      "scenario": "边界负例双写：代码审查让渡 diting",
+      "prompt": "帮我 review 这个 PR 的代码质量",
+      "expected_output": "cangjie 不应审查代码。正确行为：识别为代码质量审查 → 让渡 diting → 不输出审查报告",
+      "assertions": [
+        "The response recommends the diting skill and produces no code review report"
+      ]
+    },
+    {
+      "id": 9,
+      "scenario": "边界负例双写：决策分析让渡 kueiku",
+      "prompt": "手头三个方案该怎么选，帮我分析一下这个决策",
+      "expected_output": "cangjie 不应做方法论决策分析。正确行为：让渡 kueiku（决策方法论导航）→ 最多做纯文字整理辅助，不输出框架分析",
+      "assertions": [
+        "The response recommends the kueiku skill"
+      ]
+    },
+    {
+      "id": 10,
+      "scenario": "边界负例双写：论文检索让渡 liuxiang",
+      "prompt": "搜几篇对比学习方向的最新论文下载下来",
+      "expected_output": "cangjie 不应执行论文检索。正确行为：让渡 liuxiang search 模块 → 若用户拿到论文后需要总结再回到 cangjie",
+      "assertions": [
+        "The response recommends the liuxiang skill for search/download"
+      ]
+    },
+    {
+      "id": 11,
+      "scenario": "边界负例双写：脚本开发无归属",
+      "prompt": "帮我写个 Shell 脚本批量清理过期日志",
+      "expected_output": "cangjie 不应代写脚本（非内容转化任务）。正确行为：说明超出 cangjie 边界并建议直接交给通用编码 agent，不产出转录/分镜/纪要类产物",
+      "assertions": [
+        "The response declines to write the shell script itself and explains the boundary"
+      ]
+    }
+  ]
+}
