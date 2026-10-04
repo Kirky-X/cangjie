@@ -35,6 +35,7 @@ bash ../scripts/sync-skills.sh cangjie
 
 # 方式二：手动复制
 cp -r cangjie ~/.zcode/skills/cangjie
+
 # 方式三：远程安装（GitHub 仓库）
 npx skills add Kirky-X/cangjie --agent claude-code -y
 ```
