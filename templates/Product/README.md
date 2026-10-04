@@ -214,7 +214,7 @@ flowchart LR
 | **核心章节**   | 端点列表 / 请求响应 schema / 认证授权 / 错误码 / 版本管理 / 限流 |
 | **工具链**     | Swagger / YApi / Postman / Stoplight 自动同步                   |
 | **契约测试**   | Pact / Dredd 校验实现与文档一致                                 |
-| **完整模板**   | [【模板】API文档.md](./技术层/【模板】API文档.md)               |
+| **完整模板**   | [Template-API-Doc.md](./Technology/Template-API-Doc.md)               |
 
 **与 TRD / 架构文档的关系：** TRD 定义"用什么技术达到什么指标"，架构文档定义"系统怎么设计"，API 文档定义"端点长什么样、怎么调"。
 
@@ -226,7 +226,7 @@ flowchart LR
 | :----------- | :-------------------------------------------------- |
 | **核心章节** | 表结构 / 索引设计 / 分库分表策略 / 数据归档方案     |
 | **ER 工具**  | dbdiagram.io / DBeaver / PowerDesigner              |
-| **完整模板** | [【模板】数据库设计文档规范.md](./技术层/【模板】数据库设计文档规范.md) |
+| **完整模板** | [Template-DB-Design.md](./Technology/Template-DB-Design.md) |
 
 ---
 
@@ -297,7 +297,7 @@ flowchart LR
 | :------------- | :-------------------------------------------------------------- |
 | **报告周期**   | 周报 / 月报 / 季度报告                                          |
 | **核心章节**   | 摘要 / 已完成 / 进行中 / 阻塞 / 下期计划 / 数据指标             |
-| **完整模板**   | [【模板】周报月报.md](./运营层/【模板】周报月报.md)             |
+| **完整模板**   | [Template-Weekly-Monthly-Report.md](./Operations/Template-Weekly-Monthly-Report.md)             |
 
 **典型场景：** 个人/团队周报、月度汇报、跨团队进展同步。
 
@@ -335,7 +335,7 @@ flowchart LR
 | **规律沉淀** | 可复用经验 + 踩坑记录 + SOP + 检查清单                   |
 | **改进动作** | SMART 清单 + 责任人 + 截止时间 + 追踪机制                |
 | **资产归档** | 文档、代码、数据归档位置                                 |
-| **完整模板** | [【模板】复盘报告.md](./退役层/【模板】复盘报告.md)       |
+| **完整模板** | [Template-Retrospective.md](./Retirement/Template-Retrospective.md)       |
 
 ---
 
@@ -351,7 +351,7 @@ flowchart LR
 | **SOP 提炼**     | 从经验固化为可执行流程，含步骤 + 责任人 + 验收                  |
 | **反模式**       | "不应该这样做"清单，附反面案例与正确做法                        |
 | **知识资产清单** | 文档 / 代码 / 数据 / 培训完整盘点                               |
-| **完整模板**     | [【模板】知识沉淀.md](./退役层/【模板】知识沉淀.md)             |
+| **完整模板**     | [Template-Knowledge-Base.md](./Retirement/Template-Knowledge-Base.md)             |
 
 **与复盘报告的区别：** 复盘是单次事件的学习总结，知识沉淀是全周期持续维护的活文档，二者互补。
 
@@ -359,7 +359,7 @@ flowchart LR
 
 ## 七、通用文档：回答"跨生命周期通用"
 
-> **定位：** 不属于产品生命周期某个特定阶段，但每个项目都需要的通用工程文档，位于 `templates/通用/` 目录。
+> **定位：** 不属于产品生命周期某个特定阶段，但每个项目都需要的通用工程文档，位于 `templates/Common/` 目录。
 
 ### 21. README（项目入口文档）
 
@@ -369,7 +369,7 @@ flowchart LR
 | :------------- | :-------------------------------------------------------------- |
 | **核心章节**   | 简介 / 安装 / 快速开始 / 使用示例 / 配置 / 能力概览 / 贡献 / 许可证 |
 | **风格参考**   | 简洁直接，含 badges 与可复制粘贴的命令示例                      |
-| **完整模板**   | [【模板】README.md](../通用/【模板】README.md)                  |
+| **完整模板**   | [Template-README.md](../Common/Template-README.md)                  |
 
 **典型场景：** 新项目初始化、开源仓库入口、内部工具文档。
 
@@ -383,7 +383,7 @@ flowchart LR
 | :------------- | :-------------------------------------------------------------- |
 | **核心章节**   | Unreleased + 各版本，每版本分 Added/Changed/Deprecated/Removed/Fixed/Security |
 | **规范遵循**   | [Keep a Changelog 1.1.0](https://keepachangelog.com/zh-CN/1.1.0/) + [SemVer 2.0.0](https://semver.org/lang/zh-CN/) |
-| **完整模板**   | [【模板】CHANGELOG.md](../通用/【模板】CHANGELOG.md)            |
+| **完整模板**   | [Template-CHANGELOG.md](../Common/Template-CHANGELOG.md)            |
 
 **典型场景：** 版本发布、变更追溯、用户告知。
 
@@ -397,7 +397,7 @@ flowchart LR
 | :------------- | :-------------------------------------------------------------- |
 | **核心章节**   | 通用 / 安装 / 使用 / 配置 / 错误排查 / 性能 / 集成扩展          |
 | **撰写原则**   | 每个 Q 含现象 / 原因 / 解决方案 / 命令示例                      |
-| **完整模板**   | [【模板】FAQ.md](../通用/【模板】FAQ.md)                        |
+| **完整模板**   | [Template-FAQ.md](../Common/Template-FAQ.md)                        |
 
 **典型场景：** 用户自助支持、新成员上手、减少重复答疑成本。
 
@@ -411,7 +411,7 @@ flowchart LR
 | :--------------- | :-------------------------------------------------------------- |
 | **核心章节**     | 行为准则 / 贡献流程 / 开发环境 / 代码规范 / 提交规范 / PR 流程 / 测试要求 / 评审标准 |
 | **规范遵循**     | [Conventional Commits 1.0.0](https://www.conventionalcommits.org/zh-hans/v1.0.0/) + [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) |
-| **完整模板**     | [【模板】CONTRIBUTING.md](../通用/【模板】CONTRIBUTING.md)      |
+| **完整模板**     | [Template-CONTRIBUTING.md](../Common/Template-CONTRIBUTING.md)      |
 
 **典型场景：** 开源项目、内部跨团队协作、新人 Onboarding。
 

@@ -29,8 +29,9 @@
 ## 📦 安装
 
 ```bash
-# 方式一：从本仓库同步到 agent 技能目录（~/.zcode/skills 与 ~/.claude/skills）
-bash scripts/sync-skills.sh cangjie
+# 方式一：同步到 agent 技能目录（~/.zcode/skills 与 ~/.claude/skills）
+# 注意：脚本在 skills 工作区根（../scripts/sync-skills.sh，相对本仓根），不在本仓内；从 GitHub clone 本仓的用户请直接用下方方式三
+bash ../scripts/sync-skills.sh cangjie
 
 # 方式二：手动复制
 cp -r cangjie ~/.zcode/skills/cangjie
@@ -45,7 +46,7 @@ pip install -r requirements.txt   # torch / faster-whisper / librosa / numpy / q
 apt install ffmpeg                # 视频提取音频
 ```
 
-图表渲染（模式 4）另需 Playwright：`cd references/excalidraw && uv sync && uv run playwright install chromium`。GPU 检查：`python -c "import torch; print('CUDA:', torch.cuda.is_available())"`；无 GPU 时 faster-whisper 自动回落 cpu + int8。
+图表渲染（模式 4）另需 Python >= 3.11（`references/excalidraw/pyproject.toml` 要求 `>=3.11`，高于基础依赖的 3.8）与 Playwright：`cd references/excalidraw && uv sync && uv run playwright install chromium`。GPU 检查：`python -c "import torch; print('CUDA:', torch.cuda.is_available())"`；无 GPU 时 faster-whisper 自动回落 cpu + int8。
 
 ## 🚀 快速开始
 
@@ -79,7 +80,10 @@ flowchart LR
 
 确定性校验脚本与 CLI 附 pytest 单测（`tests/`）；转写/渲染链路验证以真实命令实跑为准：
 
-- `python3 -m pytest tests/ -q`：脚本层单测（CLI 参数处理 / 转录参数 / 视频脚本校验 / 总结审计 / Excalidraw 校验）
+- `python3 -m pytest tests/ -q`：脚本层单测（CLI 参数处理 / 转录参数 / 视频脚本校验 / 总结审计 / Excalidraw 校验）；副作用脚本（模型下载/GPU 推理/真实转码）有意跳过离线假测试，逐条原因见 `tests/SKIPPED.md`
+- `python3 scripts/skill_lint.py .`：仓库工程基线体检（SKILL.md frontmatter/版本一致性、文档内 `.md` 路径存在性、JSON 资产可解析、CLI 子命令与文档一致性等门禁；退出码 0=无 FAIL / 1=有 FAIL）
+- 模式路由评估集：`evals/evals.json` 11 条用例（4 正例 + 7 条边界负例，其中 6 条验证向 wudaozi / maliang / diting / kueiku / liuxiang 让渡、1 条超边界拒绝）
+- 触发词评测集：`triggers/trigger-queries.json` 22 条查询（expect：trigger 15 / no 7）
 - `python3 scripts/cangjie.py --help`：确认 4 个子命令（extract-audio / transcribe-diarize / transcribe-qwen / pipeline）及 `--cleanup` 反向开关说明正常输出
 - `python3 references/excalidraw/render_excalidraw.py --help`：渲染器参数（--output/--scale/--width）正常
 - 模板数实测：解析 `references/registry.yaml` 得 55 个模板（product 26 / analysis 9 / learning 6 / meeting 5 / business 5 / media 4）
@@ -99,9 +103,9 @@ cangjie/
 │   ├── families/*.yaml           # 6 模板族定义
 │   ├── guides/                   # 模板选择/输出骨架/详略策略/视频提示词规范等
 │   └── excalidraw/               # 渲染脚本 + 调色板 + JSON 结构（esm.sh 钉 0.17.6）
-├── templates/                    # 31 个文档模板
+├── templates/                    # 30 个文档模板 + 1 个生命周期文档地图（templates/Product/README.md）
 ├── tests/                        # pytest 单测（CLI/转录参数/视频脚本/总结审计/Excalidraw 校验）
-└── scripts/                      # cangjie.py 统一 CLI + 转录脚本 + 模式校验脚本
+└── scripts/                      # cangjie.py 统一 CLI + 转录脚本 + 模式校验脚本 + skill_lint.py 仓库自检
 ```
 
 ## 🔮 边界

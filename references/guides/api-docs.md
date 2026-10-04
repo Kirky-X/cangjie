@@ -2,6 +2,14 @@
 
 当需要调用第三方库、SDK 或 API 时（例如 ASR 转录服务、ffmpeg 集成、云存储 SDK），优先用 `chub` CLI 拉取最新文档，而不是依赖训练记忆。这能避免 API 形状过期导致的代码错误。
 
+## 安装
+
+```bash
+pip install chub
+```
+
+`chub` 是独立 CLI，不在本仓 `requirements.txt` 内，装完用 `chub --version` 验证。未安装时跳过拉取并在交付说明标注 "latest API unverified"（模式 1 自带的降级路径），不要凭训练记忆写调用代码。
+
 ## 何时使用
 
 - 需要调用 `faster-whisper`、`qwen-asr`、`librosa` 等依赖库的 API

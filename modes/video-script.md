@@ -4,7 +4,7 @@
 
 不要把这件事做成"把文章逐句翻译成画面描述"。真正的工作是先想清楚这套视频要讲一件什么事、给人什么感受，再围绕这个核心去设计镜头——文章/一句话只是素材，不是脚本本身。
 
-**写每个镜头提示词之前必须先读 [`references/guides/video-prompt-guidelines.md`](references/guides/video-prompt-guidelines.md)**——它包含六要素的展开说明、风格术语表、技术标记词表、LTX-2 擅长领域与避免事项、对话格式、完整示例和检查清单，不要凭记忆瞎写术语。
+**写每个镜头提示词之前必须先读 [`references/guides/video-prompt-guidelines.md`](../references/guides/video-prompt-guidelines.md)**——它包含六要素的展开说明、风格术语表、技术标记词表、LTX-2 擅长领域与避免事项、对话格式、完整示例和检查清单，不要凭记忆瞎写术语。
 
 ## 速查表
 
@@ -74,13 +74,13 @@
 ```
 
 - `seconds`：镜头时长（秒）。单镜头上限默认 15s，全部镜头加总 ≤60s 的成片降为 12s——装不下就拆镜头，不要让一个镜头装一段戏
-- `camera_motion`：只能填 [`video-prompt-guidelines.md`](references/guides/video-prompt-guidelines.md) 五节词表里的运镜术语（校验门会查枚举）；选词参考 [`references/guides/camera-movements.md`](references/guides/camera-movements.md) 的情绪域对照与起承合运镜序列模板，把立意里定的情绪基调直接落到运镜上
+- `camera_motion`：只能填 [`video-prompt-guidelines.md`](../references/guides/video-prompt-guidelines.md) 五节词表里的运镜术语（校验门会查枚举）；选词参考 [`references/guides/camera-movements.md`](../references/guides/camera-movements.md) 的情绪域对照与起承合运镜序列模板，把立意里定的情绪基调直接落到运镜上
 - `dialogue`：无台词也必须写，显式填"无"；有台词用 guidelines 八节的 `角色名（情绪/语气）："内容"` 格式
 - 长文章改编、镜头多到单次生成装不下时，加 `segments` 数组标记哪些镜头属于同一次生成调用：`"segments": [{"id": "seg-1", "shot_ids": ["shot-1", "shot-2"]}]`；镜头顺序始终以 `shots` 数组为准
 
 ## 第四步：逐镜头写提示词
 
-严格遵守 [`references/guides/video-prompt-guidelines.md`](references/guides/video-prompt-guidelines.md) 里的完整规范。核心要点：
+严格遵守 [`references/guides/video-prompt-guidelines.md`](../references/guides/video-prompt-guidelines.md) 里的完整规范。核心要点：
 
 - 每个镜头的提示词是**一段连贯的英文段落**，不要分点罗列
 - 用**现在时态**描述动作（walks, turns, pans——不是 walked, turned）

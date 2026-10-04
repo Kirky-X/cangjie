@@ -29,10 +29,12 @@ English | [中文](README.md)
 ## 📦 Installation
 
 ```bash
-# 方式一：从本仓库同步到 agent 技能目录（~/.zcode/skills 与 ~/.claude/skills）
-bash scripts/sync-skills.sh cangjie
+# Option 1: sync to the agent skill dirs (~/.zcode/skills and ~/.claude/skills)
+# Note: the script lives at the skills workspace root (../scripts/sync-skills.sh, relative to this repo root), not inside this repo;
+# if you cloned this repo from GitHub, use Option 3 below instead
+bash ../scripts/sync-skills.sh cangjie
 
-# 方式二：手动复制
+# Option 2: manual copy
 cp -r cangjie ~/.zcode/skills/cangjie
 # Option 3: Remote install (GitHub repo)
 npx skills add Kirky-X/cangjie --agent claude-code -y
@@ -42,23 +44,23 @@ Requires `Python >= 3.8`. Install the dependencies before using audio transcript
 
 ```bash
 pip install -r requirements.txt   # torch / faster-whisper / librosa / numpy / qwen-asr
-apt install ffmpeg                # 视频提取音频
+apt install ffmpeg                # extract audio from video
 ```
 
-Diagram rendering (mode 4) additionally requires Playwright: `cd references/excalidraw && uv sync && uv run playwright install chromium`. GPU check: `python -c "import torch; print('CUDA:', torch.cuda.is_available())"`; without a GPU, faster-whisper automatically falls back to cpu + int8.
+Diagram rendering (mode 4) additionally requires Python >= 3.11 (`references/excalidraw/pyproject.toml` pins `>=3.11`, higher than the 3.8 baseline of the core dependencies) and Playwright: `cd references/excalidraw && uv sync && uv run playwright install chromium`. GPU check: `python -c "import torch; print('CUDA:', torch.cuda.is_available())"`; without a GPU, faster-whisper automatically falls back to cpu + int8.
 
 ## 🚀 Quick Start
 
 ```bash
-# 一键流水线：视频 → 提取音频 → 转录 → 输出
+# One-shot pipeline: video → extract audio → transcribe → output
 python3 scripts/cangjie.py pipeline input.mp4 --engine faster-whisper
 
-# 单步执行；音频默认保留，--cleanup 显式清理（反向开关）
+# Single steps; audio is kept by default, --cleanup cleans up explicitly (reverse switch)
 python3 scripts/cangjie.py extract-audio input.mp4
 python3 scripts/cangjie.py transcribe-diarize input.wav output.txt --num-speakers 3 --language zh
 python3 scripts/cangjie.py transcribe-qwen input.wav output.txt
 
-# 渲染 Excalidraw JSON 为 PNG（默认 2x 缩放）
+# Render Excalidraw JSON to PNG (2x scale by default)
 python3 references/excalidraw/render_excalidraw.py diagram.excalidraw
 ```
 
@@ -66,20 +68,23 @@ Natural-language trigger examples: `summarize this paper into reading notes`, `g
 
 ```mermaid
 flowchart LR
-    A[视频/音频输入] --> B[extract-audio<br>ffmpeg 16kHz mono wav]
-    B --> C{转录引擎}
-    C -->|多说话人| D[transcribe-diarize<br>faster-whisper + 能量近似分段]
-    C -->|中文单轨| E[transcribe-qwen<br>qwen-asr]
-    D --> F[转录稿 .txt<br>头部含免责声明]
+    A[Video/audio input] --> B[extract-audio<br>ffmpeg 16kHz mono wav]
+    B --> C{Transcription engine}
+    C -->|Multi-speaker| D[transcribe-diarize<br>faster-whisper + energy-based approximate segmentation]
+    C -->|Chinese single track| E[transcribe-qwen<br>qwen-asr]
+    D --> F[Transcript .txt<br>header carries disclaimer]
     E --> F
-    F --> G[模式 1 总结<br>55 模板注册表匹配]
+    F --> G[Mode 1 summarization<br>55-template registry matching]
 ```
 
 ## ✅ Tests & Verification
 
 The deterministic validators and the CLI ship with pytest unit tests (`tests/`); the transcription/rendering chain is verified by actually running real commands:
 
-- `python3 -m pytest tests/ -q`: script-level unit tests (CLI argument handling / transcription arguments / video-script validation / summary audit / Excalidraw validation)
+- `python3 -m pytest tests/ -q`: script-level unit tests (CLI argument handling / transcription arguments / video-script validation / summary audit / Excalidraw validation); side-effect scripts (model download / GPU inference / real transcoding) intentionally skip offline fake tests — per-item reasons in `tests/SKIPPED.md`
+- `python3 scripts/skill_lint.py .`: repo engineering-baseline lint (SKILL.md frontmatter/version consistency, existence of `.md` paths referenced in docs, JSON asset parseability, CLI-subcommands-vs-docs gate; exit code 0 = no FAIL / 1 = FAIL present)
+- Mode-routing eval set: `evals/evals.json`, 11 cases (4 positive + 7 boundary negatives — 6 verifying handoff to wudaozi / maliang / diting / kueiku / liuxiang, 1 out-of-boundary refusal)
+- Trigger eval set: `triggers/trigger-queries.json`, 22 queries (expect: trigger 15 / no 7)
 - `python3 scripts/cangjie.py --help`: confirm that the 4 subcommands (extract-audio / transcribe-diarize / transcribe-qwen / pipeline) and the `--cleanup` reverse-switch description print correctly
 - `python3 references/excalidraw/render_excalidraw.py --help`: renderer flags (--output/--scale/--width) work correctly
 - Template count measured: parsing `references/registry.yaml` yields 55 templates (product 26 / analysis 9 / learning 6 / meeting 5 / business 5 / media 4)
@@ -90,18 +95,18 @@ The deterministic validators and the CLI ship with pytest unit tests (`tests/`);
 
 ```
 cangjie/
-├── SKILL.md                      # 入口：模式路由表 + 共享资源索引
-├── requirements.txt              # ASR 依赖（torch/faster-whisper/librosa/qwen-asr）
-├── modes/                        # 4 个模式工作流（summarization/video-script/humanization/diagram）
+├── SKILL.md                      # Entry point: mode routing table + shared resources index
+├── requirements.txt              # ASR dependencies (torch/faster-whisper/librosa/qwen-asr)
+├── modes/                        # 4 mode workflows (summarization/video-script/humanization/diagram)
 ├── references/
-│   ├── registry.yaml             # 55 模板注册表（含 fallback）
-│   ├── taxonomy.yaml             # 模板分类体系
-│   ├── families/*.yaml           # 6 模板族定义
-│   ├── guides/                   # 模板选择/输出骨架/详略策略/视频提示词规范等
-│   └── excalidraw/               # 渲染脚本 + 调色板 + JSON 结构（esm.sh 钉 0.17.6）
-├── templates/                    # 31 个文档模板
-├── tests/                        # pytest 单测（CLI/转录参数/视频脚本/总结审计/Excalidraw 校验）
-└── scripts/                      # cangjie.py 统一 CLI + 转录脚本 + 模式校验脚本
+│   ├── registry.yaml             # 55-template registry (with fallback)
+│   ├── taxonomy.yaml             # Template taxonomy
+│   ├── families/*.yaml           # 6 template family definitions
+│   ├── guides/                   # Template selection / output skeletons / detail policy / video prompt spec, etc.
+│   └── excalidraw/               # Render scripts + palette + JSON structure (esm.sh pinned to 0.17.6)
+├── templates/                    # 30 document templates + 1 lifecycle document map (templates/Product/README.md)
+├── tests/                        # pytest unit tests (CLI / transcription args / video script / summary audit / Excalidraw validation)
+└── scripts/                      # cangjie.py unified CLI + transcription scripts + mode validators + skill_lint.py repo lint
 ```
 
 ## 🔮 Boundaries

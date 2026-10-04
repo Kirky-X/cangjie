@@ -52,7 +52,7 @@ flowchart TD
 
 ## Template Selection
 
-Priority: User explicit specification > Intent > Content signal words > Fallback. See [`references/guides/template-selection.md`](references/guides/template-selection.md) for detailed decision tree, paper subtype refinement, book scenario refinement, product document sublayer selection, and common ambiguity handling.
+Priority: User explicit specification > Intent > Content signal words > Fallback. See [`references/guides/template-selection.md`](../references/guides/template-selection.md) for detailed decision tree, paper subtype refinement, book scenario refinement, product document sublayer selection, and common ambiguity handling.
 
 | Family     | Representative Templates                                                                   | Purpose                         |
 | ---------- | ----------------------------------------------------------------------------------------- | ------------------------------- |
@@ -63,7 +63,7 @@ Priority: User explicit specification > Intent > Content signal words > Fallback
 | `analysis` | `research-brief`, `decision-memo`, `paper-summary`                                        | Research synthesis, decision support, paper reading |
 | `product`  | `prd`, `trd`, `business-plan`, `competitive-analysis`, `literature-review`                | Product docs, business plans, technical design |
 
-See `references/registry.yaml`, `references/taxonomy.yaml`, `references/families/*.yaml`, and [`references/guides/template-selection.md`](references/guides/template-selection.md) for detailed definitions.
+See `references/registry.yaml`, `references/taxonomy.yaml`, `references/families/*.yaml`, and [`references/guides/template-selection.md`](../references/guides/template-selection.md) for detailed definitions.
 
 ## Output Rules
 
@@ -75,7 +75,7 @@ See `references/registry.yaml`, `references/taxonomy.yaml`, `references/families
 - **Mandatory file output**: All summaries must be written to `.md`, display-only in conversation is prohibited; default to same directory as input, named `{input_filename}-summary.md`
 - **Books multi-file**: Default 1 full-book overview + N independent chapter files, unless user requests single-file merge
 
-See [`references/guides/output-skeletons.md`](references/guides/output-skeletons.md) for skeletons; [`references/guides/detail-policy.md`](references/guides/detail-policy.md) for density control.
+See [`references/guides/output-skeletons.md`](../references/guides/output-skeletons.md) for skeletons; [`references/guides/detail-policy.md`](../references/guides/detail-policy.md) for density control.
 
 ## Input Processing
 
@@ -99,7 +99,7 @@ python3 scripts/cangjie.py transcribe-qwen input.wav output.txt         # Single
 | `ffmpeg`         | `apt install ffmpeg`                                                  | Extract audio from video   |
 | `faster-whisper` | `pip install faster-whisper librosa torch`                            | ASR transcription          |
 | `qwen-asr`       | `pip install qwen-asr torch`                                          | ASR alternative            |
-| `chub`           | See [`references/guides/api-docs.md`](references/guides/api-docs.md)  | Fetch latest third-party API docs |
+| `chub`           | `pip install chub`                                                    | Fetch latest third-party API docs |
 
 GPU check: `python -c "import torch; print('CUDA:', torch.cuda.is_available())"`. When calling third-party libraries/APIs, use `chub` to fetch latest docs: `chub search "<lib>" --json` to find doc ID; `chub get <id> --lang py` to fetch Python docs.
 
@@ -131,4 +131,4 @@ GPU check: `python -c "import torch; print('CUDA:', torch.cuda.is_available())"`
 
 ## Examples
 
-Complete example set (course video/non-fiction/narrative book/project meeting/podcast/decision synthesis/paper/PRD/BP/TRD/formal minutes) in [`references/guides/examples.md`](references/guides/examples.md).
+Complete example set (course video/non-fiction/narrative book/project meeting/podcast/decision synthesis/paper/PRD/BP/TRD/formal minutes) in [`references/guides/examples.md`](../references/guides/examples.md).

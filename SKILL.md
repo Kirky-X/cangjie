@@ -88,6 +88,7 @@ metadata:
 | 输出骨架 | `references/guides/output-skeletons.md` |
 | 详略策略 | `references/guides/detail-policy.md` |
 | 示例集 | `references/guides/examples.md` |
+| API 文档查询（chub 用法） | `references/guides/api-docs.md` |
 | 影视化提示词规范 | `references/guides/video-prompt-guidelines.md` |
 | AI 味模式清单（模式 3 用） | `references/guides/ai-tells-checklist.md` |
 | Excalidraw 调色板 | `references/excalidraw/color-palette.md` |
@@ -113,6 +114,6 @@ python3 scripts/cangjie.py transcribe-qwen input.wav output.txt
 | `ffmpeg` | `apt install ffmpeg` | 从视频提取音频 |
 | `faster-whisper` | `pip install faster-whisper librosa torch` | ASR 语音转录 |
 | `qwen-asr` | `pip install qwen-asr torch` | ASR 替代方案 |
-| `chub` | 见 [`references/guides/api-docs.md`](references/guides/api-docs.md) | 获取最新第三方 API 文档 |
+| `chub` | `pip install chub` | 获取最新第三方 API 文档 |
 
 GPU 检查：`python -c "import torch; print('CUDA:', torch.cuda.is_available())"`

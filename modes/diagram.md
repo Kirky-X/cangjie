@@ -71,7 +71,7 @@
 ## 形状与颜色
 
 - **形状即含义**：标签/描述/细节→无形状（自由文字）；时间轴标记→小椭圆(10-20px)；起点/触发/输入→椭圆；决策→菱形；处理/动作→矩形。**默认无容器**，目标 <30% 文字元素在盒子里。
-- **颜色即信息**：每个语义用途有特定填充/描边对，所有颜色选择来自 [`references/excalidraw/color-palette.md`](references/excalidraw/color-palette.md)——这是颜色唯一真相源，不要凭空造色。
+- **颜色即信息**：每个语义用途有特定填充/描边对，所有颜色选择来自 [`references/excalidraw/color-palette.md`](../references/excalidraw/color-palette.md)——这是颜色唯一真相源，不要凭空造色。
 - **现代美学**：`roughness: 0`（现代/技术，默认）/ `1`（手绘感）；`opacity: 100`（不用透明度做层次）；字号/字重/颜色做层次而非靠盒子。
 
 ## 尺寸与留白
@@ -117,7 +117,7 @@ python3 {SKILL_DIR}/references/excalidraw/validate_excalidraw.py <path-to-file.e
 
 ```bash
 # {SKILL_DIR} 为本 skill 的安装目录（如 ~/.zcode/skills/cangjie 或 .claude/skills/cangjie，以实际环境为准），渲染脚本自身用 __file__ 定位，无硬编码路径
-# 首次设置（仅一次）
+# 首次设置（仅一次）；渲染环境要求 Python >= 3.11（见 references/excalidraw/pyproject.toml 的 requires-python，高于基础依赖的 3.8）
 cd {SKILL_DIR}/references/excalidraw && uv sync && uv run playwright install chromium
 # 渲染
 cd {SKILL_DIR}/references/excalidraw && uv run python render_excalidraw.py <path-to-file.excalidraw>
@@ -173,8 +173,8 @@ cd {SKILL_DIR}/references/excalidraw && uv run python render_excalidraw.py <path
 
 ## 参考文件
 
-- [`references/excalidraw/color-palette.md`](references/excalidraw/color-palette.md) — 颜色唯一真相源（语义形状色、文字层次色、证据构件色），生成任何图前先读
-- [`references/excalidraw/element-templates.md`](references/excalidraw/element-templates.md) — 每种元素类型（text/line/dot/rectangle/arrow）的可复制 JSON 模板
-- [`references/excalidraw/json-schema.md`](references/excalidraw/json-schema.md) — Excalidraw JSON 结构规范
-- [`references/excalidraw/validate_excalidraw.py`](references/excalidraw/validate_excalidraw.py) — 静态校验脚本（渲染前拦截重复 id/悬空引用/溢出，附美学告警）
-- [`references/excalidraw/render_excalidraw.py`](references/excalidraw/render_excalidraw.py) — PNG 渲染脚本（playwright + chromium）
+- [`references/excalidraw/color-palette.md`](../references/excalidraw/color-palette.md) — 颜色唯一真相源（语义形状色、文字层次色、证据构件色），生成任何图前先读
+- [`references/excalidraw/element-templates.md`](../references/excalidraw/element-templates.md) — 每种元素类型（text/line/dot/rectangle/arrow）的可复制 JSON 模板
+- [`references/excalidraw/json-schema.md`](../references/excalidraw/json-schema.md) — Excalidraw JSON 结构规范
+- [`references/excalidraw/validate_excalidraw.py`](../references/excalidraw/validate_excalidraw.py) — 静态校验脚本（渲染前拦截重复 id/悬空引用/溢出，附美学告警）
+- [`references/excalidraw/render_excalidraw.py`](../references/excalidraw/render_excalidraw.py) — PNG 渲染脚本（playwright + chromium）
