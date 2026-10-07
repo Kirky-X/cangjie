@@ -22,6 +22,8 @@
     {"q": "帮我 review 这个 PR 的代码质量", "expect": "no", "owner": "diting"},
     {"q": "手头三个方案该怎么选，帮我分析一下这个决策", "expect": "no", "owner": "kueiku"},
     {"q": "搜几篇对比学习方向的最新论文下载下来", "expect": "no", "owner": "liuxiang"},
+    {"q": "帮我生成一段 15 秒的产品宣传视频", "expect": "no", "owner": "wudaozi"},
+    {"q": "帮我写这篇论文的文献综述章节", "expect": "no", "owner": "liuxiang"},
     {"q": "帮我写个 Shell 脚本批量清理过期日志", "expect": "no", "owner": "none"}
   ]
 }

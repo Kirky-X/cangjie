@@ -100,6 +100,24 @@
       "assertions": [
         "The response declines to write the shell script itself and explains the boundary"
       ]
+    },
+    {
+      "id": 12,
+      "scenario": "边界负例双写：视频生成让渡 wudaozi",
+      "prompt": "帮我生成一段 15 秒的产品宣传视频",
+      "expected_output": "cangjie 不应生成视频。正确行为：识别为视频生成分辨界——要文字分镜脚本走本 skill 模式 2，要真实视频画面让渡 wudaozi 的视频生成能力",
+      "assertions": [
+        "The response recommends the wudaozi skill for actual video generation and produces no video file"
+      ]
+    },
+    {
+      "id": 13,
+      "scenario": "边界负例双写：论文综述章节让渡 liuxiang",
+      "prompt": "帮我写这篇论文的文献综述章节",
+      "expected_output": "cangjie 不应代写论文综述章节。正确行为：识别为论文写作用于→让渡 liuxiang paper 模块；若用户意在把已有文献整理成笔记再回本 skill 模式 1",
+      "assertions": [
+        "The response recommends the liuxiang skill for writing the literature review section"
+      ]
     }
   ]
 }
