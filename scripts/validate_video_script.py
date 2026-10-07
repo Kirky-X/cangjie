@@ -55,6 +55,10 @@ CAMERA_FAMILIES = {
     "static": "固定",
 }
 
+# 时长口径官方查证（2026-10-08，Lightricks 官方模型卡 LTX-2 与 LTX-2.3）：
+# 官方未写死最大生成时长，参考配置 num_frames=121 @ frame_rate=24 ≈ 5.04s/次生成，
+# 帧数须满足 8k+1；15s≈361 帧、12s≈289 帧均为该约束下可实现时长，
+# 故本门值是分镜拆分策略上限，不是模型硬限。
 DURATION_CAP_DEFAULT = 15
 DURATION_CAP_SHORT = 12
 SHORT_FILM_SECONDS = 60

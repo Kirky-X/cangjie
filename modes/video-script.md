@@ -73,7 +73,7 @@
 }
 ```
 
-- `seconds`：镜头时长（秒）。单镜头上限默认 15s，全部镜头加总 ≤60s 的成片降为 12s——装不下就拆镜头，不要让一个镜头装一段戏
+- `seconds`：镜头时长（秒）。单镜头上限默认 15s，全部镜头加总 ≤60s 的成片降为 12s——装不下就拆镜头，不要让一个镜头装一段戏（上限是拆镜策略口径：LTX-2 官方模型卡未设最大时长，参考配置 121 帧@24fps≈5s 且帧数须 8k+1，15s/12s 均为该约束下可实现时长）
 - `camera_motion`：只能填 [`video-prompt-guidelines.md`](../references/guides/video-prompt-guidelines.md) 五节词表里的运镜术语（校验门会查枚举）；选词参考 [`references/guides/camera-movements.md`](../references/guides/camera-movements.md) 的情绪域对照与起承合运镜序列模板，把立意里定的情绪基调直接落到运镜上
 - `dialogue`：无台词也必须写，显式填"无"；有台词用 guidelines 八节的 `角色名（情绪/语气）："内容"` 格式
 - 长文章改编、镜头多到单次生成装不下时，加 `segments` 数组标记哪些镜头属于同一次生成调用：`"segments": [{"id": "seg-1", "shot_ids": ["shot-1", "shot-2"]}]`；镜头顺序始终以 `shots` 数组为准
