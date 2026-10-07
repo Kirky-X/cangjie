@@ -1,7 +1,7 @@
 ---
 name: cangjie
 description: "内容转化与精炼技能，四种模式：(1) 将文本/音频/视频/转录稿/论文整理为结构化笔记或产品文档；(2) 将文章/想法转化为文生视频分镜脚本；(3) 去除文本的 AI 写作痕迹；(4) 创建 Excalidraw 可视化图表。触发：总结/会议纪要/论文总结/PRD/BP/TRD/文献综述/视频脚本/分镜/去AI痕迹/画图(excalidraw)/流程图(excalidraw)/架构图(excalidraw)/diagram/visualize。注意：位图/插画类图片与视频画面的生成用 wudaozi（本 skill 的分镜脚本是文字脚本、Excalidraw 是 JSON 图表，均不生成图像视频）；论文检索与下载用 liuxiang（整理文献为结构化笔记归本 skill，写论文用的综述章节归 liuxiang）；决策与方法论分析用 kueiku；飞书文档内容的取回与操作用 lark；产品 UI 设计用 maliang"
-version: "0.3.4"
+version: "0.3.5"
 source: local-skill
 triggers:
   # 模式 1：内容总结（不含工具名——转录/ASR 属实现细节，经 description 路由即可）
@@ -55,7 +55,7 @@ requires:
   pip: [faster-whisper, qwen-asr, librosa, numpy, torch]
 license: MIT
 metadata:
-  version: "0.3.4"
+  version: "0.3.5"
   author: "Kirky-X"
   repo: "https://github.com/Kirky-X/cangjie"
   tags: "总结, 会议纪要, 论文总结, PRD, BP, TRD"
