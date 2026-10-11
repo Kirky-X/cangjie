@@ -101,6 +101,10 @@ python3 {SKILL_DIR}/scripts/validate_video_script.py <shots.json 路径>
 
 FAIL 必须逐条修到 0 才能进第五步——每条消息都指到具体镜头和原因，按消息修 `shots.json` 后重跑；WARN 是建议项，逐条判断后可保留。门结果会自动累积到 shots.json 同目录的 `.gates.jsonl`，不需要手工维护。
 
+## 质量自评(0 FAIL 之后、交付之前)
+
+校验门只判「不坏」;判「好」走 [`../references/guides/script-quality-rubric.md`](../references/guides/script-quality-rubric.md) 的质量层:六个维度各 0-2 分(立意聚焦 / 镜头特异性 / 情绪外化姿态化 / 视觉连贯 / 节奏弧线 / 音频要素克制),总分落在 6-9 找 0 分项定点修、不整体重写,≤5 回退立意重读需求输入。定稿交付前必须自评一次并把记录随交付附上(格式见 rubric 末尾);来回调整期不跑,只对最终交付负责。
+
 ## 第五步：输出格式
 
 校验门 0 FAIL 之后，把 `shots.json` 渲染成下面的格式。渲染是机械映射：标题/立意/风格取自顶层字段，镜头数取 `shots` 数组长度，每个镜头的标题行取 `summary`、正文取 `prompt`——不要在渲染时改写内容，发现要改就回 `shots.json` 改完重新校验。
